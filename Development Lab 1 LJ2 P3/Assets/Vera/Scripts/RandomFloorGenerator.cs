@@ -23,7 +23,6 @@ public class RandomFloorGenerator : MonoBehaviour {
 
     public void KillChildren()
     {
-        print("i killed my child!!!");
         Transform parent = GetComponent<Transform>();
         foreach (Transform child in parent)
         {
