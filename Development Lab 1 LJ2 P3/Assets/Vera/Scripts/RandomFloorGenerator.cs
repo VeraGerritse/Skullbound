@@ -8,6 +8,8 @@ public class RandomFloorGenerator : MonoBehaviour {
     public GameObject myRoom;
     public List<GameObject> myWalls = new List<GameObject>();
 
+    public bool noIsland;
+
 
 
     public void RoomSetup()
