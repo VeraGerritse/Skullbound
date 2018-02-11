@@ -8,6 +8,8 @@ public class RandomFloorGenerator : MonoBehaviour {
     public GameObject myRoom;
     public List<GameObject> myWalls = new List<GameObject>();
 
+    public bool noIsland;
+
 
 
     public void RoomSetup()
@@ -23,7 +25,6 @@ public class RandomFloorGenerator : MonoBehaviour {
 
     public void KillChildren()
     {
-        print("i killed my child!!!");
         Transform parent = GetComponent<Transform>();
         foreach (Transform child in parent)
         {
