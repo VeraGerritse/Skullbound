@@ -77,6 +77,7 @@ public class RoomGen : MonoBehaviour
                 {
                     leftDoor = true;
                     left.rightDoor = true;
+                    left.Doors();
                 }
             }
         }
@@ -88,6 +89,7 @@ public class RoomGen : MonoBehaviour
                 {
                     rightDoor = true;
                     right.leftDoor = true;
+                    right.Doors();
                 }
             }
         }
@@ -99,6 +101,7 @@ public class RoomGen : MonoBehaviour
                 {
                     upDoor = true;
                     up.downDoor = true;
+                    up.Doors();
                 }
             }
         }
@@ -110,6 +113,7 @@ public class RoomGen : MonoBehaviour
                 {
                     downDoor = true;
                     down.upDoor = true;
+                    down.Doors();
                 }
             }
         }

@@ -102,7 +102,7 @@ public class FloorGeneratorManager : MonoBehaviour {
                     }
                 }
             }
-            BuildWalls();
+            //BuildWalls();
             for (int i = 0; i < possiblePlaces.Count; i++)
             {
                 if(possiblePlaces[i].myRoom == null)

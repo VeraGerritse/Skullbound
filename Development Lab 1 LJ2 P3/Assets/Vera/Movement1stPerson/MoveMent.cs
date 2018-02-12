@@ -18,6 +18,7 @@ public class MoveMent : MonoBehaviour {
     public float updownRange;
     public float vertRot;
 
+    bool standStill;
 
     void Start () {
         currentSpeed = walkSpeed;
@@ -27,7 +28,10 @@ public class MoveMent : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        if (!standStill)
+        {
         Movement();
+        }
     } 
 
     public void Movement()

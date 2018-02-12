@@ -29,6 +29,9 @@ public class DungeonGeneratorManager : MonoBehaviour
     public GameObject playerPreFab;
     GameObject player;
 
+    [Header("testShit")]
+    public List<GameObject> testWalls = new List<GameObject>();
+
 
     void Start()
     {
@@ -124,7 +127,9 @@ public class DungeonGeneratorManager : MonoBehaviour
             possiblePlaces[i].done = false;
         }
         possiblePlaces[startPoint].Doors();
-        BuildWalls();
+        print(startPoint);
+        BuildTestWalls(startPoint);
+        //BuildWalls();
     }
 
     public GameObject RandomRoom()
@@ -159,13 +164,14 @@ public class DungeonGeneratorManager : MonoBehaviour
             possiblePlaces[i].rightDoor = false;
             possiblePlaces[i].upDoor = false;
             possiblePlaces[i].downDoor = false;
+            possiblePlaces[i].doneWalls = false;
         }
         for (int i = 0; i < myWalls.Count; i++)
-        {
-            print(myWalls.Count);
+        { 
             Destroy(myWalls[i]);
         }
         Destroy(player);
+        walls = false;
         player = null;
         print("wtf again");
         myWalls.Clear();
@@ -310,5 +316,84 @@ public class DungeonGeneratorManager : MonoBehaviour
         {
             player = Instantiate(playerPreFab, loc, Quaternion.identity);
         }
+    }
+
+    void BuildTestWalls(int startLoc)
+    {
+      if(!walls)
+        {
+            Vector3 wallPos;
+            walls = true;
+            GameObject newWall = null;
+            for (int i = 0; i < possiblePlaces.Count; i++)
+            {
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x + roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
+                if (possiblePlaces[i].leftDoor && possiblePlaces[i].myFloor != null)
+                {
+                    newWall = PlaceWall(0, wallPos, true);
+                }
+                else if (possiblePlaces[i].myFloor != null)
+                {
+                    newWall = PlaceWall(1, wallPos, true);
+                }               
+                if(newWall != null)
+                {
+                    newWall.transform.SetParent(possiblePlaces[i].transform);
+                    myWalls.Add(newWall);
+                }
+                newWall = null;
+
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x - roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
+                if (possiblePlaces[i].rightDoor && possiblePlaces[i].myFloor != null)
+                {
+                    newWall = PlaceWall(0, wallPos, true);
+                }
+                else if (possiblePlaces[i].myFloor != null)
+                {
+                    newWall = PlaceWall(1, wallPos, true);
+                }
+                if (newWall != null)
+                {
+                    newWall.transform.SetParent(possiblePlaces[i].transform);
+                    myWalls.Add(newWall);
+                }
+                newWall = null;
+
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z - roomSize / 2);
+                if (possiblePlaces[i].upDoor && possiblePlaces[i].myFloor != null)
+                {
+                    newWall = PlaceWall(0, wallPos, false);
+                }
+                else if (possiblePlaces[i].myFloor != null)
+                {
+                    newWall = PlaceWall(1, wallPos, false);
+                }
+                if (newWall != null)
+                {
+                    newWall.transform.SetParent(possiblePlaces[i].transform);
+                    myWalls.Add(newWall);
+                }
+                newWall = null;
+
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z + roomSize / 2);
+                if (possiblePlaces[i].downDoor && possiblePlaces[i].myFloor != null)
+                {
+                    newWall = PlaceWall(0, wallPos, false);
+                }
+                else if (possiblePlaces[i].myFloor != null)
+                {
+                    newWall = PlaceWall(1, wallPos, false);
+                }
+
+                if (newWall != null)
+                {
+                    newWall.transform.SetParent(possiblePlaces[i].transform);
+                    myWalls.Add(newWall);
+                }
+                newWall = null;
+            }
+
+        } 
+
     }
 }
