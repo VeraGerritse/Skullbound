@@ -187,6 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1695191253}
   - component: {fileID: 1695191254}
+  - component: {fileID: 1695191252}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -194,6 +195,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1695191252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695191251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d7d3c6aaf652f459109fdaf0b8d15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allChambers: []
 --- !u!4 &1695191253
 Transform:
   m_ObjectHideFlags: 0
@@ -218,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee18ea35de5abd4cb140c5140af7577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: 7
+  gridSize: 11
   locations: {fileID: 1468260266567722, guid: 7c4ee1f4c70db754fbedb1e4b1130a45, type: 2}
   roomSize: 20
   possiblePlaces: []
@@ -228,13 +241,14 @@ MonoBehaviour:
   - {fileID: 1253145712630076, guid: ee902b282fae8a24895886ea52473dcb, type: 2}
   - {fileID: 1605876815509550, guid: 7fc0a49975971424bb5255a5b67786d8, type: 2}
   - {fileID: 1261704289310860, guid: 29b5b9711f3265246ad025cec22f6fa6, type: 2}
-  - {fileID: 1172592158595046, guid: ad267fc030789904c961d6fbaeb3cd0e, type: 2}
   - {fileID: 1498471081880770, guid: 0674dfd7fb57a8e4f90b25513426dcd2, type: 2}
   - {fileID: 1408568093818694, guid: be6e4681fffceca4aacb6f9d53cd0769, type: 2}
   - {fileID: 1403462778497614, guid: 9c3c200607fbce043b16be3b56ffa69d, type: 2}
+  bossRooms:
+  - {fileID: 1172592158595046, guid: ad267fc030789904c961d6fbaeb3cd0e, type: 2}
   chance: 50
   roomsNeeded: 5
-  maxRooms: 10
+  maxRooms: 20
   chanceOnDoor: 75
   verticalWall:
   - {fileID: 1373361689852578, guid: d7056320687f2a144a55e1ee2ceb734b, type: 2}
@@ -243,6 +257,12 @@ MonoBehaviour:
   - {fileID: 1343138563294226, guid: c9a693ae5791d2849b5f406c6b2f182e, type: 2}
   - {fileID: 1773176996254148, guid: c27db0a048c943d45a770ee2c5f8013d, type: 2}
   myWalls: []
-  playerPreFab: {fileID: 1802404323250508, guid: 0de54d6f1d96e1c4fa503c7d5c88ac6b,
+  playerPreFab: {fileID: 1370351623030062, guid: 0de54d6f1d96e1c4fa503c7d5c88ac6b,
     type: 2}
-  testWalls: []
+  mapCamera: {fileID: 1077254911223136, guid: b6f5c37a51be3914bb9636422754f6f4, type: 2}
+  mapFloor: {fileID: 1808509280239368, guid: 4e4a30dc1a21b8b419b2aa988b3f3f1a, type: 2}
+  mapWalls:
+  - {fileID: 1334484163607076, guid: 423a2703c219ca349b71b85a3e12b170, type: 2}
+  - {fileID: 1880558743853650, guid: ed90a88cf5874c14eadc100862ca4e33, type: 2}
+  - {fileID: 1951025686071180, guid: 726423baf3e003d418f940c19b6d199b, type: 2}
+  - {fileID: 1624403020933556, guid: 6dbda1289a423c1439b60032a36d5d60, type: 2}

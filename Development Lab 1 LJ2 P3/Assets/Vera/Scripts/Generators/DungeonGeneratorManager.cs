@@ -10,6 +10,7 @@ public class DungeonGeneratorManager : MonoBehaviour
     public float roomSize;
     public List<RoomGen> possiblePlaces = new List<RoomGen>();
     public List<GameObject> floors = new List<GameObject>();
+    public List<GameObject> bossRooms = new List<GameObject>();
 
     public static DungeonGeneratorManager instance;
 
@@ -27,10 +28,20 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     [Header("player")]
     public GameObject playerPreFab;
+    public GameObject mapCamera;
     GameObject player;
+    GameObject mapCam;
 
-    [Header("testShit")]
-    public List<GameObject> testWalls = new List<GameObject>();
+
+    [Header("BossRoom")]
+    RoomGen lastRoom;
+    bool done;
+
+    [Header("MapBuilding")]
+    public GameObject mapFloor;
+    List<GameObject> allMapPieces = new List<GameObject>();
+    public List<GameObject> mapWalls = new List<GameObject>();
+
 
 
     void Start()
@@ -45,6 +56,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         }
         GenerateFloor();
     }
+
     private void Update()
     {
         if (Input.GetKey(KeyCode.P))
@@ -71,8 +83,10 @@ public class DungeonGeneratorManager : MonoBehaviour
                 xStart = corner * roomSize;
                 zStart += roomSize;
             }
+            MapManager.instance.ListLenght(possiblePlaces.Count);
             AssignNeigbours();
         }
+
     }
 
     void AssignNeigbours()
@@ -127,9 +141,9 @@ public class DungeonGeneratorManager : MonoBehaviour
             possiblePlaces[i].done = false;
         }
         possiblePlaces[startPoint].Doors();
-        print(startPoint);
-        BuildTestWalls(startPoint);
-        //BuildWalls();
+        MapFloor();
+        BuildWalls();
+        PlaceBossRoom(startPoint-1,startPoint+1,startPoint- gridSize, startPoint + gridSize);
     }
 
     public GameObject RandomRoom()
@@ -170,133 +184,18 @@ public class DungeonGeneratorManager : MonoBehaviour
         { 
             Destroy(myWalls[i]);
         }
+        for (int i = 0; i < allMapPieces.Count; i++)
+        {
+            Destroy(allMapPieces[i]);
+        }
         Destroy(player);
         walls = false;
         player = null;
-        print("wtf again");
+        done = false;
         myWalls.Clear();
-        //walls = true;
         GenerateFloorPlan();
     }
 
-    void BuildWalls()
-    {
-        if (!walls)
-        {
-            print("1 keer");
-            walls = true;
-            for (int i = 0; i < possiblePlaces.Count; i++)
-            {
-                Vector3 wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z - roomSize / 2);
-                GameObject newWall = null;
-
-                //up
-                if (i - gridSize >= 0)
-                {
-                    int o = Random.Range(0, 100);
-                    if (Neighbour(i - gridSize) && possiblePlaces[i].myFloor != null && possiblePlaces[i].upDoor)
-                    {
-                        newWall = PlaceWall(0, wallPos, false);
-                    }
-                    else if (possiblePlaces[i].myFloor != null)
-                    {
-                        newWall = PlaceWall(1, wallPos, false);
-                    }
-                }
-                else if (possiblePlaces[i].myFloor != null)
-                {
-                    newWall = PlaceWall(1, wallPos, false);
-                }
-                myWalls.Add(newWall);
-                if (newWall != null)
-                {
-                    newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
-                }
-
-                // down
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z + roomSize / 2);
-                if (i + gridSize < possiblePlaces.Count)
-                {
-                    int o = Random.Range(0, 100);
-                    if (possiblePlaces[i].myFloor != null && possiblePlaces[i].downDoor)
-                    {
-                        newWall = PlaceWall(0, wallPos, false);
-                    }
-                    else if (possiblePlaces[i].myFloor != null)
-                    {
-                        newWall = PlaceWall(1, wallPos, false);
-                    }
-                }
-                else if (possiblePlaces[i].myFloor != null)
-                {
-                    newWall = PlaceWall(1, wallPos, false);
-                }
-                myWalls.Add(newWall);
-                if (newWall != null)
-                {
-                    newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
-                }
-
-                //left
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x + roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
-                if (i % gridSize != 0)
-                {
-                    int o = Random.Range(0, 100);
-
-                    if (Neighbour(i - 1) && possiblePlaces[i].myFloor != null && possiblePlaces[i].leftDoor)
-                    {
-                        newWall = PlaceWall(0, wallPos, true);
-                    }
-                    else if (possiblePlaces[i].myFloor != null)
-                    {
-                        newWall = PlaceWall(1, wallPos, true);
-                    }
-                }
-                else if (possiblePlaces[i].myFloor != null)
-                {
-                    newWall = PlaceWall(1, wallPos, true);
-                }
-                myWalls.Add(newWall);
-                if (newWall != null)
-                {
-                    newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
-                }
-
-                //right
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x - roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
-                if ((i + 1) % gridSize != 0)
-                {
-                    int o = Random.Range(0, 100);
-                    if (Neighbour(i + 1) && possiblePlaces[i].myFloor != null && possiblePlaces[i].rightDoor)
-                    {
-                        newWall = PlaceWall(0, wallPos, true);
-                    }
-                    else if (possiblePlaces[i].myFloor != null)
-                    {
-                        newWall = PlaceWall(1, wallPos, true);
-                    }
-                }
-                else if (possiblePlaces[i].myFloor != null)
-                {
-                    newWall = PlaceWall(1, wallPos, true);
-                }
-                myWalls.Add(newWall);
-                if (newWall != null)
-                {
-                    newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
-                }
-            }
-            List<int> toRemove = new List<int>();
-            for (int i = 0; i < myWalls.Count; i++)
-            {
-                if (myWalls[i] == null)
-                {
-                    toRemove.Add(i);
-                }
-            }
-        }
-
-    }
     GameObject PlaceWall(int index, Vector3 pos, bool vert)
     {
         if (vert)
@@ -309,6 +208,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         }
 
     }
+
     public void PlacePlayer(int i)
     {
         Vector3 loc = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y + 1, possiblePlaces[i].transform.position.z);
@@ -316,9 +216,14 @@ public class DungeonGeneratorManager : MonoBehaviour
         {
             player = Instantiate(playerPreFab, loc, Quaternion.identity);
         }
+        if(mapCam == null)
+        {
+            mapCam = Instantiate(mapCamera, loc, Quaternion.identity);
+            mapCam.GetComponent<MapMovement>().player = player.transform;
+        }
     }
 
-    void BuildTestWalls(int startLoc)
+    void BuildWalls()
     {
       if(!walls)
         {
@@ -331,10 +236,16 @@ public class DungeonGeneratorManager : MonoBehaviour
                 if (possiblePlaces[i].leftDoor && possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(0, wallPos, true);
+                    GameObject newWallUgh = Instantiate(mapWalls[0], wallPos, Quaternion.identity);
+                    newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
+                    allMapPieces.Add(newWallUgh);
                 }
                 else if (possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(1, wallPos, true);
+                    GameObject newWallUgh = Instantiate(mapWalls[1], wallPos, Quaternion.identity);
+                    newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
+                    allMapPieces.Add(newWallUgh);
                 }               
                 if(newWall != null)
                 {
@@ -347,10 +258,16 @@ public class DungeonGeneratorManager : MonoBehaviour
                 if (possiblePlaces[i].rightDoor && possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(0, wallPos, true);
+                    GameObject newWallUgh = Instantiate(mapWalls[0], wallPos, Quaternion.identity);
+                    newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
+                    allMapPieces.Add(newWallUgh);
                 }
                 else if (possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(1, wallPos, true);
+                    GameObject newWallUgh = Instantiate(mapWalls[1], wallPos, Quaternion.identity);
+                    newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
+                    allMapPieces.Add(newWallUgh);
                 }
                 if (newWall != null)
                 {
@@ -363,10 +280,16 @@ public class DungeonGeneratorManager : MonoBehaviour
                 if (possiblePlaces[i].upDoor && possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(0, wallPos, false);
+                    GameObject newWallUgh = Instantiate(mapWalls[2], wallPos, Quaternion.identity);
+                    newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
+                    allMapPieces.Add(newWallUgh);
                 }
                 else if (possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(1, wallPos, false);
+                    GameObject newWallUgh = Instantiate(mapWalls[3], wallPos, Quaternion.identity);
+                    newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
+                    allMapPieces.Add(newWallUgh);
                 }
                 if (newWall != null)
                 {
@@ -379,10 +302,16 @@ public class DungeonGeneratorManager : MonoBehaviour
                 if (possiblePlaces[i].downDoor && possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(0, wallPos, false);
+                    GameObject newWallUgh = Instantiate(mapWalls[2], wallPos, Quaternion.identity);
+                    newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
+                    allMapPieces.Add(newWallUgh);
                 }
                 else if (possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(1, wallPos, false);
+                    GameObject newWallUgh = Instantiate(mapWalls[3], wallPos, Quaternion.identity);
+                    newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
+                    allMapPieces.Add(newWallUgh);
                 }
 
                 if (newWall != null)
@@ -395,5 +324,39 @@ public class DungeonGeneratorManager : MonoBehaviour
 
         } 
 
+    }
+
+    void PlaceBossRoom(int up,int down,int left,int right)
+    {
+        if (!done)
+        {
+            List<int> availableBossRooms = new List<int>();
+            availableBossRooms.Clear();
+            for (int i = 0; i < possiblePlaces.Count; i++)
+            {
+                if (possiblePlaces[i].myFloor != null && i != up && i != down && i != left && i != right)
+                {
+                    availableBossRooms.Add(i);
+                }
+            }
+            int newBossRoom = Random.Range(0, availableBossRooms.Count);
+            int rand = Random.Range(0, bossRooms.Count);
+            Destroy(possiblePlaces[availableBossRooms[newBossRoom]].myFloor);
+            possiblePlaces[newBossRoom].myFloor = Instantiate(bossRooms[rand], possiblePlaces[availableBossRooms[newBossRoom]].transform.position, Quaternion.identity);
+            done = true;
+        }
+    }
+
+    void MapFloor()
+    {
+        for (int i = 0; i < possiblePlaces.Count; i++)
+        {
+            if(possiblePlaces[i].myFloor != null)
+            {
+                GameObject newShitz = Instantiate(mapFloor, possiblePlaces[i].transform.position, Quaternion.identity);
+                MapManager.instance.allChambers[i] = newShitz;
+                allMapPieces.Add(newShitz);
+            }
+        }
     }
 }

@@ -23,7 +23,6 @@ public class RoomGen : MonoBehaviour
 
     public void InstantiateFloor()
     {
-
         if (done)
         {
             return;
@@ -77,7 +76,7 @@ public class RoomGen : MonoBehaviour
                 {
                     leftDoor = true;
                     left.rightDoor = true;
-                    left.Doors();
+                    left.doneWalls = true;
                 }
             }
         }
@@ -89,7 +88,7 @@ public class RoomGen : MonoBehaviour
                 {
                     rightDoor = true;
                     right.leftDoor = true;
-                    right.Doors();
+                    right.doneWalls = true;
                 }
             }
         }
@@ -101,7 +100,7 @@ public class RoomGen : MonoBehaviour
                 {
                     upDoor = true;
                     up.downDoor = true;
-                    up.Doors();
+                    up.doneWalls = true;
                 }
             }
         }
@@ -113,10 +112,66 @@ public class RoomGen : MonoBehaviour
                 {
                     downDoor = true;
                     down.upDoor = true;
+                    down.doneWalls = true;
+                }
+            }
+        }
+
+
+        if (left != null)
+        {
+            if (left.myFloor != null)
+            {
+                if (leftDoor && !left.done)
+                {
+                    left.done = true;
+                    left.Doors();
+                }
+            }
+        }
+        if (right != null)
+        {
+            if (right.myFloor != null)
+            {
+                if (rightDoor && !right.done)
+                {
+                    right.done = true;
+                    right.Doors();
+                }
+            }
+        }
+        if (up != null)
+        {
+            if (up.myFloor != null)
+            {
+                if (upDoor && !up.done)
+                {
+                    up.done = true;
+                    up.Doors();
+                }
+            }
+        }
+        if (down != null)
+        {
+            if (down.myFloor != null)
+            {
+                if (downDoor && !down.done)
+                {
+                    down.done = true;
                     down.Doors();
                 }
             }
         }
+        done = true;
+    }
+
+    public void KillChildren()
+    {
+        Transform parent = GetComponent<Transform>();
+        foreach (Transform child in parent)
+        {
+            Destroy(child.gameObject);
+        }           
     }
 }
 
