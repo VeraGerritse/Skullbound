@@ -20,10 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4244944867563446}
   - component: {fileID: 33858270478268314}
-  - component: {fileID: 114336355386504380}
   - component: {fileID: 114920221046402452}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,22 +48,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1468260266567722}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114336355386504380
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1468260266567722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5818aba9bd48390498844679e49c9934, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  done: 0
-  start: 0
-  myRoom: {fileID: 0}
-  myWalls: []
-  noIsland: 0
 --- !u!114 &114920221046402452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,6 +63,12 @@ MonoBehaviour:
   left: {fileID: 0}
   right: {fileID: 0}
   down: {fileID: 0}
+  leftDoor: 0
+  rightDoor: 0
+  upDoor: 0
+  downDoor: 0
   myFloor: {fileID: 0}
   done: 0
+  doneWalls: 0
   chance: 100
+  chanceDoor: 25

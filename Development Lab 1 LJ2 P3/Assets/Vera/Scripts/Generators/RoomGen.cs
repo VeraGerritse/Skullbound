@@ -19,6 +19,8 @@ public class RoomGen : MonoBehaviour
     public bool doneWalls;
     public int chance;
 
+    public int chanceDoor = 75;
+
     public enum From { left, right, up, down, none }
 
     public void InstantiateFloor()
@@ -67,12 +69,13 @@ public class RoomGen : MonoBehaviour
 
     public void Doors()
     {
+        int rand = Random.Range(0,100);
         doneWalls = true;
         if (left != null)
         {
             if (left.myFloor != null)
             {
-                if (!left.doneWalls)
+                if (!left.doneWalls || rand <= chanceDoor)
                 {
                     leftDoor = true;
                     left.rightDoor = true;
@@ -80,11 +83,12 @@ public class RoomGen : MonoBehaviour
                 }
             }
         }
+        rand = Random.Range(0, 100);
         if (right != null)
         {
             if (right.myFloor != null)
             {
-                if (!right.doneWalls)
+                if (!right.doneWalls || rand <= chanceDoor)
                 {
                     rightDoor = true;
                     right.leftDoor = true;
@@ -92,11 +96,12 @@ public class RoomGen : MonoBehaviour
                 }
             }
         }
+        rand = Random.Range(0, 100);
         if (up != null)
         {
             if (up.myFloor != null)
             {
-                if (!up.doneWalls)
+                if (!up.doneWalls || rand <= chanceDoor)
                 {
                     upDoor = true;
                     up.downDoor = true;
@@ -104,11 +109,12 @@ public class RoomGen : MonoBehaviour
                 }
             }
         }
+        rand = Random.Range(0, 100);
         if (down != null)
         {
             if (down.myFloor != null)
             {
-                if (!down.doneWalls)
+                if (!down.doneWalls || rand <= chanceDoor)
                 {
                     downDoor = true;
                     down.upDoor = true;
@@ -116,52 +122,70 @@ public class RoomGen : MonoBehaviour
                 }
             }
         }
+        Doors2();
+    }
+
+    void Doors2()
+    {
+        List<int> sides = new List<int>()
+        {
+            0,1,2,3
+        };
+
+        while(sides.Count != 0)
+        {
+            int rand = Random.Range(0, sides.Count);
+            int next = sides[rand];
+            sides.RemoveAt(rand);
+
+            if (left != null && next == 0)
+            {
+                if (left.myFloor != null)
+                {
+                    if (leftDoor && !left.done)
+                    {
+                        left.done = true;
+                        left.Doors();
+                    }
+                }
+            }
+            if (right != null && next == 1)
+            {
+                if (right.myFloor != null)
+                {
+                    if (rightDoor && !right.done)
+                    {
+                        right.done = true;
+                        right.Doors();
+                    }
+                }
+            }
+            if (up != null && next == 2)
+            {
+                if (up.myFloor != null)
+                {
+                    if (upDoor && !up.done)
+                    {
+                        up.done = true;
+                        up.Doors();
+                    }
+                }
+            }
+            if (down != null && next == 3)
+            {
+                if (down.myFloor != null)
+                {
+                    if (downDoor && !down.done)
+                    {
+                        down.done = true;
+                        down.Doors();
+                    }
+                }
+            }
+        }
 
 
-        if (left != null)
-        {
-            if (left.myFloor != null)
-            {
-                if (leftDoor && !left.done)
-                {
-                    left.done = true;
-                    left.Doors();
-                }
-            }
-        }
-        if (right != null)
-        {
-            if (right.myFloor != null)
-            {
-                if (rightDoor && !right.done)
-                {
-                    right.done = true;
-                    right.Doors();
-                }
-            }
-        }
-        if (up != null)
-        {
-            if (up.myFloor != null)
-            {
-                if (upDoor && !up.done)
-                {
-                    up.done = true;
-                    up.Doors();
-                }
-            }
-        }
-        if (down != null)
-        {
-            if (down.myFloor != null)
-            {
-                if (downDoor && !down.done)
-                {
-                    down.done = true;
-                    down.Doors();
-                }
-            }
-        }
+        
         done = true;
     }
 

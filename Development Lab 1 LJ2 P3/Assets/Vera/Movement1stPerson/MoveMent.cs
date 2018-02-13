@@ -17,6 +17,7 @@ public class MoveMent : MonoBehaviour {
     public Rigidbody player;
     public float updownRange;
     public float vertRot;
+    bool inAir;
 
     bool standStill;
 
@@ -80,7 +81,6 @@ public class MoveMent : MonoBehaviour {
         {
             Jump();
         }
-        Vector3 fwd = transform.TransformDirection(-Vector3.up);
     }
 
     public void Crouch()
@@ -91,10 +91,20 @@ public class MoveMent : MonoBehaviour {
 
     public void Jump()
     {
+        print("test1");
         Vector3 fwd = transform.TransformDirection(-Vector3.up);
-        if (Physics.Raycast(transform.position, fwd, 1.1f))
+        //if(Physics.CapsuleCast(transform.position,new Vector3(transform.position.x,transform.position.y - 10f, transform.position.z), 1, -transform.up, 10f))
+        //{
+        //    print("test");
+        //    player.AddForce(transform.up * jumpHeight);
+        //}
+        RaycastHit rayHit;
+        if (Physics.Raycast(transform.position, fwd, out rayHit, 1.1f))
         {
-            player.AddForce(transform.up * jumpHeight);
+            if(rayHit.collider.tag == "Ground")
+            {
+                player.AddForce(transform.up * jumpHeight);
+            }
         }
     }
 
