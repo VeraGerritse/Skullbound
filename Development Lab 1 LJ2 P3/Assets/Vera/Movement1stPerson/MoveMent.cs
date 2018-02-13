@@ -19,7 +19,7 @@ public class MoveMent : MonoBehaviour {
     public float vertRot;
     bool inAir;
 
-    bool standStill;
+    bool standStill = false;
 
     void Start () {
         currentSpeed = walkSpeed;
@@ -33,7 +33,34 @@ public class MoveMent : MonoBehaviour {
         {
         Movement();
         }
-    } 
+    }
+
+    private void Update()
+    {
+        // "ButtonUp" & "ButtonDown" cant be in FixedUpdate or they have a chance to be skipped.
+
+        if (Input.GetButton("Crouch"))
+        {
+            Crouch();
+        }
+        if (Input.GetButtonUp("Crouch"))
+        {
+            currentSpeed = walkSpeed;
+            anim.SetBool("Crouch", false);
+        }
+        if (Input.GetButton("Run"))
+        {
+            Run();
+        }
+        if (Input.GetButtonUp("Run"))
+        {
+            currentSpeed = walkSpeed;
+        }
+        if (Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+    }
 
     public void Movement()
     {
@@ -60,27 +87,7 @@ public class MoveMent : MonoBehaviour {
         vertRot = Mathf.Clamp(vertRot, -updownRange, updownRange);
         Camera.main.transform.localRotation = Quaternion.Euler(vertRot, 0, 0);
 
-        if (Input.GetButton("Crouch"))
-        {
-            Crouch();
-        }
-        if (Input.GetButtonUp("Crouch"))
-        {
-            currentSpeed = walkSpeed;
-            anim.SetBool("Crouch", false);
-        }
-        if (Input.GetButton("Run"))
-        {
-            Run();
-        }
-        if (Input.GetButtonUp("Run"))
-        {
-            currentSpeed = walkSpeed;
-        }
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
+
     }
 
     public void Crouch()
@@ -91,18 +98,12 @@ public class MoveMent : MonoBehaviour {
 
     public void Jump()
     {
-        print("test1");
-        Vector3 fwd = transform.TransformDirection(-Vector3.up);
-        //if(Physics.CapsuleCast(transform.position,new Vector3(transform.position.x,transform.position.y - 10f, transform.position.z), 1, -transform.up, 10f))
-        //{
-        //    print("test");
-        //    player.AddForce(transform.up * jumpHeight);
-        //}
-        RaycastHit rayHit;
-        if (Physics.Raycast(transform.position, fwd, out rayHit, 1.1f))
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, 1.1f))
         {
-            if(rayHit.collider.tag == "Ground")
+            if (hit.transform.gameObject != null)
             {
+                //print("Player jumped from "  + hit.transform.gameObject.name);
                 player.AddForce(transform.up * jumpHeight);
             }
         }
