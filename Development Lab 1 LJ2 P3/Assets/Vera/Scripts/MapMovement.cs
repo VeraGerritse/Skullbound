@@ -11,20 +11,15 @@ public class MapMovement : MonoBehaviour
 
     private void Awake()
     {
-        if (cam)
-        {
         transform.rotation = Quaternion.Euler(90, 0, 0);
-        }
     }
     void Update ()
-    {
-        Vector3 playerLoc = new Vector3(player.position.x, player.position.y + hight, player.position.z);
-        transform.position = playerLoc;
-        if (!cam)
+    {   if(player != null)
         {
-            Vector3 playerRot = new Vector3(90, 0, player.rotation.y);
-            transform.rotation = Quaternion.Euler(playerRot);
+            Vector3 playerLoc = new Vector3(player.position.x, player.position.y + hight, player.position.z);
+            transform.position = playerLoc;
         }
+
 
 	}
 }

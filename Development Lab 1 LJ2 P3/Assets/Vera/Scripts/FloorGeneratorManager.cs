@@ -259,6 +259,7 @@ public class FloorGeneratorManager : MonoBehaviour {
             possiblePlaces[i].noIsland = false;
         }
         Destroy(player);
+        
         player = null;
         allWalls.Clear();
         GenerateFloorPlan();       

@@ -42,8 +42,6 @@ public class DungeonGeneratorManager : MonoBehaviour
     List<GameObject> allMapPieces = new List<GameObject>();
     public List<GameObject> mapWalls = new List<GameObject>();
 
-
-
     void Start()
     {
         if(maxRooms < roomsNeeded)
@@ -112,6 +110,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             }
         }
         GenerateFloorPlan();
+
     }
 
     void GenerateFloorPlan()
@@ -123,6 +122,8 @@ public class DungeonGeneratorManager : MonoBehaviour
         int startPoint = Random.Range(0, possiblePlaces.Count);
         possiblePlaces[startPoint].chance = 100;
         possiblePlaces[startPoint].InstantiateFloor();
+
+
         int totalRooms = 0;
         for (int i = 0; i < possiblePlaces.Count; i++)
         {
@@ -135,15 +136,16 @@ public class DungeonGeneratorManager : MonoBehaviour
         {
             ResetDungeon();
         }
+
         PlacePlayer(startPoint);
         for (int i = 0; i < possiblePlaces.Count; i++)
         {
             possiblePlaces[i].done = false;
         }
-        possiblePlaces[startPoint].Doors();
+        possiblePlaces[startPoint].Doors();;
         MapFloor();
         BuildWalls();
-        PlaceBossRoom(startPoint-1,startPoint+1,startPoint- gridSize, startPoint + gridSize);
+        PlaceBossRoom(startPoint-1,startPoint+1,startPoint- gridSize, startPoint + gridSize,startPoint);
     }
 
     public GameObject RandomRoom()
@@ -191,6 +193,10 @@ public class DungeonGeneratorManager : MonoBehaviour
         Destroy(player);
         walls = false;
         player = null;
+        if(mapCam != null)
+        {
+            mapCam.GetComponent<MapMovement>().player = null;
+        }
         done = false;
         myWalls.Clear();
         GenerateFloorPlan();
@@ -219,6 +225,10 @@ public class DungeonGeneratorManager : MonoBehaviour
         if(mapCam == null)
         {
             mapCam = Instantiate(mapCamera, loc, Quaternion.identity);
+            mapCam.GetComponent<MapMovement>().player = player.transform;
+        }
+        else if(mapCam!= null)
+        {
             mapCam.GetComponent<MapMovement>().player = player.transform;
         }
     }
@@ -326,7 +336,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     }
 
-    void PlaceBossRoom(int up,int down,int left,int right)
+    void PlaceBossRoom(int up,int down,int left,int right, int startPoint)
     {
         if (!done)
         {
@@ -334,10 +344,37 @@ public class DungeonGeneratorManager : MonoBehaviour
             availableBossRooms.Clear();
             for (int i = 0; i < possiblePlaces.Count; i++)
             {
-                if (possiblePlaces[i].myFloor != null && i != up && i != down && i != left && i != right)
+                bool oneWay = false;
+                int doorsAvailable = 0;
+                if (possiblePlaces[i].leftDoor)
+                {
+                    doorsAvailable++;
+                }
+                if (possiblePlaces[i].rightDoor)
+                {
+                    doorsAvailable++;
+                }
+                if (possiblePlaces[i].upDoor)
+                {
+                    doorsAvailable++;
+                }
+                if (possiblePlaces[i].downDoor)
+                {
+                    doorsAvailable++;
+                }
+
+                if(doorsAvailable == 1)
+                {
+                    oneWay = true;
+                }
+                if (possiblePlaces[i].myFloor != null && i != up && i != down && i != left && i != right && i != startPoint && oneWay)
                 {
                     availableBossRooms.Add(i);
                 }
+            }
+            if(availableBossRooms.Count == 0)
+            {
+
             }
             int newBossRoom = Random.Range(0, availableBossRooms.Count);
             int rand = Random.Range(0, bossRooms.Count);
