@@ -19,6 +19,8 @@ public class MoveMent : MonoBehaviour {
     public float vertRot;
     bool inAir;
 
+    public GameObject cameraObject;
+
     bool standStill = false;
 
     void Start () {
@@ -85,7 +87,7 @@ public class MoveMent : MonoBehaviour {
         transform.Rotate(0, horizontal, 0);
         vertRot -= vertical;
         vertRot = Mathf.Clamp(vertRot, -updownRange, updownRange);
-        Camera.main.transform.localRotation = Quaternion.Euler(vertRot, 0, 0);
+        cameraObject.transform.localRotation = Quaternion.Euler(vertRot, 0, 0);
 
 
     }
