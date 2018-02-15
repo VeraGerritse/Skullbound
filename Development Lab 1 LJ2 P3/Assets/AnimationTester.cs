@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationTester : MonoBehaviour {
 
     private Animator anim;
+    public bool canCombo;
 
     private void Start()
     {
@@ -13,6 +14,16 @@ public class AnimationTester : MonoBehaviour {
 
     private void Update()
     {
+        if(canCombo)
+        {
+            anim.SetBool("CanCombo", true);
+
+
+        }
+        else
+        {
+            anim.SetBool("CanCombo", false);
+        }
         if(Input.GetKeyDown("r"))
         {
             anim.SetTrigger("Draw");
