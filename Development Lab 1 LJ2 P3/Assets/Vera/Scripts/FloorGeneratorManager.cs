@@ -6,11 +6,11 @@ public class FloorGeneratorManager : MonoBehaviour {
     public List<RandomFloorGenerator> possiblePlaces = new List<RandomFloorGenerator>();
     public List<GameObject> floors = new List<GameObject>();
     public List<GameObject> allWalls = new List<GameObject>();
-    public GameObject Player;
+    public GameObject playerPreFab;
+    public GameObject player;
     public int changeOnRoom;
     public int minimumRooms;
-    int roomsDone;
-    bool done;
+    int randomRoom;
 
     [Header("Grid size instantiation")]
     public int gridSize;
@@ -23,7 +23,7 @@ public class FloorGeneratorManager : MonoBehaviour {
 
     public static FloorGeneratorManager instance;
 
-	void Start () {
+    void Start () {
         if(instance == null)
         {
             instance = this;
@@ -44,154 +44,165 @@ public class FloorGeneratorManager : MonoBehaviour {
         int corner = Mathf.RoundToInt(gridSize / 2);
         float xStart = corner * roomSize;
         float zStart = -corner * roomSize;
-        for (int z = 0; z < gridSize; z++)
+        if (gridSize != 0)
         {
-            for (int x = 0; x < gridSize; x++)
+            for (int z = 0; z < gridSize; z++)
             {
-                GameObject newSpace = Instantiate(locations, new Vector3(xStart, 0, zStart), Quaternion.identity);
-                xStart -= roomSize;
-                possiblePlaces.Add(newSpace.GetComponent<RandomFloorGenerator>());
+                for (int x = 0; x < gridSize; x++)
+                {
+                    GameObject newSpace = Instantiate(locations, new Vector3(xStart, 0, zStart), Quaternion.identity);
+                    xStart -= roomSize;
+                    possiblePlaces.Add(newSpace.GetComponent<RandomFloorGenerator>());
+                }
+                xStart = corner * roomSize;
+                zStart += roomSize;
             }
-            xStart = corner * roomSize;
-            zStart += roomSize;
+            GenerateFloorPlan();
         }
-        GenerateFloorPlan();
     }
+
     void GenerateFloorPlan()
     {
-        for (int i = 0; i < possiblePlaces.Count; i++)
+        if (gridSize != 0)
         {
-            if (!possiblePlaces[i].done)
+            for (int i = 0; i < possiblePlaces.Count; i++)
             {
-                if(Random.Range(0,100) > changeOnRoom)
+                if (!possiblePlaces[i].done)
                 {
-                    possiblePlaces[i].InstantiateRoom(floors[Random.Range(0, floors.Count)]);
+                    if (Random.Range(0, 100) > changeOnRoom)
+                    {
+                        possiblePlaces[i].InstantiateRoom(floors[Random.Range(0, floors.Count)]);
+                    }
                 }
-            }  
-        }
+            }
+            DestroyLittleIslands();
 
-        for (int i = 0; i < possiblePlaces.Count; i++)
-        {
-            if (possiblePlaces[i].myRoom != null)
+            bool inRoom = false;
+            randomRoom = -1;
+            while (!inRoom)
             {
-                bool iHaveNeighbours = false;
+                int i = Random.Range(0, possiblePlaces.Count);
+                if (possiblePlaces[i].myRoom != null)
+                {
+                    inRoom = true;
+                    randomRoom = i;
+                }
+            }
+            print(randomRoom);
+            DestroyIslands(randomRoom);
+            for (int i = 0; i < possiblePlaces.Count; i++)
+            {
+                if (possiblePlaces[i].myRoom != null)
+                {
+                    if (!possiblePlaces[i].noIsland)
+                    {
+                        Destroy(possiblePlaces[i].myRoom);
+                        possiblePlaces[i].KillChildren();
+                        possiblePlaces[i].myRoom = null;
+                    }
+                }
+            }
+            //BuildWalls();
+            for (int i = 0; i < possiblePlaces.Count; i++)
+            {
+                if(possiblePlaces[i].myRoom == null)
+                {
+                    possiblePlaces[i].KillChildren();
+                }
+            }
+            DestroyLittleIslands();
+            int amountRooms = 0;
+            for (int i = 0; i < possiblePlaces.Count; i++)
+            {
 
-                Vector3 wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z - roomSize / 2);
-                GameObject newWall = null;
+                if (possiblePlaces[i].myRoom != null)
+                {
+                    amountRooms++;
+                }
+            }
+            bool inRoom2 = false;
+            randomRoom = -1;
+            while (!inRoom2)
+            {
+                int i = Random.Range(0, possiblePlaces.Count);
+                if (possiblePlaces[i].myRoom != null)
+                {
+                    inRoom2 = true;
+                    randomRoom = i;
+                }
+            }
+            if (randomRoom != -1)
+            {
+                PlacePlayer(randomRoom); 
+            }
+ 
+            if (amountRooms < minimumRooms)
+            {
+                ResetRooms();
+            }
+        }
+    }
+
+    void DestroyIslands(int startRoom)
+    {
+        List<int> startList = new List<int>
+        {
+            startRoom
+        };
+        possiblePlaces[startRoom].noIsland = true;
+        ListPlayIslands(startList);
+    }
+
+    void ListPlayIslands(List<int> indexList)
+    {
+        List<int> newList = new List<int>();
+        newList.Clear();
+            for (int i = 0; i < indexList.Count; i++)
+            {
+                
                 if (i - gridSize >= 0)
                 {
-                    if (Neighbour(i - gridSize, i))
+                    if (possiblePlaces[i - gridSize].myRoom != null && possiblePlaces[i - gridSize].noIsland == false)
                     {
-                        iHaveNeighbours = true;
-                        newWall = PlaceWall(0, wallPos, false);
-                    }
-                    else
-                    {
-                        newWall = PlaceWall(1, wallPos, false);
+                        possiblePlaces[i - gridSize].noIsland = true;
+                        newList.Add(i - gridSize);
                     }
                 }
-                else if (possiblePlaces[i].myRoom != null)
-                {
-                    newWall = PlaceWall(1, wallPos, false);
-                }
-                possiblePlaces[i].myWalls.Add(newWall);
-                if (newWall != null)
-                {
-                    newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
-                }
-
-
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z + roomSize / 2);
-                if (i + gridSize < possiblePlaces.Count)
-                {
-                    if (Neighbour(i + gridSize, i))
-                    {
-                        iHaveNeighbours = true;
-                        newWall = PlaceWall(0, wallPos, false);
-                    }
-                    else
-                    {
-                        newWall = PlaceWall(1, wallPos, false);
-                    }
-                }
-                else if (possiblePlaces[i].myRoom != null)
-                {
-                    newWall = PlaceWall(1, wallPos, false);
-                }
-                possiblePlaces[i].myWalls.Add(newWall);
-                if (newWall != null)
-                {
-                    newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
-                }
-
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x + roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
                 if (i % gridSize != 0)
                 {
-                    if (Neighbour(i - 1, i))
+                    if (possiblePlaces[i - 1].myRoom != null && possiblePlaces[i - 1].noIsland == false)
                     {
-                        iHaveNeighbours = true;
-                        newWall = PlaceWall(0, wallPos, true);
-                    }
-                    else
-                    {
-                        newWall = PlaceWall(1, wallPos, true);
+                        possiblePlaces[i - 1].noIsland = true;
+                        newList.Add(i - 1);
                     }
                 }
-                else if (possiblePlaces[i].myRoom != null)
-                {
-                    newWall = PlaceWall(1, wallPos, true);
-                }
-                possiblePlaces[i].myWalls.Add(newWall);
-                if (newWall != null)
-                {
-                    newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
-                }
-
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x - roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
                 if ((i + 1) % gridSize != 0)
                 {
-                    if (Neighbour(i + 1, i))
+                    if (possiblePlaces[i + 1].myRoom != null && possiblePlaces[i + 1].noIsland == false)
                     {
-                        iHaveNeighbours = true;
-                        newWall = PlaceWall(0, wallPos, true);
-                    }
-                    else
-                    {
-                        newWall = PlaceWall(1, wallPos, true);
+                        possiblePlaces[i + 1].noIsland = true;
+                        newList.Add(i + 1);
                     }
                 }
-                else if (possiblePlaces[i].myRoom != null)
+                if (i + gridSize < possiblePlaces.Count)
                 {
-                    newWall = PlaceWall(1, wallPos, true);
-                }
-                possiblePlaces[i].myWalls.Add(newWall);
-                if (newWall != null)
-                {
-                    newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
+                    if (possiblePlaces[i + gridSize].myRoom != null && possiblePlaces[i + gridSize].noIsland == false)
+                    {
+                        possiblePlaces[i + gridSize].noIsland = true;
+                        newList.Add(i + gridSize);
+                    }
                 }
 
-                if (!iHaveNeighbours)
-                {
-                    print("what");
-                    Destroy(possiblePlaces[i].myRoom);
-                    possiblePlaces[i].KillChildren();
-                    possiblePlaces[i].myRoom = null;
-                }
             }
-        }
-        int amountRooms = 0;
-        for (int i = 0; i < possiblePlaces.Count; i++)
+        indexList.Clear();
+        ListLoop(newList);
+    }
+
+    void ListLoop(List<int> ints)
+    {
+        if(ints.Count != 0)
         {
-            
-            if(possiblePlaces[i].myRoom != null)
-            {
-                amountRooms++;
-            }
-        }
-        
-        if(amountRooms < minimumRooms)
-        {
-            ResetRooms();
+            ListPlayIslands(ints);
         }
     }
 
@@ -220,6 +231,16 @@ public class FloorGeneratorManager : MonoBehaviour {
         }
     }
 
+    public void PlacePlayer(int i)
+    {
+            Vector3 loc = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y + 1, possiblePlaces[i].transform.position.z);
+        if(player == null)
+        {
+            player = Instantiate(playerPreFab, loc, Quaternion.identity);
+        }
+
+    }
+
     public void ResetRooms()
     {
         for (int i = 0; i < possiblePlaces.Count; i++)
@@ -235,9 +256,155 @@ public class FloorGeneratorManager : MonoBehaviour {
                 Destroy(possiblePlaces[i].myWalls[p]);
             }
             possiblePlaces[i].myWalls.Clear();
+            possiblePlaces[i].noIsland = false;
         }
-
+        Destroy(player);
+        
+        player = null;
         allWalls.Clear();
         GenerateFloorPlan();       
+    }
+
+    void BuildWalls()
+    {
+        for (int i = 0; i < possiblePlaces.Count; i++)
+        {
+            Vector3 wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z - roomSize / 2);
+            GameObject newWall = null;
+            if (i - gridSize >= 0)
+            {
+                if (Neighbour(i - gridSize, i) && possiblePlaces[i].myRoom != null)
+                {
+                    newWall = PlaceWall(0, wallPos, false);
+                }
+                else
+                {
+                    newWall = PlaceWall(1, wallPos, false);
+                }
+            }
+            else if (possiblePlaces[i].myRoom != null)
+            {
+                newWall = PlaceWall(1, wallPos, false);
+            }
+            possiblePlaces[i].myWalls.Add(newWall);
+            if (newWall != null)
+            {
+                newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
+            }
+
+            wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z + roomSize / 2);
+            if (i + gridSize < possiblePlaces.Count)
+            {
+                if (Neighbour(i + gridSize, i) && possiblePlaces[i].myRoom != null)
+                {
+                    newWall = PlaceWall(0, wallPos, false);
+                }
+                else
+                {
+                    newWall = PlaceWall(1, wallPos, false);
+                }
+            }
+            else if (possiblePlaces[i].myRoom != null)
+            {
+                newWall = PlaceWall(1, wallPos, false);
+            }
+            possiblePlaces[i].myWalls.Add(newWall);
+            if (newWall != null)
+            {
+                newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
+            }
+
+            wallPos = new Vector3(possiblePlaces[i].transform.position.x + roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
+            if (i % gridSize != 0)
+            {
+                if (Neighbour(i - 1, i) && possiblePlaces[i].myRoom != null)
+                {
+                    newWall = PlaceWall(0, wallPos, true);
+                }
+                else
+                {
+                    newWall = PlaceWall(1, wallPos, true);
+                }
+            }
+            else if (possiblePlaces[i].myRoom != null)
+            {
+                newWall = PlaceWall(1, wallPos, true);
+            }
+            possiblePlaces[i].myWalls.Add(newWall);
+            if (newWall != null)
+            {
+                newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
+            }
+
+            wallPos = new Vector3(possiblePlaces[i].transform.position.x - roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
+            if ((i + 1) % gridSize != 0)
+            {
+                if (Neighbour(i + 1, i) && possiblePlaces[i].myRoom != null)
+                {
+                    newWall = PlaceWall(0, wallPos, true);
+                }
+                else
+                {
+                    newWall = PlaceWall(1, wallPos, true);
+                }
+            }
+            else if (possiblePlaces[i].myRoom != null)
+            {
+                newWall = PlaceWall(1, wallPos, true);
+            }
+            possiblePlaces[i].myWalls.Add(newWall);
+            if (newWall != null)
+            {
+                newWall.transform.SetParent(possiblePlaces[i].gameObject.transform);
+            }
+        }
+    }
+
+    void DestroyLittleIslands()
+    {
+        for (int i = 0; i < possiblePlaces.Count; i++)
+        {
+            if (possiblePlaces[i].myRoom != null)
+            {
+                bool iHaveNeighbours = false;
+                if (i - gridSize >= 0)
+                {
+                    if (Neighbour(i - gridSize, i))
+                    {
+                        iHaveNeighbours = true;
+                    }
+                }
+
+                if (i + gridSize < possiblePlaces.Count)
+                {
+                    if (Neighbour(i + gridSize, i))
+                    {
+                        iHaveNeighbours = true;
+                    }
+                }
+                if (i % gridSize != 0)
+                {
+                    if (Neighbour(i - 1, i))
+                    {
+                        iHaveNeighbours = true;
+                    }
+                }
+
+                if ((i + 1) % gridSize != 0)
+                {
+                    if (Neighbour(i + 1, i))
+                    {
+                        iHaveNeighbours = true;
+                    }
+                }
+
+                if (!iHaveNeighbours)
+                {
+                    Destroy(possiblePlaces[i].myRoom);
+                    possiblePlaces[i].KillChildren();
+                    possiblePlaces[i].myRoom = null;
+                }
+            }
+        }
     }
 }
