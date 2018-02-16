@@ -241,12 +241,11 @@ MonoBehaviour:
   - {fileID: 1098750830087984, guid: a8bfc9ab4a8e95042b38413289f7c9c9, type: 2}
   - {fileID: 1303742194506310, guid: ee902b282fae8a24895886ea52473dcb, type: 2}
   - {fileID: 1567761429745396, guid: 7fc0a49975971424bb5255a5b67786d8, type: 2}
-  - {fileID: 1030547101164892, guid: 9c3c200607fbce043b16be3b56ffa69d, type: 2}
-  - {fileID: 1673109205279082, guid: be6e4681fffceca4aacb6f9d53cd0769, type: 2}
-  - {fileID: 1711559021368170, guid: 0674dfd7fb57a8e4f90b25513426dcd2, type: 2}
   - {fileID: 1458532980664646, guid: 29b5b9711f3265246ad025cec22f6fa6, type: 2}
+  - {fileID: 1711559021368170, guid: 0674dfd7fb57a8e4f90b25513426dcd2, type: 2}
+  - {fileID: 1673109205279082, guid: be6e4681fffceca4aacb6f9d53cd0769, type: 2}
   bossRooms:
-  - {fileID: 1136111984591122, guid: ad267fc030789904c961d6fbaeb3cd0e, type: 2}
+  - {fileID: 1699144295785262, guid: ad267fc030789904c961d6fbaeb3cd0e, type: 2}
   chance: 50
   roomsNeeded: 5
   maxRooms: 20
@@ -261,6 +260,8 @@ MonoBehaviour:
   playerPreFab: {fileID: 1767488100534568, guid: b20d8add372c1894c85743ae0611d842,
     type: 2}
   mapCamera: {fileID: 1077254911223136, guid: b6f5c37a51be3914bb9636422754f6f4, type: 2}
+  startingRooms:
+  - {fileID: 1030547101164892, guid: 9c3c200607fbce043b16be3b56ffa69d, type: 2}
   mapFloor: {fileID: 1819904177379716, guid: 4e4a30dc1a21b8b419b2aa988b3f3f1a, type: 2}
   mapWalls:
   - {fileID: 1334484163607076, guid: 423a2703c219ca349b71b85a3e12b170, type: 2}
