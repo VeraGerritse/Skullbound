@@ -39,6 +39,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     [Header("Start Room")]
     public List<GameObject> startingRooms = new List<GameObject>();
+    bool ughie;
 
     [Header("MapBuilding")]
     public GameObject mapFloor;
@@ -139,8 +140,8 @@ public class DungeonGeneratorManager : MonoBehaviour
         {
             ResetDungeon();
         }
-        PlaceStartRoom(startPoint);
         PlacePlayer(startPoint);
+        PlaceStartRoom(startPoint);
         for (int i = 0; i < possiblePlaces.Count; i++)
         {
             possiblePlaces[i].done = false;
@@ -196,6 +197,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         Destroy(player);
         walls = false;
         player = null;
+        ughie = false;
         if(mapCam != null)
         {
             mapCam.GetComponent<MapMovement>().player = null;
@@ -341,8 +343,13 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     void PlaceStartRoom(int startRoom)
     {
-        Destroy(possiblePlaces[startRoom].myFloor);
-        possiblePlaces[startRoom].myFloor = Instantiate(startingRooms[0], possiblePlaces[startRoom].transform.position, Quaternion.identity);      
+
+        if (!ughie)
+        {
+            Destroy(possiblePlaces[startRoom].myFloor);
+            possiblePlaces[startRoom].myFloor = Instantiate(startingRooms[0], possiblePlaces[startRoom].transform.position, Quaternion.identity);
+            ughie = true;
+        }
     }
 
     void PlaceBossRoom(int up,int down,int left,int right, int startPoint)
