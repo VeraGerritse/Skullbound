@@ -33,5 +33,11 @@ public class AnimationTester : MonoBehaviour {
         {
             anim.SetTrigger("Swing");
         }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            anim.SetTrigger("Block");
+        }
+
     }
 }
