@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 1695191253}
   - component: {fileID: 1695191254}
   - component: {fileID: 1695191252}
+  - component: {fileID: 1695191255}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -236,16 +237,16 @@ MonoBehaviour:
   roomSize: 20
   possiblePlaces: []
   floors:
-  - {fileID: 1904633429337250, guid: d916d76f2aea23a4bab14ff1fe0b91bd, type: 2}
-  - {fileID: 1224957569888694, guid: 7f17eaf94d8890c4fa18d475b69cacab, type: 2}
-  - {fileID: 1253145712630076, guid: ee902b282fae8a24895886ea52473dcb, type: 2}
-  - {fileID: 1605876815509550, guid: 7fc0a49975971424bb5255a5b67786d8, type: 2}
-  - {fileID: 1261704289310860, guid: 29b5b9711f3265246ad025cec22f6fa6, type: 2}
-  - {fileID: 1498471081880770, guid: 0674dfd7fb57a8e4f90b25513426dcd2, type: 2}
-  - {fileID: 1408568093818694, guid: be6e4681fffceca4aacb6f9d53cd0769, type: 2}
-  - {fileID: 1403462778497614, guid: 9c3c200607fbce043b16be3b56ffa69d, type: 2}
+  - {fileID: 1039456241034582, guid: d916d76f2aea23a4bab14ff1fe0b91bd, type: 2}
+  - {fileID: 1098750830087984, guid: a8bfc9ab4a8e95042b38413289f7c9c9, type: 2}
+  - {fileID: 1303742194506310, guid: ee902b282fae8a24895886ea52473dcb, type: 2}
+  - {fileID: 1567761429745396, guid: 7fc0a49975971424bb5255a5b67786d8, type: 2}
+  - {fileID: 1030547101164892, guid: 9c3c200607fbce043b16be3b56ffa69d, type: 2}
+  - {fileID: 1673109205279082, guid: be6e4681fffceca4aacb6f9d53cd0769, type: 2}
+  - {fileID: 1711559021368170, guid: 0674dfd7fb57a8e4f90b25513426dcd2, type: 2}
+  - {fileID: 1458532980664646, guid: 29b5b9711f3265246ad025cec22f6fa6, type: 2}
   bossRooms:
-  - {fileID: 1172592158595046, guid: ad267fc030789904c961d6fbaeb3cd0e, type: 2}
+  - {fileID: 1136111984591122, guid: ad267fc030789904c961d6fbaeb3cd0e, type: 2}
   chance: 50
   roomsNeeded: 5
   maxRooms: 20
@@ -266,3 +267,14 @@ MonoBehaviour:
   - {fileID: 1880558743853650, guid: ed90a88cf5874c14eadc100862ca4e33, type: 2}
   - {fileID: 1951025686071180, guid: 726423baf3e003d418f940c19b6d199b, type: 2}
   - {fileID: 1624403020933556, guid: 6dbda1289a423c1439b60032a36d5d60, type: 2}
+--- !u!114 &1695191255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695191251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4380489b951e52c4aa02a2be70bf95fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

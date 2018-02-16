@@ -374,13 +374,14 @@ public class DungeonGeneratorManager : MonoBehaviour
             }
             if(availableBossRooms.Count == 0)
             {
-
+                //ResetDungeon();
             }
             int newBossRoom = Random.Range(0, availableBossRooms.Count);
             int rand = Random.Range(0, bossRooms.Count);
             Destroy(possiblePlaces[availableBossRooms[newBossRoom]].myFloor);
             possiblePlaces[newBossRoom].myFloor = Instantiate(bossRooms[rand], possiblePlaces[availableBossRooms[newBossRoom]].transform.position, Quaternion.identity);
             done = true;
+
         }
     }
 

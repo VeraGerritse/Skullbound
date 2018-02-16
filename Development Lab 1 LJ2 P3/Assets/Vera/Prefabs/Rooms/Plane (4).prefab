@@ -9,19 +9,19 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1261704289310860}
+  m_RootGameObject: {fileID: 1458532980664646}
   m_IsPrefabParent: 1
---- !u!1 &1261704289310860
+--- !u!1 &1458532980664646
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4245752897290142}
-  - component: {fileID: 33758030505567118}
-  - component: {fileID: 64300019068720042}
-  - component: {fileID: 23153076593264668}
+  - component: {fileID: 4835929949650930}
+  - component: {fileID: 33989373348069084}
+  - component: {fileID: 64594620768118938}
+  - component: {fileID: 23233326327362370}
   m_Layer: 0
   m_Name: Plane (4)
   m_TagString: Ground
@@ -29,25 +29,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4245752897290142
+--- !u!4 &4835929949650930
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261704289310860}
+  m_GameObject: {fileID: 1458532980664646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 0, z: 15}
+  m_LocalPosition: {x: 20, y: -1e-15, z: 20}
   m_LocalScale: {x: 2, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23153076593264668
+--- !u!23 &23233326327362370
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261704289310860}
+  m_GameObject: {fileID: 1458532980664646}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -76,19 +76,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33758030505567118
+--- !u!33 &33989373348069084
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261704289310860}
+  m_GameObject: {fileID: 1458532980664646}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64300019068720042
+--- !u!64 &64594620768118938
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1261704289310860}
+  m_GameObject: {fileID: 1458532980664646}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
