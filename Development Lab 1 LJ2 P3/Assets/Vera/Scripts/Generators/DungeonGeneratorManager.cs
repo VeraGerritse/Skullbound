@@ -37,6 +37,9 @@ public class DungeonGeneratorManager : MonoBehaviour
     RoomGen lastRoom;
     bool done;
 
+    [Header("Start Room")]
+    public List<GameObject> startingRooms = new List<GameObject>();
+
     [Header("MapBuilding")]
     public GameObject mapFloor;
     List<GameObject> allMapPieces = new List<GameObject>();
@@ -136,7 +139,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         {
             ResetDungeon();
         }
-
+        PlaceStartRoom(startPoint);
         PlacePlayer(startPoint);
         for (int i = 0; i < possiblePlaces.Count; i++)
         {
@@ -217,7 +220,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     public void PlacePlayer(int i)
     {
-        Vector3 loc = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y + 1, possiblePlaces[i].transform.position.z);
+        Vector3 loc = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y + 2, possiblePlaces[i].transform.position.z);
         if (player == null)
         {
             player = Instantiate(playerPreFab, loc, Quaternion.identity);
@@ -334,6 +337,12 @@ public class DungeonGeneratorManager : MonoBehaviour
 
         } 
 
+    }
+
+    void PlaceStartRoom(int startRoom)
+    {
+        Destroy(possiblePlaces[startRoom].myFloor);
+        possiblePlaces[startRoom].myFloor = Instantiate(startingRooms[0], possiblePlaces[startRoom].transform.position, Quaternion.identity);      
     }
 
     void PlaceBossRoom(int up,int down,int left,int right, int startPoint)
