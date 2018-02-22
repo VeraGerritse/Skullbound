@@ -6,6 +6,7 @@ public class PlayerActions : MonoBehaviour {
 
     private Animator anim;
     public bool canCombo;
+    public bool alternate;
     public float speedmodifier;
 
     public CollisionChecker collisionChecker;
@@ -17,10 +18,10 @@ public class PlayerActions : MonoBehaviour {
 
     private void Update()
     {
-        if(speedmodifier <= 1)
+        if(speedmodifier < 1)
         {
             anim.SetFloat("TestFloat", speedmodifier);
-            speedmodifier += Time.deltaTime * 4;
+            speedmodifier += Time.deltaTime * 5;
         }
 
         if(canCombo)
@@ -39,6 +40,7 @@ public class PlayerActions : MonoBehaviour {
         if(Input.GetButtonDown("Fire1"))
         {
             anim.SetTrigger("Swing");
+            anim.ResetTrigger("TestTrigger");
         }
 
         if (Input.GetButtonDown("Fire2"))
@@ -47,8 +49,26 @@ public class PlayerActions : MonoBehaviour {
         }
         if(Input.GetKeyDown("f"))
         {
-            anim.SetFloat("TestFloat", -0.3f);
+            //anim.SetFloat("TestFloat", -1f);
+            anim.SetTrigger("TestTrigger");
+        }
+        else
+        {
+            //anim.SetFloat("TestFloat", 1f);
+        }
 
+        if (Input.GetButton("Alternate"))
+        {
+            anim.SetBool("Alternate", true);
+        }
+        else
+        {
+            anim.SetBool("Alternate", false);
+        }
+
+        if (Input.GetKeyDown("q"))
+        {
+            anim.SetTrigger("Potion");
         }
 
 
@@ -59,12 +79,25 @@ public class PlayerActions : MonoBehaviour {
     {
         if(collisionChecker.hitObject != null)
         {
-            speedmodifier = amount;
+            //speedmodifier = amount;
             if(collisionChecker.hitObject.GetComponent<Rigidbody>() != null)
             {
-                collisionChecker.hitObject.GetComponent<Rigidbody>().AddForce(transform.forward * 100);
+                collisionChecker.hitObject.GetComponent<Rigidbody>().AddForce(transform.forward * 100 + transform.up * 30);
+            }
+
+            if(collisionChecker.hitObject.GetComponent<Enemy>() != null)
+            {
+                if(collisionChecker.hitObject.GetComponent<Enemy>().isBlocking)
+                {
+                    anim.SetTrigger("TestTrigger");
+                    //anim.ResetTrigger("TestTrigger");
+                }
             }
         }
+    }
+    public void SetSpeed(float amount)
+    {
+        speedmodifier = amount;
     }
 
 

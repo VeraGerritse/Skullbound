@@ -26,7 +26,8 @@ public class MoveMent : MonoBehaviour {
     void Start () {
         currentSpeed = walkSpeed;
         player = GetComponent<Rigidbody>();
-	}
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
 
     private void FixedUpdate()
