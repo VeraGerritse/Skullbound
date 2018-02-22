@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 1695191254}
   - component: {fileID: 1695191252}
   - component: {fileID: 1695191255}
+  - component: {fileID: 1695191256}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -279,3 +280,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4380489b951e52c4aa02a2be70bf95fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1695191256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695191251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d480b171befbca4da92bbfe28024c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unwalkableArea:
+    serializedVersion: 2
+    m_Bits: 1024
+  gridSize: {x: 80, y: 30}
+  nodeRadius: 0.5

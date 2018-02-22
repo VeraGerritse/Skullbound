@@ -138,18 +138,27 @@ public class DungeonGeneratorManager : MonoBehaviour
         }
         if (totalRooms < roomsNeeded || totalRooms > maxRooms)
         {
+            print("resetting");
             ResetDungeon();
+            return;
         }
         PlacePlayer(startPoint);
         PlaceStartRoom(startPoint);
+
         for (int i = 0; i < possiblePlaces.Count; i++)
         {
             possiblePlaces[i].done = false;
         }
         possiblePlaces[startPoint].Doors();;
+        bool reset = PlaceBossRoom(startPoint - 1, startPoint + 1, startPoint - gridSize, startPoint + gridSize, startPoint);
+        if (reset)
+        {
+            print("resetting");
+            return;
+        }
         MapFloor();
         BuildWalls();
-        PlaceBossRoom(startPoint-1,startPoint+1,startPoint- gridSize, startPoint + gridSize,startPoint);
+        StartCoroutine(StartPathfinder());
     }
 
     public GameObject RandomRoom()
@@ -352,8 +361,9 @@ public class DungeonGeneratorManager : MonoBehaviour
         }
     }
 
-    void PlaceBossRoom(int up,int down,int left,int right, int startPoint)
+    bool PlaceBossRoom(int up,int down,int left,int right, int startPoint)
     {
+        bool reset = false;
         if (!done)
         {
             List<int> availableBossRooms = new List<int>();
@@ -388,17 +398,20 @@ public class DungeonGeneratorManager : MonoBehaviour
                     availableBossRooms.Add(i);
                 }
             }
+            
+            print(availableBossRooms.Count + "  ugh");
             if(availableBossRooms.Count == 0)
             {
-                //ResetDungeon();
+                ResetDungeon();
+                return true;
             }
             int newBossRoom = Random.Range(0, availableBossRooms.Count);
             int rand = Random.Range(0, bossRooms.Count);
             Destroy(possiblePlaces[availableBossRooms[newBossRoom]].myFloor);
             possiblePlaces[newBossRoom].myFloor = Instantiate(bossRooms[rand], possiblePlaces[availableBossRooms[newBossRoom]].transform.position, Quaternion.identity);
             done = true;
-
         }
+        return reset;
     }
 
     void MapFloor()
@@ -412,5 +425,11 @@ public class DungeonGeneratorManager : MonoBehaviour
                 allMapPieces.Add(newShitz);
             }
         }
+    }
+
+    IEnumerator StartPathfinder()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Grid.instance.GridSize(roomSize, gridSize);
     }
 }
