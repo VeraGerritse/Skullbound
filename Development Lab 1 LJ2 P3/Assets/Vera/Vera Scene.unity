@@ -258,7 +258,7 @@ MonoBehaviour:
   - {fileID: 1343138563294226, guid: c9a693ae5791d2849b5f406c6b2f182e, type: 2}
   - {fileID: 1773176996254148, guid: c27db0a048c943d45a770ee2c5f8013d, type: 2}
   myWalls: []
-  playerPreFab: {fileID: 1767488100534568, guid: b20d8add372c1894c85743ae0611d842,
+  playerPreFab: {fileID: 1135747094069368, guid: 37f16fb654072e445b0fd7eec44e3510,
     type: 2}
   mapCamera: {fileID: 1077254911223136, guid: b6f5c37a51be3914bb9636422754f6f4, type: 2}
   startingRooms:
@@ -294,5 +294,8 @@ MonoBehaviour:
   unwalkableArea:
     serializedVersion: 2
     m_Bits: 1024
+  noArea:
+    serializedVersion: 2
+    m_Bits: 0
   gridSize: {x: 80, y: 30}
   nodeRadius: 0.5
