@@ -71,6 +71,11 @@ public class PlayerActions : MonoBehaviour {
             anim.SetTrigger("Potion");
         }
 
+        if(Input.GetKeyDown("m"))
+        {
+            anim.SetTrigger("Map");
+        }
+
 
 
     }
