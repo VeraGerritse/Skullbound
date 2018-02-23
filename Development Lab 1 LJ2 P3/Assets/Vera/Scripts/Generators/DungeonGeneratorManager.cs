@@ -26,6 +26,11 @@ public class DungeonGeneratorManager : MonoBehaviour
     public List<GameObject> myWalls = new List<GameObject>();
     bool walls;
 
+    [Header("Doors")]
+    // oneven = vert, even = hor
+    public List<GameObject> Doors = new List<GameObject>();
+    List<GameObject> allDoors = new List<GameObject>();
+
     [Header("player")]
     public GameObject playerPreFab;
     public GameObject mapCamera;
@@ -149,6 +154,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         {
             possiblePlaces[i].done = false;
         }
+
         possiblePlaces[startPoint].Doors();;
         bool reset = PlaceBossRoom(startPoint - 1, startPoint + 1, startPoint - gridSize, startPoint + gridSize, startPoint);
         if (reset)
@@ -156,8 +162,10 @@ public class DungeonGeneratorManager : MonoBehaviour
             print("resetting");
             return;
         }
+
         MapFloor();
         BuildWalls();
+        PlaceDoors();
         StartCoroutine(StartPathfinder());
     }
 
@@ -412,6 +420,50 @@ public class DungeonGeneratorManager : MonoBehaviour
             done = true;
         }
         return reset;
+    }
+
+    void PlaceDoors()
+    {
+        for (int i = 0; i < possiblePlaces.Count; i++)
+        {
+            Vector3 wallPos;
+            int randomDoor = Random.Range(0, Doors.Count);
+            if(randomDoor % 2 != 0 && randomDoor != 0)
+            {
+                randomDoor--;
+            }
+            wallPos = new Vector3(possiblePlaces[i].transform.position.x + roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
+            if (possiblePlaces[i].myFloor != null && possiblePlaces[i].leftDoor && !possiblePlaces[i].leftD)
+            {
+                possiblePlaces[i].leftD = true;
+                possiblePlaces[i].left.rightD = true;
+                allDoors.Add(Instantiate(Doors[randomDoor],wallPos,Quaternion.identity));
+            }
+
+            wallPos = new Vector3(possiblePlaces[i].transform.position.x - roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
+            if(possiblePlaces[i].myFloor!= null && possiblePlaces[i].rightDoor && !possiblePlaces[i].rightD)
+            {
+                possiblePlaces[i].rightD = true;
+                possiblePlaces[i].right.leftD = true;
+                allDoors.Add(Instantiate(Doors[randomDoor], wallPos, Quaternion.identity));
+            }
+
+            wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z - roomSize / 2);
+            if (possiblePlaces[i].myFloor != null && possiblePlaces[i].upDoor && !possiblePlaces[i].upD)
+            {
+                possiblePlaces[i].upD = true;
+                possiblePlaces[i].up.downD = true;
+                allDoors.Add(Instantiate(Doors[randomDoor + 1], wallPos, Quaternion.identity));
+            }
+
+            wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z + roomSize / 2);
+            if (possiblePlaces[i].myFloor != null && possiblePlaces[i].downDoor && !possiblePlaces[i].downD)
+            {
+                possiblePlaces[i].downD = true;
+                possiblePlaces[i].down.upD = true;
+                allDoors.Add(Instantiate(Doors[randomDoor + 1], wallPos, Quaternion.identity));
+            }
+        }
     }
 
     void MapFloor()

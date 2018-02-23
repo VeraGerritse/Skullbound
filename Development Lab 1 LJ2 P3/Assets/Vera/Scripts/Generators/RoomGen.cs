@@ -14,6 +14,11 @@ public class RoomGen : MonoBehaviour
     public bool upDoor;
     public bool downDoor;
 
+    public bool leftD;
+    public bool rightD;
+    public bool upD;
+    public bool downD;
+
     public GameObject myFloor;
     public bool done;
     public bool doneWalls;
