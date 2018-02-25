@@ -26,9 +26,10 @@ public class Inertia : MonoBehaviour {
     private void Update()
     {
         yVelocity = playerbody.velocity.y;
+     
 
         float movementX = -Input.GetAxis("Mouse X") * amount + -Input.GetAxis("Horizontal") * amount;
-        float movementY = -Input.GetAxis("Mouse Y") * amount + -yVelocity * amount;
+        float movementY = -Input.GetAxis("Mouse Y") * amount ;
         float movementZ = -Input.GetAxis("Vertical") * amount * 0.5f;
 
         if (!canSway)
@@ -36,13 +37,14 @@ public class Inertia : MonoBehaviour {
             movementX = 0;
             movementY = 0;
             movementZ = 0;
+            yVelocity = 0;
         }
 
         movementX = Mathf.Clamp(movementX, -maxAmount, maxAmount);
-        movementY = Mathf.Clamp(movementY, -maxAmount, maxAmount);
+        movementY = Mathf.Clamp(movementY, -maxAmount, maxAmount *2);
         movementZ = Mathf.Clamp(movementZ, -maxAmount, maxAmount * 0.5f);
 
-        Vector3 finalPosition = new Vector3(movementX, movementY, movementZ);
+        Vector3 finalPosition = new Vector3(movementX, movementY + -yVelocity *0.025f, movementZ);
         
         transform.localPosition = Vector3.Slerp(transform.localPosition, finalPosition + initialPosition, Time.deltaTime * smoothAmount);
 
