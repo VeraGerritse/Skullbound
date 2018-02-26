@@ -18,7 +18,9 @@ public class PlayerActions : MonoBehaviour {
 
     private void Update()
     {
-        if(speedmodifier < 1)
+
+
+        if (speedmodifier < 1)
         {
             anim.SetFloat("TestFloat", speedmodifier);
             speedmodifier += Time.deltaTime * 5;
@@ -46,7 +48,21 @@ public class PlayerActions : MonoBehaviour {
         if (Input.GetButtonDown("Fire2"))
         {
             anim.SetTrigger("Block");
+            anim.ResetTrigger("UnBlock");
         }
+
+        if(Input.GetButtonUp("Fire2"))
+        {
+            anim.ResetTrigger("Swing");
+            
+
+        }
+
+        if(!Input.GetButton("Fire2"))
+        {
+            anim.SetTrigger("UnBlock");
+        }
+
         if(Input.GetKeyDown("f"))
         {
             //anim.SetFloat("TestFloat", -1f);

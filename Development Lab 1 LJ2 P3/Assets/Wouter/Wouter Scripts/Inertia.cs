@@ -5,6 +5,7 @@ using UnityEngine;
 public class Inertia : MonoBehaviour {
 
     public bool canSway;
+    
 
     public float amount;
     public float maxAmount;
@@ -41,7 +42,7 @@ public class Inertia : MonoBehaviour {
         }
 
         movementX = Mathf.Clamp(movementX, -maxAmount, maxAmount);
-        movementY = Mathf.Clamp(movementY, -maxAmount, maxAmount *2);
+        movementY = Mathf.Clamp(movementY, -maxAmount, maxAmount);
         movementZ = Mathf.Clamp(movementZ, -maxAmount, maxAmount * 0.5f);
 
         Vector3 finalPosition = new Vector3(movementX, movementY + -yVelocity *0.025f, movementZ);
@@ -53,7 +54,16 @@ public class Inertia : MonoBehaviour {
 
         if (Input.GetKeyDown("k"))
         {
-            canSway = !canSway;
+            //canSway = !canSway;
+        }
+
+        if (Input.GetButton("Crouch"))
+        {
+            canSway = false;
+        }
+        else
+        {
+            canSway = true;
         }
 
 
