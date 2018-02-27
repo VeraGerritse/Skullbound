@@ -1078,7 +1078,7 @@ GameObject:
   - component: {fileID: 114091531818331180}
   m_Layer: 0
   m_Name: PlayerPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1857,7 +1857,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346659042212112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.076}
+  m_LocalPosition: {x: 0, y: 0, z: -0.033000015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4998473058042746}
@@ -2189,7 +2189,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1448335111945344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.076}
+  m_LocalPosition: {x: 0, y: 0, z: -0.033}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4661734181322072}
@@ -3488,6 +3488,8 @@ MonoBehaviour:
   amount: 0.1
   maxAmount: 0.06
   smoothAmount: 6
+  bobbingStrenght: 0
+  bobbyModifier: 0
   playerbody: {fileID: 0}
   yVelocity: 0
 --- !u!114 &114091531818331180
@@ -3525,6 +3527,7 @@ MonoBehaviour:
   currentSpeed: 0
   runSpeed: 100
   crouchSpeed: 25
+  modifier: 1
   jumpHeight: 250
   anim: {fileID: 95663407831460774}
   player: {fileID: 0}
@@ -3559,6 +3562,8 @@ MonoBehaviour:
   amount: 0.1
   maxAmount: 0.06
   smoothAmount: 6
+  bobbingStrenght: 0
+  bobbyModifier: 0.5
   playerbody: {fileID: 54209950777775184}
   yVelocity: 0
 --- !u!114 &114514879230256660
@@ -3576,6 +3581,8 @@ MonoBehaviour:
   amount: 0.01
   maxAmount: 0.1
   smoothAmount: 6
+  bobbingStrenght: 0
+  bobbyModifier: 0.5
   playerbody: {fileID: 0}
   yVelocity: 0
 --- !u!124 &124353215835503332

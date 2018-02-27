@@ -12,11 +12,13 @@ public class MoveMent : MonoBehaviour {
     public float currentSpeed;
     public float runSpeed;
     public float crouchSpeed;
+    public float modifier;
     public float jumpHeight;
     public Animator anim;
     public Rigidbody player;
     public float updownRange;
     public float vertRot;
+    
     bool inAir;
 
     public GameObject cameraObject;
@@ -40,6 +42,7 @@ public class MoveMent : MonoBehaviour {
 
     private void Update()
     {
+        
         // "ButtonUp" & "ButtonDown" cant be in FixedUpdate or they have a chance to be skipped.
 
         // Don't double dip with fixed update & deltatime.
@@ -84,8 +87,8 @@ public class MoveMent : MonoBehaviour {
         vertRot = Mathf.Clamp(vertRot, -updownRange, updownRange);
         cameraObject.transform.localRotation = Quaternion.Euler(vertRot, 0, 0);
 
-        vert = Input.GetAxis("Vertical") * (currentSpeed / 10) * Time.deltaTime; 
-        hor = Input.GetAxis("Horizontal") * (currentSpeed / 10)* Time.deltaTime;
+        vert = Input.GetAxis("Vertical") * (currentSpeed * modifier / 10) * Time.deltaTime; 
+        hor = Input.GetAxis("Horizontal") * (currentSpeed * modifier / 10)* Time.deltaTime;
 
         if (Input.GetButton("Vertical") && Input.GetButton("Horizontal"))
         {

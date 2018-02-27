@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Inertia : MonoBehaviour {
+    private Animator anim;
 
     public bool canSway;
     
@@ -10,6 +11,9 @@ public class Inertia : MonoBehaviour {
     public float amount;
     public float maxAmount;
     public float smoothAmount;
+
+    public float bobbingStrenght;
+    public float bobbyModifier;
 
     public Rigidbody playerbody;
     public float yVelocity;
@@ -21,13 +25,27 @@ public class Inertia : MonoBehaviour {
     private void Awake()
     {
         initialPosition = transform.localPosition;
+        anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         
     }
 
     private void Update()
     {
+        if(Input.GetAxis("Horizontal") !=0 || Input.GetAxis("Vertical") != 0)
+        {          
+            bobbingStrenght += Time.deltaTime * 2;           
+        }
+        else
+        {          
+            bobbingStrenght -= Time.deltaTime * 4;           
+        }
+
+        bobbingStrenght = Mathf.Clamp(bobbingStrenght, .002f, bobbyModifier);
+
+
+        anim.SetLayerWeight(4, bobbingStrenght);
+
         yVelocity = playerbody.velocity.y;
-     
 
         float movementX = -Input.GetAxis("Mouse X") * amount + -Input.GetAxis("Horizontal") * amount;
         float movementY = -Input.GetAxis("Mouse Y") * amount ;

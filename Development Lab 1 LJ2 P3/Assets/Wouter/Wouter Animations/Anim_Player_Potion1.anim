@@ -1152,6 +1152,18 @@ AnimationClip:
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
+      - serializedVersion: 2
+        time: 1.7
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      - serializedVersion: 2
+        time: 1.75
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1255,46 +1267,6 @@ AnimationClip:
     path: CameraParentObject/Glove_Prefab (1)/Glove_Parent/Mesh_Glove_v3(skinned)/Glove/WeaponSlot/Sound
       Effect - Bottle Cork
     classID: 82
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 60
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.8333333
-        value: 60
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1
-        value: 50
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 50
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.6666666
-        value: 60
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: field of view
-    path: CameraParentObject/ViewmodelCamera
-    classID: 20
     script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 60
@@ -1575,13 +1547,6 @@ AnimationClip:
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 82
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 481691114
-      attribute: 3138646591
-      script: {fileID: 0}
-      typeID: 20
       customType: 0
       isPPtrCurve: 0
     pptrCurveMapping: []
@@ -1936,6 +1901,18 @@ AnimationClip:
       - serializedVersion: 2
         time: 0.083333336
         value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      - serializedVersion: 2
+        time: 1.7
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      - serializedVersion: 2
+        time: 1.75
+        value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -5402,46 +5379,6 @@ AnimationClip:
     path: CameraParentObject/Glove_Prefab (1)/Glove_Parent/Mesh_Glove_v3(skinned)/Glove/WeaponSlot/Sound
       Effect - Bottle Cork
     classID: 82
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 60
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.8333333
-        value: 60
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1
-        value: 50
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.5
-        value: 50
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 1.6666666
-        value: 60
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: field of view
-    path: CameraParentObject/ViewmodelCamera
-    classID: 20
     script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:
