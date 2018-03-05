@@ -6,6 +6,8 @@ public class Inertia : MonoBehaviour {
     private Animator anim;
 
     public bool canSway;
+
+    public float twitchidlestrenght;
     
 
     public float amount;
@@ -31,7 +33,10 @@ public class Inertia : MonoBehaviour {
 
     private void Update()
     {
-        if(Input.GetAxis("Horizontal") !=0 || Input.GetAxis("Vertical") != 0)
+        anim.SetLayerWeight(5, twitchidlestrenght * .75f);
+        anim.SetLayerWeight(1, twitchidlestrenght);
+
+        if (Input.GetAxis("Horizontal") !=0 || Input.GetAxis("Vertical") != 0)
         {          
             bobbingStrenght += Time.deltaTime * 2;           
         }
@@ -40,7 +45,7 @@ public class Inertia : MonoBehaviour {
             bobbingStrenght -= Time.deltaTime * 4;           
         }
 
-        bobbingStrenght = Mathf.Clamp(bobbingStrenght, .002f, bobbyModifier);
+        bobbingStrenght = Mathf.Clamp(bobbingStrenght, 0, bobbyModifier);
 
 
         anim.SetLayerWeight(4, bobbingStrenght);

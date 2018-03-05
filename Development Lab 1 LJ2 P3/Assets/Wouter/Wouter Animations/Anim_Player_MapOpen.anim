@@ -2154,6 +2154,28 @@ AnimationClip:
     path: CameraParentObject/Glove_Prefab/Glove_Parent
     classID: 114
     script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.016666668
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: twitchidlestrenght
+    path: CameraParentObject/Glove_Prefab/Glove_Parent
+    classID: 114
+    script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -2809,6 +2831,13 @@ AnimationClip:
     - serializedVersion: 2
       path: 3854745331
       attribute: 2371629078
+      script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
+      typeID: 114
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3854745331
+      attribute: 3835629049
       script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
       typeID: 114
       customType: 0
@@ -9444,6 +9473,28 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: bobbyModifier
+    path: CameraParentObject/Glove_Prefab/Glove_Parent
+    classID: 114
+    script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.016666668
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: twitchidlestrenght
     path: CameraParentObject/Glove_Prefab/Glove_Parent
     classID: 114
     script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
