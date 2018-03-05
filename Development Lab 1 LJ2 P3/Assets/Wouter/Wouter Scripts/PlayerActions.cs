@@ -18,7 +18,9 @@ public class PlayerActions : MonoBehaviour {
 
     private void Update()
     {
-        if(speedmodifier < 1)
+
+
+        if (speedmodifier < 1)
         {
             anim.SetFloat("TestFloat", speedmodifier);
             speedmodifier += Time.deltaTime * 5;
@@ -46,7 +48,21 @@ public class PlayerActions : MonoBehaviour {
         if (Input.GetButtonDown("Fire2"))
         {
             anim.SetTrigger("Block");
+            anim.ResetTrigger("UnBlock");
         }
+
+        if(Input.GetButtonUp("Fire2"))
+        {
+            anim.ResetTrigger("Swing");
+            
+
+        }
+
+        if(!Input.GetButton("Fire2"))
+        {
+            anim.SetTrigger("UnBlock");
+        }
+
         if(Input.GetKeyDown("f"))
         {
             //anim.SetFloat("TestFloat", -1f);
@@ -90,13 +106,17 @@ public class PlayerActions : MonoBehaviour {
                 collisionChecker.hitObject.GetComponent<Rigidbody>().AddForce(transform.forward * 100 + transform.up * 30);
             }
 
-            if(collisionChecker.hitObject.GetComponent<Enemy>() != null)
+            if (collisionChecker.hitObject.GetComponent<Enemy>() != null)
             {
-                if(collisionChecker.hitObject.GetComponent<Enemy>().isBlocking)
+                if (collisionChecker.hitObject.GetComponent<Enemy>().isBlocking)
                 {
                     anim.SetTrigger("TestTrigger");
                     //anim.ResetTrigger("TestTrigger");
                 }
+            }
+            else if (collisionChecker.hitObject.tag == "Environment")
+            {
+                anim.SetTrigger("TestTrigger");
             }
         }
     }

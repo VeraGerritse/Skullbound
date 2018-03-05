@@ -12,11 +12,13 @@ public class MoveMent : MonoBehaviour {
     public float currentSpeed;
     public float runSpeed;
     public float crouchSpeed;
+    public float modifier;
     public float jumpHeight;
     public Animator anim;
     public Rigidbody player;
     public float updownRange;
     public float vertRot;
+    
     bool inAir;
 
     public GameObject cameraObject;
@@ -34,13 +36,18 @@ public class MoveMent : MonoBehaviour {
     {
         if (!standStill)
         {
-        Movement();
+            Movement();
         }
     }
 
     private void Update()
     {
+        
         // "ButtonUp" & "ButtonDown" cant be in FixedUpdate or they have a chance to be skipped.
+
+        // Don't double dip with fixed update & deltatime.
+
+        Looking();
 
         if (Input.GetButton("Crouch"))
         {
@@ -50,6 +57,7 @@ public class MoveMent : MonoBehaviour {
         {
             currentSpeed = walkSpeed;
             anim.SetBool("Crouch", false);
+            anim.ResetTrigger("Block");
         }
         if (Input.GetButton("Run"))
         {
@@ -65,12 +73,22 @@ public class MoveMent : MonoBehaviour {
         }
     }
 
+    public void Looking()
+    {
+
+    }
+
     public void Movement()
     {
         horizontal = Input.GetAxis("Mouse X") * turnSpeed * Time.deltaTime;
         vertical = Input.GetAxis("Mouse Y") * turnSpeed * Time.deltaTime;
-        vert = Input.GetAxis("Vertical") * (currentSpeed / 10) * Time.deltaTime; 
-        hor = Input.GetAxis("Horizontal") * (currentSpeed / 10)* Time.deltaTime;
+
+        vertRot -= vertical;
+        vertRot = Mathf.Clamp(vertRot, -updownRange, updownRange);
+        cameraObject.transform.localRotation = Quaternion.Euler(vertRot, 0, 0);
+
+        vert = Input.GetAxis("Vertical") * (currentSpeed * modifier / 10) * Time.deltaTime; 
+        hor = Input.GetAxis("Horizontal") * (currentSpeed * modifier / 10)* Time.deltaTime;
 
         if (Input.GetButton("Vertical") && Input.GetButton("Horizontal"))
         {
@@ -86,9 +104,7 @@ public class MoveMent : MonoBehaviour {
         transform.Translate(newLoc);
 
         transform.Rotate(0, horizontal, 0);
-        vertRot -= vertical;
-        vertRot = Mathf.Clamp(vertRot, -updownRange, updownRange);
-        cameraObject.transform.localRotation = Quaternion.Euler(vertRot, 0, 0);
+
 
 
     }
@@ -96,6 +112,8 @@ public class MoveMent : MonoBehaviour {
     public void Crouch()
     {
         anim.SetBool("Crouch", true);
+        anim.SetTrigger("UnBlock");
+        
         currentSpeed = crouchSpeed;
     }
 
