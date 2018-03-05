@@ -34,13 +34,14 @@ public class DungeonGeneratorManager : MonoBehaviour
     [Header("player")]
     public GameObject playerPreFab;
     public GameObject mapCamera;
-    GameObject player;
+    public GameObject player;
     GameObject mapCam;
 
 
     [Header("BossRoom")]
     RoomGen lastRoom;
     bool done;
+    public Transform bossRoomLocTestForPathFinder;
 
     [Header("Start Room")]
     public List<GameObject> startingRooms = new List<GameObject>();
@@ -68,7 +69,7 @@ public class DungeonGeneratorManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.P))
         {
-            ResetDungeon();
+            ResetDungeonOnRequest();
         }
     }
 
@@ -143,7 +144,6 @@ public class DungeonGeneratorManager : MonoBehaviour
         }
         if (totalRooms < roomsNeeded || totalRooms > maxRooms)
         {
-            print("resetting");
             ResetDungeon();
             return;
         }
@@ -407,7 +407,6 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
             }
             
-            print(availableBossRooms.Count + "  ugh");
             if(availableBossRooms.Count == 0)
             {
                 ResetDungeon();
@@ -418,6 +417,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             Destroy(possiblePlaces[availableBossRooms[newBossRoom]].myFloor);
             possiblePlaces[newBossRoom].myFloor = Instantiate(bossRooms[rand], possiblePlaces[availableBossRooms[newBossRoom]].transform.position, Quaternion.identity);
             done = true;
+            bossRoomLocTestForPathFinder = possiblePlaces[newBossRoom].myFloor.transform;
         }
         return reset;
     }
@@ -477,6 +477,12 @@ public class DungeonGeneratorManager : MonoBehaviour
                 allMapPieces.Add(newShitz);
             }
         }
+    }
+
+    void ResetDungeonOnRequest()
+    {
+        Grid.instance.ResetGrid();
+        ResetDungeon();
     }
 
     IEnumerator StartPathfinder()
