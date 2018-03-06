@@ -915,7 +915,7 @@ GameObject:
   - component: {fileID: 114514879230256660}
   m_Layer: 0
   m_Name: ViewmodelCamera
-  m_TagString: MainCamera
+  m_TagString: ViewModelCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3492,6 +3492,7 @@ MonoBehaviour:
   bobbingStrenght: 0
   bobbyModifier: 0
   playerbody: {fileID: 0}
+  viewmodelcamera: {fileID: 0}
   yVelocity: 0
 --- !u!114 &114091531818331180
 MonoBehaviour:
@@ -3567,6 +3568,7 @@ MonoBehaviour:
   bobbingStrenght: 0
   bobbyModifier: 0.5
   playerbody: {fileID: 54209950777775184}
+  viewmodelcamera: {fileID: 0}
   yVelocity: 0
 --- !u!114 &114514879230256660
 MonoBehaviour:
@@ -3587,6 +3589,7 @@ MonoBehaviour:
   bobbingStrenght: 0
   bobbyModifier: 0.5
   playerbody: {fileID: 0}
+  viewmodelcamera: {fileID: 0}
   yVelocity: 0
 --- !u!124 &124353215835503332
 Behaviour:

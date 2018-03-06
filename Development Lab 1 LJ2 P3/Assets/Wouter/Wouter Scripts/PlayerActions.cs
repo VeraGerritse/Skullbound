@@ -43,17 +43,20 @@ public class PlayerActions : MonoBehaviour {
         {
             anim.SetTrigger("Swing");
             anim.ResetTrigger("TestTrigger");
+            anim.ResetTrigger("Potion");
         }
 
         if (Input.GetButtonDown("Fire2"))
         {
             anim.SetTrigger("Block");
             anim.ResetTrigger("UnBlock");
+            anim.ResetTrigger("Potion");
         }
 
         if(Input.GetButtonUp("Fire2"))
         {
             anim.ResetTrigger("Swing");
+
             
 
         }
@@ -61,6 +64,7 @@ public class PlayerActions : MonoBehaviour {
         if(!Input.GetButton("Fire2"))
         {
             anim.SetTrigger("UnBlock");
+            anim.ResetTrigger("Potion");
         }
 
         if(Input.GetKeyDown("f"))
@@ -85,11 +89,20 @@ public class PlayerActions : MonoBehaviour {
         if (Input.GetKeyDown("q"))
         {
             anim.SetTrigger("Potion");
+            anim.ResetTrigger("OpenDoor");
         }
 
         if(Input.GetKeyDown("m"))
         {
             anim.SetTrigger("Map");
+            anim.ResetTrigger("OpenDoor");
+            anim.ResetTrigger("Potion");
+        }
+
+        if(Input.GetKeyDown("e"))
+        {
+            anim.SetTrigger("OpenDoor");
+            anim.ResetTrigger("Potion");
         }
 
 

@@ -8,6 +8,7 @@ public class Inertia : MonoBehaviour {
     public bool canSway;
 
     public float twitchidlestrenght;
+    //public bool canTwitch;
     
 
     public float amount;
@@ -18,37 +19,66 @@ public class Inertia : MonoBehaviour {
     public float bobbyModifier;
 
     public Rigidbody playerbody;
+    public GameObject viewmodelcamera;
     public float yVelocity;
 
     //public Vector3 offset;
     private Vector3 initialPosition;
     
 
-    private void Awake()
+    private void Start()
     {
         initialPosition = transform.localPosition;
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        
+        playerbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
+        viewmodelcamera = GameObject.FindGameObjectWithTag("ViewModelCamera");
+
+
+    }
+
+    public void IHateMyLife(bool depression)
+    {
+        //canTwitch = depression;
+    }
+
+
+    void FixedUpdate()
+    {
+
     }
 
     private void Update()
     {
-        anim.SetLayerWeight(5, twitchidlestrenght * .75f);
-        anim.SetLayerWeight(1, twitchidlestrenght);
 
-        if (Input.GetAxis("Horizontal") !=0 || Input.GetAxis("Vertical") != 0)
-        {          
-            bobbingStrenght += Time.deltaTime * 2;           
+        
+
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            bobbingStrenght += Time.deltaTime * 2;
         }
         else
-        {          
-            bobbingStrenght -= Time.deltaTime * 4;           
+        {
+            bobbingStrenght -= Time.deltaTime * 4;
         }
 
         bobbingStrenght = Mathf.Clamp(bobbingStrenght, 0, bobbyModifier);
-
-
         anim.SetLayerWeight(4, bobbingStrenght);
+
+
+
+
+        print(anim.GetLayerWeight(4));
+
+        //print(canTwitch);
+        //anim.SetBool("CanTwitch", canTwitch);
+        //if(anim.GetCurrentAnimatorClipInfo)
+        //canTwitch = true;
+
+
+        //anim.SetLayerWeight(4, twitchidlestrenght);
+        //anim.SetLayerWeight(1, twitchidlestrenght);
+
+
 
         yVelocity = playerbody.velocity.y;
 
@@ -71,6 +101,7 @@ public class Inertia : MonoBehaviour {
         Vector3 finalPosition = new Vector3(movementX, movementY + -yVelocity *0.025f, movementZ);
         
         transform.localPosition = Vector3.Slerp(transform.localPosition, finalPosition + initialPosition, Time.deltaTime * smoothAmount);
+        //viewmodelcamera.transform.localPosition = Vector3.Slerp(transform.localPosition, finalPosition + initialPosition, Time.deltaTime * smoothAmount);
 
 
 
