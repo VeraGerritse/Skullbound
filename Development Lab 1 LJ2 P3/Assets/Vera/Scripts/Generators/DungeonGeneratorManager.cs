@@ -485,6 +485,8 @@ public class DungeonGeneratorManager : MonoBehaviour
         ResetDungeon();
     }
 
+    
+
     IEnumerator StartPathfinder()
     {
         yield return new WaitForSeconds(0.1f);
