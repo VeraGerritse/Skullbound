@@ -8,6 +8,11 @@ public class Grid : MonoBehaviour {
     public LayerMask noArea;
     public Vector2 gridSize;
     public float nodeRadius;
+
+    public bool ready;
+
+    public bool onlyDisplayPath;
+
     Node[,] grid;
 
     float nodeDiameter;
@@ -20,6 +25,14 @@ public class Grid : MonoBehaviour {
         if(instance == null)
         {
             instance = this;
+        }
+    }
+
+    public int MaxSize
+    {
+        get
+        {
+            return gridSizeX * gridSizeY;
         }
     }
 
@@ -44,9 +57,10 @@ public class Grid : MonoBehaviour {
                 Vector3 worldPoint = bottemLeft + Vector3.right * (i * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
                 bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, unwalkableArea));
                 bool inArea = (Physics.CheckSphere(worldPoint, nodeRadius));
-                grid[i, y] = new Node(walkable, worldPoint,inArea);
+                grid[i, y] = new Node(walkable, worldPoint,inArea,i,y);
             }
         }
+        ready = true;
     }
 
     public Node NodeFromWP(Vector3 WorldPos)
@@ -60,20 +74,74 @@ public class Grid : MonoBehaviour {
         int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);
         return grid[x, y];
     }
+
+    public List<Node> path;
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridSize.x, 1, gridSize.y));
-
-        if ( grid != null)
+        if (onlyDisplayPath)
         {
-            foreach(Node n in grid)
+            if (path != null)
             {
-                if (n.connectedToSomeThing)
+                foreach (Node n in path)
                 {
-                    Gizmos.color = (n.walk) ? Color.white : Color.red;
-                    Gizmos.DrawCube(n.nodePosition, Vector3.one * (nodeDiameter - .1f)); 
-                }            
+                    Gizmos.color = Color.black;
+                    Gizmos.DrawCube(n.nodePosition, Vector3.one * (nodeDiameter - .1f));
+                }
             }
         }
+        else
+        {
+            if (grid != null)
+            {
+                foreach (Node n in grid)
+                {
+                    if (n.connectedToSomeThing)
+                    {
+                        Gizmos.color = (n.walk) ? Color.white : Color.red;
+                        if (path != null)
+                        {
+                            if (path.Contains(n))
+                            {
+                                Gizmos.color = Color.black;
+                            }
+                        }
+                        Gizmos.DrawCube(n.nodePosition, Vector3.one * (nodeDiameter - .1f));
+                    }
+                }
+            }
+        }
+    }
+
+    public List<Node> GetNeighbours(Node node)
+    {
+        List<Node> neighbours = new List<Node>();
+
+        for (int x = -1; x <= 1; x++)
+        {
+            for(int y = -1; y <= 1; y++)
+            {
+                if(x == 0 && y == 0)
+                {
+                    continue;
+                }
+
+                int checkX = node.gridX + x;
+                int checkY = node.gridY + y;
+
+                if(checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
+                {
+                    neighbours.Add(grid[checkX, checkY]);
+                }
+            }
+
+        }
+        return neighbours;
+    }
+
+    public void ResetGrid()
+    {
+        ready = false;
     }
 }

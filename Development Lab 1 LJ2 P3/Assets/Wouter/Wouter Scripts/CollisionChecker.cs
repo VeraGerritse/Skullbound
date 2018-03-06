@@ -8,7 +8,6 @@ public class CollisionChecker : MonoBehaviour {
 
     public void OnTriggerStay(Collider other)
     {
-        print("test");
         collide = true;
         hitObject = other.gameObject;
     }
