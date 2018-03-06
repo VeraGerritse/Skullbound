@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine; 
 
-public class Pathfinding : MonoBehaviour {
+public class Pathfinding : Interactables {
 
     public Transform target;
-    public Transform player;
+    public Transform aI;
 
 
     private void StartUp()
     {
-        player = DungeonGeneratorManager.instance.player.transform;
-        target = GetComponent<DungeonGeneratorManager>().bossRoomLocTestForPathFinder;
+        aI = DungeonGeneratorManager.instance.player.transform;
+        target = DungeonGeneratorManager.instance.bossRoomLocTestForPathFinder;
     }
 
     private void Update()
@@ -20,9 +20,9 @@ public class Pathfinding : MonoBehaviour {
         {
             StartUp();
         }
-        if (player != null && target != null && Grid.instance.ready == true)
+        if (aI != null && target != null && Grid.instance.ready == true)
         {
-            FindPath(player.position, target.position);
+            FindPath(aI.position, target.position);
         }
     }
 
