@@ -24,7 +24,11 @@ public class RoomGen : MonoBehaviour
     public bool doneWalls;
     public int chance;
 
-    public int chanceDoor = 75;
+    public RoomActivities myActivities;
+
+    bool enabeled;
+
+    public int chanceDoor = 50;
 
     public enum From { left, right, up, down, none }
 
@@ -75,6 +79,7 @@ public class RoomGen : MonoBehaviour
     public void Doors()
     {
         int rand = Random.Range(0,100);
+        print(chanceDoor + " chance on door");
         doneWalls = true;
         if (left != null)
         {
@@ -201,6 +206,19 @@ public class RoomGen : MonoBehaviour
         {
             Destroy(child.gameObject);
         }           
+    }
+
+    public void CheckNeighbours()
+    {
+        if (left.enabeled)
+        {
+
+        }    
+    }
+
+    public void DisableNeighbours(RoomGen lastRoom)
+    {
+
     }
 }
 

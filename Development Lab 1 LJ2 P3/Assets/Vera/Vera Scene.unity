@@ -251,7 +251,7 @@ MonoBehaviour:
   chance: 50
   roomsNeeded: 10
   maxRooms: 20
-  chanceOnDoor: 75
+  chanceOnDoor: 0
   verticalWall:
   - {fileID: 1373361689852578, guid: d7056320687f2a144a55e1ee2ceb734b, type: 2}
   - {fileID: 1648385995369324, guid: 435ba08d910b5534cb11bc5d63ea39f9, type: 2}
@@ -306,7 +306,7 @@ MonoBehaviour:
   gridSize: {x: 80, y: 30}
   nodeRadius: 0.5
   ready: 0
-  onlyDisplayPath: 1
+  onlyDisplayPath: 0
 --- !u!114 &1695191257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,5 +318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4575fb18f3b91ac489238c6eab973f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsAwake: 0
   target: {fileID: 0}
-  player: {fileID: 0}
+  aI: {fileID: 0}
