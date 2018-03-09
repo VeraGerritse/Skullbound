@@ -67,7 +67,7 @@ public class Inertia : MonoBehaviour {
 
 
 
-        print(anim.GetLayerWeight(4));
+        //print(anim.GetLayerWeight(4));
 
         //print(canTwitch);
         //anim.SetBool("CanTwitch", canTwitch);

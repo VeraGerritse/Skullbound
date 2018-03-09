@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class PlayerActions : MonoBehaviour {
 
-    private Animator anim;
+    public Animator anim;
     public bool canCombo;
     public bool alternate;
     public float speedmodifier;
 
+    
+
     public CollisionChecker collisionChecker;
+
+    public PlayerStats playerStats;
 
     private void Start()
     {
+        Physics.IgnoreLayerCollision(10,10);
         anim = GetComponent<Animator>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     private void Update()
     {
-
+        if(playerStats.weapon != null)
+        {
+            //anim.SetTrigger("Draw");
+        }
 
         if (speedmodifier < 1)
         {
@@ -36,7 +45,7 @@ public class PlayerActions : MonoBehaviour {
         }
         if(Input.GetKeyDown("r"))
         {
-            anim.SetTrigger("Draw");
+            //anim.SetTrigger("Draw");
         }
 
         if(Input.GetButtonDown("Fire1"))
@@ -56,9 +65,6 @@ public class PlayerActions : MonoBehaviour {
         if(Input.GetButtonUp("Fire2"))
         {
             anim.ResetTrigger("Swing");
-
-            
-
         }
 
         if(!Input.GetButton("Fire2"))
@@ -101,12 +107,69 @@ public class PlayerActions : MonoBehaviour {
 
         if(Input.GetKeyDown("e"))
         {
-            anim.SetTrigger("OpenDoor");
-            anim.ResetTrigger("Potion");
+            //anim.SetTrigger("OpenDoor");
+            //anim.ResetTrigger("Potion");
+            anim.ResetTrigger("Swing");
+            Interact();
         }
 
+        if(Input.GetKeyDown("p"))
+        {
+            anim.SetTrigger("Die");
+        }
 
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, Color.red);
+    }
 
+    public void Interact()
+    {   
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3))
+        {
+            //print("1");
+            //print(hit.transform.name);
+            if (hit.transform.gameObject.GetComponent<Pickup>() != null)
+            {
+                //print("2");
+                if (hit.transform.gameObject.GetComponent<Pickup>().canBePickedUp)
+                {
+                    //print("3");
+                    if (hit.transform.gameObject.GetComponent<Weapon>() != null)
+                    {                   
+                        //print("4");
+                        Destroy(playerStats.previousWeapon);
+                        playerStats.previousWeapon = playerStats.weapon;
+                        playerStats.weapon = hit.transform.gameObject;
+
+                        if (playerStats.weapon != null)
+                        {
+                            GameObject spawn =  Instantiate(playerStats.previousWeapon, hit.transform.position + Vector3.up * 1, Camera.main.transform.rotation);
+                            spawn.GetComponent<Weapon>().followPlayer = false;
+
+                            if(spawn.GetComponent<MeshCollider>() != null)
+                            {
+                                spawn.GetComponent<MeshCollider>().enabled = true;
+                            }
+                            
+                            spawn.SetActive(true);
+                        }
+
+                        for (int i = 0; i < playerStats.viewmodelgear.Count; i++)
+                        {
+                            if (playerStats.viewmodelgear[i] != null)
+                            {
+                                playerStats.viewmodelgear[i].SetActive(false);                          
+                            }
+
+                            anim.SetTrigger("On");
+                            playerStats.viewmodelgear[playerStats.weapon.GetComponent<Weapon>().itemId].SetActive(true);
+                            //hit.transform.gameObject.SetActive(false);
+                            hit.transform.gameObject.GetComponent<Weapon>().followPlayer = true;                                    
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void Hit(float amount)
