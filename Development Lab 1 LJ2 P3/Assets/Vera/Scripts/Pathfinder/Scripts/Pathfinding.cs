@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class Pathfinding : Interactables {
 
+    [Header("targets")]
     public Transform target;
     public Transform aI;
+
+    [Header("Stats")]
+    public int speed;
+    public float turnSpeed = 20;
+
+    bool startUp;
+
+    Node lastNode;
 
 
     private void StartUp()
     {
-        aI = DungeonGeneratorManager.instance.player.transform;
-        target = DungeonGeneratorManager.instance.bossRoomLocTestForPathFinder;
+        aI = gameObject.transform;
+        target = DungeonGeneratorManager.instance.player.transform;
     }
 
-    private void Update()
+    public override void Interact()
     {
-        if (Grid.instance.ready)
+        if (!startUp && Grid.instance.ready)
         {
             StartUp();
         }
@@ -30,6 +39,7 @@ public class Pathfinding : Interactables {
     {
         Node startNode = Grid.instance.NodeFromWP(startPos);
         Node targetNode = Grid.instance.NodeFromWP(targetPos);
+
 
         List<Node> openSet = new List<Node>();
         List<Node> ClosedSet = new List<Node>();
@@ -90,9 +100,21 @@ public class Pathfinding : Interactables {
         }
 
         path.Reverse();
-
         Grid.instance.path = path;
+        if (path.Count != 0)
+        {
+            Move(path[0]);
+        }
     }
+
+    void Move(Node NextLoc)
+    {
+        Vector3 targetLoc = new Vector3(NextLoc.nodePosition.x,  transform.position.y, NextLoc.nodePosition.z);
+
+        transform.position = Vector3.MoveTowards(transform.position, targetLoc, (speed / 10) * Time.deltaTime );
+        transform.LookAt(targetLoc);
+    }
+
 
 
     int GetDistance(Node nodeA, Node nodeB)

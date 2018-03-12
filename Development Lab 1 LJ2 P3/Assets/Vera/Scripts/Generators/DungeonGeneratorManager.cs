@@ -52,6 +52,10 @@ public class DungeonGeneratorManager : MonoBehaviour
     List<GameObject> allMapPieces = new List<GameObject>();
     public List<GameObject> mapWalls = new List<GameObject>();
 
+    [Header("Rooms")]
+    RoomGen currentRoom;
+    RoomGen LastRoom;
+
     void Start()
     {
         if(maxRooms < roomsNeeded)
@@ -132,7 +136,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         int startPoint = Random.Range(0, possiblePlaces.Count);
         possiblePlaces[startPoint].chance = 100;
         possiblePlaces[startPoint].InstantiateFloor();
-
+        currentRoom = possiblePlaces[startPoint];
 
         int totalRooms = 0;
         for (int i = 0; i < possiblePlaces.Count; i++)
@@ -360,11 +364,11 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     void PlaceStartRoom(int startRoom)
     {
-
         if (!ughie)
         {
             Destroy(possiblePlaces[startRoom].myFloor);
             possiblePlaces[startRoom].myFloor = Instantiate(startingRooms[0], possiblePlaces[startRoom].transform.position, Quaternion.identity);
+            possiblePlaces[startRoom].myFloor.transform.SetParent(possiblePlaces[startRoom].gameObject.transform);
             ughie = true;
         }
     }
@@ -416,6 +420,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             int rand = Random.Range(0, bossRooms.Count);
             Destroy(possiblePlaces[availableBossRooms[newBossRoom]].myFloor);
             possiblePlaces[newBossRoom].myFloor = Instantiate(bossRooms[rand], possiblePlaces[availableBossRooms[newBossRoom]].transform.position, Quaternion.identity);
+            possiblePlaces[newBossRoom].myFloor.transform.SetParent(possiblePlaces[newBossRoom].gameObject.transform);
             done = true;
             bossRoomLocTestForPathFinder = possiblePlaces[newBossRoom].myFloor.transform;
         }
@@ -485,11 +490,64 @@ public class DungeonGeneratorManager : MonoBehaviour
         ResetDungeon();
     }
 
+    public void EnterRoom(RoomGen entering)
+    {
+        if (Grid.instance.ready)
+        {
+            if (currentRoom != null)
+            {
+                bool firstChamber = false;
+                if(lastRoom == null)
+                {
+                    firstChamber = true;
+                }
+                lastRoom = currentRoom;
+                currentRoom = entering;
+                if (!firstChamber)
+                {
+                    if (lastRoom.left != currentRoom && lastRoom.left != null)
+                    {
+                        lastRoom.left.myActivities.DisableRigidBodys();
+                    }
+                    if (lastRoom.right != currentRoom && lastRoom.right != null)
+                    {
+                        lastRoom.right.myActivities.DisableRigidBodys();
+                    }
+                    if (lastRoom.up != currentRoom && lastRoom.up != null)
+                    {
+                        lastRoom.up.myActivities.DisableRigidBodys();
+                    }
+                    if (lastRoom.down != currentRoom && lastRoom.down != null)
+                    {
+                        lastRoom.down.myActivities.DisableRigidBodys();
+                    }
+                }
+                if (currentRoom.up != null && currentRoom.up.myActivities != null)
+                {
+                    currentRoom.up.myActivities.EnableRigidBodys();
+                }
+                if (currentRoom.down != null && currentRoom.down.myActivities != null)
+                {
+                    currentRoom.down.myActivities.EnableRigidBodys();
+                }
+                if (currentRoom.left != null && currentRoom.left.myActivities != null)
+                {
+                    currentRoom.left.myActivities.EnableRigidBodys();
+                }
+                if (currentRoom.right != null && currentRoom.right.myActivities != null)
+                {
+                    currentRoom.right.myActivities.EnableRigidBodys();
+                }
+            }
+        }
+    }
+
     
 
     IEnumerator StartPathfinder()
     {
         yield return new WaitForSeconds(0.1f);
         Grid.instance.GridSize(roomSize, gridSize);
+        EnterRoom(currentRoom);
     }
 }

@@ -79,7 +79,6 @@ public class RoomGen : MonoBehaviour
     public void Doors()
     {
         int rand = Random.Range(0,100);
-        print(chanceDoor + " chance on door");
         doneWalls = true;
         if (left != null)
         {
@@ -216,9 +215,5 @@ public class RoomGen : MonoBehaviour
         }    
     }
 
-    public void DisableNeighbours(RoomGen lastRoom)
-    {
-
-    }
 }
 

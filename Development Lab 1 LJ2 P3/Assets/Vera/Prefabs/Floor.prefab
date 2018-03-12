@@ -67,8 +67,13 @@ MonoBehaviour:
   rightDoor: 0
   upDoor: 0
   downDoor: 0
+  leftD: 0
+  rightD: 0
+  upD: 0
+  downD: 0
   myFloor: {fileID: 0}
   done: 0
   doneWalls: 0
   chance: 100
-  chanceDoor: 25
+  myActivities: {fileID: 0}
+  chanceDoor: 10

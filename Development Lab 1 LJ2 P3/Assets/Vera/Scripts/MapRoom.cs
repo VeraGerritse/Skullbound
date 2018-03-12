@@ -8,9 +8,12 @@ public class MapRoom : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         Transform chamber = GetComponent<Transform>();
-        foreach(Transform child in chamber)
+        if (other.gameObject.tag == "Player")
         {
-            child.gameObject.SetActive(true);
+            foreach (Transform child in chamber)
+            {
+                child.gameObject.SetActive(true);
+            }
         }
     }
 }

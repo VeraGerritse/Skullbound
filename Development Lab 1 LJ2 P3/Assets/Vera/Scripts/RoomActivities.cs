@@ -7,7 +7,7 @@ public class RoomActivities : MonoBehaviour {
     public List<GameObject> rBodys = new List<GameObject>();
     public List<Interactables> interactable = new List<Interactables>();
 
-    RoomGen myRoom;
+    public RoomGen myRoom;
 
     private void Start()
     {
@@ -44,7 +44,7 @@ public class RoomActivities : MonoBehaviour {
     {
         for (int i = 0; i < interactable.Count; i++)
         {
-            interactable[i].IsAwake = true;
+            interactable[i].IsAwake = false;
         }
     }
 
@@ -53,6 +53,11 @@ public class RoomActivities : MonoBehaviour {
         if(other.gameObject.tag == "Player")
         {
             StartInteracting();
+            if (Grid.instance.ready)
+            {
+                print(myRoom + "   myroom  " + myRoom.myActivities);
+            }
+            DungeonGeneratorManager.instance.EnterRoom(myRoom);
         }
     }
 

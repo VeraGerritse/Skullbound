@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 33700934856947306}
   - component: {fileID: 64670053491101580}
   - component: {fileID: 23628105363939108}
+  - component: {fileID: 114918352321949190}
+  - component: {fileID: 65068423796605208}
   m_Layer: 0
   m_Name: Plane (6)
   m_TagString: Ground
@@ -97,3 +99,29 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65068423796605208
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699144295785262}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 3, z: 10}
+  m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &114918352321949190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699144295785262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5a573fee5fa984e9ec6c56f37db334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rBodys: []
+  interactable: []
+  myRoom: {fileID: 0}

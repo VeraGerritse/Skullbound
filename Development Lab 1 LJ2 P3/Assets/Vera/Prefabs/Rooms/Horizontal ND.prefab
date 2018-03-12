@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65159559724673402}
   - component: {fileID: 23179942081832608}
   - component: {fileID: 114292155885769052}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Horizontal ND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4479708592036492}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Horizontal ND
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 69b1fe04806e1c547b11a1ee92fe8492, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,3 +137,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBlocking: 1
+  anim: {fileID: 0}
+  health: 0
+  stamina: 0
+  movementspeed: 0
+  attackingspeed: 0
+  extraAttack: 0
+  extraDefence: 0
+  weapon: {fileID: 0}
+  shield: {fileID: 0}

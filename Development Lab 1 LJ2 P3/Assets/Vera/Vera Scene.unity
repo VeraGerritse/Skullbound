@@ -239,17 +239,11 @@ MonoBehaviour:
   roomSize: 20
   possiblePlaces: []
   floors:
-  - {fileID: 1039456241034582, guid: d916d76f2aea23a4bab14ff1fe0b91bd, type: 2}
-  - {fileID: 1098750830087984, guid: a8bfc9ab4a8e95042b38413289f7c9c9, type: 2}
-  - {fileID: 1303742194506310, guid: ee902b282fae8a24895886ea52473dcb, type: 2}
-  - {fileID: 1567761429745396, guid: 7fc0a49975971424bb5255a5b67786d8, type: 2}
-  - {fileID: 1458532980664646, guid: 29b5b9711f3265246ad025cec22f6fa6, type: 2}
-  - {fileID: 1711559021368170, guid: 0674dfd7fb57a8e4f90b25513426dcd2, type: 2}
-  - {fileID: 1673109205279082, guid: be6e4681fffceca4aacb6f9d53cd0769, type: 2}
+  - {fileID: 1459248241245630, guid: 11990427bb8ed9a4096b8ba1d1053c4c, type: 2}
   bossRooms:
   - {fileID: 1699144295785262, guid: ad267fc030789904c961d6fbaeb3cd0e, type: 2}
   chance: 50
-  roomsNeeded: 10
+  roomsNeeded: 1
   maxRooms: 20
   chanceOnDoor: 0
   verticalWall:
@@ -299,25 +293,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unwalkableArea:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 4096
   noArea:
     serializedVersion: 2
     m_Bits: 0
   gridSize: {x: 80, y: 30}
   nodeRadius: 0.5
   ready: 0
-  onlyDisplayPath: 0
+  onlyDisplayPath: 1
 --- !u!114 &1695191257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1695191251}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4575fb18f3b91ac489238c6eab973f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsAwake: 0
+  keepsWorking: 0
   target: {fileID: 0}
   aI: {fileID: 0}
+  speed: 0
+  turnSpeed: 20
