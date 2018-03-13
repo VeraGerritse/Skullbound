@@ -126,45 +126,36 @@ public class PlayerActions : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3))
         {
+            GameObject g = hit.transform.gameObject;
             //print("1");
-            //print(hit.transform.name);
-            if (hit.transform.gameObject.GetComponent<Pickup>() != null)
+            if (g.GetComponent<Pickup>() != null)
             {
                 //print("2");
-                if (hit.transform.gameObject.GetComponent<Pickup>().canBePickedUp)
+                if (g.GetComponent<Pickup>().canBePickedUp)
                 {
                     //print("3");
                     if (hit.transform.gameObject.GetComponent<Weapon>() != null)
-                    {                   
-                        //print("4");
-                        Destroy(playerStats.previousWeapon);
+                    {
+                        g.SetActive(false);
                         playerStats.previousWeapon = playerStats.weapon;
                         playerStats.weapon = hit.transform.gameObject;
 
-                        if (playerStats.weapon != null)
-                        {
-                            GameObject spawn =  Instantiate(playerStats.previousWeapon, hit.transform.position + Vector3.up * 1, Camera.main.transform.rotation);
-                            spawn.GetComponent<Weapon>().followPlayer = false;
-
-                            if(spawn.GetComponent<MeshCollider>() != null)
-                            {
-                                spawn.GetComponent<MeshCollider>().enabled = true;
-                            }
-                            
-                            spawn.SetActive(true);
-                        }
+                        GameObject spawn = Instantiate(playerStats.previousWeapon, hit.transform.position + new Vector3(0,1,0), playerStats.weapon.transform.rotation);
+                        spawn.SetActive(true);
+                        
+                        
 
                         for (int i = 0; i < playerStats.viewmodelgear.Count; i++)
                         {
                             if (playerStats.viewmodelgear[i] != null)
                             {
-                                playerStats.viewmodelgear[i].SetActive(false);                          
+                                playerStats.viewmodelgear[i].SetActive(false);
                             }
 
                             anim.SetTrigger("On");
                             playerStats.viewmodelgear[playerStats.weapon.GetComponent<Weapon>().itemId].SetActive(true);
                             //hit.transform.gameObject.SetActive(false);
-                            hit.transform.gameObject.GetComponent<Weapon>().followPlayer = true;                                    
+                            hit.transform.gameObject.GetComponent<Weapon>().followPlayer = true;
                         }
                     }
                 }

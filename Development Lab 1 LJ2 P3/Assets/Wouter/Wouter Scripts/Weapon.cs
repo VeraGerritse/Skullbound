@@ -50,38 +50,5 @@ public class Weapon : MonoBehaviour {
             }
         }        
     }
-    void Update()
-    {
-        if(followPlayer)
-        {
-            FollowPlayer();
-            if (GetComponent<Rigidbody>() != null)
-            {
-                GetComponent<Rigidbody>().useGravity = false;
-            }
-                
-        }
-        else
-        {
-            timer = 0;
-            this.gameObject.SetActive(true);
-            if(GetComponent<Rigidbody>() != null)
-            {
-                GetComponent<Rigidbody>().useGravity = true;
-            }
-            
-        }
-        
-    }
-    public void FollowPlayer()
-    {
-        this.gameObject.GetComponent<MeshCollider>().enabled = false;
-        this.gameObject.transform.position = Vector3.Lerp(this.gameObject.transform.position, GameObject.FindGameObjectWithTag("Player").transform.position, Time.deltaTime * 14f);
-        this.gameObject.transform.rotation = Quaternion.Lerp(this.gameObject.transform.rotation, GameObject.FindGameObjectWithTag("Player").transform.rotation, Time.deltaTime * 10);
-        timer += Time.deltaTime;
-        if(timer >= 0.25f)
-        {
-            this.gameObject.SetActive(false);               
-        }        
-    }
+    
 }
