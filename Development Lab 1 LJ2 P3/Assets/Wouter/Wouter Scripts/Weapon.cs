@@ -5,9 +5,6 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
 
     public GameObject owner;
-    public bool followPlayer;
-    private float timer;
-    public Vector3 weaponslot;
 
     //stats
     public string weaponName;
@@ -20,9 +17,7 @@ public class Weapon : MonoBehaviour {
 
     void Start()
     {
-        timer = 0;
-        this.gameObject.SetActive(true);
-        weaponslot = GameObject.Find("WeaponSlot").transform.position;
+
     }
     
     public void OnTriggerEnter(Collider other)       
@@ -49,6 +44,5 @@ public class Weapon : MonoBehaviour {
                 }
             }
         }        
-    }
-    
+    }   
 }

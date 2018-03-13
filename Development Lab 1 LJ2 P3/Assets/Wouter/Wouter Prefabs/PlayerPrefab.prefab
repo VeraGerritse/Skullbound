@@ -1423,14 +1423,13 @@ GameObject:
   - component: {fileID: 4514967604109084}
   - component: {fileID: 33411704245172024}
   - component: {fileID: 23883490648075930}
-  - component: {fileID: 95250636872312700}
   m_Layer: 8
   m_Name: Shield_001_LP 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1998880633007640
 GameObject:
   m_ObjectHideFlags: 1
@@ -3586,23 +3585,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1572254460840190}
   m_Enabled: 1
---- !u!95 &95250636872312700
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997398031613360}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9dfcfae5792a7ce448f97f46fcbefbc7, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95663407831460774
 Animator:
   serializedVersion: 3
@@ -3697,9 +3679,22 @@ MonoBehaviour:
   playerStamina: 100
   weapon: {fileID: 0}
   previousWeapon: {fileID: 0}
+  shield: {fileID: 0}
+  previousShield: {fileID: 0}
   viewmodelgear:
   - {fileID: 1983172851158482}
   - {fileID: 1229509477730334}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  viewmodelgearLeft:
+  - {fileID: 1997398031613360}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -3724,6 +3719,7 @@ MonoBehaviour:
   canCombo: 0
   alternate: 0
   speedmodifier: 1
+  isNeutral: 0
   collisionChecker: {fileID: 114114218434922056}
   playerStats: {fileID: 0}
 --- !u!114 &114092092756481946
@@ -3753,6 +3749,7 @@ MonoBehaviour:
   updownRange: 60
   vertRot: 0
   cameraObject: {fileID: 1513836942215308}
+  standStill: 0
 --- !u!114 &114114218434922056
 MonoBehaviour:
   m_ObjectHideFlags: 1

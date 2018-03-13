@@ -9,6 +9,8 @@ public class PlayerActions : MonoBehaviour {
     public bool alternate;
     public float speedmodifier;
 
+    public bool isNeutral;
+
     
 
     public CollisionChecker collisionChecker;
@@ -107,17 +109,19 @@ public class PlayerActions : MonoBehaviour {
 
         if(Input.GetKeyDown("e"))
         {
-            //anim.SetTrigger("OpenDoor");
-            //anim.ResetTrigger("Potion");
-            anim.ResetTrigger("Swing");
-            Interact();
+            if(anim.GetCurrentAnimatorStateInfo(2).IsTag("lol"))
+            {
+                //anim.SetTrigger("OpenDoor");
+                //anim.ResetTrigger("Potion");
+                anim.ResetTrigger("Swing");
+                Interact();
+            }
         }
 
         if(Input.GetKeyDown("p"))
-        {
+        {       
             anim.SetTrigger("Die");
         }
-
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, Color.red);
     }
 
@@ -125,26 +129,24 @@ public class PlayerActions : MonoBehaviour {
     {   
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3))
-        {
-            GameObject g = hit.transform.gameObject;
+        {        
             //print("1");
-            if (g.GetComponent<Pickup>() != null)
+            if (hit.transform.gameObject.GetComponent<Pickup>() != null)
             {
                 //print("2");
-                if (g.GetComponent<Pickup>().canBePickedUp)
+                if (hit.transform.gameObject.GetComponent<Pickup>().canBePickedUp)
                 {
                     //print("3");
                     if (hit.transform.gameObject.GetComponent<Weapon>() != null)
                     {
-                        g.SetActive(false);
+                        GameObject w = hit.transform.gameObject;
+                        w.SetActive(false);
                         playerStats.previousWeapon = playerStats.weapon;
                         playerStats.weapon = hit.transform.gameObject;
 
                         GameObject spawn = Instantiate(playerStats.previousWeapon, hit.transform.position + new Vector3(0,1,0), playerStats.weapon.transform.rotation);
                         spawn.SetActive(true);
-                        
-                        
-
+                        Destroy(playerStats.previousWeapon);
                         for (int i = 0; i < playerStats.viewmodelgear.Count; i++)
                         {
                             if (playerStats.viewmodelgear[i] != null)
@@ -154,8 +156,27 @@ public class PlayerActions : MonoBehaviour {
 
                             anim.SetTrigger("On");
                             playerStats.viewmodelgear[playerStats.weapon.GetComponent<Weapon>().itemId].SetActive(true);
-                            //hit.transform.gameObject.SetActive(false);
-                            hit.transform.gameObject.GetComponent<Weapon>().followPlayer = true;
+                        }
+                    }
+                    else if(hit.transform.gameObject.GetComponent<Shield>() != null)
+                    {
+                        GameObject s = hit.transform.gameObject;
+                        s.SetActive(false);
+                        playerStats.previousShield = playerStats.shield;
+                        playerStats.shield = hit.transform.gameObject;
+
+                        GameObject spawn = Instantiate(playerStats.previousShield, hit.transform.position + new Vector3(0, 1, 0), playerStats.shield.transform.rotation);
+                        spawn.SetActive(true);
+                        Destroy(playerStats.previousShield);
+                        for (int i = 0; i < playerStats.viewmodelgearLeft.Count; i++)
+                        {
+                            if (playerStats.viewmodelgearLeft[i] != null)
+                            {
+                                playerStats.viewmodelgearLeft[i].SetActive(false);
+                            }
+
+                            anim.SetTrigger("ShieldOn");
+                            playerStats.viewmodelgearLeft[playerStats.shield.GetComponent<Shield>().itemId].SetActive(true);
                         }
                     }
                 }
@@ -191,6 +212,4 @@ public class PlayerActions : MonoBehaviour {
     {
         speedmodifier = amount;
     }
-
-
 }
