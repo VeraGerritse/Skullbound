@@ -21,7 +21,11 @@ public class GameManager : MonoBehaviour {
 
     void UpDateThese()
     {
-        UIManager.instance.interfaceGame.Interact();
+        if(UIManager.instance.interfaceGame != null)
+        {
+            UIManager.instance.interfaceGame.Interact();
+        }
+
     }
 
     IEnumerator StartShiz()
