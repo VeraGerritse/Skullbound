@@ -7,10 +7,11 @@ public class Pathfinding : Interactables {
     [Header("targets")]
     public Transform target;
     public Transform aI;
+    public Transform skull;
 
     [Header("Stats")]
     public int speed;
-    public float turnSpeed = 20;
+    public float turnSpeed = 100;
 
     bool startUp;
 
@@ -40,7 +41,13 @@ public class Pathfinding : Interactables {
         Node startNode = Grid.instance.NodeFromWP(startPos);
         Node targetNode = Grid.instance.NodeFromWP(targetPos);
 
-
+        //print(lastNode + "   " + targetNode);
+        //if (targetNode == lastNode)
+        //{
+        //    RetracePath(startNode, targetNode);
+        //    return;
+        //}
+        //lastNode = targetNode;
         List<Node> openSet = new List<Node>();
         List<Node> ClosedSet = new List<Node>();
 
@@ -110,12 +117,17 @@ public class Pathfinding : Interactables {
     void Move(Node NextLoc)
     {
         Vector3 targetLoc = new Vector3(NextLoc.nodePosition.x,  transform.position.y, NextLoc.nodePosition.z);
-
         transform.position = Vector3.MoveTowards(transform.position, targetLoc, (speed / 10) * Time.deltaTime );
-        transform.LookAt(targetLoc);
+
+
+        Vector3 relativePos = targetLoc - transform.position;
+        Quaternion lookRot = Quaternion.LookRotation(relativePos);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, turnSpeed * Time.deltaTime);
+
+        Vector3 relPos = target.position - skull.position;
+        Quaternion lokRot = Quaternion.LookRotation(relPos);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, lokRot, turnSpeed * Time.deltaTime);
     }
-
-
 
     int GetDistance(Node nodeA, Node nodeB)
     {

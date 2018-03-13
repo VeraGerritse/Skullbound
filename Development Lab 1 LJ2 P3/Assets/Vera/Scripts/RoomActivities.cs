@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomActivities : MonoBehaviour {
 
-    public List<GameObject> rBodys = new List<GameObject>();
+    //public List<GameObject> rBodys = new List<GameObject>();
     public List<Interactables> interactable = new List<Interactables>();
 
     public RoomGen myRoom;
@@ -18,17 +18,17 @@ public class RoomActivities : MonoBehaviour {
 
     public void EnableRigidBodys()
     {
-        for (int i = 0; i < rBodys.Count; i++)
+        foreach (Transform child in gameObject.transform)
         {
-            rBodys[i].SetActive(true);
+            child.gameObject.SetActive(true);
         }
     }
 
     public void DisableRigidBodys()
     {
-        for (int i = 0; i < rBodys.Count; i++)
+        foreach(Transform child in gameObject.transform)
         {
-            rBodys[i].SetActive(false);
+            child.gameObject.SetActive(false);
         }
     }
 

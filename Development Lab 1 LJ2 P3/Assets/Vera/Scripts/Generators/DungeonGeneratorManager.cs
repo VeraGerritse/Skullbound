@@ -505,19 +505,19 @@ public class DungeonGeneratorManager : MonoBehaviour
                 currentRoom = entering;
                 if (!firstChamber)
                 {
-                    if (lastRoom.left != currentRoom && lastRoom.left != null)
+                    if (lastRoom.left != currentRoom && lastRoom.left != null && lastRoom.left.myActivities != null)
                     {
                         lastRoom.left.myActivities.DisableRigidBodys();
                     }
-                    if (lastRoom.right != currentRoom && lastRoom.right != null)
+                    if (lastRoom.right != currentRoom && lastRoom.right != null && lastRoom.right.myActivities != null)
                     {
                         lastRoom.right.myActivities.DisableRigidBodys();
                     }
-                    if (lastRoom.up != currentRoom && lastRoom.up != null)
+                    if (lastRoom.up != currentRoom && lastRoom.up != null && lastRoom.up.myActivities != null)
                     {
                         lastRoom.up.myActivities.DisableRigidBodys();
                     }
-                    if (lastRoom.down != currentRoom && lastRoom.down != null)
+                    if (lastRoom.down != currentRoom && lastRoom.down != null && lastRoom.down.myActivities != null)
                     {
                         lastRoom.down.myActivities.DisableRigidBodys();
                     }
@@ -548,6 +548,16 @@ public class DungeonGeneratorManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         Grid.instance.GridSize(roomSize, gridSize);
+
+
+        yield return new WaitForSeconds(0.2f);
+        for (int i = 0; i < possiblePlaces.Count; i++)
+        {
+            if(possiblePlaces[i].myActivities!= null)
+            {
+                possiblePlaces[i].myActivities.DisableRigidBodys();
+            }
+        }
         EnterRoom(currentRoom);
     }
 }

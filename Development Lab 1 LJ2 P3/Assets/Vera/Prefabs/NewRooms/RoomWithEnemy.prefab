@@ -432,8 +432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5a573fee5fa984e9ec6c56f37db334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rBodys:
-  - {fileID: 1312507933876506}
   interactable:
   - {fileID: 114958503118490322}
   myRoom: {fileID: 0}
@@ -452,7 +450,9 @@ MonoBehaviour:
   keepsWorking: 1
   target: {fileID: 0}
   aI: {fileID: 0}
+  skull: {fileID: 0}
   speed: 20
+  turnSpeed: 100
 --- !u!136 &136390543409927248
 CapsuleCollider:
   m_ObjectHideFlags: 1

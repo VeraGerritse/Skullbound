@@ -23,7 +23,7 @@ public class MoveMent : MonoBehaviour {
 
     public GameObject cameraObject;
 
-    bool standStill = false;
+    public bool standStill = false;
 
     void Start () {
         currentSpeed = walkSpeed;
