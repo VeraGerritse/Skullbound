@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
+public class Pickup : Interactables
 {
 
     public bool canBePickedUp;
 
-    public GameObject owner;
-    public bool followPlayer;
-    private float timer;
-    public Vector3 weaponslot;
-    
+    public override void Interact()
+    {
+            canBePickedUp = true;
+    }
+
+    public override void StopInteract()
+    {
+        canBePickedUp = false;
+    }
+
 }

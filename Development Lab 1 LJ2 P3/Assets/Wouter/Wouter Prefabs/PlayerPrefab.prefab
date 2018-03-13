@@ -3719,6 +3719,9 @@ MonoBehaviour:
   canCombo: 0
   alternate: 0
   speedmodifier: 1
+  layer:
+    serializedVersion: 2
+    m_Bits: 2048
   isNeutral: 0
   collisionChecker: {fileID: 114114218434922056}
   playerStats: {fileID: 0}
@@ -3748,6 +3751,9 @@ MonoBehaviour:
   player: {fileID: 0}
   updownRange: 60
   vertRot: 0
+  layer:
+    serializedVersion: 2
+    m_Bits: 4294958591
   cameraObject: {fileID: 1513836942215308}
   standStill: 0
 --- !u!114 &114114218434922056

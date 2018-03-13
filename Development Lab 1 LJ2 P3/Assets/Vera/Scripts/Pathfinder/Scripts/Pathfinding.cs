@@ -14,7 +14,7 @@ public class Pathfinding : Interactables {
     public float turnSpeed = 100;
 
     bool startUp;
-
+    bool atTarget;
     Node lastNode;
 
 
@@ -116,17 +116,25 @@ public class Pathfinding : Interactables {
 
     void Move(Node NextLoc)
     {
-        Vector3 targetLoc = new Vector3(NextLoc.nodePosition.x,  transform.position.y, NextLoc.nodePosition.z);
-        transform.position = Vector3.MoveTowards(transform.position, targetLoc, (speed / 10) * Time.deltaTime );
+        if (!atTarget)
+        {
+            Vector3 start = transform.position;
+            Vector3 targetLoc = new Vector3(NextLoc.nodePosition.x, transform.position.y, NextLoc.nodePosition.z);
+            transform.position = Vector3.MoveTowards(transform.position, targetLoc, (speed / 10) * Time.deltaTime);
+            if (start == transform.position)
+            {
+                targetLoc = new Vector3(Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z);
+            }
 
+            Vector3 relativePos = targetLoc - transform.position;
+            Quaternion lookRot = Quaternion.LookRotation(relativePos);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, turnSpeed * Time.deltaTime);
 
-        Vector3 relativePos = targetLoc - transform.position;
-        Quaternion lookRot = Quaternion.LookRotation(relativePos);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, turnSpeed * Time.deltaTime);
+            //Vector3 relPos = target.position - skull.position;
+            //Quaternion lokRot = Quaternion.LookRotation(relPos);
+            //transform.rotation = Quaternion.RotateTowards(transform.rotation, lokRot, turnSpeed * Time.deltaTime);
+        }
 
-        Vector3 relPos = target.position - skull.position;
-        Quaternion lokRot = Quaternion.LookRotation(relPos);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, lokRot, turnSpeed * Time.deltaTime);
     }
 
     int GetDistance(Node nodeA, Node nodeB)
@@ -141,6 +149,27 @@ public class Pathfinding : Interactables {
         else
         {
             return 14 * dstX + 10 * (dstY - dstX);
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Vector3 targetLoc = new Vector3(Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z);
+
+            Vector3 relativePos = targetLoc - transform.position;
+            Quaternion lookRot = Quaternion.LookRotation(relativePos);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRot, turnSpeed * Time.deltaTime);
+            atTarget = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            atTarget = false;
         }
     }
 }

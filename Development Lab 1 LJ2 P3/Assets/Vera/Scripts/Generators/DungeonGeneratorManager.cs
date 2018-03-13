@@ -66,7 +66,6 @@ public class DungeonGeneratorManager : MonoBehaviour
         {
             instance = this;
         }
-        GenerateFloor();
     }
 
     private void Update()
@@ -77,7 +76,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         }
     }
 
-    void GenerateFloor()
+    public void GenerateFloor()
     {
         int corner = Mathf.RoundToInt(gridSize / 2);
         float xStart = corner * roomSize;
@@ -542,13 +541,16 @@ public class DungeonGeneratorManager : MonoBehaviour
         }
     }
 
-    
+    void AssignThings()
+    {
+        InteractManager.instance.actions = player.GetComponentInChildren<PlayerActions>();
+    }
 
     IEnumerator StartPathfinder()
     {
         yield return new WaitForSeconds(0.1f);
         Grid.instance.GridSize(roomSize, gridSize);
-
+        AssignThings();
 
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < possiblePlaces.Count; i++)

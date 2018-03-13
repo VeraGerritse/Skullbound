@@ -18,7 +18,7 @@ public class MoveMent : MonoBehaviour {
     public Rigidbody player;
     public float updownRange;
     public float vertRot;
-    
+    public LayerMask layer;
     bool inAir;
 
     public GameObject cameraObject;
@@ -120,9 +120,9 @@ public class MoveMent : MonoBehaviour {
     public void Jump()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, 1.1f))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, 1.1f,layer))
         {
-            if (hit.transform.gameObject != null)
+            if (hit.transform.gameObject != null && hit.collider.gameObject.tag != "Player" )
             {
                 //print("Player jumped from "  + hit.transform.gameObject.name);
                 player.AddForce(transform.up * jumpHeight);
