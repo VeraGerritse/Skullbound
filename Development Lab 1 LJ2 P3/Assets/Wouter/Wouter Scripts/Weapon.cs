@@ -15,11 +15,6 @@ public class Weapon : MonoBehaviour {
   
     //enemy only
 
-    void Start()
-    {
-
-    }
-    
     public void OnTriggerEnter(Collider other)       
     {
         if(owner != null)

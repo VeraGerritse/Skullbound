@@ -144,6 +144,7 @@ public class PlayerActions : MonoBehaviour {
 
                         playerStats.previousWeapon = playerStats.weapon;
                         playerStats.weapon = hit.transform.gameObject;
+                        Destroy(playerStats.previousWeapon);
                         if (playerStats.previousWeapon != null)
                         {
                             if (playerStats.previousWeapon.GetComponent<Rigidbody>())
@@ -173,15 +174,16 @@ public class PlayerActions : MonoBehaviour {
                         s.SetActive(false);
                         playerStats.previousShield = playerStats.shield;
                         playerStats.shield = hit.transform.gameObject;
+                        Destroy(playerStats.previousShield);
 
                         if (playerStats.previousShield != null)
                         {
                             if (playerStats.previousShield.GetComponent<Rigidbody>())
                             {
-                                GameObject spawn = Instantiate(playerStats.previousShield, hit.transform.position + new Vector3(0, 1, 0), playerStats.shield.transform.rotation);
-                                spawn.SetActive(true);
-                                spawn.GetComponent<Rigidbody>().isKinematic = false;
-                                spawn.GetComponent<Interactables>().IsAwake = true;
+                                GameObject spawnshield = Instantiate(playerStats.previousShield, hit.transform.position + new Vector3(0, 1, 0), playerStats.shield.transform.rotation);
+                                spawnshield.SetActive(true);
+                                spawnshield.GetComponent<Rigidbody>().isKinematic = false;
+                                spawnshield.GetComponent<Interactables>().IsAwake = true;
                             }
                         }
 
