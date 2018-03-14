@@ -141,17 +141,21 @@ public class PlayerActions : MonoBehaviour {
                     {
                         GameObject w = hit.transform.gameObject;
                         w.SetActive(false);
+
                         playerStats.previousWeapon = playerStats.weapon;
                         playerStats.weapon = hit.transform.gameObject;
-
-                        if(playerStats.previousWeapon != null)
+                        if (playerStats.previousWeapon != null)
                         {
-                            GameObject spawn = Instantiate(playerStats.previousWeapon, hit.transform.position + new Vector3(0, 1, 0), playerStats.weapon.transform.rotation);
-                            spawn.SetActive(true);
-                            spawn.GetComponent<Rigidbody>().isKinematic = false;
-                            spawn.GetComponent<Interactables>().IsAwake = true;
-                        }                        
-                        Destroy(playerStats.previousWeapon);
+                            if (playerStats.previousWeapon.GetComponent<Rigidbody>())
+                            {
+                                GameObject spawn = Instantiate(playerStats.previousWeapon, hit.transform.position + new Vector3(0, 1, 0), playerStats.weapon.transform.rotation);
+                                spawn.SetActive(true);
+                                spawn.GetComponent<Rigidbody>().isKinematic = false;
+                                spawn.GetComponent<Interactables>().IsAwake = true;
+                            }
+                        }
+
+                        //Destroy(playerStats.previousWeapon);
                         for (int i = 0; i < playerStats.viewmodelgear.Count; i++)
                         {
                             if (playerStats.viewmodelgear[i] != null)
@@ -170,14 +174,18 @@ public class PlayerActions : MonoBehaviour {
                         playerStats.previousShield = playerStats.shield;
                         playerStats.shield = hit.transform.gameObject;
 
-                        if(playerStats.previousShield != null)
+                        if (playerStats.previousShield != null)
                         {
-                            GameObject spawn = Instantiate(playerStats.previousShield, hit.transform.position + new Vector3(0, 1, 0), playerStats.shield.transform.rotation);
-                            spawn.SetActive(true);
-                            spawn.GetComponent<Rigidbody>().isKinematic = false;
-                            spawn.GetComponent<Interactables>().IsAwake = true;
+                            if (playerStats.previousShield.GetComponent<Rigidbody>())
+                            {
+                                GameObject spawn = Instantiate(playerStats.previousShield, hit.transform.position + new Vector3(0, 1, 0), playerStats.shield.transform.rotation);
+                                spawn.SetActive(true);
+                                spawn.GetComponent<Rigidbody>().isKinematic = false;
+                                spawn.GetComponent<Interactables>().IsAwake = true;
+                            }
                         }
-                        Destroy(playerStats.previousShield);
+
+                        //Destroy(playerStats.previousShield);
                         for (int i = 0; i < playerStats.viewmodelgearLeft.Count; i++)
                         {
                             if (playerStats.viewmodelgearLeft[i] != null)

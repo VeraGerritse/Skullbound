@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour {
     }
     void OrderOfThings()
     {
-        DungeonGeneratorManager.instance.GenerateFloor();
+        if (DungeonGeneratorManager.instance != null)
+        {
+            DungeonGeneratorManager.instance.GenerateFloor();
+        }
     }
 }
