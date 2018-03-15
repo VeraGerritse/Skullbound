@@ -267,7 +267,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             GameObject newWall = null;
             for (int i = 0; i < possiblePlaces.Count; i++)
             {
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x + roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x + roomSize / 2 - 0.01f, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
                 if (possiblePlaces[i].leftDoor && possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(0, wallPos, true);
@@ -277,7 +277,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
                 else if (possiblePlaces[i].myFloor != null)
                 {
-                    newWall = PlaceWall(1, wallPos, true);
+                    newWall = PlaceWall(2, wallPos, true);
                     GameObject newWallUgh = Instantiate(mapWalls[1], wallPos, Quaternion.identity);
                     newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
                     allMapPieces.Add(newWallUgh);
@@ -289,17 +289,17 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
                 newWall = null;
 
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x - roomSize / 2, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x - roomSize / 2 + 0.01f, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
                 if (possiblePlaces[i].rightDoor && possiblePlaces[i].myFloor != null)
                 {
-                    newWall = PlaceWall(0, wallPos, true);
+                    newWall = PlaceWall(1, wallPos, true);
                     GameObject newWallUgh = Instantiate(mapWalls[0], wallPos, Quaternion.identity);
                     newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
                     allMapPieces.Add(newWallUgh);
                 }
                 else if (possiblePlaces[i].myFloor != null)
                 {
-                    newWall = PlaceWall(1, wallPos, true);
+                    newWall = PlaceWall(3, wallPos, true);
                     GameObject newWallUgh = Instantiate(mapWalls[1], wallPos, Quaternion.identity);
                     newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
                     allMapPieces.Add(newWallUgh);
@@ -311,7 +311,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
                 newWall = null;
 
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z - roomSize / 2);
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z - roomSize / 2 + 0.01f);
                 if (possiblePlaces[i].upDoor && possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(0, wallPos, false);
@@ -321,7 +321,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
                 else if (possiblePlaces[i].myFloor != null)
                 {
-                    newWall = PlaceWall(1, wallPos, false);
+                    newWall = PlaceWall(2, wallPos, false);
                     GameObject newWallUgh = Instantiate(mapWalls[3], wallPos, Quaternion.identity);
                     newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
                     allMapPieces.Add(newWallUgh);
@@ -333,17 +333,17 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
                 newWall = null;
 
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z + roomSize / 2);
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z + roomSize / 2 - 0.01f);
                 if (possiblePlaces[i].downDoor && possiblePlaces[i].myFloor != null)
                 {
-                    newWall = PlaceWall(0, wallPos, false);
+                    newWall = PlaceWall(1, wallPos, false);
                     GameObject newWallUgh = Instantiate(mapWalls[2], wallPos, Quaternion.identity);
                     newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
                     allMapPieces.Add(newWallUgh);
                 }
                 else if (possiblePlaces[i].myFloor != null)
                 {
-                    newWall = PlaceWall(1, wallPos, false);
+                    newWall = PlaceWall(3, wallPos, false);
                     GameObject newWallUgh = Instantiate(mapWalls[3], wallPos, Quaternion.identity);
                     newWallUgh.transform.SetParent(MapManager.instance.allChambers[i].transform);
                     allMapPieces.Add(newWallUgh);
