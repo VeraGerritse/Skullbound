@@ -445,6 +445,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4391034957053802}
+  - component: {fileID: 114646434378890910}
   m_Layer: 8
   m_Name: Glove_Prefab
   m_TagString: Untagged
@@ -2286,7 +2287,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1448335111945344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.033}
+  m_LocalPosition: {x: 0, y: -0.081, z: -0.033}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4661734181322072}
@@ -3798,6 +3799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inverse: -1
   canSway: 0
   twitchidlestrenght: 1
   amount: 0.1
@@ -3808,6 +3810,7 @@ MonoBehaviour:
   playerbody: {fileID: 54209950777775184}
   viewmodelcamera: {fileID: 0}
   yVelocity: 0
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114064841602611302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3924,6 +3927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inverse: 1
   canSway: 0
   twitchidlestrenght: 1
   amount: 0.1
@@ -3934,6 +3938,30 @@ MonoBehaviour:
   playerbody: {fileID: 54209950777775184}
   viewmodelcamera: {fileID: 0}
   yVelocity: 0
+  initialPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &114646434378890910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1346659042212112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inverse: 0
+  canSway: 0
+  twitchidlestrenght: 1
+  amount: 0.1
+  maxAmount: 0.06
+  smoothAmount: 6
+  bobbingStrenght: 0
+  bobbyModifier: 0.5
+  playerbody: {fileID: 54209950777775184}
+  viewmodelcamera: {fileID: 0}
+  yVelocity: 0
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!124 &124353215835503332
 Behaviour:
   m_ObjectHideFlags: 1

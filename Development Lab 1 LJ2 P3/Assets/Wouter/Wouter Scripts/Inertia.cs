@@ -5,6 +5,8 @@ using UnityEngine;
 public class Inertia : MonoBehaviour {
     private Animator anim;
 
+    public int inverse;
+
     public bool canSway;
 
     public float twitchidlestrenght;
@@ -23,7 +25,7 @@ public class Inertia : MonoBehaviour {
     public float yVelocity;
 
     //public Vector3 offset;
-    private Vector3 initialPosition;
+    public Vector3 initialPosition;
     
 
     private void Start()
@@ -98,7 +100,7 @@ public class Inertia : MonoBehaviour {
         movementY = Mathf.Clamp(movementY, -maxAmount, maxAmount);
         movementZ = Mathf.Clamp(movementZ, -maxAmount, maxAmount * 0.5f);
 
-        Vector3 finalPosition = new Vector3(movementX, movementY + -yVelocity *0.025f, movementZ);
+        Vector3 finalPosition = new Vector3(inverse * movementX, movementY + -yVelocity *0.025f, movementZ);
         
         transform.localPosition = Vector3.Slerp(transform.localPosition, finalPosition + initialPosition, Time.deltaTime * smoothAmount);
         //viewmodelcamera.transform.localPosition = Vector3.Slerp(transform.localPosition, finalPosition + initialPosition, Time.deltaTime * smoothAmount);
