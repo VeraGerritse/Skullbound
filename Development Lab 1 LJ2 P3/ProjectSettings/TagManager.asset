@@ -9,6 +9,8 @@ TagManager:
   - ViewModelCamera
   - Ground
   - Interactable
+  - FrontDoor
+  - BackDoor
   layers:
   - Default
   - TransparentFX
@@ -25,7 +27,7 @@ TagManager:
   - ObstacleLayer
   - TriggerLayer
   - EnemyLayer
-  - 
+  - DoorLayer
   - 
   - 
   - 
