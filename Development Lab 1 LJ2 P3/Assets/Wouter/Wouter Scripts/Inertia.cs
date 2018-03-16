@@ -28,7 +28,7 @@ public class Inertia : MonoBehaviour {
     public Vector3 initialPosition;
     
 
-    private void Start()
+    public void Start()
     {
         initialPosition = transform.localPosition;
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();

@@ -152,7 +152,7 @@ public class Pathfinding : Interactables {
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider collision)
     {
         if(collision.gameObject.tag == "Player")
         {
@@ -165,7 +165,7 @@ public class Pathfinding : Interactables {
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
