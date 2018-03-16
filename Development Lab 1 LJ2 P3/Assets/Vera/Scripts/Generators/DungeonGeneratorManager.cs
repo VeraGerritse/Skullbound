@@ -165,7 +165,14 @@ public class DungeonGeneratorManager : MonoBehaviour
             print("resetting");
             return;
         }
-
+        for (int i = 0; i < possiblePlaces.Count; i++)
+        {
+            if (possiblePlaces[i].myActivities != null)
+            {
+                possiblePlaces[i].myActivities.DisableRigidBodys();
+            }
+        }
+        EnterRoom(currentRoom);
         MapFloor();
         BuildWalls();
         PlaceDoors();
@@ -553,13 +560,6 @@ public class DungeonGeneratorManager : MonoBehaviour
         AssignThings();
 
         yield return new WaitForSeconds(0.2f);
-        for (int i = 0; i < possiblePlaces.Count; i++)
-        {
-            if(possiblePlaces[i].myActivities!= null)
-            {
-                possiblePlaces[i].myActivities.DisableRigidBodys();
-            }
-        }
-        EnterRoom(currentRoom);
+
     }
 }

@@ -19,13 +19,13 @@ public class Weapon : MonoBehaviour {
     {
         if(owner != null)
         {
-            if (owner.GetComponent<Enemy>() != null)
+            if (true)
             {
                 if (other.tag == "Player")
                 {
                     if (!other.GetComponent<PlayerStats>().playerBLocks)
                     {
-                        other.GetComponent<PlayerStats>().ChangeHealth(-attack + owner.GetComponent<Enemy>().extraAttack);
+                        other.GetComponent<PlayerStats>().ChangeHealth(-attack);
                         other.GetComponent<PlayerActions>().anim.SetTrigger("Recoil");
                     }
                     else

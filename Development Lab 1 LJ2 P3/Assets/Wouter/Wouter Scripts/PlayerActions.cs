@@ -130,13 +130,10 @@ public class PlayerActions : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3, layer))
         {        
-            //print("1");
             if (hit.transform.gameObject.GetComponent<Pickup>() != null)
             {
-                //print("2");
                 if (hit.transform.gameObject.GetComponent<Pickup>().canBePickedUp)
                 {
-                    //print("3");
                     if (hit.transform.gameObject.GetComponent<Weapon>() != null)
                     {
                         GameObject w = hit.transform.gameObject;
@@ -201,7 +198,29 @@ public class PlayerActions : MonoBehaviour {
                     }
                 }
             }
+            if (hit.collider.gameObject.tag == "FrontDoor")
+            {
+                if (hit.collider.gameObject.GetComponent<Door>())
+                {
+                    hit.collider.gameObject.GetComponent<Door>().anim.SetFloat("FrontOrBack", 1);
+                    StartCoroutine(ResetDoor(hit.collider.gameObject.GetComponent<Door>().anim));
+                }
+            }
+            if (hit.collider.gameObject.tag == "BackDoor")
+            {
+                if (hit.collider.gameObject.GetComponent<Door>())
+                {
+                    hit.collider.gameObject.GetComponent<Door>().anim.SetFloat("FrontOrBack", -1);
+                    StartCoroutine(ResetDoor(hit.collider.gameObject.GetComponent<Door>().anim));
+                }
+            }
         }
+    }
+
+    IEnumerator ResetDoor(Animator anima)
+    {
+        yield return new WaitForSeconds(0.1f);
+        anima.SetFloat("FrontOrBack", 0);
     }
 
     public void Hit(float amount)
