@@ -42,11 +42,6 @@ public class MoveMent : MonoBehaviour {
 
     private void Update()
     {
-        
-        // "ButtonUp" & "ButtonDown" cant be in FixedUpdate or they have a chance to be skipped.
-
-        // Don't double dip with fixed update & deltatime.
-
         Looking();
 
         if (Input.GetButton("Crouch"))
