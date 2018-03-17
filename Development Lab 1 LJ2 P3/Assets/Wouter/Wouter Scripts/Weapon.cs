@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour {
                     {
                         if (owner != null)
                         {
-                            owner.GetComponent<Animator>().SetTrigger("Revert");
+                            //owner.GetComponent<Animator>().SetTrigger("Revert");
                             other.GetComponent<PlayerActions>().anim.SetTrigger("RecoilBlock");
                         }
                     }

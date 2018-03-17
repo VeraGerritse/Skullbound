@@ -7,6 +7,8 @@ public class CombatAi : MonoBehaviour {
     public Pathfinding myPathFinding;
     public Animator myAnimator;
 
+    public float actionCooldown;
+
     void Start()
     {
         myPathFinding = GetComponent<Pathfinding>();
@@ -23,6 +25,7 @@ public class CombatAi : MonoBehaviour {
         if (Input.GetKeyDown("2"))
         {
             myAnimator.SetTrigger("test2");
+            Attack();
         }
         if (Input.GetKeyDown("3"))
         {
@@ -31,11 +34,28 @@ public class CombatAi : MonoBehaviour {
         if (Input.GetKeyDown("4"))
         {
 
+
         }
+        if(actionCooldown > 0)
+        {
+            actionCooldown -= Time.deltaTime;
+        }
+
+        if(myPathFinding.atTarget && actionCooldown <= 0)
+        {
+            Attack();
+        }
+
+
+        myAnimator.SetBool("Walk", !myPathFinding.atTarget);
+
+
     }
 
     void Attack()
     {
-
+        myAnimator.SetTrigger("Attack");
+        actionCooldown = 1;
     }
+
 }

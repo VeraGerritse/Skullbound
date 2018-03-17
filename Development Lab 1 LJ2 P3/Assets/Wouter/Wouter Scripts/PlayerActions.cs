@@ -71,8 +71,12 @@ public class PlayerActions : MonoBehaviour {
 
         if(!Input.GetButton("Fire2"))
         {
-            anim.SetTrigger("UnBlock");
+            anim.SetBool("BlockBool", false);
             anim.ResetTrigger("Potion");
+        }
+        else
+        {
+            anim.SetBool("BlockBool", true);
         }
 
         if(Input.GetKeyDown("f"))
