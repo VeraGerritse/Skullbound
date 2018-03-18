@@ -229,25 +229,12 @@ public class PlayerActions : MonoBehaviour {
 
     public void Hit(float amount)
     {
-        if(collisionChecker.hitObject != null)
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, layer))
         {
-            //speedmodifier = amount;
-            if(collisionChecker.hitObject.GetComponent<Rigidbody>() != null)
+            if(hit.transform.tag == "Enemy")
             {
-                collisionChecker.hitObject.GetComponent<Rigidbody>().AddForce(transform.forward * 100 + transform.up * 30);
-            }
-
-            if (collisionChecker.hitObject.GetComponent<Enemy>() != null)
-            {
-                if (collisionChecker.hitObject.GetComponent<Enemy>().isBlocking)
-                {
-                    anim.SetTrigger("TestTrigger");
-                    //anim.ResetTrigger("TestTrigger");
-                }
-            }
-            else if (collisionChecker.hitObject.tag == "Environment")
-            {
-                anim.SetTrigger("TestTrigger");
+                hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack);
             }
         }
     }

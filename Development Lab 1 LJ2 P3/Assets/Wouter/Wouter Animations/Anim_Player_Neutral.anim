@@ -1297,7 +1297,23 @@ AnimationClip:
       m_RotationOrder: 4
     path: CameraParentObject/Glove_Prefab/Glove_Parent/Mesh_Glove_v3(skinned)/Bone001wrist/Bone017Index/Bone018Index2/Bone019Index3/Bone020Index4
   m_ScaleCurves: []
-  m_FloatCurves: []
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: canSway
+    path: CameraParentObject/Glove_Prefab (1)/Glove_Parent
+    classID: 114
+    script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -1501,6 +1517,13 @@ AnimationClip:
       script: {fileID: 0}
       typeID: 4
       customType: 4
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3168495706
+      attribute: 530698546
+      script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
+      typeID: 114
+      customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 1796139464
@@ -5814,6 +5837,22 @@ AnimationClip:
     path: CameraParentObject/Glove_Prefab/Glove_Parent/Mesh_Glove_v3(skinned)/Bone001wrist/Bone022Thumb/Bone023Thumb2
     classID: 4
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: canSway
+    path: CameraParentObject/Glove_Prefab (1)/Glove_Parent
+    classID: 114
+    script: {fileID: 11500000, guid: 25f091bc2ad99ba4ab3afee97fa473af, type: 3}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2
