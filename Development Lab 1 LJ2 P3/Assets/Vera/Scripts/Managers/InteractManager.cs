@@ -18,13 +18,10 @@ public class InteractManager : MonoBehaviour {
     {
         if (actions != null)
         {
-            print("1");
             if (actions.anim != null)
             {
-                print("2");
                 if (actions.anim.GetCurrentAnimatorStateInfo(2).IsTag("lol"))
                 {
-                    print("3");
                     RaycastHit hit;
                     if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3, layers))
                     {

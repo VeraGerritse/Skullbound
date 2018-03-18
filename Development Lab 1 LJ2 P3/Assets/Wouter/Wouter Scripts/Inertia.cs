@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Inertia : MonoBehaviour {
-    private Animator anim;
+    public Animator anim;
 
     public int inverse;
 
@@ -31,11 +31,10 @@ public class Inertia : MonoBehaviour {
     public void Start()
     {
         initialPosition = transform.localPosition;
-        anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        playerbody = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>();
-        viewmodelcamera = GameObject.FindGameObjectWithTag("ViewModelCamera");
-
-
+        
+        
+        
+        
     }
 
     public void IHateMyLife(bool depression)
@@ -46,6 +45,10 @@ public class Inertia : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if(anim == null)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        }
 
     }
 

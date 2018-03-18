@@ -14,7 +14,7 @@ public class Pathfinding : Interactables {
     public float turnSpeed = 100;
 
     bool startUp;
-    bool atTarget;
+    public bool atTarget;
     Node lastNode;
 
 
