@@ -25,11 +25,9 @@ public class InteractManager : MonoBehaviour {
                     RaycastHit hit;
                     if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3, layers))
                     {
-                        print("test");
                         if (hit.collider.gameObject != null)
                         {
-                            print(hit.collider.gameObject.tag);
-                            if (hit.collider.gameObject.tag == "Interactable" || hit.collider.gameObject.tag == "FrontDoor" || hit.collider.gameObject.tag == "BackDoor")
+                            if (hit.collider.gameObject.tag == "Interactable")
                             {
                                 UIManager.instance.interfaceGame.inter = true;
                             }

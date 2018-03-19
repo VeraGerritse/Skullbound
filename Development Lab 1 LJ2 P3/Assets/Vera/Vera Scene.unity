@@ -641,7 +641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee18ea35de5abd4cb140c5140af7577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: 11
+  gridSize: 3
   locations: {fileID: 1468260266567722, guid: 7c4ee1f4c70db754fbedb1e4b1130a45, type: 2}
   roomSize: 20
   possiblePlaces: []
@@ -651,23 +651,23 @@ MonoBehaviour:
   bossRooms:
   - {fileID: 1699144295785262, guid: ad267fc030789904c961d6fbaeb3cd0e, type: 2}
   chance: 50
-  roomsNeeded: 6
-  maxRooms: 20
+  roomsNeeded: 1
+  maxRooms: 50
   chanceOnDoor: 0
   verticalWall:
-  - {fileID: 1556751645943552, guid: e6dde1c8e36841d49ab00a10536d836a, type: 2}
-  - {fileID: 1491353634560254, guid: 9b2a64d16bcc39e41bc52e432460628e, type: 2}
-  - {fileID: 1965396263723568, guid: 54bfede79e8a0884695f17237cf79028, type: 2}
-  - {fileID: 1396092921272146, guid: a7542d21b758f5f458217a7360d83963, type: 2}
+  - {fileID: 1429150343758864, guid: 10b778136964e11448db9e195a01a1ec, type: 2}
+  - {fileID: 1172212307569274, guid: 4fd2bf9d93753dd44a306a4b46fa845e, type: 2}
+  - {fileID: 1082076548129026, guid: 7f1a5a260dbf9bf4699c9e8ba02c3b5b, type: 2}
+  - {fileID: 1677141903023622, guid: 9d3116e73e677104c8322d9fc579d45a, type: 2}
   horizontalWall:
-  - {fileID: 1615037004280680, guid: d69312ff96d0b774bb0a77826c34aea8, type: 2}
-  - {fileID: 1059788468417362, guid: 836b4b710217c974b91cfd1bb3a67400, type: 2}
-  - {fileID: 1655737783204928, guid: 5145c7ddb48000b4f992f0050c979e49, type: 2}
-  - {fileID: 1561708634966834, guid: 9536b0ceeb7d61a4ba2f8b09549c462a, type: 2}
+  - {fileID: 1481369220587868, guid: 8f572dbd431ef1c428c56111b8fca04d, type: 2}
+  - {fileID: 1217652073381108, guid: eed5adf5d11aa7b49a24d5fc8193c57a, type: 2}
+  - {fileID: 1644840637324012, guid: 3a7f91a78cac54d4781bc5072d43841d, type: 2}
+  - {fileID: 1045233594275882, guid: e8b9dcb524aebae4ba36e20de68b4f23, type: 2}
   myWalls: []
   Doors:
-  - {fileID: 1621951934301622, guid: 9d656320f1412b64cb67e95929d72161, type: 2}
-  - {fileID: 1363211369988884, guid: 4e151e1d7fb702b42b23ea43acd68dd5, type: 2}
+  - {fileID: 1865963793962150, guid: 4e151e1d7fb702b42b23ea43acd68dd5, type: 2}
+  - {fileID: 1996724819899376, guid: 9d656320f1412b64cb67e95929d72161, type: 2}
   playerPreFab: {fileID: 1795314411986562, guid: 66cfbfb586711b4408460cc030b3c5d0,
     type: 2}
   mapCamera: {fileID: 1077254911223136, guid: b6f5c37a51be3914bb9636422754f6f4, type: 2}
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unwalkableArea:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 36864
   noArea:
     serializedVersion: 2
     m_Bits: 0
