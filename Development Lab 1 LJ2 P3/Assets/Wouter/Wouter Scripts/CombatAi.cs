@@ -1,41 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombatAi : MonoBehaviour {
 
     public Pathfinding myPathFinding;
     public Animator myAnimator;
+    public Text textHP;
+    public List<GameObject> bones = new List<GameObject>(); 
+
+    [Header("Stats")]
+    public float Health;
 
     public float actionCooldown;
 
     void Start()
     {
+        textHP.text = Health.ToString();
         myPathFinding = GetComponent<Pathfinding>();
         myAnimator = transform.GetChild(0).GetComponent<Animator>();
     }
 
+
+
     void Update()
     {
-        //tests
         if(Input.GetKeyDown("1"))
         {
-            myAnimator.SetTrigger("test1");
+            ChangeHealth(-10);
         }
-        if (Input.GetKeyDown("2"))
-        {
-            myAnimator.SetTrigger("test2");
-            Attack();
-        }
-        if (Input.GetKeyDown("3"))
-        {
 
-        }
-        if (Input.GetKeyDown("4"))
-        {
-
-
-        }
         if(actionCooldown > 0)
         {
             actionCooldown -= Time.deltaTime;
@@ -45,17 +40,36 @@ public class CombatAi : MonoBehaviour {
         {
             Attack();
         }
-
-
         myAnimator.SetBool("Walk", !myPathFinding.atTarget);
-
-
     }
 
     void Attack()
     {
         myAnimator.SetTrigger("Attack");
         actionCooldown = 1;
+        myAnimator.ResetTrigger("Revert");
+    }
+
+    public void ChangeHealth(float amount)
+    {
+        Health += amount;
+        textHP.text = Health.ToString();
+        if(amount < 0)
+        {
+            myAnimator.SetTrigger("Hurt");
+            actionCooldown = 2;
+        }
+        if(Health <= 0)
+        {
+            RagdollBones();
+            myAnimator.enabled = false;
+            myPathFinding.enabled = false;
+        }
+    }
+
+    void RagdollBones()
+    {
+
     }
 
 }

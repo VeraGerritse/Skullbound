@@ -5,6 +5,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
 
     public GameObject owner;
+    public Animator ownerAnimator;
+    public CombatAi myCombatAi;
 
     //stats
     public string weaponName;
@@ -12,19 +14,32 @@ public class Weapon : MonoBehaviour {
     public float attack;
     public float defence;
     public float staminacost;
-  
+
     //enemy only
+
+
+    private void Update()
+    {
+        if(Input.GetKeyDown("u"))
+        {
+            
+        }
+    }
 
     public void OnTriggerEnter(Collider other)       
     {
-        if(owner != null)
+        if(true)
         {
+            //print("1");
             if (true)
             {
+                //print("2");
                 if (other.tag == "Player")
                 {
+                    //print("3");
                     if (!other.GetComponent<PlayerStats>().playerBLocks)
                     {
+                        //print("4");
                         other.GetComponent<PlayerStats>().ChangeHealth(-attack);
                         other.GetComponent<PlayerActions>().anim.SetTrigger("Recoil");
                     }
@@ -32,8 +47,11 @@ public class Weapon : MonoBehaviour {
                     {
                         if (owner != null)
                         {
-                            //owner.GetComponent<Animator>().SetTrigger("Revert");
+
+
+                            GetComponentInParent(typeof(Animator)).transform.GetComponent<Animator>().SetTrigger("Revert");
                             other.GetComponent<PlayerActions>().anim.SetTrigger("RecoilBlock");
+                            myCombatAi.actionCooldown = 2;
                         }
                     }
                 }
