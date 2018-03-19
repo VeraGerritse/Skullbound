@@ -1,16 +1,23 @@
 fileFormatVersion: 2
-guid: 732950174f204044f8a2ec6bdce8d65a
-timeCreated: 1519291481
+guid: 4dc8a3b5e086f6548823630bfd1df31a
+timeCreated: 1521409365
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: Cylinder001
+    100002: //RootNode
+    100004: Object001
+    400000: Cylinder001
+    400002: //RootNode
+    400004: Object001
     2100000: No Name
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Torch_LP
+    2300000: Cylinder001
+    2300002: Object001
+    3300000: Cylinder001
+    3300002: Object001
+    4300000: Cylinder001
+    4300002: Object001
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -42,7 +49,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
