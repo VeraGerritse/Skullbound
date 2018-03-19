@@ -7,6 +7,7 @@ public class GameInterface : MonoBehaviour {
     public Canvas gameInterface;
     public Text canInteract;
     public bool inter;
+    public Image Health_UI;
 
     public void Interact()
     {
@@ -18,6 +19,12 @@ public class GameInterface : MonoBehaviour {
         {
             CantInteract();
         }
+    }
+
+    public void UpdateHealth(float currentHealth,float maxHealth)
+    {
+        float procentage = currentHealth / maxHealth;
+        Health_UI.fillAmount = procentage;
     }
 
     void CanInteract()
