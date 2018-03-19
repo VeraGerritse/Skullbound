@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114661713450003732}
   - component: {fileID: 65058200299111450}
   - component: {fileID: 114100960528978864}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Iron Broadsword
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  ownerAnimator: {fileID: 0}
+  myCombatAi: {fileID: 0}
   weaponName: Iron Broadsword
   itemId: 0
   attack: 20
