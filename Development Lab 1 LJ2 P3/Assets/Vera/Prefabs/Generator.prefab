@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1021433437451136}
+  m_IsPrefabParent: 1
+--- !u!1 &1021433437451136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4201787624690070}
+  - component: {fileID: 114775448404233056}
+  - component: {fileID: 114550971252426898}
+  - component: {fileID: 114719260384864980}
+  - component: {fileID: 114937018540227170}
+  m_Layer: 0
+  m_Name: Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4201787624690070
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021433437451136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114550971252426898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021433437451136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d7d3c6aaf652f459109fdaf0b8d15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allChambers: []
+--- !u!114 &114719260384864980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021433437451136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4380489b951e52c4aa02a2be70bf95fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114775448404233056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021433437451136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee18ea35de5abd4cb140c5140af7577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: 3
+  locations: {fileID: 1468260266567722, guid: 7c4ee1f4c70db754fbedb1e4b1130a45, type: 2}
+  roomSize: 20
+  possiblePlaces: []
+  floors:
+  - {fileID: 1772169063322876, guid: 140b465a2e9abf14bab39a6c56dd6cff, type: 2}
+  - {fileID: 1604364423848994, guid: 562b00f47d0c7a9459937236b748b2f9, type: 2}
+  bossRooms:
+  - {fileID: 1235402502391718, guid: 140de8e5a40859d468492bdb630ebb7e, type: 2}
+  chance: 50
+  roomsNeeded: 1
+  maxRooms: 50
+  chanceOnDoor: 0
+  verticalWall:
+  - {fileID: 1429150343758864, guid: 10b778136964e11448db9e195a01a1ec, type: 2}
+  - {fileID: 1172212307569274, guid: 4fd2bf9d93753dd44a306a4b46fa845e, type: 2}
+  - {fileID: 1082076548129026, guid: 7f1a5a260dbf9bf4699c9e8ba02c3b5b, type: 2}
+  - {fileID: 1677141903023622, guid: 9d3116e73e677104c8322d9fc579d45a, type: 2}
+  horizontalWall:
+  - {fileID: 1481369220587868, guid: 8f572dbd431ef1c428c56111b8fca04d, type: 2}
+  - {fileID: 1217652073381108, guid: eed5adf5d11aa7b49a24d5fc8193c57a, type: 2}
+  - {fileID: 1644840637324012, guid: 3a7f91a78cac54d4781bc5072d43841d, type: 2}
+  - {fileID: 1045233594275882, guid: e8b9dcb524aebae4ba36e20de68b4f23, type: 2}
+  myWalls: []
+  Doors:
+  - {fileID: 1865963793962150, guid: 4e151e1d7fb702b42b23ea43acd68dd5, type: 2}
+  - {fileID: 1996724819899376, guid: 9d656320f1412b64cb67e95929d72161, type: 2}
+  playerPreFab: {fileID: 1795314411986562, guid: 66cfbfb586711b4408460cc030b3c5d0,
+    type: 2}
+  mapCamera: {fileID: 1077254911223136, guid: b6f5c37a51be3914bb9636422754f6f4, type: 2}
+  player: {fileID: 0}
+  bossRoomLocTestForPathFinder: {fileID: 0}
+  startingRooms:
+  - {fileID: 1764914233887686, guid: 62f8632d423357a40912243298c88e29, type: 2}
+  mapFloor: {fileID: 1819904177379716, guid: 4e4a30dc1a21b8b419b2aa988b3f3f1a, type: 2}
+  mapWalls:
+  - {fileID: 1334484163607076, guid: 423a2703c219ca349b71b85a3e12b170, type: 2}
+  - {fileID: 1880558743853650, guid: ed90a88cf5874c14eadc100862ca4e33, type: 2}
+  - {fileID: 1951025686071180, guid: 726423baf3e003d418f940c19b6d199b, type: 2}
+  - {fileID: 1624403020933556, guid: 6dbda1289a423c1439b60032a36d5d60, type: 2}
+--- !u!114 &114937018540227170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021433437451136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d480b171befbca4da92bbfe28024c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unwalkableArea:
+    serializedVersion: 2
+    m_Bits: 36864
+  noArea:
+    serializedVersion: 2
+    m_Bits: 0
+  gridSize: {x: 80, y: 30}
+  nodeRadius: 0.5
+  ready: 0
+  onlyDisplayPath: 0
