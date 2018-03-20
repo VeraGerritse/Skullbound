@@ -57,7 +57,7 @@ public class CombatAi : MonoBehaviour {
         if(amount < 0)
         {
             myAnimator.SetTrigger("Hurt");
-            actionCooldown = 2;
+            actionCooldown = 0.5f;
         }
         if(Health <= 0)
         {
@@ -69,7 +69,7 @@ public class CombatAi : MonoBehaviour {
 
     void RagdollBones()
     {
-
+        Destroy(this, 1);
     }
 
 }

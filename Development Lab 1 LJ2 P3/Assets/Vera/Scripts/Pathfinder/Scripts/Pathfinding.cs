@@ -34,6 +34,14 @@ public class Pathfinding : Interactables {
         {
             FindPath(aI.position, target.position);
         }
+
+        if(atTarget)
+        {
+            if(Vector3.Distance(this.gameObject.transform.position, Camera.main.transform.position) >= 3)
+            {
+                atTarget = false;
+            }
+        }
     }
 
     void FindPath(Vector3 startPos, Vector3 targetPos)
@@ -165,11 +173,5 @@ public class Pathfinding : Interactables {
         }
     }
 
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            atTarget = false;
-        }
-    }
+
 }
