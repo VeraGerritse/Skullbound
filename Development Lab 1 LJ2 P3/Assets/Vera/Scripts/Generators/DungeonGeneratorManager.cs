@@ -172,11 +172,11 @@ public class DungeonGeneratorManager : MonoBehaviour
                 possiblePlaces[i].myActivities.DisableRigidBodys();
             }
         }
-        EnterRoom(currentRoom);
+        EnterRoom(possiblePlaces[startPoint]);
         MapFloor();
         BuildWalls();
         PlaceDoors();
-        StartCoroutine(StartPathfinder());
+        StartCoroutine(StartPathfinder(currentRoom));
     }
 
     public GameObject RandomRoom()
@@ -274,7 +274,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             GameObject newWall = null;
             for (int i = 0; i < possiblePlaces.Count; i++)
             {
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x + roomSize / 2 - 0.01f, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x + roomSize / 2 - 0.15f, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
                 if (possiblePlaces[i].leftDoor && possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(0, wallPos, true);
@@ -296,7 +296,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
                 newWall = null;
 
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x - roomSize / 2 + 0.01f, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x - roomSize / 2 + 0.15f, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z);
                 if (possiblePlaces[i].rightDoor && possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(1, wallPos, true);
@@ -318,7 +318,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
                 newWall = null;
 
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z - roomSize / 2 + 0.01f);
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z - roomSize / 2 + 0.15f);
                 if (possiblePlaces[i].upDoor && possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(0, wallPos, false);
@@ -340,7 +340,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
                 newWall = null;
 
-                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z + roomSize / 2 - 0.01f);
+                wallPos = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y, possiblePlaces[i].transform.position.z + roomSize / 2 - 0.15f);
                 if (possiblePlaces[i].downDoor && possiblePlaces[i].myFloor != null)
                 {
                     newWall = PlaceWall(1, wallPos, false);
@@ -553,13 +553,13 @@ public class DungeonGeneratorManager : MonoBehaviour
         InteractManager.instance.actions = player.GetComponentInChildren<PlayerActions>();
     }
 
-    IEnumerator StartPathfinder()
+    IEnumerator StartPathfinder(RoomGen startRoom)
     {
         yield return new WaitForSeconds(0.1f);
         Grid.instance.GridSize(roomSize, gridSize);
         AssignThings();
 
         yield return new WaitForSeconds(0.2f);
-
+        EnterRoom(startRoom);
     }
 }
