@@ -2362,7 +2362,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721472159311264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.5200005, y: 0.9999504, z: 0}
+  m_LocalPosition: {x: -4.639054, y: 1.96, z: 4.3833513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4112700446807584}
@@ -2768,7 +2768,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.021079667, y: 0.1, z: 0.39}
+  m_Size: {x: 0.021079667, y: 0.1, z: 0.7}
   m_Center: {x: 0.00000003259253, y: 0.000000019672784, z: 0.2}
 --- !u!95 &95707910835961998
 Animator:
@@ -2820,6 +2820,8 @@ MonoBehaviour:
   myPathFinding: {fileID: 114114649115529628}
   myAnimator: {fileID: 95707910835961998}
   textHP: {fileID: 114791490006959350}
+  bones: []
+  bonepieces: {fileID: 1604361798807788, guid: bad9716257962734085f9a8b50b2896d, type: 2}
   Health: 15
   actionCooldown: 0
 --- !u!114 &114238336411026218
@@ -2838,7 +2840,7 @@ MonoBehaviour:
   myCombatAi: {fileID: 114142388083209980}
   weaponName: Iron Broadsword
   itemId: 0
-  attack: 10
+  attack: 20
   defence: 10
   staminacost: 10
 --- !u!114 &114338947087165374

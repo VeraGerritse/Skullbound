@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour {
     public float playerMaxHealth;
     public float playerHealth;
     public float playerStamina;
+    public int potionCount;
     public GameObject weapon;
     public GameObject previousWeapon;
     public GameObject shield;

@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4470155420002794}
   - component: {fileID: 33178325663197348}
   - component: {fileID: 23778056085101818}
-  - component: {fileID: 95607907754080068}
   m_Layer: 0
   m_Name: Potion_001_LP
   m_TagString: Untagged
@@ -83,20 +82,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189677981343138}
   m_Mesh: {fileID: 4300000, guid: 59b184a0a1ad5e148a7053e88fd7b1d8, type: 3}
---- !u!95 &95607907754080068
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1189677981343138}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 59b184a0a1ad5e148a7053e88fd7b1d8, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

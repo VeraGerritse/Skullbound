@@ -67,6 +67,7 @@ public class PlayerActions : MonoBehaviour {
         if(Input.GetButtonUp("Fire2"))
         {
             anim.ResetTrigger("Swing");
+            
         }
 
         if(!Input.GetButton("Fire2"))
@@ -100,8 +101,18 @@ public class PlayerActions : MonoBehaviour {
 
         if (Input.GetKeyDown("q"))
         {
+            if(playerStats.potionCount > 0)
+            {
+                anim.SetBool("HasPotion", true);
+                
+            }
+            else
+            {
+                anim.SetBool("HasPotion", false);
+            }
             anim.SetTrigger("Potion");
-            anim.ResetTrigger("OpenDoor");
+            
+            
         }
 
         if(Input.GetKeyDown("m"))
@@ -146,6 +157,7 @@ public class PlayerActions : MonoBehaviour {
                         playerStats.previousWeapon = playerStats.weapon;
                         playerStats.weapon = hit.transform.gameObject;
                         Destroy(playerStats.previousWeapon);
+                        
                         if (playerStats.previousWeapon != null)
                         {
                             if (playerStats.previousWeapon.GetComponent<Rigidbody>())
@@ -176,6 +188,8 @@ public class PlayerActions : MonoBehaviour {
                         playerStats.previousShield = playerStats.shield;
                         playerStats.shield = hit.transform.gameObject;
                         Destroy(playerStats.previousShield);
+                        playerStats.shield.name = playerStats.shield.GetComponent<Shield>().shieldName;
+                        
 
                         if (playerStats.previousShield != null)
                         {
@@ -200,12 +214,18 @@ public class PlayerActions : MonoBehaviour {
                             playerStats.viewmodelgearLeft[playerStats.shield.GetComponent<Shield>().itemId].SetActive(true);
                         }
                     }
-                }
-            }
 
-            if (hit.collider.gameObject.GetComponent<Door>())
-            {
-               hit.collider.gameObject.GetComponent<Door>().anim.SetTrigger("Open");
+                    if (hit.collider.gameObject.GetComponent<Door>())
+                    {
+                        hit.collider.gameObject.GetComponent<Door>().anim.SetTrigger("Open");
+                    }
+
+                    else if(hit.transform.gameObject.GetComponent<Potion>() != null)
+                    {
+                        playerStats.potionCount++;
+                        DestroyImmediate(hit.transform.gameObject);
+                    }
+                }
             }
         }
     }
@@ -213,14 +233,26 @@ public class PlayerActions : MonoBehaviour {
     public void Hit(float amount)
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, layer))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3))
         {
-            if(hit.transform.tag == "Enemy")
+            if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
+            {
+                hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 400 + transform.up * 200);
+            }
+            if (hit.transform.tag == "Enemy")
             {
                 hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack);
             }
+
         }
     }
+    public void ConsumePotion()
+    {
+        playerStats.ChangeHealth(playerStats.playerMaxHealth - playerStats.playerHealth);
+        
+        playerStats.potionCount--;
+    }
+
     public void SetSpeed(float amount)
     {
         speedmodifier = amount;

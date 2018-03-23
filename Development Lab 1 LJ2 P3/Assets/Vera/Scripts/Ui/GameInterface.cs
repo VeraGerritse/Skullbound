@@ -7,7 +7,8 @@ public class GameInterface : MonoBehaviour {
     public Canvas gameInterface;
     public Text canInteract;
     public bool inter;
-    public Image Health_UI;
+    public Image Health_UI_Red;
+    public Image Health_UI_Yellow;
 
     public void Interact()
     {
@@ -24,7 +25,9 @@ public class GameInterface : MonoBehaviour {
     public void UpdateHealth(float currentHealth,float maxHealth)
     {
         float procentage = currentHealth / maxHealth;
-        Health_UI.fillAmount = procentage;
+        Health_UI_Red.fillAmount = procentage;
+
+        //procentage lmao
     }
 
     void CanInteract()
@@ -35,5 +38,17 @@ public class GameInterface : MonoBehaviour {
     void CantInteract()
     {
         canInteract.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        if(Health_UI_Red.fillAmount < Health_UI_Yellow.fillAmount)
+        {
+            Health_UI_Yellow.fillAmount -= Time.deltaTime * 2 * (Health_UI_Yellow.fillAmount - Health_UI_Red.fillAmount);
+        }
+        else
+        {
+            Health_UI_Yellow.fillAmount = Health_UI_Red.fillAmount;
+        }
     }
 }

@@ -66,6 +66,11 @@ public class MoveMent : MonoBehaviour {
         {
             Jump();
         }
+
+        if(!Input.GetButton("Fire2"))
+        {
+            modifier = 1;
+        }
     }
 
     public void Looking()

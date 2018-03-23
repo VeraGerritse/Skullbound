@@ -8,7 +8,8 @@ public class CombatAi : MonoBehaviour {
     public Pathfinding myPathFinding;
     public Animator myAnimator;
     public Text textHP;
-    public List<GameObject> bones = new List<GameObject>(); 
+    public List<GameObject> bones = new List<GameObject>();
+    public GameObject bonepieces;
 
     [Header("Stats")]
     public float Health;
@@ -69,7 +70,8 @@ public class CombatAi : MonoBehaviour {
 
     void RagdollBones()
     {
-        Destroy(this, 1);
+        Instantiate(bonepieces, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        Destroy(this.gameObject, 0.01f);
     }
 
 }
