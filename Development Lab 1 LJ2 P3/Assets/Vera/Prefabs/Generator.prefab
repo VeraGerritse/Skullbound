@@ -117,6 +117,7 @@ MonoBehaviour:
   - {fileID: 1880558743853650, guid: ed90a88cf5874c14eadc100862ca4e33, type: 2}
   - {fileID: 1951025686071180, guid: 726423baf3e003d418f940c19b6d199b, type: 2}
   - {fileID: 1624403020933556, guid: 6dbda1289a423c1439b60032a36d5d60, type: 2}
+  ready: 0
 --- !u!114 &114937018540227170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,4 +138,4 @@ MonoBehaviour:
   gridSize: {x: 80, y: 30}
   nodeRadius: 0.5
   ready: 0
-  onlyDisplayPath: 0
+  onlyDisplayPath: 1

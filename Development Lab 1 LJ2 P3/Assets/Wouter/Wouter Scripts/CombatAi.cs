@@ -10,7 +10,7 @@ public class CombatAi : MonoBehaviour {
     public Text textHP;
     public List<GameObject> bones = new List<GameObject>();
     public GameObject bonepieces;
-
+    RoomActivities myRoom;
     [Header("Stats")]
     public float Health;
 
@@ -63,6 +63,7 @@ public class CombatAi : MonoBehaviour {
         if(Health <= 0)
         {
             RagdollBones();
+            myRoom.EnemyKilled(this);
             myAnimator.enabled = false;
             myPathFinding.enabled = false;
         }

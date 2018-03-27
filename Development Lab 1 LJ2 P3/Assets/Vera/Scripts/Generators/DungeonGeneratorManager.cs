@@ -55,6 +55,8 @@ public class DungeonGeneratorManager : MonoBehaviour
     RoomGen currentRoom;
     RoomGen LastRoom;
 
+    public bool ready;
+
     void Start()
     {
         if(maxRooms < roomsNeeded)
@@ -218,6 +220,11 @@ public class DungeonGeneratorManager : MonoBehaviour
         {
             Destroy(allMapPieces[i]);
         }
+        for (int i = 0; i < allDoors.Count; i++)
+        {
+            Destroy(allDoors[i]);
+        }
+        allDoors.Clear();
         Destroy(player);
         walls = false;
         player = null;
@@ -495,8 +502,9 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     public void EnterRoom(RoomGen entering)
     {
-        print(entering);
+        print(entering + "  entering");
         print(Grid.instance.ready);
+        print(currentRoom + "  Current room");
         if (Grid.instance.ready)
         {
             if (currentRoom != null)
@@ -565,16 +573,17 @@ public class DungeonGeneratorManager : MonoBehaviour
         
 
         yield return new WaitForSeconds(0.2f);
-        for (int i = 0; i < possiblePlaces.Count; i++)
-        {
-            if (possiblePlaces[i].myActivities != null)
-            {
-                possiblePlaces[i].myActivities.DisableRigidBodys();
-            }
-        }
+        //for (int i = 0; i < possiblePlaces.Count; i++)
+        //{
+        //    if (possiblePlaces[i].myActivities != null)
+        //    {
+        //        possiblePlaces[i].myActivities.DisableRigidBodys();
+        //    }
+        //}
         EnterRoom(possiblePlaces[startRoom]);
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.5f);
         PlacePlayer(startRoom);
         AssignThings();
+        ready = true;
     }
 }
