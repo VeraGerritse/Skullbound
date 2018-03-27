@@ -70,7 +70,25 @@ public class CombatAi : MonoBehaviour {
 
     void RagdollBones()
     {
-        Instantiate(bonepieces, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        GameObject g = Instantiate(bonepieces, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        Destroy(g.gameObject, 3);
+        List<Rigidbody> rl = new List<Rigidbody>();
+        foreach (Transform t in g.transform)
+        {
+            if(t != g.transform)
+            {
+                rl.Add(t.GetComponent<Rigidbody>());
+            }
+        }
+
+        for (int i = 0; i < rl.Count; i++)
+        {
+            rl[i].AddExplosionForce(1000, Camera.main.transform.position, 20);
+            rl[i].AddForce(transform.up * 400);
+
+        }
+        
+
         Destroy(this.gameObject, 0.01f);
     }
 
