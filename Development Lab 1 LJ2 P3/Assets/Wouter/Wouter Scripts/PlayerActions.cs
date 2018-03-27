@@ -10,6 +10,7 @@ public class PlayerActions : MonoBehaviour {
     public float speedmodifier;
     public LayerMask layer;
     public bool isNeutral;
+    public LayerMask attacklayer;
 
     
 
@@ -144,7 +145,11 @@ public class PlayerActions : MonoBehaviour {
     {   
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3, layer))
-        {        
+        {
+            if (hit.collider.gameObject.GetComponent<Door>() != null)
+            {
+                hit.collider.gameObject.GetComponent<Door>().anim.SetTrigger("Open");
+            }
             if (hit.transform.gameObject.GetComponent<Pickup>() != null)
             {
                 if (hit.transform.gameObject.GetComponent<Pickup>().canBePickedUp)
@@ -156,7 +161,7 @@ public class PlayerActions : MonoBehaviour {
 
                         playerStats.previousWeapon = playerStats.weapon;
                         playerStats.weapon = hit.transform.gameObject;
-                        Destroy(playerStats.previousWeapon);
+                        //Destroy(playerStats.previousWeapon);
                         
                         if (playerStats.previousWeapon != null)
                         {
@@ -221,18 +226,13 @@ public class PlayerActions : MonoBehaviour {
                     }
                 }
             }
-            if (hit.collider.gameObject.GetComponent<Door>())
-            {
-                hit.collider.gameObject.GetComponent<Door>().anim.SetTrigger("Open");
-            }
-
         }
     }
 
     public void Hit(float amount)
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2, attacklayer))
         {
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
@@ -242,7 +242,6 @@ public class PlayerActions : MonoBehaviour {
             {
                 hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack);
             }
-
         }
     }
     public void ConsumePotion()

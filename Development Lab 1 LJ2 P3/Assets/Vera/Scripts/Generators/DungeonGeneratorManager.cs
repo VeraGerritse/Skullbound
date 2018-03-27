@@ -160,7 +160,6 @@ public class DungeonGeneratorManager : MonoBehaviour
         bool reset = PlaceBossRoom(startPoint - 1, startPoint + 1, startPoint - gridSize, startPoint + gridSize, startPoint);
         if (reset)
         {
-            print("resetting");
             return;
         }
         for (int i = 0; i < possiblePlaces.Count; i++)
@@ -174,7 +173,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         MapFloor();
         BuildWalls();
         PlaceDoors();
-        StartCoroutine(StartPathfinder(currentRoom));
+        StartCoroutine(StartPathfinder(startPoint));
     }
 
     public GameObject RandomRoom()
@@ -496,6 +495,8 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     public void EnterRoom(RoomGen entering)
     {
+        print(entering);
+        print(Grid.instance.ready);
         if (Grid.instance.ready)
         {
             if (currentRoom != null)
@@ -543,6 +544,12 @@ public class DungeonGeneratorManager : MonoBehaviour
                     currentRoom.right.myActivities.EnableRigidBodys();
                 }
             }
+            else
+            {
+                currentRoom = entering;
+                currentRoom.myActivities.EnableRigidBodys();
+                EnterRoom(entering);
+            }
         }
     }
 
@@ -551,11 +558,11 @@ public class DungeonGeneratorManager : MonoBehaviour
         InteractManager.instance.actions = player.GetComponentInChildren<PlayerActions>();
     }
 
-    IEnumerator StartPathfinder(RoomGen startRoom)
+    IEnumerator StartPathfinder(int startRoom)
     {
         yield return new WaitForSeconds(0.1f);
         Grid.instance.GridSize(roomSize, gridSize);
-        AssignThings();
+        
 
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < possiblePlaces.Count; i++)
@@ -565,7 +572,9 @@ public class DungeonGeneratorManager : MonoBehaviour
                 possiblePlaces[i].myActivities.DisableRigidBodys();
             }
         }
-        EnterRoom(startRoom);
-        PlacePlayer(startPoint);
+        EnterRoom(possiblePlaces[startRoom]);
+        yield return new WaitForSeconds(0.4f);
+        PlacePlayer(startRoom);
+        AssignThings();
     }
 }

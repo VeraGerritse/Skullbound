@@ -641,7 +641,8 @@ GameObject:
   - component: {fileID: 4112700446807584}
   - component: {fileID: 95707910835961998}
   - component: {fileID: 114338947087165374}
-  m_Layer: 0
+  - component: {fileID: 136885525215388320}
+  m_Layer: 14
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,12 +946,11 @@ GameObject:
   - component: {fileID: 4841291454372326}
   - component: {fileID: 33378456455516786}
   - component: {fileID: 136892807348747384}
-  - component: {fileID: 136804849579049278}
   - component: {fileID: 23171706774331360}
   - component: {fileID: 54892071426524804}
   - component: {fileID: 114114649115529628}
   - component: {fileID: 114142388083209980}
-  m_Layer: 14
+  m_Layer: 13
   m_Name: Skeleton Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2362,7 +2362,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721472159311264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.73, y: 1.96, z: 4.3833513}
+  m_LocalPosition: {x: -4.639054, y: 1.96, z: 4.3833513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4112700446807584}
@@ -2946,19 +2946,19 @@ MonoBehaviour:
   attack: 5
   defence: 10
   staminacost: 5
---- !u!136 &136804849579049278
+--- !u!136 &136885525215388320
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1721472159311264}
+  m_GameObject: {fileID: 1514343412289136}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!136 &136892807348747384
 CapsuleCollider:
   m_ObjectHideFlags: 1
