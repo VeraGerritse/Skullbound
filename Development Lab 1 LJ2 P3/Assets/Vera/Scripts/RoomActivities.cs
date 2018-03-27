@@ -8,6 +8,7 @@ public class RoomActivities : MonoBehaviour {
     public List<Interactables> interactable = new List<Interactables>();
 
     public RoomGen myRoom;
+    bool inRoom;
 
     private void Start()
     {
@@ -50,13 +51,18 @@ public class RoomActivities : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && inRoom)
+        {
+            inRoom = false;
+        }
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.tag == "Player" && !inRoom)
         {
             StartInteracting();
-            if (Grid.instance.ready)
-            {
-                print(myRoom + "   myroom  " + myRoom.myActivities);
-            }
+            inRoom = true;
             DungeonGeneratorManager.instance.EnterRoom(myRoom);
         }
     }
@@ -65,6 +71,7 @@ public class RoomActivities : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
+            inRoom = false;
             StopInteracting();
         }
     }

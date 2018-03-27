@@ -27,7 +27,6 @@ public class DungeonGeneratorManager : MonoBehaviour
     bool walls;
 
     [Header("Doors")]
-    // oneven = vert, even = hor
     public List<GameObject> Doors = new List<GameObject>();
     List<GameObject> allDoors = new List<GameObject>();
 
@@ -150,7 +149,6 @@ public class DungeonGeneratorManager : MonoBehaviour
             ResetDungeon();
             return;
         }
-        PlacePlayer(startPoint);
         PlaceStartRoom(startPoint);
 
         for (int i = 0; i < possiblePlaces.Count; i++)
@@ -560,6 +558,14 @@ public class DungeonGeneratorManager : MonoBehaviour
         AssignThings();
 
         yield return new WaitForSeconds(0.2f);
+        for (int i = 0; i < possiblePlaces.Count; i++)
+        {
+            if (possiblePlaces[i].myActivities != null)
+            {
+                possiblePlaces[i].myActivities.DisableRigidBodys();
+            }
+        }
         EnterRoom(startRoom);
+        PlacePlayer(startPoint);
     }
 }
