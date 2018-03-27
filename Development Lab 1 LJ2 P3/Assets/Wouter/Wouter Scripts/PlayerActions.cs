@@ -214,12 +214,6 @@ public class PlayerActions : MonoBehaviour {
                             playerStats.viewmodelgearLeft[playerStats.shield.GetComponent<Shield>().itemId].SetActive(true);
                         }
                     }
-
-                    if (hit.collider.gameObject.GetComponent<Door>())
-                    {
-                        hit.collider.gameObject.GetComponent<Door>().anim.SetTrigger("Open");
-                    }
-
                     else if(hit.transform.gameObject.GetComponent<Potion>() != null)
                     {
                         playerStats.potionCount++;
@@ -227,6 +221,11 @@ public class PlayerActions : MonoBehaviour {
                     }
                 }
             }
+            if (hit.collider.gameObject.GetComponent<Door>())
+            {
+                hit.collider.gameObject.GetComponent<Door>().anim.SetTrigger("Open");
+            }
+
         }
     }
 
