@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour {
     public float playerMaxHealth;
     public float playerHealth;
     public float playerStamina;
+    public float playerMaxStamina;
     public int potionCount;
     public GameObject weapon;
     public GameObject previousWeapon;
@@ -29,6 +30,12 @@ public class PlayerStats : MonoBehaviour {
     {
         playerHealth += amount;
         UIManager.instance.interfaceGame.UpdateHealth(playerHealth, playerMaxHealth);
+    }
+
+    public void ChangeStamina(float amount)
+    {
+        playerStamina += amount;
+        UIManager.instance.interfaceGame.UpdateStamina(playerStamina, playerMaxStamina);
     }
 
 

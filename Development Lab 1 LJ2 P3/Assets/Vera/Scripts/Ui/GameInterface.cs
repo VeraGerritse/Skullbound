@@ -9,6 +9,8 @@ public class GameInterface : MonoBehaviour {
     public bool inter;
     public Image Health_UI_Red;
     public Image Health_UI_Yellow;
+    public Image Stamina_UI_Green;
+    public Image Stamina_UI_Yellow;
 
     public void Interact()
     {
@@ -28,6 +30,12 @@ public class GameInterface : MonoBehaviour {
         Health_UI_Red.fillAmount = procentage;
 
         //procentage lmao
+    }
+
+    public void UpdateStamina(float currentStamina, float maxStamina)
+    {
+        float procentage = currentStamina / maxStamina;
+        Stamina_UI_Green.fillAmount = procentage;
     }
 
     void CanInteract()
@@ -50,5 +58,15 @@ public class GameInterface : MonoBehaviour {
         {
             Health_UI_Yellow.fillAmount = Health_UI_Red.fillAmount;
         }
+
+        if (Stamina_UI_Green.fillAmount < Stamina_UI_Yellow.fillAmount)
+        {
+            Stamina_UI_Yellow.fillAmount -= Time.deltaTime * 2 * (Stamina_UI_Yellow.fillAmount - Stamina_UI_Green.fillAmount);
+        }
+        else
+        {
+            Stamina_UI_Yellow.fillAmount = Stamina_UI_Green.fillAmount;
+        }
+
     }
 }

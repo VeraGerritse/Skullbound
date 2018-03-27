@@ -27,6 +27,12 @@ public class PlayerActions : MonoBehaviour {
 
     private void Update()
     {
+        if(playerStats.playerStamina < playerStats.playerMaxStamina)
+        {
+            playerStats.ChangeStamina(Time.deltaTime * 5);
+
+        }
+
         if(playerStats.weapon != null)
         {
             //anim.SetTrigger("Draw");
@@ -138,7 +144,7 @@ public class PlayerActions : MonoBehaviour {
         {       
             anim.SetTrigger("Die");
         }
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, Color.red);
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 2, Color.red);
     }
 
     public void Interact()
@@ -231,17 +237,19 @@ public class PlayerActions : MonoBehaviour {
 
     public void Hit(float amount)
     {
+        playerStats.ChangeStamina(-playerStats.weapon.GetComponent<Weapon>().staminacost);
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2, attacklayer))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 1.5f, ~attacklayer))
         {
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
                 hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 400 + transform.up * 200);
+                if (hit.transform.tag == "Enemy")
+                {
+                    hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack);
+                }
             }
-            if (hit.transform.tag == "Enemy")
-            {
-                hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack);
-            }
+
         }
     }
     public void ConsumePotion()
