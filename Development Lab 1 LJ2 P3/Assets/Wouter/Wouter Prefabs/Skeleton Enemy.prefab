@@ -2668,7 +2668,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d53ec80639c1fdd46870f517000e583b, type: 2}
+  - {fileID: 2100000, guid: db7552d6bf877ae46b1ea47d17c97ac6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2822,6 +2822,7 @@ MonoBehaviour:
   textHP: {fileID: 114791490006959350}
   bones: []
   bonepieces: {fileID: 1604361798807788, guid: bad9716257962734085f9a8b50b2896d, type: 2}
+  myRoom: {fileID: 0}
   Health: 15
   actionCooldown: 0
 --- !u!114 &114238336411026218
@@ -2955,7 +2956,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}

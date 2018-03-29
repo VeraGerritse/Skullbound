@@ -9,48 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1717176294508464}
+  m_RootGameObject: {fileID: 1196916317496126}
   m_IsPrefabParent: 1
---- !u!1 &1717176294508464
+--- !u!1 &1196916317496126
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4651211981983358}
-  - component: {fileID: 33117310831794336}
-  - component: {fileID: 23176166630026686}
-  - component: {fileID: 54773178366290514}
-  - component: {fileID: 65870411783362188}
-  - component: {fileID: 114057447872716200}
-  - component: {fileID: 114828972993121062}
+  - component: {fileID: 4242271598637002}
+  - component: {fileID: 33457822351176942}
+  - component: {fileID: 23702114324873610}
+  - component: {fileID: 54859869963088954}
+  - component: {fileID: 65278083408122516}
+  - component: {fileID: 114655140662243212}
+  - component: {fileID: 114780238978407608}
   m_Layer: 11
-  m_Name: Brown Vikingshield
+  m_Name: Orcish Vikingshield
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4651211981983358
+--- !u!4 &4242271598637002
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717176294508464}
+  m_GameObject: {fileID: 1196916317496126}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 8.337, y: 4.8243, z: -0.56596506}
+  m_LocalPosition: {x: 7.09, y: 4.8243, z: -0.56596506}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23176166630026686
+--- !u!23 &23702114324873610
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717176294508464}
+  m_GameObject: {fileID: 1196916317496126}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d53ec80639c1fdd46870f517000e583b, type: 2}
+  - {fileID: 2100000, guid: 5a0c0e3db2de5de4182ba4e9fb2f2318, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,19 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33117310831794336
+--- !u!33 &33457822351176942
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717176294508464}
+  m_GameObject: {fileID: 1196916317496126}
   m_Mesh: {fileID: 4300000, guid: 9dfcfae5792a7ce448f97f46fcbefbc7, type: 3}
---- !u!54 &54773178366290514
+--- !u!54 &54859869963088954
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717176294508464}
+  m_GameObject: {fileID: 1196916317496126}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -101,40 +101,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65870411783362188
+--- !u!65 &65278083408122516
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717176294508464}
+  m_GameObject: {fileID: 1196916317496126}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.53499997, y: 0.5350001, z: 0.11258149}
   m_Center: {x: 0, y: 0, z: -0.00091588893}
---- !u!114 &114057447872716200
+--- !u!114 &114655140662243212
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717176294508464}
+  m_GameObject: {fileID: 1196916317496126}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ffd32ec3aedfa7b4aaad8a258f2a3457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldName: Brown Vikingshield
-  itemId: 2
+  shieldName: Iron Vikingshield
+  itemId: 1
   attack: 5
-  defence: 10
+  defence: 40
   staminacost: 5
---- !u!114 &114828972993121062
+--- !u!114 &114780238978407608
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717176294508464}
+  m_GameObject: {fileID: 1196916317496126}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1fc4e15347b0794a9e63d4de4a4d100, type: 3}

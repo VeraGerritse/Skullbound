@@ -59,10 +59,20 @@ public class PlayerActions : MonoBehaviour {
 
         if(Input.GetButtonDown("Fire1"))
         {
-            anim.SetTrigger("Swing");
-            anim.ResetTrigger("TestTrigger");
-            anim.ResetTrigger("Potion");
+            if(playerStats.playerStamina > 0)
+            {
+                anim.SetTrigger("Swing");
+                anim.ResetTrigger("TestTrigger");
+                anim.ResetTrigger("Potion");
+            }
         }
+
+        if(playerStats.playerStamina <= 0)
+        {
+            anim.ResetTrigger("Swing");
+        }
+
+
 
         if (Input.GetButtonDown("Fire2"))
         {

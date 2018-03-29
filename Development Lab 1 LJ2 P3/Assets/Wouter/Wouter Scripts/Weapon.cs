@@ -41,17 +41,20 @@ public class Weapon : MonoBehaviour {
                     {
                         //print("4");
                         other.GetComponent<PlayerStats>().ChangeHealth(-attack);
+                        
                         other.GetComponent<PlayerActions>().anim.SetTrigger("Recoil");
                     }
                     else
                     {
+                        
                         if (owner != null)
                         {
 
-
+             
                             GetComponentInParent(typeof(Animator)).transform.GetComponent<Animator>().SetTrigger("Revert");
                             other.GetComponent<PlayerActions>().anim.SetTrigger("RecoilBlock");
                             myCombatAi.actionCooldown = 2;
+                            other.GetComponent<PlayerStats>().ChangeStamina(-attack * other.GetComponent<PlayerStats>().shield.GetComponent<Shield>().defence / 100);
                         }
                     }
                 }
