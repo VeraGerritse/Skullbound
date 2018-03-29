@@ -10,7 +10,7 @@ public class CombatAi : MonoBehaviour {
     public Text textHP;
     public List<GameObject> bones = new List<GameObject>();
     public GameObject bonepieces;
-    RoomActivities myRoom;
+    public RoomActivities myRoom;
     [Header("Stats")]
     public float Health;
 

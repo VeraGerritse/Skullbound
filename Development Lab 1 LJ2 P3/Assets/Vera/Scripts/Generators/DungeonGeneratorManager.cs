@@ -479,6 +479,12 @@ public class DungeonGeneratorManager : MonoBehaviour
                 allDoors.Add(Instantiate(Doors[randomDoor + 1], wallPos, Quaternion.identity));
             }
         }
+        List<Door> door = new List<Door>();
+        for (int i = 0; i < allDoors.Count; i++)
+        {
+            door.Add(allDoors[i].GetComponentInChildren<Door>());
+        }
+        ClearManager.instance.doors = door;
     }
 
     void MapFloor()
@@ -502,9 +508,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     public void EnterRoom(RoomGen entering)
     {
-        print(entering + "  entering");
         print(Grid.instance.ready);
-        print(currentRoom + "  Current room");
         if (Grid.instance.ready)
         {
             if (currentRoom != null)

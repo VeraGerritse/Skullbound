@@ -42,8 +42,9 @@ public class RoomActivities : MonoBehaviour {
     {
         if(spawnLoc.Count != 0 && enemys.Count != 0)
         {
-            SpawnSkeletons();
+            SpawnSkeletons();           
         }
+        EnemyKilled(null);
         for (int i = 0; i < interactable.Count; i++)
         {
             interactable[i].IsAwake = true;
@@ -60,6 +61,7 @@ public class RoomActivities : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
+        print("enter");
         if (other.gameObject.tag == "Player" && inRoom)
         {
             inRoom = false;
@@ -70,6 +72,7 @@ public class RoomActivities : MonoBehaviour {
     {
         if(other.gameObject.tag == "Player" && !inRoom && DungeonGeneratorManager.instance.ready)
         {
+            ClearManager.instance.EnterRoom();
             StartInteracting();
             inRoom = true;
             DungeonGeneratorManager.instance.EnterRoom(myRoom);
@@ -91,9 +94,15 @@ public class RoomActivities : MonoBehaviour {
         for (int i = 0; i < spawnLoc.Count; i++)
         {
             spawnChance = Random.Range(0, 100);
+            if (bossRoom)
+            {
+                spawnChance = 0;
+            }
             if (spawnChance < SpawnRate)
             {
                 GameObject newEnemy = Instantiate(enemys[Random.Range(0, enemys.Count)], spawnLoc[i].position, Quaternion.identity);
+                newEnemy.GetComponent<CombatAi>().myRoom = this;
+                newEnemy.GetComponent<Pathfinding>().IsAwake = true;
                 enemysAlive.Add(newEnemy.GetComponent<CombatAi>());
             }
         }
@@ -101,6 +110,25 @@ public class RoomActivities : MonoBehaviour {
 
     public void EnemyKilled(CombatAi deadEnemy)
     {
+        print("killed");
+        if (enemysAlive.Count == 0)
+        {
+            print("hoi");
+            ClearManager.instance.ExitRoom();
+            return;
+        }
+        for (int i = 0; i < enemysAlive.Count; i++)
+        {
+            if(enemysAlive[i] == deadEnemy)
+            {
+                enemysAlive.RemoveAt(i);
+                if(enemysAlive.Count == 0)
+                {
+                    ClearManager.instance.ExitRoom();
+                    return;
+                }
+            }
+        }
 
     }
 }
