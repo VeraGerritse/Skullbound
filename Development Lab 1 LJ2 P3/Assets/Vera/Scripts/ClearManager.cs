@@ -6,7 +6,7 @@ public class ClearManager : MonoBehaviour {
 
     public static ClearManager instance;
     public List<Door> doors = new List<Door>();
-    public bool alCleared;
+    public bool allCleared;
 
     private void Awake()
     {
@@ -14,10 +14,11 @@ public class ClearManager : MonoBehaviour {
         {
             instance = this;
         }
+        allCleared = true;
     }
 
     public void EnterRoom()
     {
-
+        allCleared = false;
     }
 }
