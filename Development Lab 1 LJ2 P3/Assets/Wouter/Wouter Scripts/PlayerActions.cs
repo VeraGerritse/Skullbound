@@ -27,10 +27,9 @@ public class PlayerActions : MonoBehaviour {
 
     private void Update()
     {
-        if(playerStats.playerStamina < playerStats.playerMaxStamina)
+        if(playerStats.playerStamina < playerStats.playerMaxStamina && !playerStats.playerBLocks)
         {
             playerStats.ChangeStamina(Time.deltaTime * 5);
-
         }
 
         if(playerStats.weapon != null)
@@ -72,9 +71,14 @@ public class PlayerActions : MonoBehaviour {
             anim.ResetTrigger("Swing");
         }
 
+        if (playerStats.playerStamina <= 0)
+        {
+            anim.SetBool("BlockBool", false);
+        }
 
 
-        if (Input.GetButtonDown("Fire2"))
+
+        if (Input.GetButtonDown("Fire2") && playerStats.playerStamina <= 0)
         {
             anim.SetTrigger("Block");
             anim.ResetTrigger("UnBlock");
@@ -92,7 +96,7 @@ public class PlayerActions : MonoBehaviour {
             anim.SetBool("BlockBool", false);
             anim.ResetTrigger("Potion");
         }
-        else
+        else if(playerStats.playerStamina > 1)
         {
             anim.SetBool("BlockBool", true);
         }
@@ -247,19 +251,42 @@ public class PlayerActions : MonoBehaviour {
 
     public void Hit(float amount)
     {
+        
         playerStats.ChangeStamina(-playerStats.weapon.GetComponent<Weapon>().staminacost);
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 1.5f, ~attacklayer))
         {
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
-                hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 400 + transform.up * 200);
+                
                 if (hit.transform.tag == "Enemy")
                 {
                     hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack);
                 }
+                else
+                {
+                    hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 400 + transform.up * 200);
+                }
             }
 
+        }
+    }
+
+    public void Bash()
+    {
+        playerStats.ChangeStamina(-playerStats.shield.GetComponent<Shield>().bashcost);
+
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 1.75f, ~attacklayer))
+        {
+            if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
+            {
+                hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 600 + transform.up * 300);
+                if (hit.transform.tag == "Enemy")
+                {
+                    hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.shield.GetComponent<Shield>().bashDamage);
+                }
+            }
         }
     }
     public void ConsumePotion()

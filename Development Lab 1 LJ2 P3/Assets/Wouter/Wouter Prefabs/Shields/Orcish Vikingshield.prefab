@@ -126,9 +126,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldName: Iron Vikingshield
   itemId: 1
-  attack: 5
-  defence: 40
-  staminacost: 5
+  stability: 30
+  bashcost: 10
+  bashDamage: 25
 --- !u!114 &114780238978407608
 MonoBehaviour:
   m_ObjectHideFlags: 1

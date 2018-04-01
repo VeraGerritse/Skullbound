@@ -125,11 +125,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  ownerAnimator: {fileID: 0}
+  myCombatAi: {fileID: 0}
   weaponName: Nail Club
   itemId: 2
-  attack: 5
-  defence: 2
-  staminacost: 2
+  attack: 10
+  staminacost: 10
 --- !u!114 &114513339305999574
 MonoBehaviour:
   m_ObjectHideFlags: 1

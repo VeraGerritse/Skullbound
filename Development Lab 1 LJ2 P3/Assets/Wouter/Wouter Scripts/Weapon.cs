@@ -12,7 +12,6 @@ public class Weapon : MonoBehaviour {
     public string weaponName;
     public int itemId;
     public float attack;
-    public float defence;
     public float staminacost;
 
     //enemy only
@@ -49,12 +48,17 @@ public class Weapon : MonoBehaviour {
                         
                         if (owner != null)
                         {
-
-             
                             GetComponentInParent(typeof(Animator)).transform.GetComponent<Animator>().SetTrigger("Revert");
                             other.GetComponent<PlayerActions>().anim.SetTrigger("RecoilBlock");
                             myCombatAi.actionCooldown = 2;
-                            other.GetComponent<PlayerStats>().ChangeStamina(-attack * other.GetComponent<PlayerStats>().shield.GetComponent<Shield>().defence / 100);
+                            if(other.GetComponent<PlayerStats>().shield != null)
+                            {
+                                other.GetComponent<PlayerStats>().ChangeStamina(-attack * (1 - other.GetComponent<PlayerStats>().shield.GetComponent<Shield>().stability / 100));
+                            }
+                            else
+                            {
+                                other.GetComponent<PlayerStats>().ChangeStamina(-attack);
+                            }
                         }
                     }
                 }

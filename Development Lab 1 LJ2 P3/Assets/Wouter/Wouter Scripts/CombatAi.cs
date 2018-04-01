@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class CombatAi : MonoBehaviour {
 
+    public bool dualWieldWeapons;
+    
+
     public Pathfinding myPathFinding;
     public Animator myAnimator;
     public Text textHP;
@@ -29,7 +32,7 @@ public class CombatAi : MonoBehaviour {
     {
         if(Input.GetKeyDown("1"))
         {
-            ChangeHealth(-10);
+            myAnimator.SetTrigger("test1");
         }
 
         if(actionCooldown > 0)
@@ -46,9 +49,10 @@ public class CombatAi : MonoBehaviour {
 
     void Attack()
     {
+
         myAnimator.SetTrigger("Attack");
         actionCooldown = 1;
-        myAnimator.ResetTrigger("Revert");
+        myAnimator.ResetTrigger("Revert");     
     }
 
     public void ChangeHealth(float amount)

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Shield : MonoBehaviour {
 
     public string shieldName;
-    public int itemId;
-    public float attack;
-    public float defence;
-    public float staminacost;
+    public int itemId;  
+    public float stability;
+    public float bashcost;
+    public float bashDamage;
 }
