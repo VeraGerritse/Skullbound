@@ -50,6 +50,7 @@ public class Weapon : MonoBehaviour {
                         {
                             GetComponentInParent(typeof(Animator)).transform.GetComponent<Animator>().SetTrigger("Revert");
                             other.GetComponent<PlayerActions>().anim.SetTrigger("RecoilBlock");
+                            SoundManager.soundInstance.audiosources[Random.Range(12, 15)].Play();
                             myCombatAi.actionCooldown = 2;
                             if(other.GetComponent<PlayerStats>().shield != null)
                             {
