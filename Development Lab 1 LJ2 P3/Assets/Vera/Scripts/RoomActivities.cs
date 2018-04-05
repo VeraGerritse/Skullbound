@@ -14,6 +14,7 @@ public class RoomActivities : MonoBehaviour {
     public RoomGen myRoom;
     public int SpawnRate;
     bool inRoom;
+    bool cleared;
 
     private void Start()
     {
@@ -98,7 +99,7 @@ public class RoomActivities : MonoBehaviour {
             {
                 spawnChance = 0;
             }
-            if (spawnChance < SpawnRate)
+            if (spawnChance < SpawnRate && !cleared)
             {
                 GameObject newEnemy = Instantiate(enemys[Random.Range(0, enemys.Count)], spawnLoc[i].position, Quaternion.identity);
                 newEnemy.GetComponent<CombatAi>().myRoom = this;
@@ -106,6 +107,7 @@ public class RoomActivities : MonoBehaviour {
                 enemysAlive.Add(newEnemy.GetComponent<CombatAi>());
             }
         }
+        cleared = true;
     }
 
     public void EnemyKilled(CombatAi deadEnemy)
