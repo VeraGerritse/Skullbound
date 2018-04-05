@@ -49,6 +49,14 @@ public class Pathfinding : Interactables {
         Node startNode = Grid.instance.NodeFromWP(startPos);
         Node targetNode = Grid.instance.NodeFromWP(targetPos);
 
+        if (!targetNode.walk)
+        {
+            targetNode = lastNode;
+        }
+        else
+        {
+            lastNode = targetNode;
+        }
         //print(lastNode + "   " + targetNode);
         //if (targetNode == lastNode)
         //{
@@ -147,6 +155,10 @@ public class Pathfinding : Interactables {
 
     int GetDistance(Node nodeA, Node nodeB)
     {
+        if(nodeA == null|| nodeB == null)
+        {
+            return 0;
+        }
         int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
         int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
 
