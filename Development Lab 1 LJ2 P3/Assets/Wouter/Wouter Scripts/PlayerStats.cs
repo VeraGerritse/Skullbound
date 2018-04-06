@@ -30,12 +30,22 @@ public class PlayerStats : MonoBehaviour {
     {
         playerHealth += amount;
         UIManager.instance.interfaceGame.UpdateHealth(playerHealth, playerMaxHealth);
+        if(amount < 0)
+        {
+            SoundManager.soundInstance.audiosources[Random.Range(0, 4)].Play();
+        }
+        
     }
 
     public void ChangeStamina(float amount)
     {
         playerStamina += amount;
         UIManager.instance.interfaceGame.UpdateStamina(playerStamina, playerMaxStamina);
+        if(amount < 0)
+        {
+            UIManager.instance.interfaceGame.GetComponent<Animator>().SetTrigger("popS");
+        }
+        
     }
 
 

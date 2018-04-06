@@ -12,6 +12,8 @@ public class GameInterface : MonoBehaviour {
     public Image Stamina_UI_Green;
     public Image Stamina_UI_Yellow;
 
+    public Animator anim;
+
     public void Interact()
     {
         if (inter)
@@ -28,6 +30,7 @@ public class GameInterface : MonoBehaviour {
     {
         float procentage = currentHealth / maxHealth;
         Health_UI_Red.fillAmount = procentage;
+        anim.SetTrigger("pop");
 
         //procentage lmao
     }
@@ -36,6 +39,7 @@ public class GameInterface : MonoBehaviour {
     {
         float procentage = currentStamina / maxStamina;
         Stamina_UI_Green.fillAmount = procentage;
+        
     }
 
     void CanInteract()

@@ -14,6 +14,7 @@ public class CombatAi : MonoBehaviour {
     public List<GameObject> bones = new List<GameObject>();
     public GameObject bonepieces;
     public RoomActivities myRoom;
+    public AudioSource hurtSound;
     [Header("Stats")]
     public float Health;
 
@@ -57,10 +58,12 @@ public class CombatAi : MonoBehaviour {
 
     public void ChangeHealth(float amount)
     {
+        hurtSound.Play();
         Health += amount;
         textHP.text = Health.ToString();
         if(amount < 0)
         {
+            
             myAnimator.SetTrigger("Hurt");
             actionCooldown = 0.5f;
         }
@@ -76,6 +79,7 @@ public class CombatAi : MonoBehaviour {
     void RagdollBones()
     {
         GameObject g = Instantiate(bonepieces, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        hurtSound.Play();
         Destroy(g.gameObject, 3);
         List<Rigidbody> rl = new List<Rigidbody>();
         foreach (Transform t in g.transform)

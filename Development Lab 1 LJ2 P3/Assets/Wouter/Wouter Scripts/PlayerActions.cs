@@ -83,12 +83,14 @@ public class PlayerActions : MonoBehaviour {
             anim.SetTrigger("Block");
             anim.ResetTrigger("UnBlock");
             anim.ResetTrigger("Potion");
+            //SoundManager.soundInstance.audiosources[16].Play();
         }
 
         if(Input.GetButtonUp("Fire2"))
         {
             anim.ResetTrigger("Swing");
             
+
         }
 
         if(!Input.GetButton("Fire2"))
@@ -174,6 +176,7 @@ public class PlayerActions : MonoBehaviour {
             {
                 if (hit.transform.gameObject.GetComponent<Pickup>().canBePickedUp)
                 {
+                    SoundManager.soundInstance.audiosources[Random.Range(10, 12)].Play();
                     if (hit.transform.gameObject.GetComponent<Weapon>() != null)
                     {
                         GameObject w = hit.transform.gameObject;
@@ -254,7 +257,7 @@ public class PlayerActions : MonoBehaviour {
         
         playerStats.ChangeStamina(-playerStats.weapon.GetComponent<Weapon>().staminacost);
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 1.5f, ~attacklayer))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer))
         {
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
@@ -281,6 +284,7 @@ public class PlayerActions : MonoBehaviour {
         {
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
+                SoundManager.soundInstance.audiosources[Random.Range(12, 15)].Play();
                 hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 600 + transform.up * 300);
                 if (hit.transform.tag == "Enemy")
                 {

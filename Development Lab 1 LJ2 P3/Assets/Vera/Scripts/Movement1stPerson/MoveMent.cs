@@ -126,6 +126,7 @@ public class MoveMent : MonoBehaviour {
             {
                 //print("Player jumped from "  + hit.transform.gameObject.name);
                 player.AddForce(transform.up * jumpHeight);
+                SoundManager.soundInstance.audiosources[Random.Range(5, 9)].Play();
             }
         }
     }
