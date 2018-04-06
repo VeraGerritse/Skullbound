@@ -12,7 +12,9 @@ public class PlayerActions : MonoBehaviour {
     public bool isNeutral;
     public LayerMask attacklayer;
 
-    
+    public float powerTimer;
+
+
 
     public CollisionChecker collisionChecker;
 
@@ -29,7 +31,7 @@ public class PlayerActions : MonoBehaviour {
     {
         if(playerStats.playerStamina < playerStats.playerMaxStamina && !playerStats.playerBLocks)
         {
-            playerStats.ChangeStamina(Time.deltaTime * 5);
+            playerStats.ChangeStamina(Time.deltaTime * 20);
         }
 
         if(playerStats.weapon != null)
@@ -58,11 +60,27 @@ public class PlayerActions : MonoBehaviour {
 
         if(Input.GetButtonDown("Fire1"))
         {
+            anim.ResetTrigger("PowerAttack");
+            powerTimer = 0;
             if(playerStats.playerStamina > 0)
             {
                 anim.SetTrigger("Swing");
                 anim.ResetTrigger("TestTrigger");
                 anim.ResetTrigger("Potion");
+            }
+        }
+        if(Input.GetButtonUp("Fire1"))
+        {
+            powerTimer = 0;
+        }
+        if(Input.GetButton("Fire1"))
+        {           
+            powerTimer += Time.deltaTime;
+            if(powerTimer >= 0.2f && playerStats.playerStamina > 0)
+            {
+                powerTimer = 0;
+                anim.ResetTrigger("Swing");
+                anim.SetTrigger("PowerAttack");
             }
         }
 
@@ -253,15 +271,21 @@ public class PlayerActions : MonoBehaviour {
     }
 
     public void Hit(float amount)
-    {
-        
+    {       
         playerStats.ChangeStamina(-playerStats.weapon.GetComponent<Weapon>().staminacost);
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer)
+            ||
+            Physics.Raycast(Camera.main.transform.position + new Vector3(0.4f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer)
+            ||
+            Physics.Raycast(Camera.main.transform.position + new Vector3(0.4f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer)
+            )
+
         {
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
-                
+                print(hit.transform.name);
+
                 if (hit.transform.tag == "Enemy")
                 {
                     hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack);
@@ -275,12 +299,54 @@ public class PlayerActions : MonoBehaviour {
         }
     }
 
+    public void PowerAttack()
+    {
+        playerStats.ChangeStamina(-playerStats.weapon.GetComponent<Weapon>().staminacost * 3);
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer) 
+            ||
+            Physics.Raycast(Camera.main.transform.position + new Vector3(1f,0,0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 3f, ~attacklayer)
+            ||
+            Physics.Raycast(Camera.main.transform.position + new Vector3(0.5f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 3f, ~attacklayer)
+            ||
+            Physics.Raycast(Camera.main.transform.position + new Vector3(-1f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 3f, ~attacklayer)
+            ||
+            Physics.Raycast(Camera.main.transform.position + new Vector3(-0.5f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 3f, ~attacklayer)
+            )
+        {
+            if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
+            {
+                //print(hit.transform.name);
+
+                if (hit.transform.tag == "Enemy")
+                {
+                    hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack * 2);
+                    hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 1000 + transform.up * 1000);
+                    
+                }
+                else
+                {
+                    hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 1000 + transform.up * 500);
+                }
+            }
+
+        }
+    }
+
     public void Bash()
     {
         playerStats.ChangeStamina(-playerStats.shield.GetComponent<Shield>().bashcost);
-
+        SoundManager.soundInstance.audiosources[16].Play();
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 1.75f, ~attacklayer))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 1.75f, ~attacklayer)
+            ||
+            Physics.Raycast(Camera.main.transform.position + new Vector3(1f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 1.75f, ~attacklayer)
+            ||
+            Physics.Raycast(Camera.main.transform.position + new Vector3(0.5f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 1.75f, ~attacklayer)
+            ||
+            Physics.Raycast(Camera.main.transform.position + new Vector3(-1f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 1.75f, ~attacklayer)
+            ||
+            Physics.Raycast(Camera.main.transform.position + new Vector3(-0.5f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 1.75f, ~attacklayer))
         {
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {

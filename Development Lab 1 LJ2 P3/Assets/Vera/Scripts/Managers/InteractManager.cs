@@ -6,6 +6,7 @@ public class InteractManager : MonoBehaviour {
     public PlayerActions actions;
     public static InteractManager instance;
     public LayerMask layers;
+    public GameObject raycastobj;
 
     private void Awake()
     {
@@ -27,22 +28,39 @@ public class InteractManager : MonoBehaviour {
                     {
                         if (hit.collider.gameObject != null)
                         {
+                            
                             if (hit.collider.gameObject.tag == "Interactable")
                             {
+                                
                                 UIManager.instance.interfaceGame.inter = true;
+                                if(hit.transform.GetComponent<Pickup>() != null)
+                                {
+                                    if(hit.transform.gameObject != raycastobj)
+                                    {
+                                        
+                                        hit.transform.gameObject.GetComponent<Pickup>().doOutLine = false;
+                                        raycastobj = hit.transform.gameObject;
+                                        raycastobj.GetComponent<Pickup>().doOutLine = true;
+
+                                    }                              
+                                }
                             }
                             else
                             {
+                                raycastobj = null;
                                 UIManager.instance.interfaceGame.inter = false;
                             }
                         }
                         else
                         {
+                            raycastobj.GetComponent<Pickup>().doOutLine = false;
+                            //raycastobj = null;
                             UIManager.instance.interfaceGame.inter = false;
                         }
                     }
                     else
                     {
+                        raycastobj = null;
                         UIManager.instance.interfaceGame.inter = false;
                     }
                 }

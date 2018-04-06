@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour {
     public Animator ownerAnimator;
     public CombatAi myCombatAi;
 
+    public bool isVisible;
+
     //stats
     public string weaponName;
     public int itemId;
@@ -23,7 +25,11 @@ public class Weapon : MonoBehaviour {
         {
             
         }
+
+
     }
+
+
 
     public void OnTriggerEnter(Collider other)       
     {
@@ -36,23 +42,25 @@ public class Weapon : MonoBehaviour {
                 if (other.tag == "Player")
                 {
                     //print("3");
+                    //if (!other.GetComponent<PlayerStats>().playerBLocks)
+
                     if (!other.GetComponent<PlayerStats>().playerBLocks)
                     {
                         //print("4");
                         other.GetComponent<PlayerStats>().ChangeHealth(-attack);
-                        
+
                         other.GetComponent<PlayerActions>().anim.SetTrigger("Recoil");
                     }
                     else
                     {
-                        
+
                         if (owner != null)
                         {
                             GetComponentInParent(typeof(Animator)).transform.GetComponent<Animator>().SetTrigger("Revert");
                             other.GetComponent<PlayerActions>().anim.SetTrigger("RecoilBlock");
                             SoundManager.soundInstance.audiosources[Random.Range(12, 15)].Play();
                             myCombatAi.actionCooldown = 2;
-                            if(other.GetComponent<PlayerStats>().shield != null)
+                            if (other.GetComponent<PlayerStats>().shield != null)
                             {
                                 other.GetComponent<PlayerStats>().ChangeStamina(-attack * (1 - other.GetComponent<PlayerStats>().shield.GetComponent<Shield>().stability / 100));
                             }

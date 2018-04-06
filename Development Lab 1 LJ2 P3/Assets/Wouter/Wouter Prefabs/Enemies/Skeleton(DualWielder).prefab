@@ -2895,6 +2895,7 @@ MonoBehaviour:
   owner: {fileID: 1024969786019716}
   ownerAnimator: {fileID: 95308390331102508}
   myCombatAi: {fileID: 114468469725238202}
+  isVisible: 0
   weaponName: Iron Broadsword
   itemId: 0
   attack: 20
@@ -2913,6 +2914,7 @@ MonoBehaviour:
   owner: {fileID: 1024969786019716}
   ownerAnimator: {fileID: 95308390331102508}
   myCombatAi: {fileID: 114468469725238202}
+  isVisible: 0
   weaponName: Iron Broadsword
   itemId: 0
   attack: 50
@@ -3053,7 +3055,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
+  m_Radius: 0.25
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -3065,7 +3067,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1024969786019716}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1.2
   m_Height: 2
   m_Direction: 1

@@ -7,6 +7,15 @@ public class Pickup : Interactables
 
     public bool canBePickedUp;
 
+    public Renderer rend;
+
+    public bool doOutLine;
+
+    public void Start()
+    {
+        rend = this.GetComponent<Renderer>();
+    }
+
     public override void Interact()
     {
             canBePickedUp = true;
@@ -16,5 +25,7 @@ public class Pickup : Interactables
     {
         canBePickedUp = false;
     }
+
+
 
 }
