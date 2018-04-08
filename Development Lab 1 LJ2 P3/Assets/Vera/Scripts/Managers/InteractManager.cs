@@ -35,32 +35,25 @@ public class InteractManager : MonoBehaviour {
                                 UIManager.instance.interfaceGame.inter = true;
                                 if(hit.transform.GetComponent<Pickup>() != null)
                                 {
-                                    if(hit.transform.gameObject != raycastobj)
-                                    {
-                                        
-                                        hit.transform.gameObject.GetComponent<Pickup>().doOutLine = false;
-                                        raycastobj = hit.transform.gameObject;
-                                        raycastobj.GetComponent<Pickup>().doOutLine = true;
 
-                                    }                              
+                                    hit.transform.gameObject.GetComponent<Pickup>().myFloat += Time.deltaTime * 2;
                                 }
                             }
                             else
                             {
-                                raycastobj = null;
+                                
                                 UIManager.instance.interfaceGame.inter = false;
                             }
                         }
                         else
                         {
-                            raycastobj.GetComponent<Pickup>().doOutLine = false;
-                            //raycastobj = null;
+                            
                             UIManager.instance.interfaceGame.inter = false;
                         }
                     }
                     else
                     {
-                        raycastobj = null;
+
                         UIManager.instance.interfaceGame.inter = false;
                     }
                 }

@@ -29,10 +29,12 @@ public class PlayerActions : MonoBehaviour {
 
     private void Update()
     {
-        if(playerStats.playerStamina < playerStats.playerMaxStamina && !playerStats.playerBLocks)
+        if(Input.GetButtonDown("Inject"))
         {
-            playerStats.ChangeStamina(Time.deltaTime * 20);
+            anim.SetTrigger("Inject");
         }
+
+
 
         if(playerStats.weapon != null)
         {

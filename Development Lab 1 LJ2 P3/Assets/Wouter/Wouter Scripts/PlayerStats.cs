@@ -13,6 +13,9 @@ public class PlayerStats : MonoBehaviour {
     public GameObject previousWeapon;
     public GameObject shield;
     public GameObject previousShield;
+
+    public bool doStaminaBoost;
+    public float boostDuration;
         
 
     public List<GameObject> viewmodelgear = new List<GameObject>();
@@ -46,6 +49,30 @@ public class PlayerStats : MonoBehaviour {
             UIManager.instance.interfaceGame.GetComponent<Animator>().SetTrigger("popS");
         }
         
+    }
+
+    public void ActivateStaminaBoost()
+    {
+        doStaminaBoost = true;
+        boostDuration = 10;
+    }
+
+    private void Update()
+    {
+        if(doStaminaBoost && boostDuration > 0)
+        {
+            boostDuration -= Time.deltaTime;
+
+            if (playerStamina < playerMaxStamina && !playerBLocks)
+            {
+                ChangeStamina(Time.deltaTime * 20);
+            }
+        }
+
+        if (playerStamina < playerMaxStamina && !playerBLocks)
+        {
+            ChangeStamina(Time.deltaTime * 5);
+        }
     }
 
 

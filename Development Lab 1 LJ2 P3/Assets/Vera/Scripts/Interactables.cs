@@ -10,6 +10,8 @@ public class Interactables : MonoBehaviour {
     bool workedOnce;
     bool onOrOff;
 
+    public float myFloat;
+
     public void Update()
     {
         if (keepsWorking && IsAwake)
@@ -27,6 +29,15 @@ public class Interactables : MonoBehaviour {
         {
             onOrOff = false;
             StopInteract();
+        }
+
+        myFloat -= Time.deltaTime;
+
+        myFloat = Mathf.Clamp(myFloat, 0, 0.5f);
+
+        if (myFloat >= 0.5f)
+        {
+
         }
     }
 

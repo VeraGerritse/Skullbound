@@ -5,11 +5,13 @@ using UnityEngine;
 public class Pickup : Interactables
 {
 
+    
+
     public bool canBePickedUp;
 
     public Renderer rend;
 
-    public bool doOutLine;
+    
 
     public void Start()
     {
@@ -18,13 +20,19 @@ public class Pickup : Interactables
 
     public override void Interact()
     {
-            canBePickedUp = true;
+        canBePickedUp = true;
     }
 
     public override void StopInteract()
     {
         canBePickedUp = false;
     }
+
+
+
+    
+
+    
 
 
 
