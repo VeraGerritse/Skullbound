@@ -9,6 +9,8 @@ public class PlayerStats : MonoBehaviour {
     public float playerStamina;
     public float playerMaxStamina;
     public int potionCount;
+    public int boostCount;
+    
     public GameObject weapon;
     public GameObject previousWeapon;
     public GameObject shield;
@@ -55,12 +57,14 @@ public class PlayerStats : MonoBehaviour {
     {
         doStaminaBoost = true;
         boostDuration = 10;
+        boostCount--;
     }
 
     private void Update()
     {
         if(doStaminaBoost && boostDuration > 0)
         {
+            UIManager.instance.interfaceGame.GetComponent<Animator>().SetTrigger("popS");
             boostDuration -= Time.deltaTime;
 
             if (playerStamina < playerMaxStamina && !playerBLocks)

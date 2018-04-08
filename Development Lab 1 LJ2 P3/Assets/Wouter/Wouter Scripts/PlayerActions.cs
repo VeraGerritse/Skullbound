@@ -31,6 +31,15 @@ public class PlayerActions : MonoBehaviour {
     {
         if(Input.GetButtonDown("Inject"))
         {
+            if (playerStats.boostCount > 0)
+            {
+                anim.SetBool("HasBoost", true);
+
+            }
+            else
+            {
+                anim.SetBool("HasBoost", false);
+            }
             anim.SetTrigger("Inject");
         }
 
@@ -267,6 +276,11 @@ public class PlayerActions : MonoBehaviour {
                         playerStats.potionCount++;
                         DestroyImmediate(hit.transform.gameObject);
                     }
+                    else if(hit.transform.gameObject.GetComponent<BoostInjector>() != null)
+                    {
+                        playerStats.boostCount++;
+                        DestroyImmediate(hit.transform.gameObject);
+                    }
                 }
             }
         }
@@ -363,8 +377,7 @@ public class PlayerActions : MonoBehaviour {
     }
     public void ConsumePotion()
     {
-        playerStats.ChangeHealth(playerStats.playerMaxHealth - playerStats.playerHealth);
-        
+        playerStats.ChangeHealth(playerStats.playerMaxHealth - playerStats.playerHealth);       
         playerStats.potionCount--;
     }
 
