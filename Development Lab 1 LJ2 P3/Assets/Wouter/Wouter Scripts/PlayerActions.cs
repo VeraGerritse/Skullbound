@@ -12,6 +12,9 @@ public class PlayerActions : MonoBehaviour {
     public bool isNeutral;
     public LayerMask attacklayer;
 
+    public static bool staticplayerAttacks;
+    public bool playerAttacks;
+
     public float powerTimer;
 
 
@@ -25,10 +28,18 @@ public class PlayerActions : MonoBehaviour {
         Physics.IgnoreLayerCollision(10,10);
         anim = GetComponent<Animator>();
         playerStats = GetComponent<PlayerStats>();
+
+    
     }
 
     private void Update()
     {
+        staticplayerAttacks = playerAttacks;
+
+        if(canCombo)
+        {
+            anim.ResetTrigger("Revert");
+        }
         if(Input.GetButtonDown("Inject"))
         {
             if (playerStats.boostCount > 0)
@@ -304,7 +315,18 @@ public class PlayerActions : MonoBehaviour {
 
                 if (hit.transform.tag == "Enemy")
                 {
-                    hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack);
+                    if(!hit.transform.GetComponent<CombatAi>().block)
+                    {
+                        hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack);
+                    }
+                    else
+                    {
+                        anim.ResetTrigger("Revert");
+                        anim.SetTrigger("Revert");
+                        SoundManager.soundInstance.audiosources[Random.Range(12, 16)].Play();
+                        
+                    }
+                    
                 }
                 else
                 {

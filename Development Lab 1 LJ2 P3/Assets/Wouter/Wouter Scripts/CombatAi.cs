@@ -19,18 +19,42 @@ public class CombatAi : MonoBehaviour {
     public float Health;
 
     public float actionCooldown;
+    public bool dualwielder;
+    public bool shielded;
+    public bool block;
 
     void Start()
     {
         textHP.text = Health.ToString();
         myPathFinding = GetComponent<Pathfinding>();
         myAnimator = transform.GetChild(0).GetComponent<Animator>();
+        if(shielded)
+        {
+            myAnimator.SetBool("Shielded", true);
+        }
+        if(dualwielder)
+        {
+            myAnimator.SetBool("DualWield", true);
+        }
+        
     }
 
 
 
     void Update()
     {
+        if (PlayerActions.staticplayerAttacks && shielded)
+        {
+            myAnimator.SetBool("Block", true);
+            //block = true;
+        }
+        else
+        {
+            myAnimator.SetBool("Block", false);
+            //block = false;
+        }
+
+
         if(Input.GetKeyDown("1"))
         {
             myAnimator.SetTrigger("test1");
