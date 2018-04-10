@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114351095944489096}
   - component: {fileID: 114797835064739448}
   - component: {fileID: 114964968781661730}
+  - component: {fileID: 114697424964991442}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1122689342972866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.094803, y: 0.1072551, z: 7.739579}
+  m_LocalPosition: {x: -47.4033, y: -34.17112, z: -14.707268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,7 +59,7 @@ MonoBehaviour:
   actions: {fileID: 0}
   layers:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 34816
   raycastobj: {fileID: 0}
 --- !u!114 &114351095944489096
 MonoBehaviour:
@@ -82,6 +83,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1a7dfc2a1fbe04094b6975274fe850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114697424964991442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1122689342972866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbee127a2792dc64790dc8bcb27d5890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doors: []
+  allCleared: 0
 --- !u!114 &114797835064739448
 MonoBehaviour:
   m_ObjectHideFlags: 1

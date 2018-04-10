@@ -46,13 +46,13 @@ public class MoveMent : MonoBehaviour {
 
         if (Input.GetButton("Crouch"))
         {
-            Crouch();
+            //Crouch();
         }
         if (Input.GetButtonUp("Crouch"))
         {
-            currentSpeed = walkSpeed;
-            anim.SetBool("Crouch", false);
-            anim.ResetTrigger("Block");
+            //currentSpeed = walkSpeed;
+            //anim.SetBool("Crouch", false);
+            //anim.ResetTrigger("Block");
         }
         if (Input.GetButton("Run"))
         {
@@ -64,7 +64,7 @@ public class MoveMent : MonoBehaviour {
         }
         if (Input.GetButtonDown("Jump"))
         {
-            Jump();
+            //Jump();
         }
 
         if(!Input.GetButton("Fire2"))
