@@ -10,6 +10,8 @@ public class PlayerStats : MonoBehaviour {
     public float playerMaxStamina;
     public int potionCount;
     public int boostCount;
+
+    public Animator animator;
     
     public GameObject weapon;
     public GameObject previousWeapon;
@@ -58,6 +60,8 @@ public class PlayerStats : MonoBehaviour {
         doStaminaBoost = true;
         boostDuration = 10;
         boostCount--;
+        animator.ResetTrigger("Inject");
+        
     }
 
     private void Update()

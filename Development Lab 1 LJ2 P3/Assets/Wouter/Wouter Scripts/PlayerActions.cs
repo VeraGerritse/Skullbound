@@ -151,6 +151,7 @@ public class PlayerActions : MonoBehaviour {
         {
             anim.SetBool("BlockBool", false);
             anim.ResetTrigger("Potion");
+            //anim.ResetTrigger("Inject");
         }
         else if(playerStats.playerStamina > 1)
         {

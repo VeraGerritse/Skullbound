@@ -501,6 +501,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1268909248161122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4734689484968964}
+  - component: {fileID: 114851629599334646}
+  m_Layer: 10
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1289585651796278
 GameObject:
   m_ObjectHideFlags: 1
@@ -2026,6 +2042,7 @@ Transform:
   - {fileID: 4528189624658396}
   - {fileID: 4699999668834612}
   - {fileID: 4670011468114262}
+  - {fileID: 4734689484968964}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2938,6 +2955,19 @@ Transform:
   - {fileID: 4644151671078856}
   m_Father: {fileID: 4009564689848794}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4734689484968964
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1268909248161122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4224159882244348}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4745005827309774
 Transform:
@@ -6521,6 +6551,7 @@ MonoBehaviour:
   playerMaxStamina: 100
   potionCount: 0
   boostCount: 0
+  animator: {fileID: 95663407831460774}
   weapon: {fileID: 0}
   previousWeapon: {fileID: 0}
   shield: {fileID: 0}
@@ -6655,6 +6686,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: f15747daf7f461842ae7aa5546ce1795, type: 2}
+--- !u!114 &114851629599334646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1268909248161122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e330e70a96328b40a12284c60cac3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audiosources:
+  - {fileID: 82265132406034572}
+  - {fileID: 82604793040023156}
+  - {fileID: 82404100517489286}
+  - {fileID: 82352957774540552}
+  - {fileID: 82370397744636164}
+  - {fileID: 82037459078421018}
+  - {fileID: 82301581444456250}
+  - {fileID: 82311119676398172}
+  - {fileID: 82633718117855554}
+  - {fileID: 82721860608195586}
+  - {fileID: 82909262635271790}
+  - {fileID: 82976199452711980}
+  - {fileID: 82185385104420904}
+  - {fileID: 82604110042536848}
+  - {fileID: 82924143752820802}
+  - {fileID: 82208559494969948}
+  - {fileID: 82147380574096000}
+  - {fileID: 82155832052002294}
+  - {fileID: 82411528471368780}
+  - {fileID: 82085273593223320}
+  - {fileID: 82665166128483066}
+  - {fileID: 82487364913617148}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!124 &124353215835503332
 Behaviour:
   m_ObjectHideFlags: 1
