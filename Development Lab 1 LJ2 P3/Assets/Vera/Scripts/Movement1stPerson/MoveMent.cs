@@ -56,15 +56,15 @@ public class MoveMent : MonoBehaviour {
         }
         if (Input.GetButton("Run"))
         {
-            Run();
+            //Run();
         }
         if (Input.GetButtonUp("Run"))
         {
-            currentSpeed = walkSpeed;
+            //currentSpeed = walkSpeed;
         }
         if (Input.GetButtonDown("Jump"))
         {
-            //Jump();
+            Jump();
         }
 
         if(!Input.GetButton("Fire2"))
