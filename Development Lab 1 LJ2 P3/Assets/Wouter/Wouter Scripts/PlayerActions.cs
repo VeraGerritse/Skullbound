@@ -32,6 +32,20 @@ public class PlayerActions : MonoBehaviour {
     
     }
 
+    public void PlayStep()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, 1.1f))
+        {
+            if (hit.transform.gameObject != null && hit.collider.gameObject.tag != "Player")
+            {
+                SoundManager.soundInstance.audiosources[Random.Range(17, 21)].Play();
+
+            }
+        }
+        
+    }
+
     private void Update()
     {
         staticplayerAttacks = playerAttacks;

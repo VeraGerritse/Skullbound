@@ -52,6 +52,11 @@ public class Inertia : MonoBehaviour {
 
     }
 
+    public void PlayStep()
+    {
+        SoundManager.soundInstance.audiosources[Random.Range(17,21)].Play();
+    }
+
     private void Update()
     {
 
