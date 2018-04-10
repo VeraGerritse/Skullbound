@@ -247,11 +247,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
-        type: 2}
-      propertyPath: floors.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4201787624690070, guid: 66f5ebc05afbab34fa9c1185b975d3de, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -284,43 +279,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114937018540227170, guid: 66f5ebc05afbab34fa9c1185b975d3de,
-        type: 2}
-      propertyPath: onlyDisplayPath
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
-        type: 2}
-      propertyPath: gridSize
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
-        type: 2}
-      propertyPath: maxRooms
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
-        type: 2}
-      propertyPath: roomsNeeded
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114937018540227170, guid: 66f5ebc05afbab34fa9c1185b975d3de,
-        type: 2}
-      propertyPath: nodeRadius
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
-        type: 2}
-      propertyPath: floors.Array.data[0]
-      value: 
-      objectReference: {fileID: 1590389975032206, guid: 7ae8d0c7eb8de4049ae0911b58c6f04e,
-        type: 2}
-    - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
-        type: 2}
-      propertyPath: floors.Array.data[1]
-      value: 
-      objectReference: {fileID: 1604364423848994, guid: 562b00f47d0c7a9459937236b748b2f9,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f5ebc05afbab34fa9c1185b975d3de, type: 2}
   m_IsPrefabParent: 0
@@ -363,43 +321,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114797835064739448, guid: 1ed98036ed8e80647bd8f5431aaa344d,
-        type: 2}
-      propertyPath: interfaceGame
-      value: 
-      objectReference: {fileID: 1870757273}
-    - target: {fileID: 114310410685928578, guid: 1ed98036ed8e80647bd8f5431aaa344d,
-        type: 2}
-      propertyPath: layers.m_Bits
-      value: 34816
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ed98036ed8e80647bd8f5431aaa344d, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1176616591 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1122689342972866, guid: 1ed98036ed8e80647bd8f5431aaa344d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1019988700}
---- !u!114 &1176616597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1176616591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbee127a2792dc64790dc8bcb27d5890, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doors: []
-  allCleared: 0
---- !u!114 &1870757273 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114930468841572202, guid: 775cdeab428ad164ab0c1bc19b8fa374,
-    type: 2}
-  m_PrefabInternal: {fileID: 1917803249}
-  m_Script: {fileID: 11500000, guid: 4750c3f42c4a903469e4c22114ca6add, type: 3}
 --- !u!1001 &1917803249
 Prefab:
   m_ObjectHideFlags: 0
@@ -497,17 +421,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224197394390929164, guid: 775cdeab428ad164ab0c1bc19b8fa374,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.81829834
-      objectReference: {fileID: 0}
-    - target: {fileID: 114525758289828456, guid: 775cdeab428ad164ab0c1bc19b8fa374,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9235b3932d35bad4dab5b873893b7b24,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 775cdeab428ad164ab0c1bc19b8fa374, type: 2}
   m_IsPrefabParent: 0
