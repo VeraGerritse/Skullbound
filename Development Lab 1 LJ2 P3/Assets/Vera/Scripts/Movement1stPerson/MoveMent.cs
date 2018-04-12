@@ -10,7 +10,7 @@ public class MoveMent : MonoBehaviour {
     public float turnSpeed;
     public float walkSpeed;
     public float currentSpeed;
-    public float runSpeed;
+    //public float runSpeed;
     public float crouchSpeed;
     public float modifier;
     public float jumpHeight;
@@ -45,7 +45,8 @@ public class MoveMent : MonoBehaviour {
     {
         if (!GameManager.instance.paused)
         {
-            Movement();
+            currentSpeed = walkSpeed;
+            //Movement();
         }
     }
 
@@ -140,6 +141,6 @@ public class MoveMent : MonoBehaviour {
 
     public void Run()
     {
-        currentSpeed = runSpeed;
+        //currentSpeed = runSpeed;
     }
 }
