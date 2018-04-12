@@ -6,7 +6,9 @@ public class TierManager : MonoBehaviour {
 
     public static TierManager instance;
     public int multiplier;
-    public int Tier;
+    public int tier;
+
+    public bool highestTier;
 
     private void Awake()
     {
@@ -14,5 +16,9 @@ public class TierManager : MonoBehaviour {
         {
             instance = this;
         }
+    }
+    private void Update()
+    {
+        
     }
 }

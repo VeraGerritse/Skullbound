@@ -102,6 +102,7 @@ public class CombatAi : MonoBehaviour {
 
     void RagdollBones()
     {
+        LootManager.instance.Loot(gameObject.transform);
         GameObject g = Instantiate(bonepieces, this.gameObject.transform.position, this.gameObject.transform.rotation);
         hurtSound.Play();
         Destroy(g.gameObject, 3);

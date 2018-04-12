@@ -246,6 +246,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1121071995 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1122689342972866, guid: 1ed98036ed8e80647bd8f5431aaa344d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1841418949}
+--- !u!114 &1121071996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1121071995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e82c6ea7299464faeab3994571e788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tier1:
+  - {fileID: 1705255856896038, guid: 270e8fc3017d8864bb6fcb139bec6330, type: 2}
+  tier2: []
+  tier3: []
+  procentalHigher: 0
+  procentalLower: 0
+--- !u!114 &1121071997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1121071995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620508889c4d83646944f5c7647c13d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 0
+  tier: 1
+  highestTier: 1
 --- !u!1001 &1812293032
 Prefab:
   m_ObjectHideFlags: 0
@@ -446,7 +482,7 @@ Prefab:
         type: 2}
       propertyPath: floors.Array.data[0]
       value: 
-      objectReference: {fileID: 1297966535423282, guid: 0ad1b4df477d45e439b826be8417f2d5,
+      objectReference: {fileID: 1804364772815728, guid: bf3ccb70cbc78bd49a5202178d419a45,
         type: 2}
     - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
         type: 2}
