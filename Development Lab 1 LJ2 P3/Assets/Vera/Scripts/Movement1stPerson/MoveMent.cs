@@ -43,7 +43,7 @@ public class MoveMent : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (!standStill)
+        if (!GameManager.instance.paused)
         {
             Movement();
         }
@@ -51,40 +51,38 @@ public class MoveMent : MonoBehaviour {
 
     private void Update()
     {
-        Looking();
+        if (!GameManager.instance.paused)
+        {
+            Movement();
 
-        if (Input.GetButton("Crouch"))
-        {
-            //Crouch();
-        }
-        if (Input.GetButtonUp("Crouch"))
-        {
-            //currentSpeed = walkSpeed;
-            //anim.SetBool("Crouch", false);
-            //anim.ResetTrigger("Block");
-        }
-        if (Input.GetButton("Run"))
-        {
-            //Run();
-        }
-        if (Input.GetButtonUp("Run"))
-        {
-            //currentSpeed = walkSpeed;
-        }
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
+            if (Input.GetButton("Crouch"))
+            {
+                //Crouch();
+            }
+            if (Input.GetButtonUp("Crouch"))
+            {
+                //currentSpeed = walkSpeed;
+                //anim.SetBool("Crouch", false);
+                //anim.ResetTrigger("Block");
+            }
+            if (Input.GetButton("Run"))
+            {
+                //Run();
+            }
+            if (Input.GetButtonUp("Run"))
+            {
+                //currentSpeed = walkSpeed;
+            }
+            if (Input.GetButtonDown("Jump"))
+            {
+                Jump();
+            }
 
-        if(!Input.GetButton("Fire2"))
-        {
-            modifier = 1;
+            if (!Input.GetButton("Fire2"))
+            {
+                modifier = 1;
+            }
         }
-    }
-
-    public void Looking()
-    {
-
     }
 
     public void Movement()

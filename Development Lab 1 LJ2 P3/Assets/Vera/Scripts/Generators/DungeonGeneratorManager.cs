@@ -583,8 +583,9 @@ public class DungeonGeneratorManager : MonoBehaviour
     IEnumerator StartPathfinder(int startRoom)
     {
         yield return new WaitForSeconds(0.1f);
+        LoadingScreen.instance.UpdateLoad();
         Grid.instance.GridSize(roomSize, gridSize);
-        
+
 
         yield return new WaitForSeconds(0.2f);
         //for (int i = 0; i < possiblePlaces.Count; i++)
@@ -594,10 +595,16 @@ public class DungeonGeneratorManager : MonoBehaviour
         //        possiblePlaces[i].myActivities.DisableRigidBodys();
         //    }
         //}
+        LoadingScreen.instance.UpdateLoad();
         EnterRoom(possiblePlaces[startRoom]);
+
         yield return new WaitForSeconds(0.5f);
+        LoadingScreen.instance.UpdateLoad();
         PlacePlayer(startRoom);
         AssignThings();
         ready = true;
+        yield return new WaitForSeconds(0.6f);
+        LoadingScreen.instance.UpdateLoad();
+        GameManager.instance.paused = false;
     }
 }

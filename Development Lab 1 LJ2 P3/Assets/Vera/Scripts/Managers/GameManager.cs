@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
     public static GameObject player;
+    public bool paused;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+        paused = true;
         StartCoroutine(StartShiz());
     }
     
