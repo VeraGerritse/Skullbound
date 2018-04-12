@@ -24,7 +24,8 @@ public class LootManager : MonoBehaviour
 
     public void Loot(Transform spawn)
     {
-        int tier = TierManager.instance.tier;
+        int tier = TierManager.tier;
+        print(tier);
         int r = Random.Range(0, 100);
         if (r < procentalHigher && !TierManager.instance.highestTier)
         {
@@ -34,7 +35,7 @@ public class LootManager : MonoBehaviour
         {
             tier = Random.Range(1, tier + 1);
         }
-        print(tier);
+        print(tier + "ugh");
         if(tier == 1)
         {
             Looting(tier1,spawn);
@@ -52,7 +53,6 @@ public class LootManager : MonoBehaviour
     public void Looting(List<GameObject> myTier, Transform spawn)
     {
         int newItem = Random.Range(0, myTier.Count);
-        print(newItem);
         GameObject item = Instantiate(myTier[newItem], spawn.position, Quaternion.identity);
     }
 }

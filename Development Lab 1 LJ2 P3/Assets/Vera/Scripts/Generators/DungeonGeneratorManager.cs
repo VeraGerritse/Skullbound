@@ -254,9 +254,15 @@ public class DungeonGeneratorManager : MonoBehaviour
     public void PlacePlayer(int i)
     {
         Vector3 loc = new Vector3(possiblePlaces[i].transform.position.x, possiblePlaces[i].transform.position.y + 2, possiblePlaces[i].transform.position.z);
-        if (player == null)
+        if (GameManager.player == null)
         {
             player = Instantiate(playerPreFab, loc, Quaternion.identity);
+            GameManager.player = player;
+        }
+        else
+        {
+            GameManager.player.transform.position = loc;
+            player = GameManager.player;
         }
         if(mapCam == null)
         {
@@ -370,6 +376,11 @@ public class DungeonGeneratorManager : MonoBehaviour
 
         } 
 
+    }
+
+    public void Player()
+    {
+        GameManager.player = player;
     }
 
     void PlaceStartRoom(int startRoom)
@@ -508,7 +519,6 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     public void EnterRoom(RoomGen entering)
     {
-        print(Grid.instance.ready);
         if (Grid.instance.ready)
         {
             if (currentRoom != null)

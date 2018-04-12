@@ -25,10 +25,19 @@ public class MoveMent : MonoBehaviour {
 
     public bool standStill = false;
 
+    private void Awake()
+    {
+        if(GameManager.instance != null)
+        {
+            GameManager.player = gameObject;
+        }
+    }
+
     void Start () {
         currentSpeed = walkSpeed;
         player = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
+        DontDestroyOnLoad(gameObject);
     }
 
 

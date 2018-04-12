@@ -62,7 +62,6 @@ public class RoomActivities : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        print("enter");
         if (other.gameObject.tag == "Player" && inRoom)
         {
             inRoom = false;
@@ -112,20 +111,28 @@ public class RoomActivities : MonoBehaviour {
 
     public void EnemyKilled(CombatAi deadEnemy)
     {
-        print("killed");
         if (enemysAlive.Count == 0)
         {
-            print("hoi");
+            if (bossRoom)
+            {
+                TierManager.instance.HigherTier();
+                return;
+            }
             ClearManager.instance.ExitRoom();
             return;
         }
         for (int i = 0; i < enemysAlive.Count; i++)
         {
-            if(enemysAlive[i] == deadEnemy)
+            if (enemysAlive[i] == deadEnemy)
             {
                 enemysAlive.RemoveAt(i);
-                if(enemysAlive.Count == 0)
+                if (enemysAlive.Count == 0)
                 {
+                    if (bossRoom)
+                    {
+                        TierManager.instance.HigherTier();
+                        return;
+                    }
                     ClearManager.instance.ExitRoom();
                     return;
                 }

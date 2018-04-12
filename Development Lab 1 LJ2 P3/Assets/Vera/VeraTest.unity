@@ -264,8 +264,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tier1:
   - {fileID: 1705255856896038, guid: 270e8fc3017d8864bb6fcb139bec6330, type: 2}
-  tier2: []
-  tier3: []
+  tier2:
+  - {fileID: 1223439729673282, guid: 81d3c0a6e8c0e9749b3bdcfa03fe8a56, type: 2}
+  tier3:
+  - {fileID: 1606328511911722, guid: 5c17dfb4865025743b9d7d3d9d366fa8, type: 2}
   procentalHigher: 0
   procentalLower: 0
 --- !u!114 &1121071997
@@ -280,8 +282,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 0
-  tier: 1
-  highestTier: 1
+  highestTiers: 3
+  highestTier: 0
 --- !u!1001 &1812293032
 Prefab:
   m_ObjectHideFlags: 0
@@ -489,6 +491,12 @@ Prefab:
       propertyPath: floors.Array.data[1]
       value: 
       objectReference: {fileID: 1604364423848994, guid: 562b00f47d0c7a9459937236b748b2f9,
+        type: 2}
+    - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
+        type: 2}
+      propertyPath: bossRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 1358884044866900, guid: c41633fb4ec255b40aff4a653c80fe6b,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f5ebc05afbab34fa9c1185b975d3de, type: 2}

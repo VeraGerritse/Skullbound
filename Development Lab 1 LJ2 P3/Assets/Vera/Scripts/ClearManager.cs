@@ -10,11 +10,11 @@ public class ClearManager : MonoBehaviour {
 
     private void Awake()
     {
+        doors.Clear();
         if(instance == null)
         {
             instance = this;
         }
-        print(instance);
         allCleared = true;
     }
 
