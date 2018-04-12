@@ -26,7 +26,10 @@ public class GameManager : MonoBehaviour {
     private void Update()
     {
         UpDateThese();
-
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            paused = false;
+        }
     }
 
     void UpDateThese()

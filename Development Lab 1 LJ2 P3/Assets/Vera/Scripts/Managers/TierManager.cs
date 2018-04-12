@@ -36,6 +36,7 @@ public class TierManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(2);
         DungeonGeneratorManager.instance.Player();
+        PlayerStats.instance.SaveWeapons();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

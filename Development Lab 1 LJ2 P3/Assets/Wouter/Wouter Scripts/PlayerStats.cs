@@ -20,7 +20,8 @@ public class PlayerStats : MonoBehaviour {
 
     public bool doStaminaBoost;
     public float boostDuration;
-        
+
+    public static PlayerStats instance;
 
     public List<GameObject> viewmodelgear = new List<GameObject>();
     public List<GameObject> viewmodelgearLeft = new List<GameObject>();
@@ -30,6 +31,10 @@ public class PlayerStats : MonoBehaviour {
 
     private void Start()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
         playerHealth = playerMaxHealth;
         UIManager.instance.interfaceGame.UpdateHealth(playerHealth, playerMaxHealth);
     }
@@ -83,5 +88,27 @@ public class PlayerStats : MonoBehaviour {
         }
     }
 
+    public void SaveWeapons()
+    {
+        weapon.transform.SetParent(null);
+        shield.transform.SetParent(null);
+        DontDestroyOnLoad(weapon);
+        DontDestroyOnLoad(shield);
+    }
 
+    public void LoadWeapons()
+    {
+        if(weapon != null)
+        {
+            GameObject tempWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
+            Destroy(weapon);
+            weapon = tempWeapon;
+        }
+        if(shield != null)
+        {
+            GameObject tempShield = Instantiate(shield, transform.position, Quaternion.identity);
+            Destroy(shield);
+            shield = tempShield;
+        }
+    }
 }

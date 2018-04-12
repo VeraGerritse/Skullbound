@@ -601,6 +601,10 @@ public class DungeonGeneratorManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         LoadingScreen.instance.UpdateLoad();
         PlacePlayer(startRoom);
+        if(PlayerStats.instance != null)
+        {
+            PlayerStats.instance.LoadWeapons();
+        }
         AssignThings();
         ready = true;
         yield return new WaitForSeconds(0.6f);
