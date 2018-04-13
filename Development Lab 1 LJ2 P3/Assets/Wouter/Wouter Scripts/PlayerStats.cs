@@ -8,8 +8,8 @@ public class PlayerStats : MonoBehaviour {
     public float playerHealth;
     public float playerStamina;
     public float playerMaxStamina;
-    public int potionCount;
-    public int boostCount;
+    public static int potionCount;
+    public static int boostCount;
     public float staminaRegenerationDelay;
 
     public Animator animator;
@@ -39,6 +39,9 @@ public class PlayerStats : MonoBehaviour {
         playerHealth = playerMaxHealth;
         UIManager.instance.interfaceGame.UpdateHealth(playerHealth, playerMaxHealth);
     }
+
+
+
     public void ChangeHealth(float amount)
     {
         playerHealth += amount;
@@ -68,6 +71,7 @@ public class PlayerStats : MonoBehaviour {
         boostCount--;
         animator.ResetTrigger("Inject");
         
+
     }
 
     private void Update()

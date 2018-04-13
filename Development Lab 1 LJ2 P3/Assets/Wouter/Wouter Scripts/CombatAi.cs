@@ -175,7 +175,7 @@ public class CombatAi : MonoBehaviour {
 
     public void LeapSpin()
     {
-        GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 4000 + Vector3.up * 6 + Vector3.right *  -100);
+        GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 2000 + Vector3.up * 6 + Vector3.right *  -100);
         print("Spin");
     }
 

@@ -56,7 +56,7 @@ public class PlayerActions : MonoBehaviour {
         }
         if(Input.GetButtonDown("Inject"))
         {
-            if (playerStats.boostCount > 0)
+            if (PlayerStats.boostCount > 0)
             {
                 anim.SetBool("HasBoost", true);
 
@@ -179,7 +179,7 @@ public class PlayerActions : MonoBehaviour {
 
         if (Input.GetKeyDown("q"))
         {
-            if(playerStats.potionCount > 0)
+            if(PlayerStats.potionCount > 0)
             {
                 anim.SetBool("HasPotion", true);
                 
@@ -299,12 +299,14 @@ public class PlayerActions : MonoBehaviour {
                     }
                     else if(hit.transform.gameObject.GetComponent<Potion>() != null)
                     {
-                        playerStats.potionCount++;
+                        PlayerStats.potionCount++;
+                        
                         DestroyImmediate(hit.transform.gameObject);
                     }
                     else if(hit.transform.gameObject.GetComponent<BoostInjector>() != null)
                     {
-                        playerStats.boostCount++;
+                        
+                        PlayerStats.boostCount++;
                         DestroyImmediate(hit.transform.gameObject);
                     }
                 }
@@ -418,7 +420,8 @@ public class PlayerActions : MonoBehaviour {
     public void ConsumePotion()
     {
         playerStats.ChangeHealth(playerStats.playerMaxHealth - playerStats.playerHealth);       
-        playerStats.potionCount--;
+        PlayerStats.potionCount--;
+        
     }
 
     public void SetSpeed(float amount)

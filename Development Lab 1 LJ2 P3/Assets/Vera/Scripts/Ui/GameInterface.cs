@@ -12,10 +12,22 @@ public class GameInterface : MonoBehaviour {
     public Image Stamina_UI_Green;
     public Image Stamina_UI_Yellow;
 
+
+    public List<Image> hearts = new List<Image>();
+    public List<Image> stams = new List<Image>();
+
+    public Image boost1;
+    public Image boost2;
+    public Image boost3;
+
     public Animator anim;
+
+  
 
     public void Interact()
     {
+        
+        
         if (inter)
         {
             CanInteract();

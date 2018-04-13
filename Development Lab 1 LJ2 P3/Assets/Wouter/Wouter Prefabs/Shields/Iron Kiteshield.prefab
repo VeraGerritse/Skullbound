@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1333994247977740}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 7.57, y: 1.5, z: 3.68}
+  m_LocalPosition: {x: 4.001366, y: 0.1072551, z: -4.0650153}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldName: Iron Kiteshield
-  itemId: 3
+  itemId: 4
   stability: 30
   bashcost: 25
   bashDamage: 10
@@ -142,4 +142,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAwake: 1
   keepsWorking: 0
+  myFloat: 0
   canBePickedUp: 1
+  rend: {fileID: 0}
