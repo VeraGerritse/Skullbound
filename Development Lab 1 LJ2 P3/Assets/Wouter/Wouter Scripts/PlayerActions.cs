@@ -313,7 +313,8 @@ public class PlayerActions : MonoBehaviour {
     }
 
     public void Hit(float amount)
-    {       
+    {
+        playerStats.staminaRegenerationDelay = 1;
         playerStats.ChangeStamina(-playerStats.weapon.GetComponent<Weapon>().staminacost);
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer)
@@ -354,6 +355,7 @@ public class PlayerActions : MonoBehaviour {
 
     public void PowerAttack()
     {
+        playerStats.staminaRegenerationDelay = 2;
         playerStats.ChangeStamina(-playerStats.weapon.GetComponent<Weapon>().staminacost * 3);
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer) 
@@ -388,6 +390,7 @@ public class PlayerActions : MonoBehaviour {
 
     public void Bash()
     {
+        playerStats.staminaRegenerationDelay = 1;
         playerStats.ChangeStamina(-playerStats.shield.GetComponent<Shield>().bashcost);
         SoundManager.soundInstance.audiosources[16].Play();
         RaycastHit hit;
@@ -421,5 +424,10 @@ public class PlayerActions : MonoBehaviour {
     public void SetSpeed(float amount)
     {
         speedmodifier = amount;
+    }
+
+    public void Shake()
+    {
+        anim.SetTrigger("Shake");
     }
 }

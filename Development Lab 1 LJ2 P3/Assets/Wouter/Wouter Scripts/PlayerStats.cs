@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour {
     public float playerMaxStamina;
     public int potionCount;
     public int boostCount;
+    public float staminaRegenerationDelay;
 
     public Animator animator;
     
@@ -78,13 +79,18 @@ public class PlayerStats : MonoBehaviour {
 
             if (playerStamina < playerMaxStamina && !playerBLocks)
             {
-                ChangeStamina(Time.deltaTime * 20);
+                ChangeStamina(Time.deltaTime * 40);
             }
         }
 
-        if (playerStamina < playerMaxStamina && !playerBLocks)
+        if (playerStamina < playerMaxStamina && !playerBLocks && staminaRegenerationDelay <= 0)
         {
-            ChangeStamina(Time.deltaTime * 5);
+            ChangeStamina(Time.deltaTime * 20);
+        }
+
+        if(staminaRegenerationDelay > 0 )
+        {
+            staminaRegenerationDelay -= Time.deltaTime;
         }
     }
 

@@ -7,6 +7,8 @@ public class Weapon : MonoBehaviour {
     public GameObject owner;
     public Animator ownerAnimator;
     public CombatAi myCombatAi;
+    public bool hyper;
+    public bool knockback;
 
     public bool isVisible;
 
@@ -50,13 +52,21 @@ public class Weapon : MonoBehaviour {
                         other.GetComponent<PlayerStats>().ChangeHealth(-attack);
 
                         other.GetComponent<PlayerActions>().anim.SetTrigger("Recoil");
+                        if(knockback)
+                        {
+                            other.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * 700 + Vector3.back * 700);
+                        }
                     }
                     else
                     {
 
                         if (owner != null)
                         {
-                            GetComponentInParent(typeof(Animator)).transform.GetComponent<Animator>().SetTrigger("Revert");
+                            if(!hyper)
+                            {
+                                GetComponentInParent(typeof(Animator)).transform.GetComponent<Animator>().SetTrigger("Revert");
+                            }
+                            
                             other.GetComponent<PlayerActions>().anim.SetTrigger("RecoilBlock");
                             SoundManager.soundInstance.audiosources[Random.Range(12, 15)].Play();
                             myCombatAi.actionCooldown = 2;
