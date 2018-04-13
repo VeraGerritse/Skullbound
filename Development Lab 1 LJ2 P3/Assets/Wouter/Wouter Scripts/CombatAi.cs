@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class CombatAi : MonoBehaviour {
 
+    public enum Task { Idle, Follow, Attack, Block, Spin, Smash };
+    public Task task;
+
+    
+
+
     public bool dualWieldWeapons;
     
 
@@ -22,6 +28,9 @@ public class CombatAi : MonoBehaviour {
     public bool dualwielder;
     public bool shielded;
     public bool block;
+    public bool isBoss;
+
+
 
     void Start()
     {
@@ -43,38 +52,141 @@ public class CombatAi : MonoBehaviour {
 
     void Update()
     {
-        if (PlayerActions.staticplayerAttacks && shielded)
+        if(!myPathFinding.atTarget)
         {
-            myAnimator.SetBool("Block", true);
-            //block = true;
+            task = Task.Follow;
         }
-        else
+        
+        if(myPathFinding.atTarget)
         {
-            myAnimator.SetBool("Block", false);
-            //block = false;
+            int moveselect;
+            if (isBoss)
+            {               
+                moveselect = Random.Range(0, 3);
+            }
+            else
+            {
+                moveselect = 0;
+            }
+
+            if(moveselect == 0)
+            {
+                task = Task.Attack;
+                myAnimator.SetBool("Attack", true);
+            }
+            else
+            {
+                myAnimator.SetBool("Attack", false);
+            }
+
+            if(moveselect == 1)
+            {
+                task = Task.Spin;
+                myAnimator.SetBool("Spin", true);
+            }
+            else
+            {
+                myAnimator.SetBool("Spin", false);
+            }
+
+            if (moveselect == 2)
+            {
+                task = Task.Smash;
+                myAnimator.SetBool("Smash", true);
+
+            }
+            else
+            {
+
+                myAnimator.SetBool("Smash", false);
+            }
+
         }
 
 
-        if(Input.GetKeyDown("1"))
+
+        if(shielded)
         {
-            myAnimator.SetTrigger("test1");
+            if(PlayerActions.staticplayerAttacks)
+            {
+                myAnimator.SetBool("Block", true);
+                task = Task.Block;
+            }
+            else
+            {
+                myAnimator.SetBool("Block", false);
+            }
         }
 
-        if(actionCooldown > 0)
-        {
-            actionCooldown -= Time.deltaTime;
-        }
 
-        if(myPathFinding.atTarget && actionCooldown <= 0)
+
+
+
+
+
+
+
+
+
+
+        if(task == Task.Attack)
         {
-            Attack();
+            if(actionCooldown <= 0)
+            {
+                Attack();
+            }
         }
-        myAnimator.SetBool("Walk", !myPathFinding.atTarget);
+        else if(task == Task.Idle)
+        {
+            myAnimator.SetBool("Walk", false);
+        }
+        else if(task == Task.Follow)
+        {
+            myAnimator.SetBool("Walk", true);
+        }
+        else if(task == Task.Block)
+        {
+            if (actionCooldown <= 0)
+            {
+
+            }
+        }
+        else if(task == Task.Smash)
+        {
+            if (actionCooldown <= 0)
+            {
+
+            }
+        }
+        else if(task == Task.Spin)
+        {
+            if (actionCooldown <= 0)
+            {
+
+            }
+        }
+    }
+
+    public void LeapSmash()
+    {
+        GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 2100 + Vector3.up  * 1500 + Vector3.right);
+        print("Leap");
+    }
+
+    public void LeapSpin()
+    {
+        GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 4000 + Vector3.up * 6 + Vector3.right *  -100);
+        print("Spin");
+    }
+
+    public void LeapBack()
+    {
+        GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 0 + Vector3.up * 2 + Vector3.right, ForceMode.Impulse);
     }
 
     void Attack()
     {
-
+        
         myAnimator.SetTrigger("Attack");
         actionCooldown = 1;
         myAnimator.ResetTrigger("Revert");     
@@ -89,7 +201,7 @@ public class CombatAi : MonoBehaviour {
         {
             
             myAnimator.SetTrigger("Hurt");
-            actionCooldown = 0.5f;
+           
         }
         if(Health <= 0)
         {
@@ -102,7 +214,11 @@ public class CombatAi : MonoBehaviour {
 
     void RagdollBones()
     {
-        LootManager.instance.Loot(gameObject.transform);
+        if(LootManager.instance != null)
+        {
+            LootManager.instance.Loot(gameObject.transform);
+        }
+        
         GameObject g = Instantiate(bonepieces, this.gameObject.transform.position, this.gameObject.transform.rotation);
         hurtSound.Play();
         Destroy(g.gameObject, 3);
@@ -125,5 +241,7 @@ public class CombatAi : MonoBehaviour {
 
         Destroy(this.gameObject, 0.01f);
     }
+
+
 
 }
