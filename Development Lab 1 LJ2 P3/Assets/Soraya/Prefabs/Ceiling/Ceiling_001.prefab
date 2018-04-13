@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33104659141731938}
   - component: {fileID: 23841660967576980}
   - component: {fileID: 95005700504863498}
+  - component: {fileID: 65844898111392822}
   m_Layer: 0
   m_Name: Ceiling_001
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1636326739097780}
   m_LocalRotation: {x: 0.00000019861236, y: -0.7071068, z: 0.7071068, w: 0.00000019861236}
-  m_LocalPosition: {x: 0, y: 4.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,6 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1636326739097780}
   m_Mesh: {fileID: 4300000, guid: 1fa51e091c1e6c04c81075ad39efbe19, type: 3}
+--- !u!65 &65844898111392822
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1636326739097780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20.000013, y: 20.000008, z: 0.6000049}
+  m_Center: {x: -2.0090046e-14, y: 0.0000000715253, z: 0.29999888}
 --- !u!95 &95005700504863498
 Animator:
   serializedVersion: 3
