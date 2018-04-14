@@ -2702,7 +2702,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2b6b38ebf69ab3946ba9cb753657cc8f, type: 2}
+  - {fileID: 2100000, guid: 5a0c0e3db2de5de4182ba4e9fb2f2318, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2817,7 +2817,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1408523692832614}
-  m_Mesh: {fileID: 4300000, guid: 9aa803e8543956b4987cea87295119f3, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 9dfcfae5792a7ce448f97f46fcbefbc7, type: 3}
 --- !u!54 &54743033684434672
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -3007,10 +3007,10 @@ MonoBehaviour:
   myAnimator: {fileID: 95581435737051986}
   textHP: {fileID: 114204309623435874}
   bones: []
-  bonepieces: {fileID: 1604361798807788, guid: bad9716257962734085f9a8b50b2896d, type: 2}
+  bonepieces: {fileID: 1318743273596038, guid: 1a1a54cf49aea534d80c057efb347bde, type: 2}
   myRoom: {fileID: 0}
   hurtSound: {fileID: 82920800855786512}
-  Health: 15
+  Health: 30
   actionCooldown: 0
   dualwielder: 0
   shielded: 1
