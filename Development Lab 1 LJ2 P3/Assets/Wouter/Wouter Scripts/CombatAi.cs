@@ -8,8 +8,8 @@ public class CombatAi : MonoBehaviour {
     public enum Task { Idle, Follow, Attack, Block, Spin, Smash };
     public Task task;
 
-    
 
+    public float speedbonus;
 
     public bool dualWieldWeapons;
     
@@ -45,7 +45,16 @@ public class CombatAi : MonoBehaviour {
         {
             myAnimator.SetBool("DualWield", true);
         }
+
+        if(speedbonus == 0)
+        {
+            speedbonus = 1;
+        }
+
+        myAnimator.SetFloat("SpeedBonus", speedbonus);
         
+
+
     }
 
 
