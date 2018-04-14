@@ -1806,7 +1806,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657915562763386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.48, y: 1.96, z: 4.3833513}
+  m_LocalPosition: {x: -10.431999, y: 0.96000004, z: 4.3833513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4397687673205544}
@@ -2919,7 +2919,7 @@ MonoBehaviour:
   target: {fileID: 0}
   aI: {fileID: 0}
   skull: {fileID: 0}
-  speed: 20
+  speed: 24
   turnSpeed: 100
   atTarget: 0
 --- !u!114 &114207566484197716
@@ -2934,6 +2934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   task: 0
+  speedbonus: 1.2
   dualWieldWeapons: 0
   myPathFinding: {fileID: 114126045871698100}
   myAnimator: {fileID: 95843935986630000}

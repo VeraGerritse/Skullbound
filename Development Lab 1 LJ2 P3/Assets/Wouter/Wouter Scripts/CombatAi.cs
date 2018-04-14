@@ -53,7 +53,7 @@ public class CombatAi : MonoBehaviour {
 
         myAnimator.SetFloat("SpeedBonus", speedbonus);
         
-
+        
 
     }
 
@@ -109,7 +109,6 @@ public class CombatAi : MonoBehaviour {
 
                 myAnimator.SetBool("Smash", false);
             }
-
         }
 
 
@@ -120,10 +119,12 @@ public class CombatAi : MonoBehaviour {
             {
                 myAnimator.SetBool("Block", true);
                 task = Task.Block;
+                myPathFinding.atTarget = true;
             }
             else
             {
                 myAnimator.SetBool("Block", false);
+                myPathFinding.atTarget = false;
             }
         }
 
@@ -152,6 +153,7 @@ public class CombatAi : MonoBehaviour {
         else if(task == Task.Follow)
         {
             myAnimator.SetBool("Walk", true);
+            myPathFinding.atTarget = false;
         }
         else if(task == Task.Block)
         {

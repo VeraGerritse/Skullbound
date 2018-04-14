@@ -321,9 +321,9 @@ public class PlayerActions : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer)
             ||
-            Physics.Raycast(Camera.main.transform.position + new Vector3(0.4f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer)
+            Physics.Raycast(Camera.main.transform.position + new Vector3(0.4f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3f, ~attacklayer)
             ||
-            Physics.Raycast(Camera.main.transform.position + new Vector3(0.4f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer)
+            Physics.Raycast(Camera.main.transform.position + new Vector3(0.4f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3f, ~attacklayer)
             )
 
         {
@@ -360,15 +360,15 @@ public class PlayerActions : MonoBehaviour {
         playerStats.staminaRegenerationDelay = 2;
         playerStats.ChangeStamina(-playerStats.weapon.GetComponent<Weapon>().staminacost * 3);
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 2f, ~attacklayer) 
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 4f, ~attacklayer) 
             ||
-            Physics.Raycast(Camera.main.transform.position + new Vector3(1f,0,0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 3f, ~attacklayer)
+            Physics.Raycast(Camera.main.transform.position + new Vector3(1f,0,0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 4f, ~attacklayer)
             ||
-            Physics.Raycast(Camera.main.transform.position + new Vector3(0.5f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 3f, ~attacklayer)
+            Physics.Raycast(Camera.main.transform.position + new Vector3(0.5f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 4f, ~attacklayer)
             ||
-            Physics.Raycast(Camera.main.transform.position + new Vector3(-1f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 3f, ~attacklayer)
+            Physics.Raycast(Camera.main.transform.position + new Vector3(-1f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 4f, ~attacklayer)
             ||
-            Physics.Raycast(Camera.main.transform.position + new Vector3(-0.5f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 3f, ~attacklayer)
+            Physics.Raycast(Camera.main.transform.position + new Vector3(-0.5f, 0, 0), Camera.main.transform.TransformDirection(Vector3.forward) * 2, out hit, 4f, ~attacklayer)
             )
         {
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
