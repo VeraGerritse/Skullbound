@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour {
     public float playerStamina;
     public float playerMaxStamina;
     public static int potionCount;
-    public static int boostCount;
+    public int boostCount;
     public float staminaRegenerationDelay;
 
     public Animator animator;

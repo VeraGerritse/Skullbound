@@ -128,7 +128,7 @@ MonoBehaviour:
   itemId: 1
   stability: 30
   bashcost: 10
-  bashDamage: 25
+  bashDamage: 15
 --- !u!114 &114780238978407608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,4 +142,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAwake: 1
   keepsWorking: 0
+  myFloat: 0
   canBePickedUp: 0
+  rend: {fileID: 0}

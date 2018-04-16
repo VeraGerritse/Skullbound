@@ -211,7 +211,7 @@ public class CombatAi : MonoBehaviour {
         if(amount < 0)
         {
             
-            myAnimator.SetTrigger("Hurt");
+            
            
         }
         if(Health <= 0)

@@ -126,7 +126,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAwake: 1
   keepsWorking: 0
+  myFloat: 0
   canBePickedUp: 0
+  rend: {fileID: 0}
 --- !u!114 &114864580781733506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,4 +144,4 @@ MonoBehaviour:
   itemId: 0
   stability: 40
   bashcost: 10
-  bashDamage: 35
+  bashDamage: 20

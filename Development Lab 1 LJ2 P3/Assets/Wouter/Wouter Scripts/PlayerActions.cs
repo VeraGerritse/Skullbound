@@ -56,7 +56,7 @@ public class PlayerActions : MonoBehaviour {
         }
         if(Input.GetButtonDown("Inject"))
         {
-            if (PlayerStats.boostCount > 0)
+            if (playerStats.boostCount > 0)
             {
                 anim.SetBool("HasBoost", true);
 
@@ -306,7 +306,7 @@ public class PlayerActions : MonoBehaviour {
                     else if(hit.transform.gameObject.GetComponent<BoostInjector>() != null)
                     {
                         
-                        PlayerStats.boostCount++;
+                        playerStats.boostCount++;
                         DestroyImmediate(hit.transform.gameObject);
                     }
                 }
@@ -314,8 +314,14 @@ public class PlayerActions : MonoBehaviour {
         }
     }
 
+    public void PlayMiss()
+    {
+        SoundManager.soundInstance.audiosources[Random.Range(22, 26)].Play();
+    }
+
     public void Hit(float amount)
     {
+        
         playerStats.staminaRegenerationDelay = 1;
         playerStats.ChangeStamina(-playerStats.weapon.GetComponent<Weapon>().staminacost);
         RaycastHit hit;
@@ -378,7 +384,7 @@ public class PlayerActions : MonoBehaviour {
                 if (hit.transform.tag == "Enemy")
                 {
                     hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack * 2);
-                    hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 1000 + transform.up * 1000);
+                    hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 300 + transform.up * 300);
                     
                 }
                 else
@@ -409,10 +415,11 @@ public class PlayerActions : MonoBehaviour {
             if (hit.transform.gameObject.GetComponent<Rigidbody>() != null)
             {
                 SoundManager.soundInstance.audiosources[Random.Range(12, 15)].Play();
-                hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 600 + transform.up * 300);
+                hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 300 + transform.up * 150);
                 if (hit.transform.tag == "Enemy")
                 {
                     hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.shield.GetComponent<Shield>().bashDamage);
+                    hit.transform.GetComponent<CombatAi>().myAnimator.SetTrigger("Hurt");
                 }
             }
         }
