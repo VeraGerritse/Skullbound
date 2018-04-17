@@ -30,10 +30,18 @@ public class CombatAi : MonoBehaviour {
     public bool block;
     public bool isBoss;
 
+    public int nextattack;
+    public bool canChoose;
+    public bool isAttacking;
+    public float choicetimer;
+
+    private int oldSpeed;
+
 
 
     void Start()
     {
+        oldSpeed = myPathFinding.speed;
         textHP.text = Health.ToString();
         myPathFinding = GetComponent<Pathfinding>();
         myAnimator = transform.GetChild(0).GetComponent<Animator>();
@@ -52,141 +60,129 @@ public class CombatAi : MonoBehaviour {
         }
 
         myAnimator.SetFloat("SpeedBonus", speedbonus);
-        
+
+        canChoose = true;
         
 
     }
 
-
-
     void Update()
     {
-        if(!myPathFinding.atTarget)
-        {
-            task = Task.Follow;
-        }
-        
-        if(myPathFinding.atTarget)
-        {
-            int moveselect;
-            if (isBoss)
-            {               
-                moveselect = Random.Range(0, 3);
-            }
-            else
-            {
-                moveselect = 0;
-            }
 
-            if(moveselect == 0)
-            {
-                task = Task.Attack;
-                myAnimator.SetBool("Attack", true);
-            }
-            else
-            {
-                myAnimator.SetBool("Attack", false);
-            }
+            
 
-            if(moveselect == 1)
-            {
-                task = Task.Spin;
-                myAnimator.SetBool("Spin", true);
-            }
-            else
-            {
-                myAnimator.SetBool("Spin", false);
-            }
-
-            if (moveselect == 2)
-            {
-                task = Task.Smash;
-                myAnimator.SetBool("Smash", true);
-
-            }
-            else
-            {
-
-                myAnimator.SetBool("Smash", false);
-            }
-        }
-
-
-
-        if(shielded)
+        if (shielded)
         {
             if(PlayerActions.staticplayerAttacks)
             {
                 myAnimator.SetBool("Block", true);
-                task = Task.Block;
-                myPathFinding.atTarget = true;
+                myPathFinding.speed = 0;
             }
             else
             {
                 myAnimator.SetBool("Block", false);
-                myPathFinding.atTarget = false;
+                myPathFinding.speed = oldSpeed;
             }
+            
         }
+        
+        
 
-
-
-
-
-
-
-
-
-
-
-
-        if(task == Task.Attack)
+        choicetimer += Time.deltaTime;
+        if(choicetimer >= 2)
         {
-            if(actionCooldown <= 0)
+
+            if(isBoss)
             {
-                Attack();
+                myAnimator.SetBool("Smash", true);
+                myAnimator.SetBool("Spin", false);
+                myAnimator.SetBool("Attack", false);
+                myAnimator.SetBool("Walk", false);
             }
+            else
+            {
+                myAnimator.SetBool("Smash", false);
+                myAnimator.SetBool("Spin", false);
+                myAnimator.SetBool("Attack", false);
+                myAnimator.SetBool("Walk", true);
+            }
+
+            choicetimer = 0;
+            if(isBoss)
+            {
+                nextattack = Random.Range(0, 3);
+            }
+            else
+            {
+                nextattack = 0;
+            }
+            
         }
-        else if(task == Task.Idle)
+
+
+
+        if (myPathFinding.atTarget)
         {
             myAnimator.SetBool("Walk", false);
+            ChooseNextAttack();
         }
-        else if(task == Task.Follow)
+        else
         {
-            myAnimator.SetBool("Walk", true);
-            myPathFinding.atTarget = false;
-        }
-        else if(task == Task.Block)
-        {
-            if (actionCooldown <= 0)
-            {
-
-            }
-        }
-        else if(task == Task.Smash)
-        {
-            if (actionCooldown <= 0)
-            {
-
-            }
-        }
-        else if(task == Task.Spin)
-        {
-            if (actionCooldown <= 0)
-            {
-
-            }
+            
+           // myAnimator.SetBool("Smash", false);
+            //myAnimator.SetBool("Spin", false);
+            //myAnimator.SetBool("Attack", false);
+            //myAnimator.SetBool("Walk", true);
         }
     }
 
+    public void ChooseNextAttack()
+    {
+        
+        //choosing = false;
+
+        if(nextattack == 0 && myPathFinding.atTarget)
+        {
+            //myAnimator.ResetTrigger("Revert");
+            myAnimator.SetBool("Attack", true);
+        }
+        else if(nextattack == 1 && myPathFinding.atTarget)
+        {
+            myAnimator.ResetTrigger("Revert");
+            myAnimator.SetBool("Spin", true);
+        }
+        else if(nextattack == 2 && myPathFinding.atTarget)
+        {
+            myAnimator.ResetTrigger("Revert");
+            myAnimator.SetBool("Spin", true);
+        }
+        else if(nextattack == 3 && myPathFinding.atTarget)
+        {
+            myAnimator.ResetTrigger("Revert");
+            myAnimator.SetBool("Spin", true);
+        }
+    }
+
+    public void SpinAttack()
+    {
+
+    }
+    public void SmashAttack()
+    {
+
+    }
+
+
+
     public void LeapSmash()
     {
-        GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 2100 + Vector3.up  * 1500 + Vector3.right);
+        GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 3000 + Vector3.up  * 1500 + Vector3.right);
         print("Leap");
     }
 
     public void LeapSpin()
     {
-        GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 2000 + Vector3.up * 6 + Vector3.right *  -100);
+        GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * 3000 + Vector3.up * 6 + Vector3.right *  -100);
         print("Spin");
     }
 
