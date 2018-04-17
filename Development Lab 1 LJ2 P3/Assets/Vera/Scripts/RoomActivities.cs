@@ -15,6 +15,7 @@ public class RoomActivities : MonoBehaviour {
     public int SpawnRate;
     bool inRoom;
     bool cleared;
+    public bool roomForTesting;
 
     private void Start()
     {
@@ -98,9 +99,16 @@ public class RoomActivities : MonoBehaviour {
             {
                 spawnChance = 0;
             }
-            if (spawnChance < SpawnRate && !cleared)
+            if (spawnChance < SpawnRate && !cleared && roomForTesting)
             {
                 GameObject newEnemy = Instantiate(enemys[Random.Range(0, enemys.Count)], spawnLoc[i].position, Quaternion.identity);
+                newEnemy.GetComponent<CombatAi>().myRoom = this;
+                newEnemy.GetComponent<Pathfinding>().IsAwake = true;
+                enemysAlive.Add(newEnemy.GetComponent<CombatAi>());
+            }
+            if (spawnChance < SpawnRate && !cleared)
+            {
+                GameObject newEnemy = Instantiate(TierManager.instance.RandomSkelleton(), spawnLoc[i].position, Quaternion.identity);
                 newEnemy.GetComponent<CombatAi>().myRoom = this;
                 newEnemy.GetComponent<Pathfinding>().IsAwake = true;
                 enemysAlive.Add(newEnemy.GetComponent<CombatAi>());
