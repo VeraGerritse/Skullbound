@@ -19,7 +19,5 @@ public class MapMovement : MonoBehaviour
             Vector3 playerLoc = new Vector3(player.position.x, player.position.y + hight, player.position.z);
             transform.position = playerLoc;
         }
-
-
 	}
 }
