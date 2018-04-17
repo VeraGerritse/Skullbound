@@ -2148,7 +2148,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1969282136201960}
-  m_LocalRotation: {x: -0.72798914, y: -0.006332295, z: 0.6854366, w: -0.012983337}
+  m_LocalRotation: {x: -0.7279891, y: -0.006332294, z: 0.68543655, w: -0.012983335}
   m_LocalPosition: {x: -0.12920074, y: -0.011000599, z: -0.00050057843}
   m_LocalScale: {x: 0.5, y: 0.60606086, z: 0.6060607}
   m_Children: []
@@ -2610,7 +2610,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1286279132942696}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.4999505, z: -4.57}
+  m_LocalPosition: {x: -18.012, y: 0.96000004, z: 11.156}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4909955867969004}
@@ -4452,7 +4452,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.46, y: 0.23, z: 0.7}
+  m_Size: {x: 1.07, y: 0.83, z: 0.94}
   m_Center: {x: 0.00000003259253, y: 0.000000019672784, z: -0.34}
 --- !u!65 &65799639184037646
 BoxCollider:
@@ -4464,8 +4464,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.46, y: 0.37, z: 0.91}
-  m_Center: {x: 0, y: 0, z: -0.37}
+  m_Size: {x: 1.07, y: 0.83, z: 0.94}
+  m_Center: {x: 0.00000003259253, y: 0.000000019672784, z: -0.34}
 --- !u!82 &82589866440482432
 AudioSource:
   m_ObjectHideFlags: 1
@@ -4950,6 +4950,7 @@ MonoBehaviour:
   speed: 20
   turnSpeed: 100
   atTarget: 0
+  exitRadius: 0
 --- !u!114 &114609110875001982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5010,6 +5011,10 @@ MonoBehaviour:
   shielded: 1
   block: 0
   isBoss: 1
+  nextattack: 0
+  canChoose: 0
+  isAttacking: 0
+  choicetimer: 0
 --- !u!136 &136046600201975178
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -5019,7 +5024,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 1
   m_Height: 0.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.25, z: 0}

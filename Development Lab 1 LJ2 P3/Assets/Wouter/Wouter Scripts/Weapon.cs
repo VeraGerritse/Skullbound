@@ -54,7 +54,8 @@ public class Weapon : MonoBehaviour {
                         other.GetComponent<PlayerActions>().anim.SetTrigger("Recoil");
                         if(knockback)
                         {
-                            other.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * 700 + Vector3.back * 700);
+                            other.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                            other.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * 700 + Vector3.back * 500);
                         }
                     }
                     else
@@ -64,6 +65,7 @@ public class Weapon : MonoBehaviour {
                         {
                             if(!hyper)
                             {
+                                print("Should Recoil now");
                                 GetComponentInParent(typeof(Animator)).transform.GetComponent<Animator>().SetTrigger("Revert");
                             }
                             

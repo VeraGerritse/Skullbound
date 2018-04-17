@@ -519,8 +519,12 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     public IEnumerator EnterRoom(RoomGen entering)
     {
+<<<<<<< HEAD
         yield return new WaitForSeconds(0.01f);
         if (Grid.instance.ready)
+=======
+        if (Grid.instance.ready && currentRoom.myActivities != null)
+>>>>>>> 135546ab8d21e958ae6d107362924212a628aecf
         {
             if (currentRoom != null)
             {

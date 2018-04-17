@@ -17,16 +17,22 @@ public class Pathfinding : Interactables {
     public bool atTarget;
     Node lastNode;
 
+    public float exitRadius;
+
 
     private void StartUp()
     {
         aI = gameObject.transform;
         target = DungeonGeneratorManager.instance.player.transform;
+        if(exitRadius == 0)
+        {
+            exitRadius = 3;
+        }
     }
 
     public override void Interact()
     {
-        if (!startUp && Grid.instance.ready)
+        if (!startUp && Grid.instance.ready && DungeonGeneratorManager.instance != null)
         {
             StartUp();
         }
@@ -37,7 +43,7 @@ public class Pathfinding : Interactables {
 
         if(atTarget)
         {
-            if(Vector3.Distance(this.gameObject.transform.position, Camera.main.transform.position) >= 3)
+            if(Vector3.Distance(this.gameObject.transform.position, Camera.main.transform.position) >= exitRadius)
             {
                 atTarget = false;
             }

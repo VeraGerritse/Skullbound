@@ -104,7 +104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1132800106831958
 GameObject:
   m_ObjectHideFlags: 1
@@ -1972,7 +1972,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1439786870744088}
   m_LocalRotation: {x: 0.17564431, y: -0.17564419, z: 0.6849446, w: 0.68494457}
-  m_LocalPosition: {x: -0.086, y: -0.033, z: 0.1}
+  m_LocalPosition: {x: -0.086, y: 0.07, z: -0.087}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 4007819855343692}
@@ -2303,7 +2303,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1126778517830458}
   m_LocalRotation: {x: 0.68422145, y: -0.68422246, z: 0.17843866, w: 0.17843881}
-  m_LocalPosition: {x: -0.171, y: -0.091, z: -0.275}
+  m_LocalPosition: {x: -0.171, y: -0.005, z: -0.121}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 4763897668415128}
@@ -2604,7 +2604,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1280001780484530}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.3, y: 1.96, z: 4.3833513}
+  m_LocalPosition: {x: -24.251999, y: 0.96000004, z: 4.3833513}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4094241515589578}
@@ -2735,7 +2735,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0d308f4274d941348b6a905ae5ef2689, type: 2}
+  - {fileID: 2100000, guid: e1221fbb6eac57b4caf76f351d4683a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2769,7 +2769,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d7c0eb6197d292e4f83cb2cf02cb5a7b, type: 2}
+  - {fileID: 2100000, guid: e1221fbb6eac57b4caf76f351d4683a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2809,14 +2809,14 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1126778517830458}
-  m_Mesh: {fileID: 4300000, guid: d0b9ebc146c8a954384a2905eacf5035, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c66a5a9d224ffff4f8f38da6a057e404, type: 3}
 --- !u!33 &33897733872204124
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1439786870744088}
-  m_Mesh: {fileID: 4300000, guid: d0b9ebc146c8a954384a2905eacf5035, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c66a5a9d224ffff4f8f38da6a057e404, type: 3}
 --- !u!54 &54168224884238112
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -3015,6 +3015,7 @@ MonoBehaviour:
   speed: 30
   turnSpeed: 100
   atTarget: 0
+  exitRadius: 0
 --- !u!114 &114184474090273636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3054,10 +3055,14 @@ MonoBehaviour:
   hurtSound: {fileID: 82737219251839770}
   Health: 3
   actionCooldown: 0
-  dualwielder: 1
+  dualwielder: 0
   shielded: 0
   block: 0
   isBoss: 0
+  nextattack: 0
+  canChoose: 0
+  isAttacking: 0
+  choicetimer: 0
 --- !u!114 &114425269669140400
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -144,4 +144,15 @@ public class Grid : MonoBehaviour {
     {
         ready = false;
     }
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            nodeDiameter = nodeRadius * 2;
+            gridSizeX = Mathf.RoundToInt(gridSize.x / nodeDiameter);
+            gridSizeY = Mathf.RoundToInt(gridSize.y / nodeDiameter);
+            CreateGrid();
+        }
+    }
 }
