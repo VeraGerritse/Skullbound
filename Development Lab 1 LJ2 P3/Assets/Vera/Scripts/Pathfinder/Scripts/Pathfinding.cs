@@ -26,7 +26,7 @@ public class Pathfinding : Interactables {
 
     public override void Interact()
     {
-        if (!startUp && Grid.instance.ready)
+        if (!startUp && Grid.instance.ready && DungeonGeneratorManager.instance != null)
         {
             StartUp();
         }

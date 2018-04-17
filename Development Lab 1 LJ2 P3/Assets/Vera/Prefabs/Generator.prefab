@@ -82,10 +82,9 @@ MonoBehaviour:
   roomSize: 20
   possiblePlaces: []
   floors:
-  - {fileID: 1772169063322876, guid: 140b465a2e9abf14bab39a6c56dd6cff, type: 2}
-  - {fileID: 1604364423848994, guid: 562b00f47d0c7a9459937236b748b2f9, type: 2}
+  - {fileID: 0}
   bossRooms:
-  - {fileID: 1235402502391718, guid: 140de8e5a40859d468492bdb630ebb7e, type: 2}
+  - {fileID: 0}
   chance: 50
   roomsNeeded: 1
   maxRooms: 50
@@ -110,7 +109,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bossRoomLocTestForPathFinder: {fileID: 0}
   startingRooms:
-  - {fileID: 1764914233887686, guid: 62f8632d423357a40912243298c88e29, type: 2}
+  - {fileID: 0}
   mapFloor: {fileID: 1819904177379716, guid: 4e4a30dc1a21b8b419b2aa988b3f3f1a, type: 2}
   mapWalls:
   - {fileID: 1334484163607076, guid: 423a2703c219ca349b71b85a3e12b170, type: 2}

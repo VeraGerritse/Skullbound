@@ -106,7 +106,7 @@ public class RoomActivities : MonoBehaviour {
                 newEnemy.GetComponent<Pathfinding>().IsAwake = true;
                 enemysAlive.Add(newEnemy.GetComponent<CombatAi>());
             }
-            if (spawnChance < SpawnRate && !cleared)
+            else if (spawnChance < SpawnRate && !cleared)
             {
                 GameObject newEnemy = Instantiate(TierManager.instance.RandomSkelleton(), spawnLoc[i].position, Quaternion.identity);
                 newEnemy.GetComponent<CombatAi>().myRoom = this;

@@ -519,7 +519,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     public void EnterRoom(RoomGen entering)
     {
-        if (Grid.instance.ready)
+        if (Grid.instance.ready && currentRoom.myActivities != null)
         {
             if (currentRoom != null)
             {
