@@ -44,7 +44,7 @@ public class RoomActivities : MonoBehaviour {
     {
         if(spawnLoc.Count != 0 && enemys.Count != 0)
         {
-            SpawnSkeletons();           
+            StartCoroutine(SpawnSkeletons());          
         }
         EnemyKilled(null);
         for (int i = 0; i < interactable.Count; i++)
@@ -71,12 +71,14 @@ public class RoomActivities : MonoBehaviour {
 
     public void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Player" && !inRoom && DungeonGeneratorManager.instance.ready)
+        if(other.gameObject.tag == "Player" && !inRoom && DungeonGeneratorManager.instance.ready && myRoom !=null)
         {
+
             ClearManager.instance.EnterRoom();
             StartInteracting();
             inRoom = true;
-            DungeonGeneratorManager.instance.EnterRoom(myRoom);
+            StartCoroutine(DungeonGeneratorManager.instance.EnterRoom(myRoom));
+            
         }
     }
 
@@ -89,11 +91,13 @@ public class RoomActivities : MonoBehaviour {
         }
     }
 
-    public void SpawnSkeletons()
+    public IEnumerator SpawnSkeletons()
     {
+        yield return new WaitForSeconds(0.01f);
         int spawnChance = 0;
         for (int i = 0; i < spawnLoc.Count; i++)
         {
+            yield return new WaitForSeconds(0.05f);
             spawnChance = Random.Range(0, 100);
             if (bossRoom)
             {
@@ -108,7 +112,7 @@ public class RoomActivities : MonoBehaviour {
             }
             if (spawnChance < SpawnRate && !cleared)
             {
-                GameObject newEnemy = Instantiate(TierManager.instance.RandomSkelleton(), spawnLoc[i].position, Quaternion.identity);
+                GameObject newEnemy = Instantiate(TierManager.instance.RandomSkelleton(bossRoom), spawnLoc[i].position, Quaternion.identity);
                 newEnemy.GetComponent<CombatAi>().myRoom = this;
                 newEnemy.GetComponent<Pathfinding>().IsAwake = true;
                 enemysAlive.Add(newEnemy.GetComponent<CombatAi>());

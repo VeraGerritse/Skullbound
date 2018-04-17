@@ -11,13 +11,17 @@ public class TierManager : MonoBehaviour {
     public int highestTiers;
     public bool highestTier;
 
-    [Header("TieredSkelletons")]
-    List<GameObject> skellyTier1 = new List<GameObject>();
-    List<GameObject> skellyTier2 = new List<GameObject>();
-    List<GameObject> skellyTier3 = new List<GameObject>();
-
     public int procentalHigher;
     public int procentalLower;
+    [Header("TieredSkelletons")]
+    public List<GameObject> skellyTier1 = new List<GameObject>();
+    public List<GameObject> skellyTier2 = new List<GameObject>();
+    public List<GameObject> skellyTier3 = new List<GameObject>();
+
+    [Header("Bosses")]
+    public List<GameObject> bossTiers = new List<GameObject>();
+
+
 
     private void Awake()
     {
@@ -39,10 +43,14 @@ public class TierManager : MonoBehaviour {
         StartCoroutine(EndFloor());
     }
 
-    public GameObject RandomSkelleton()
+    public GameObject RandomSkelleton(bool isBoss)
     {
+        if (isBoss)
+        {
+            return GetBoss();
+        }
         int tier = TierManager.tier;
-        print(tier);
+        
         int r = Random.Range(0, 100);
         if (r < procentalHigher && !TierManager.instance.highestTier)
         {
@@ -55,15 +63,18 @@ public class TierManager : MonoBehaviour {
         print(tier + "ugh");
         if (tier == 1)
         {
+            print("Tier 1");
             return Skelly(skellyTier1);
         }
         if (tier == 2)
         {
+            print("Tier 2");
             return Skelly(skellyTier2);
         }
         if (tier == 3)
         {
-           return  Skelly(skellyTier3);
+            print("Tier 3");
+            return  Skelly(skellyTier3);
         }
         return Skelly(skellyTier1);
     }
@@ -71,10 +82,26 @@ public class TierManager : MonoBehaviour {
     public GameObject Skelly(List<GameObject> myTier)
     {
         int rand = Random.Range(0, myTier.Count);
+        print(myTier[rand]);
         return myTier[rand]; 
     }
          
-
+    public GameObject GetBoss()
+    {
+        if(tier == 1)
+        {
+            return bossTiers[0];
+        }
+        if (tier == 2)
+        {
+            return bossTiers[1];
+        }
+        if (tier == 3)
+        {
+            return bossTiers[2];
+        }
+        return bossTiers[0];
+    }
     IEnumerator EndFloor()
     {
         yield return new WaitForSeconds(2);

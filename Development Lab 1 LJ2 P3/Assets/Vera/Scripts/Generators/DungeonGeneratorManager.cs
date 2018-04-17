@@ -517,8 +517,9 @@ public class DungeonGeneratorManager : MonoBehaviour
         ResetDungeon();
     }
 
-    public void EnterRoom(RoomGen entering)
+    public IEnumerator EnterRoom(RoomGen entering)
     {
+        yield return new WaitForSeconds(0.01f);
         if (Grid.instance.ready)
         {
             if (currentRoom != null)
@@ -536,41 +537,42 @@ public class DungeonGeneratorManager : MonoBehaviour
                     {
                         lastRoom.left.myActivities.DisableRigidBodys();
                     }
+                    yield return new WaitForSeconds(0.02f);
                     if (lastRoom.right != currentRoom && lastRoom.right != null && lastRoom.right.myActivities != null)
                     {
                         lastRoom.right.myActivities.DisableRigidBodys();
                     }
+                    yield return new WaitForSeconds(0.03f);
                     if (lastRoom.up != currentRoom && lastRoom.up != null && lastRoom.up.myActivities != null)
                     {
                         lastRoom.up.myActivities.DisableRigidBodys();
                     }
+                    yield return new WaitForSeconds(0.04f);
                     if (lastRoom.down != currentRoom && lastRoom.down != null && lastRoom.down.myActivities != null)
                     {
                         lastRoom.down.myActivities.DisableRigidBodys();
                     }
                 }
+                yield return new WaitForSeconds(0.05f);
                 if (currentRoom.up != null && currentRoom.up.myActivities != null)
                 {
                     currentRoom.up.myActivities.EnableRigidBodys();
                 }
+                yield return new WaitForSeconds(0.06f);
                 if (currentRoom.down != null && currentRoom.down.myActivities != null)
                 {
                     currentRoom.down.myActivities.EnableRigidBodys();
                 }
+                yield return new WaitForSeconds(0.07f);
                 if (currentRoom.left != null && currentRoom.left.myActivities != null)
                 {
                     currentRoom.left.myActivities.EnableRigidBodys();
                 }
+                yield return new WaitForSeconds(0.08f);
                 if (currentRoom.right != null && currentRoom.right.myActivities != null)
                 {
                     currentRoom.right.myActivities.EnableRigidBodys();
                 }
-            }
-            else
-            {
-                currentRoom = entering;
-                currentRoom.myActivities.EnableRigidBodys();
-                EnterRoom(entering);
             }
         }
     }
@@ -588,15 +590,22 @@ public class DungeonGeneratorManager : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.2f);
-        //for (int i = 0; i < possiblePlaces.Count; i++)
-        //{
-        //    if (possiblePlaces[i].myActivities != null)
-        //    {
-        //        possiblePlaces[i].myActivities.DisableRigidBodys();
-        //    }
-        //}
+        for (int i = 0; i < possiblePlaces.Count; i++)
+        {
+            print("Test loop");
+            if (possiblePlaces[i].myActivities != null)
+            {
+                possiblePlaces[i].myActivities.DisableRigidBodys();
+                print(possiblePlaces[i].myActivities);
+                print("test disable");
+            }
+        }
         LoadingScreen.instance.UpdateLoad();
-        EnterRoom(possiblePlaces[startRoom]);
+        currentRoom = possiblePlaces[startRoom];
+        currentRoom.myActivities.EnableRigidBodys();
+        StartCoroutine(EnterRoom(possiblePlaces[startRoom]));
+
+
 
         yield return new WaitForSeconds(0.5f);
         LoadingScreen.instance.UpdateLoad();

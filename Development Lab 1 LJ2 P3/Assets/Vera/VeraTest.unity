@@ -473,6 +473,30 @@ MonoBehaviour:
   multiplier: 0
   highestTiers: 3
   highestTier: 0
+  procentalHigher: 0
+  procentalLower: 0
+  skellyTier1:
+  - {fileID: 1657915562763386, guid: 8137627af86ab02469a2dd1aefc205ea, type: 2}
+  - {fileID: 1580497155932342, guid: 7e1931238c2fd6f4aae498683fe26e88, type: 2}
+  - {fileID: 1024969786019716, guid: 4764fc8c1f5d64f44acea5ee9fb22df2, type: 2}
+  - {fileID: 1108392835216376, guid: 3da13dbb7045d5941af008b79940720d, type: 2}
+  - {fileID: 1249287462421776, guid: 6e214f6be5ae6194fb4c4b021104488c, type: 2}
+  - {fileID: 1280001780484530, guid: 9e155f9e9405c684abaf19a55b54de91, type: 2}
+  skellyTier2:
+  - {fileID: 1018346408345108, guid: 38ef386fd576042449525adcca127cc4, type: 2}
+  - {fileID: 1852420388714978, guid: 3fd8010012e39464c846b15d3fe3a72b, type: 2}
+  - {fileID: 1870023307587708, guid: 1623266e29268284380bbb5c9a0d5fc5, type: 2}
+  - {fileID: 1361442900229906, guid: eff11a86f46761e49a45f00c9e728b87, type: 2}
+  skellyTier3:
+  - {fileID: 1117555302656290, guid: fe1c642453f6624469b1924ba9467f3f, type: 2}
+  - {fileID: 1316583414109404, guid: 34b98073b517fec4e9716bc1bd139ac8, type: 2}
+  - {fileID: 1245308665975818, guid: 2b39bd7c1d2196d49825a7a1541ae59e, type: 2}
+  - {fileID: 1809807068514376, guid: 6e96ba72d45a55f48a4a162f53053120, type: 2}
+  - {fileID: 1794963293721764, guid: 440ea61d0dc635747bd62ea04f35132e, type: 2}
+  bossTiers:
+  - {fileID: 1432755747607950, guid: ab26022c482db4649a14e765b26b43f2, type: 2}
+  - {fileID: 1273840830814914, guid: 7b30252dd4e79ff43b9fc09cb9114bae, type: 2}
+  - {fileID: 1286279132942696, guid: 8c5f17b97b4fd9d4d8d0bc8cf8cadc82, type: 2}
 --- !u!1 &1123084797
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,7 +795,7 @@ Prefab:
     - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
         type: 2}
       propertyPath: floors.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4201787624690070, guid: 66f5ebc05afbab34fa9c1185b975d3de, type: 2}
       propertyPath: m_LocalPosition.x
@@ -809,19 +833,37 @@ Prefab:
         type: 2}
       propertyPath: floors.Array.data[0]
       value: 
-      objectReference: {fileID: 1804364772815728, guid: bf3ccb70cbc78bd49a5202178d419a45,
+      objectReference: {fileID: 1366934371598128, guid: 0ad1b4df477d45e439b826be8417f2d5,
         type: 2}
     - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
         type: 2}
       propertyPath: floors.Array.data[1]
       value: 
-      objectReference: {fileID: 1604364423848994, guid: 562b00f47d0c7a9459937236b748b2f9,
+      objectReference: {fileID: 1530947400439374, guid: 89b3013a48cfbbf4abb7a39d3e064780,
         type: 2}
     - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
         type: 2}
       propertyPath: bossRooms.Array.data[0]
       value: 
-      objectReference: {fileID: 1358884044866900, guid: c41633fb4ec255b40aff4a653c80fe6b,
+      objectReference: {fileID: 1442504897218592, guid: b728a47d896d59b4289262089632a7b7,
+        type: 2}
+    - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
+        type: 2}
+      propertyPath: floors.Array.data[2]
+      value: 
+      objectReference: {fileID: 1644293365325010, guid: 561a90110b7e16141ad8f24088da320c,
+        type: 2}
+    - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
+        type: 2}
+      propertyPath: floors.Array.data[3]
+      value: 
+      objectReference: {fileID: 1173365925307520, guid: 74417245ee6e7894f98cceaaa104502c,
+        type: 2}
+    - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
+        type: 2}
+      propertyPath: startingRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 1398547341105614, guid: 575101f885e374b4cb3697ff2f32a711,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f5ebc05afbab34fa9c1185b975d3de, type: 2}
