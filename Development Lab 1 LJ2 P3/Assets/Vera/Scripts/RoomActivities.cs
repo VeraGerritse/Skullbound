@@ -97,7 +97,7 @@ public class RoomActivities : MonoBehaviour {
         int spawnChance = 0;
         for (int i = 0; i < spawnLoc.Count; i++)
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.1f);
             spawnChance = Random.Range(0, 100);
             if (bossRoom)
             {
