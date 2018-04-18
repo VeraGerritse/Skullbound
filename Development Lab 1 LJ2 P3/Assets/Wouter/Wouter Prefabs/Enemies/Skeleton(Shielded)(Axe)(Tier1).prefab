@@ -3016,6 +3016,7 @@ MonoBehaviour:
   speed: 20
   turnSpeed: 100
   atTarget: 0
+  exitRadius: 0
 --- !u!114 &114168801527270332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3072,6 +3073,10 @@ MonoBehaviour:
   shielded: 1
   block: 0
   isBoss: 0
+  nextattack: 0
+  canChoose: 0
+  isAttacking: 0
+  choicetimer: 0
 --- !u!114 &114697655493449268
 MonoBehaviour:
   m_ObjectHideFlags: 1
