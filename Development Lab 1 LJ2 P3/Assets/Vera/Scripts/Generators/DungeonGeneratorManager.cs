@@ -176,6 +176,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         }
         EnterRoom(possiblePlaces[startPoint]);
         MapFloor();
+        AssignActivities();
         BuildWalls();
         PlaceDoors();
         StartCoroutine(StartPathfinder(startPoint));
@@ -624,5 +625,14 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     }
 
-
+    public void AssignActivities()
+    {
+        for (int i = 0; i < possiblePlaces.Count; i++)
+        {
+            if(possiblePlaces[i].myFloor != null)
+            {
+                possiblePlaces[i].myActivities = possiblePlaces[i].myFloor.GetComponentInChildren<RoomActivities>();
+            }
+        }
+    }
 }

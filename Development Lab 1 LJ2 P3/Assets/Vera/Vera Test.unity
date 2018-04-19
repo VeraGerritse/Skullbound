@@ -401,6 +401,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114477472436945726, guid: 90e2dd7ba3e31434fb6577f221ca4e36,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: e195400143626114398a9443c5312dd6,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90e2dd7ba3e31434fb6577f221ca4e36, type: 2}
   m_IsPrefabParent: 0
@@ -576,6 +582,12 @@ Prefab:
       propertyPath: bossHealth
       value: 
       objectReference: {fileID: 1462821143}
+    - target: {fileID: 114707657242191964, guid: 775cdeab428ad164ab0c1bc19b8fa374,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: e195400143626114398a9443c5312dd6,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 775cdeab428ad164ab0c1bc19b8fa374, type: 2}
   m_IsPrefabParent: 0
@@ -842,7 +854,7 @@ Prefab:
     - target: {fileID: 114937018540227170, guid: 66f5ebc05afbab34fa9c1185b975d3de,
         type: 2}
       propertyPath: onlyDisplayPath
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66f5ebc05afbab34fa9c1185b975d3de, type: 2}

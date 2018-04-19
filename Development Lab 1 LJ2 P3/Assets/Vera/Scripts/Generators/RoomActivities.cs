@@ -113,11 +113,13 @@ public class RoomActivities : MonoBehaviour {
         int spawnChance = 0;
         for (int i = 0; i < spawnLoc.Count; i++)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
             spawnChance = Random.Range(0, 100);
             if (bossRoom)
             {
+                SpawnRate = 100;
                 spawnChance = 0;
+                print("isBossRoom");
                 UIManager.instance.interfaceGame.EnterBossRoom();
             }
             if (spawnChance < SpawnRate && !cleared && roomForTesting && enemysAlive.Count < maxSkellies)
@@ -129,6 +131,7 @@ public class RoomActivities : MonoBehaviour {
             }
             else if (spawnChance < SpawnRate && !cleared && enemysAlive.Count < maxSkellies)
             {
+                print("Spawning");
                 GameObject newEnemy = Instantiate(TierManager.instance.RandomSkelleton(bossRoom), spawnLoc[i].position, Quaternion.identity);
                 newEnemy.GetComponent<CombatAi>().myRoom = this;
                 newEnemy.GetComponent<Pathfinding>().IsAwake = true;
