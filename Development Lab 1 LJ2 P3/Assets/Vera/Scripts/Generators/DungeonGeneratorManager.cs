@@ -126,12 +126,17 @@ public class DungeonGeneratorManager : MonoBehaviour
                 possiblePlaces[i].right = possiblePlaces[i + 1];
             }
         }
-        GenerateFloorPlan();
-
+        StartCoroutine(Wait());
     }
-
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.1f);
+        LoadingScreen.instance.UpdateLoad();
+        GenerateFloorPlan();
+    }
     void GenerateFloorPlan()
     {
+
         for (int i = 0; i < possiblePlaces.Count; i++)
         {
             possiblePlaces[i].chance = chance;
