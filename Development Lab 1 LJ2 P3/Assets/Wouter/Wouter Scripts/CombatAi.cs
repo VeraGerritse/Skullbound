@@ -23,6 +23,7 @@ public class CombatAi : MonoBehaviour {
     public AudioSource hurtSound;
     [Header("Stats")]
     public float Health;
+    float maxHealth;
 
     public float actionCooldown;
     public bool dualwielder;
@@ -41,6 +42,8 @@ public class CombatAi : MonoBehaviour {
 
     void Start()
     {
+        maxHealth = Health;
+        print(maxHealth);
         oldSpeed = myPathFinding.speed;
         textHP.text = Health.ToString();
         myPathFinding = GetComponent<Pathfinding>();
@@ -203,7 +206,14 @@ public class CombatAi : MonoBehaviour {
     {
         hurtSound.Play();
         Health += amount;
-        textHP.text = Health.ToString();
+        if(textHP != null)
+        {
+            textHP.text = Health.ToString();
+        }
+        if (isBoss)
+        {
+            UIManager.instance.interfaceGame.UpdateBossHealth(Health,maxHealth);
+        }
         if(amount < 0)
         {
             

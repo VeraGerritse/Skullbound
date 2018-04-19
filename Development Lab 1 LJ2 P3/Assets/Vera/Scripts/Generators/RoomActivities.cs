@@ -16,6 +16,7 @@ public class RoomActivities : MonoBehaviour {
     bool inRoom;
     bool cleared;
     public bool roomForTesting;
+    public int maxSkellies;
 
     private void Start()
     {
@@ -23,6 +24,18 @@ public class RoomActivities : MonoBehaviour {
         myRoom.myActivities = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K) && enemysAlive.Count > 0)
+        {
+            for (int i = 0; i < enemysAlive.Count; i++)
+            {
+                Destroy(enemysAlive[i].gameObject);
+            }
+            enemysAlive.Clear();
+            EnemyKilled(null);
+        }
+    }
 
     public void EnableRigidBodys()
     {
@@ -107,14 +120,14 @@ public class RoomActivities : MonoBehaviour {
                 spawnChance = 0;
                 UIManager.instance.interfaceGame.EnterBossRoom();
             }
-            if (spawnChance < SpawnRate && !cleared && roomForTesting)
+            if (spawnChance < SpawnRate && !cleared && roomForTesting && enemysAlive.Count < maxSkellies)
             {
                 GameObject newEnemy = Instantiate(enemys[Random.Range(0, enemys.Count)], spawnLoc[i].position, Quaternion.identity);
                 newEnemy.GetComponent<CombatAi>().myRoom = this;
                 newEnemy.GetComponent<Pathfinding>().IsAwake = true;
                 enemysAlive.Add(newEnemy.GetComponent<CombatAi>());
             }
-            else if (spawnChance < SpawnRate && !cleared)
+            else if (spawnChance < SpawnRate && !cleared && enemysAlive.Count < maxSkellies)
             {
                 GameObject newEnemy = Instantiate(TierManager.instance.RandomSkelleton(bossRoom), spawnLoc[i].position, Quaternion.identity);
                 newEnemy.GetComponent<CombatAi>().myRoom = this;

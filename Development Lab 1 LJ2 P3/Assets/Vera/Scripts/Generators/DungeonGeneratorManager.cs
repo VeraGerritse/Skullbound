@@ -304,7 +304,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }               
                 if(newWall != null)
                 {
-                    newWall.transform.SetParent(possiblePlaces[i].transform);
+                    newWall.transform.SetParent(possiblePlaces[i].myActivities.transform);
                     myWalls.Add(newWall);
                 }
                 newWall = null;
@@ -326,7 +326,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
                 if (newWall != null)
                 {
-                    newWall.transform.SetParent(possiblePlaces[i].transform);
+                    newWall.transform.SetParent(possiblePlaces[i].myActivities.transform);
                     myWalls.Add(newWall);
                 }
                 newWall = null;
@@ -348,7 +348,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
                 if (newWall != null)
                 {
-                    newWall.transform.SetParent(possiblePlaces[i].transform);
+                    newWall.transform.SetParent(possiblePlaces[i].myActivities.transform);
                     myWalls.Add(newWall);
                 }
                 newWall = null;
@@ -371,7 +371,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
                 if (newWall != null)
                 {
-                    newWall.transform.SetParent(possiblePlaces[i].transform);
+                    newWall.transform.SetParent(possiblePlaces[i].myActivities.transform);
                     myWalls.Add(newWall);
                 }
                 newWall = null;
@@ -517,16 +517,16 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     void ResetDungeonOnRequest()
     {
-        Grid.instance.ResetGrid();
+        GameManager.instance.grid.ResetGrid();
         ResetDungeon();
     }
 
     public IEnumerator EnterRoom(RoomGen entering)
     { 
         yield return new WaitForSeconds(0.01f);
-        if (Grid.instance.ready)
+        if (GameManager.instance.grid.ready)
 
-        if (Grid.instance.ready && currentRoom.myActivities != null)
+        if (GameManager.instance.grid.ready && currentRoom.myActivities != null)
 
         {
             if (currentRoom != null)
@@ -593,7 +593,7 @@ public class DungeonGeneratorManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         LoadingScreen.instance.UpdateLoad();
-        Grid.instance.GridSize(roomSize, gridSize);
+        GameManager.instance.grid.GridSize(roomSize, gridSize);
 
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < possiblePlaces.Count; i++)

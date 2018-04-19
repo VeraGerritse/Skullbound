@@ -18,15 +18,7 @@ public class Grid : MonoBehaviour {
     float nodeDiameter;
     int gridSizeX, gridSizeY;
 
-    public static Grid instance;
-
-    private void Start()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-    }
+    public Grid instance;
 
     public int MaxSize
     {
@@ -48,6 +40,7 @@ public class Grid : MonoBehaviour {
 
     void CreateGrid()
     {
+        print("gridMultible");
         grid = new Node[gridSizeX, gridSizeY];
         Vector3 bottemLeft = transform.position - Vector3.right * gridSize.x / 2 - Vector3.forward * gridSize.y / 2;
         for (int i = 0; i < gridSizeX; i++)

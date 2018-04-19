@@ -32,11 +32,11 @@ public class Pathfinding : Interactables {
 
     public override void Interact()
     {
-        if (!startUp && Grid.instance.ready && DungeonGeneratorManager.instance != null)
+        if (!startUp && GameManager.instance.grid.ready && DungeonGeneratorManager.instance != null)
         {
             StartUp();
         }
-        if (aI != null && target != null && Grid.instance.ready == true)
+        if (aI != null && target != null && GameManager.instance.grid.ready == true)
         {
             FindPath(aI.position, target.position);
         }
@@ -52,8 +52,8 @@ public class Pathfinding : Interactables {
 
     void FindPath(Vector3 startPos, Vector3 targetPos)
     {
-        Node startNode = Grid.instance.NodeFromWP(startPos);
-        Node targetNode = Grid.instance.NodeFromWP(targetPos);
+        Node startNode = GameManager.instance.grid.NodeFromWP(startPos);
+        Node targetNode = GameManager.instance.grid.NodeFromWP(targetPos);
 
         if (!targetNode.walk)
         {
@@ -94,7 +94,7 @@ public class Pathfinding : Interactables {
                 return;
             }
 
-            foreach (Node neighbour in Grid.instance.GetNeighbours(currentNode))
+            foreach (Node neighbour in GameManager.instance.grid.GetNeighbours(currentNode))
             {
                 if(!neighbour.walk || !neighbour.connectedToSomeThing || ClosedSet.Contains(neighbour))
                 {
@@ -129,7 +129,7 @@ public class Pathfinding : Interactables {
         }
 
         path.Reverse();
-        Grid.instance.path = path;
+        GameManager.instance.grid.path = path;
         if (path.Count != 0)
         {
             Move(path[0]);

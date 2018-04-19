@@ -8913,7 +8913,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173365925307520}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 19, y: 4, z: 19}
@@ -10175,6 +10175,7 @@ MonoBehaviour:
   myRoom: {fileID: 0}
   SpawnRate: 50
   roomForTesting: 0
+  maxSkellies: 3
 --- !u!114 &114631546007910830
 MonoBehaviour:
   m_ObjectHideFlags: 1

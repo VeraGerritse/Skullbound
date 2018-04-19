@@ -14,6 +14,7 @@ public class GameInterface : MonoBehaviour {
 
     public Image bossHealthLeft;
     public Image bossHealthRight;
+    public Image bossHealth;
 
     public List<Image> hearts = new List<Image>();
     public List<Image> stams = new List<Image>();
@@ -63,11 +64,13 @@ public class GameInterface : MonoBehaviour {
 
     public void EnterBossRoom()
     {
+        bossHealth.enabled = true;
         bossHealthLeft.enabled = true;
         bossHealthRight.enabled = true;
+        print("wtf");
     }
 
-    public void UpdatBossHealth(float health , float maxhealth)
+    public void UpdateBossHealth(float health , float maxhealth)
     {
         bossHealthLeft.fillAmount = health / maxhealth;
         bossHealthRight.fillAmount = health / maxhealth;
