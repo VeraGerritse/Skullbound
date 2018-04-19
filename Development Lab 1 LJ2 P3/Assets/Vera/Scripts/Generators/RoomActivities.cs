@@ -122,6 +122,7 @@ public class RoomActivities : MonoBehaviour {
                 print("isBossRoom");
                 UIManager.instance.interfaceGame.EnterBossRoom();
             }
+            print(enemysAlive.Count + "    "  + cleared + "    " + spawnChance+ "/" + SpawnRate);
             if (spawnChance < SpawnRate && !cleared && roomForTesting && enemysAlive.Count < maxSkellies)
             {
                 GameObject newEnemy = Instantiate(enemys[Random.Range(0, enemys.Count)], spawnLoc[i].position, Quaternion.identity);

@@ -1370,7 +1370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1528429030326190
 GameObject:
   m_ObjectHideFlags: 1
@@ -12925,6 +12925,7 @@ MonoBehaviour:
   myRoom: {fileID: 0}
   SpawnRate: 50
   roomForTesting: 0
+  maxSkellies: 0
 --- !u!114 &114457835472262174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -16437,7 +16438,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1303369391
+  randomSeed: 188069800
   InitialModule:
     serializedVersion: 3
     enabled: 1

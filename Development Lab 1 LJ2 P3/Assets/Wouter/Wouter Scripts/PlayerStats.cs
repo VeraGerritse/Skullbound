@@ -99,10 +99,17 @@ public class PlayerStats : MonoBehaviour {
 
     public void SaveWeapons()
     {
-        weapon.transform.SetParent(null);
-        shield.transform.SetParent(null);
-        DontDestroyOnLoad(weapon);
-        DontDestroyOnLoad(shield);
+        if(weapon != null)
+        {
+            weapon.transform.SetParent(null);
+            DontDestroyOnLoad(weapon);
+        }
+        if(shield != null)
+        {
+            shield.transform.SetParent(null);
+            DontDestroyOnLoad(shield);
+        }
+
     }
 
     public void LoadWeapons()
