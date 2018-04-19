@@ -11,9 +11,16 @@ public class PlayerActions : MonoBehaviour {
     public LayerMask layer;
     public bool isNeutral;
     public LayerMask attacklayer;
+    public Canvas ui;
+
+    public GameObject deactivatethis;
 
     public static bool staticplayerAttacks;
     public bool playerAttacks;
+
+    public bool armed;
+    public bool wait;
+    
 
     public float powerTimer;
 
@@ -30,7 +37,20 @@ public class PlayerActions : MonoBehaviour {
         playerStats = GetComponent<PlayerStats>();
         PotionUI.instance.UpdateSyringe(playerStats.boostCount);
         PotionUI.instance.UpdatePotions(playerStats.potionCount);
+        
+    }
 
+    public void ToggleUi()
+    {
+        ui = UIManager.instance.interfaceGame.gameObject.GetComponent<Canvas>();
+        if (ui.enabled == true)
+        {
+            ui.enabled = false;
+        }
+        else
+        {
+            ui.enabled = true;
+        }
     }
 
     public void PlayStep()
@@ -49,6 +69,21 @@ public class PlayerActions : MonoBehaviour {
 
     private void Update()
     {
+        if(wait)
+        {
+            anim.SetFloat("WakeUpSpeed", 0);
+            if(Input.GetButtonDown("Interact"))
+            {
+                wait = false;
+
+                Destroy(GameObject.FindWithTag("Destroy"));
+
+            }
+        }
+        else
+        {
+            anim.SetFloat("WakeUpSpeed", 1);
+        }
         staticplayerAttacks = playerAttacks;
 
         if(canCombo)
@@ -235,6 +270,7 @@ public class PlayerActions : MonoBehaviour {
                     SoundManager.soundInstance.audiosources[Random.Range(10, 12)].Play();
                     if (hit.transform.gameObject.GetComponent<Weapon>() != null)
                     {
+                        
                         GameObject w = hit.transform.gameObject;
                         w.SetActive(false);
 
@@ -440,5 +476,10 @@ public class PlayerActions : MonoBehaviour {
     public void Shake()
     {
         anim.SetTrigger("Shake");
+    }
+
+    public void WaitForPickup()
+    {
+        wait = true;
     }
 }

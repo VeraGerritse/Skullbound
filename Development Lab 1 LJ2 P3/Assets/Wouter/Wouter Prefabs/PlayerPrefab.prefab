@@ -425,7 +425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1184288226162044
 GameObject:
   m_ObjectHideFlags: 1
@@ -1288,6 +1288,8 @@ GameObject:
   - component: {fileID: 124671464245718380}
   - component: {fileID: 81095337071949880}
   - component: {fileID: 114634078917292736}
+  - component: {fileID: 114405754160286854}
+  - component: {fileID: 114232243171894498}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1498,7 +1500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1814091252458100
 GameObject:
   m_ObjectHideFlags: 1
@@ -2176,9 +2178,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1795314411986562}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.952, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 3.2414677e-14, y: -1, z: -0.00000005960465, w: 0.00000058114523}
+  m_LocalPosition: {x: -2.859, y: 1.89, z: -6.11}
+  m_LocalScale: {x: 1, y: 1.0000004, z: 1.0000004}
   m_Children:
   - {fileID: 4007945192710644}
   - {fileID: 4674613147324742}
@@ -2194,7 +2196,7 @@ Transform:
   - {fileID: 4717409375482794}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
 --- !u!4 &4225954968647916
 Transform:
   m_ObjectHideFlags: 1
@@ -4584,7 +4586,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1073097726013814}
-  m_Mesh: {fileID: 4300000, guid: fabfff415b86ec94c8a907c2fcac38c1, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c462bd2e4e8f90e48ad9794b891ee148, type: 3}
 --- !u!33 &33172635104652540
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -7522,12 +7524,13 @@ MonoBehaviour:
   playerHealth: 100
   playerStamina: 100
   playerMaxStamina: 100
+  potionCount: 0
   boostCount: 0
   staminaRegenerationDelay: 0
   animator: {fileID: 95663407831460774}
-  weapon: {fileID: 0}
+  weapon: {fileID: 1705255856896038, guid: 270e8fc3017d8864bb6fcb139bec6330, type: 2}
   previousWeapon: {fileID: 0}
-  shield: {fileID: 0}
+  shield: {fileID: 1073489288093066, guid: 6de47f913f70c7d44a23785cd2c50e82, type: 2}
   previousShield: {fileID: 0}
   doStaminaBoost: 0
   boostDuration: 0
@@ -7576,7 +7579,11 @@ MonoBehaviour:
   attacklayer:
     serializedVersion: 2
     m_Bits: 9216
+  ui: {fileID: 0}
+  deactivatethis: {fileID: 0}
   playerAttacks: 0
+  armed: 0
+  wait: 0
   powerTimer: 0
   collisionChecker: {fileID: 0}
   playerStats: {fileID: 114064841602611302}
@@ -7610,6 +7617,29 @@ MonoBehaviour:
     m_Bits: 4294958591
   cameraObject: {fileID: 1513836942215308}
   standStill: 0
+--- !u!114 &114232243171894498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638341688225600}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  intensity: 0
+  chromaticAberration: 0.2
+  axialAberration: 0.5
+  blur: 0
+  blurSpread: 0.75
+  luminanceDependency: -0
+  blurDistance: 2.5
+  vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
+  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
+  chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
+    type: 3}
 --- !u!114 &114353975426470258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7634,6 +7664,43 @@ MonoBehaviour:
   viewmodelcamera: {fileID: 1623432275185166}
   yVelocity: 0
   initialPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &114405754160286854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638341688225600}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d8db0ec466c14429f58c68c16398a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quality: 2
+  resolution: 4
+  simpleTweakMode: 1
+  focalPoint: 0.15
+  smoothness: 10
+  focalZDistance: 0
+  focalZStartCurve: 1
+  focalZEndCurve: 1
+  objectFocus: {fileID: 0}
+  focalSize: 0
+  bluriness: 2
+  maxBlurSpread: 1.75
+  foregroundBlurExtrude: 1.15
+  dofBlurShader: {fileID: 4800000, guid: bb4af680337344a4abad65a4e8873c50, type: 3}
+  dofShader: {fileID: 4800000, guid: 987fb0677d01f43ce8a9dbf12271e668, type: 3}
+  visualize: 0
+  bokehDestination: 1
+  bokeh: 1
+  bokehSupport: 1
+  bokehShader: {fileID: 4800000, guid: 57cdacf9b217546aaa18edf39a6151c0, type: 3}
+  bokehTexture: {fileID: 2800000, guid: fc00ec05a89da4ff695a4273715cd5ce, type: 3}
+  bokehScale: 2.4
+  bokehIntensity: 0.15
+  bokehThresholdContrast: 0.1
+  bokehThresholdLuminance: 0.55
+  bokehDownsample: 1
 --- !u!114 &114593611353686402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7895,7 +7962,7 @@ MonoBehaviour:
     smoothness: 0.01
     roundness: 0
     mask: {fileID: 0}
-    opacity: 0
+    opacity: 1
     rounded: 1
 --- !u!114 &114851629599334646
 MonoBehaviour:
