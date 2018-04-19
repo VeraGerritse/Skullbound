@@ -82,9 +82,12 @@ MonoBehaviour:
   roomSize: 20
   possiblePlaces: []
   floors:
-  - {fileID: 0}
+  - {fileID: 1366934371598128, guid: 0ad1b4df477d45e439b826be8417f2d5, type: 2}
+  - {fileID: 1530947400439374, guid: 89b3013a48cfbbf4abb7a39d3e064780, type: 2}
+  - {fileID: 1644293365325010, guid: 561a90110b7e16141ad8f24088da320c, type: 2}
+  - {fileID: 1173365925307520, guid: 74417245ee6e7894f98cceaaa104502c, type: 2}
   bossRooms:
-  - {fileID: 0}
+  - {fileID: 1442504897218592, guid: b728a47d896d59b4289262089632a7b7, type: 2}
   chance: 50
   roomsNeeded: 1
   maxRooms: 50
@@ -107,9 +110,11 @@ MonoBehaviour:
     type: 2}
   mapCamera: {fileID: 1077254911223136, guid: b6f5c37a51be3914bb9636422754f6f4, type: 2}
   player: {fileID: 0}
+  bossyRoom: {fileID: 0}
+  bossPlace: 0
   bossRoomLocTestForPathFinder: {fileID: 0}
   startingRooms:
-  - {fileID: 0}
+  - {fileID: 1398547341105614, guid: 575101f885e374b4cb3697ff2f32a711, type: 2}
   mapFloor: {fileID: 1819904177379716, guid: 4e4a30dc1a21b8b419b2aa988b3f3f1a, type: 2}
   mapWalls:
   - {fileID: 1334484163607076, guid: 423a2703c219ca349b71b85a3e12b170, type: 2}
@@ -138,3 +143,4 @@ MonoBehaviour:
   nodeRadius: 0.5
   ready: 0
   onlyDisplayPath: 1
+  instance: {fileID: 0}

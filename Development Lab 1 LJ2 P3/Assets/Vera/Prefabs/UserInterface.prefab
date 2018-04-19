@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 114930468841572202}
   - component: {fileID: 95363500690394130}
   - component: {fileID: 114115557929285766}
+  - component: {fileID: 114656016139587176}
   m_Layer: 5
   m_Name: UserInterface
   m_TagString: Untagged
@@ -387,7 +388,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821500052506560}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -456,6 +457,7 @@ MonoBehaviour:
   nodeRadius: 0
   ready: 0
   onlyDisplayPath: 0
+  instance: {fileID: 0}
 --- !u!114 &114143921855655174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -516,7 +518,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1236638135957804}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -607,7 +609,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1576876500539346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -655,6 +657,25 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114656016139587176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088802756340526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 900d46fbe0f150e4e8ea5c7cc29c3001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potions:
+  - {fileID: 114909963778388586}
+  - {fileID: 114071762597337540}
+  - {fileID: 114400211979534076}
+  syringe:
+  - {fileID: 114792627807210218}
+  - {fileID: 114686408363710102}
+  - {fileID: 114824694896721716}
 --- !u!114 &114686408363710102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -702,7 +723,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e195400143626114398a9443c5312dd6, type: 3}
     m_FontSize: 200
     m_FontStyle: 0
     m_BestFit: 0
@@ -895,6 +916,9 @@ MonoBehaviour:
   Health_UI_Yellow: {fileID: 114143921855655174}
   Stamina_UI_Green: {fileID: 114838716187799358}
   Stamina_UI_Yellow: {fileID: 114900185242543774}
+  bossHealthLeft: {fileID: 114287284985484746}
+  bossHealthRight: {fileID: 114597921138101928}
+  bossHealth: {fileID: 114047541960005192}
   hearts:
   - {fileID: 0}
   - {fileID: 0}
