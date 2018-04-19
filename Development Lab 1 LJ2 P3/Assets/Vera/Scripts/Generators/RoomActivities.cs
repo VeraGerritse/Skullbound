@@ -46,7 +46,10 @@ public class RoomActivities : MonoBehaviour {
         {
             StartCoroutine(SpawnSkeletons());          
         }
-        EnemyKilled(null);
+        else
+        {
+            EnemyKilled(null);
+        }
         for (int i = 0; i < interactable.Count; i++)
         {
             interactable[i].IsAwake = true;
@@ -102,6 +105,7 @@ public class RoomActivities : MonoBehaviour {
             if (bossRoom)
             {
                 spawnChance = 0;
+                UIManager.instance.interfaceGame.EnterBossRoom();
             }
             if (spawnChance < SpawnRate && !cleared && roomForTesting)
             {
@@ -118,6 +122,7 @@ public class RoomActivities : MonoBehaviour {
                 enemysAlive.Add(newEnemy.GetComponent<CombatAi>());
             }
         }
+        EnemyKilled(null);
         cleared = true;
     }
 

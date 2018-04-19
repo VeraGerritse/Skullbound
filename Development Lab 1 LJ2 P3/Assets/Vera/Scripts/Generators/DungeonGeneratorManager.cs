@@ -40,6 +40,8 @@ public class DungeonGeneratorManager : MonoBehaviour
     [Header("BossRoom")]
     RoomGen lastRoom;
     bool done;
+    public GameObject bossyRoom;
+    public int bossPlace;
     public Transform bossRoomLocTestForPathFinder;
 
     [Header("Start Room")]
@@ -71,9 +73,10 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.N))
         {
-            ResetDungeonOnRequest();
+            print(possiblePlaces[bossPlace].myFloor);
+            print(possiblePlaces[bossPlace] + "  " + bossPlace);
         }
     }
 
@@ -437,13 +440,14 @@ public class DungeonGeneratorManager : MonoBehaviour
                 ResetDungeon();
                 return true;
             }
-            int newBossRoom = Random.Range(0, availableBossRooms.Count);
+            int newBossRoom = availableBossRooms[Random.Range(0, availableBossRooms.Count)];
             int rand = Random.Range(0, bossRooms.Count);
-            Destroy(possiblePlaces[availableBossRooms[newBossRoom]].myFloor);
-            possiblePlaces[newBossRoom].myFloor = Instantiate(bossRooms[rand], possiblePlaces[availableBossRooms[newBossRoom]].transform.position, Quaternion.identity);
-            possiblePlaces[newBossRoom].myFloor.transform.SetParent(possiblePlaces[newBossRoom].gameObject.transform);
+            Destroy(possiblePlaces[newBossRoom].myFloor);
+            GameObject newBossRoomGM = Instantiate(bossRooms[rand], possiblePlaces[newBossRoom].transform.position, Quaternion.identity);
+            possiblePlaces[newBossRoom].myFloor = newBossRoomGM;
+            bossPlace = newBossRoom;
+            newBossRoomGM.transform.SetParent(possiblePlaces[newBossRoom].gameObject.transform);
             done = true;
-            bossRoomLocTestForPathFinder = possiblePlaces[newBossRoom].myFloor.transform;
         }
         return reset;
     }
@@ -591,16 +595,12 @@ public class DungeonGeneratorManager : MonoBehaviour
         LoadingScreen.instance.UpdateLoad();
         Grid.instance.GridSize(roomSize, gridSize);
 
-
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < possiblePlaces.Count; i++)
         {
-            print("Test loop");
             if (possiblePlaces[i].myActivities != null)
             {
                 possiblePlaces[i].myActivities.DisableRigidBodys();
-                print(possiblePlaces[i].myActivities);
-                print("test disable");
             }
         }
         LoadingScreen.instance.UpdateLoad();
@@ -609,11 +609,10 @@ public class DungeonGeneratorManager : MonoBehaviour
         StartCoroutine(EnterRoom(possiblePlaces[startRoom]));
 
 
-
         yield return new WaitForSeconds(0.5f);
         LoadingScreen.instance.UpdateLoad();
         PlacePlayer(startRoom);
-        if(PlayerStats.instance != null)
+        if (PlayerStats.instance != null)
         {
             PlayerStats.instance.LoadWeapons();
         }
@@ -622,5 +621,8 @@ public class DungeonGeneratorManager : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         LoadingScreen.instance.UpdateLoad();
         GameManager.instance.paused = false;
+
     }
+
+
 }

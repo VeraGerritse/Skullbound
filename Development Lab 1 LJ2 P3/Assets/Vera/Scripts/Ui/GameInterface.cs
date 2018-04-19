@@ -12,6 +12,8 @@ public class GameInterface : MonoBehaviour {
     public Image Stamina_UI_Green;
     public Image Stamina_UI_Yellow;
 
+    public Image bossHealthLeft;
+    public Image bossHealthRight;
 
     public List<Image> hearts = new List<Image>();
     public List<Image> stams = new List<Image>();
@@ -57,6 +59,18 @@ public class GameInterface : MonoBehaviour {
     void CanInteract()
     {
         canInteract.gameObject.SetActive(true);
+    }
+
+    public void EnterBossRoom()
+    {
+        bossHealthLeft.enabled = true;
+        bossHealthRight.enabled = true;
+    }
+
+    public void UpdatBossHealth(float health , float maxhealth)
+    {
+        bossHealthLeft.fillAmount = health / maxhealth;
+        bossHealthRight.fillAmount = health / maxhealth;
     }
 
     void CantInteract()

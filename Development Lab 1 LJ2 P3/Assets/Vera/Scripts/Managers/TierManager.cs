@@ -60,20 +60,16 @@ public class TierManager : MonoBehaviour {
         {
             tier = Random.Range(1, tier + 1);
         }
-        print(tier + "ugh");
         if (tier == 1)
         {
-            print("Tier 1");
             return Skelly(skellyTier1);
         }
         if (tier == 2)
         {
-            print("Tier 2");
             return Skelly(skellyTier2);
         }
         if (tier == 3)
         {
-            print("Tier 3");
             return  Skelly(skellyTier3);
         }
         return Skelly(skellyTier1);
@@ -82,7 +78,6 @@ public class TierManager : MonoBehaviour {
     public GameObject Skelly(List<GameObject> myTier)
     {
         int rand = Random.Range(0, myTier.Count);
-        print(myTier[rand]);
         return myTier[rand]; 
     }
          

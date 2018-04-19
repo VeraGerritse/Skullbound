@@ -28,8 +28,9 @@ public class PlayerActions : MonoBehaviour {
         Physics.IgnoreLayerCollision(10,10);
         anim = GetComponent<Animator>();
         playerStats = GetComponent<PlayerStats>();
+        PotionUI.instance.UpdateSyringe(playerStats.boostCount);
+        PotionUI.instance.UpdatePotions(playerStats.potionCount);
 
-    
     }
 
     public void PlayStep()
@@ -179,7 +180,7 @@ public class PlayerActions : MonoBehaviour {
 
         if (Input.GetKeyDown("q"))
         {
-            if(PlayerStats.potionCount > 0)
+            if(playerStats.potionCount > 0)
             {
                 anim.SetBool("HasPotion", true);
                 
@@ -297,16 +298,16 @@ public class PlayerActions : MonoBehaviour {
                             playerStats.viewmodelgearLeft[playerStats.shield.GetComponent<Shield>().itemId].SetActive(true);
                         }
                     }
-                    else if(hit.transform.gameObject.GetComponent<Potion>() != null)
+                    else if(hit.transform.gameObject.GetComponent<Potion>() != null && playerStats.potionCount != 3)
                     {
-                        PlayerStats.potionCount++;
-                        
+                        playerStats.potionCount++;
+                        PotionUI.instance.UpdatePotions(playerStats.potionCount);
                         DestroyImmediate(hit.transform.gameObject);
                     }
-                    else if(hit.transform.gameObject.GetComponent<BoostInjector>() != null)
+                    else if(hit.transform.gameObject.GetComponent<BoostInjector>() != null && playerStats.boostCount != 3)
                     {
-                        
                         playerStats.boostCount++;
+                        PotionUI.instance.UpdateSyringe(playerStats.boostCount);
                         DestroyImmediate(hit.transform.gameObject);
                     }
                 }
@@ -427,8 +428,8 @@ public class PlayerActions : MonoBehaviour {
     public void ConsumePotion()
     {
         playerStats.ChangeHealth(playerStats.playerMaxHealth - playerStats.playerHealth);       
-        PlayerStats.potionCount--;
-        
+        playerStats.potionCount--;
+        PotionUI.instance.UpdatePotions(playerStats.potionCount);
     }
 
     public void SetSpeed(float amount)

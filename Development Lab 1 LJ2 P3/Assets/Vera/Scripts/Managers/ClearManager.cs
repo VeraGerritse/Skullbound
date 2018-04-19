@@ -21,7 +21,6 @@ public class ClearManager : MonoBehaviour {
     public void EnterRoom()
     {
         allCleared = false;
-        print("test");
         for (int i = 0; i < doors.Count; i++)
         {
             doors[i].CloseDoors();

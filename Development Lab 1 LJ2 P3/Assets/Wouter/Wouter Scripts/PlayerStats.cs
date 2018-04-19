@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour {
     public float playerHealth;
     public float playerStamina;
     public float playerMaxStamina;
-    public static int potionCount;
+    public int potionCount;
     public int boostCount;
     public float staminaRegenerationDelay;
 
@@ -70,8 +70,7 @@ public class PlayerStats : MonoBehaviour {
         boostDuration = 10;
         boostCount--;
         animator.ResetTrigger("Inject");
-        
-
+        PotionUI.instance.UpdateSyringe(boostCount);
     }
 
     private void Update()
