@@ -76,6 +76,7 @@ public class PlayerActions : MonoBehaviour {
             {
                 wait = false;
                 GameObject.FindWithTag("Destroy").SetActive(false);
+                GameObject.FindWithTag("Destroy2").SetActive(false);
             }
         }
         else
