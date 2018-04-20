@@ -2394,7 +2394,7 @@ AnimationClip:
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 1.3333334
+        time: 1.1
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -2402,44 +2402,16 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: controlChromaticAberration
+    attribute: m_Enabled
     path: CameraParentObject/ViewmodelCamera
     classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+    script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 0.7
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 1.3333334
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: enableChromaticAberration
-    path: CameraParentObject/ViewmodelCamera
-    classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
+        value: 0.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -2450,13 +2422,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.75
-        value: 1
+        time: 0.8333333
+        value: 0.3
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 1.3333334
+        time: 1.0833334
         value: 0
         inSlope: 0
         outSlope: 0
@@ -2464,134 +2436,106 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: chromaticAberration.intensity
+    attribute: aperture
     path: CameraParentObject/ViewmodelCamera
     classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+    script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 0.7
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 0.9166667
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: controlDepthOfField
-    path: CameraParentObject/ViewmodelCamera
-    classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 0.7
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 0.9166667
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: enableDepthOfField
-    path: CameraParentObject/ViewmodelCamera
-    classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
+        value: 2
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.7
-        value: 0.05
-        inSlope: 0.13333334
-        outSlope: 0.13333334
+        value: 4.9
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.75
+        time: 0.8333333
+        value: 4.03
+        inSlope: -9.0782585
+        outSlope: -9.0782585
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1.0833334
         value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
-      - serializedVersion: 2
-        time: 0.9166667
-        value: 0.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: depthOfField.aperture
+    attribute: maxBlurSize
     path: CameraParentObject/ViewmodelCamera
     classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+    script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
         value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      - serializedVersion: 2
+        time: 0.7
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      - serializedVersion: 2
+        time: 0.9166667
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: CameraParentObject/Main Camera
+    classID: 114
+    script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.2
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.7
-        value: 1
-        inSlope: 5.333333
-        outSlope: 5.333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.75
-        value: 31
+        value: 20
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.9166667
-        value: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: depthOfField.focalLength
-    path: CameraParentObject/ViewmodelCamera
+    attribute: chromaticAberration
+    path: CameraParentObject/Main Camera
     classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+    script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -3113,50 +3057,36 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 481691114
-      attribute: 213355475
-      script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+      attribute: 3305885265
+      script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
+      typeID: 114
+      customType: 24
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 481691114
+      attribute: 3633746418
+      script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 481691114
-      attribute: 4289289395
-      script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+      attribute: 209517764
+      script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 481691114
-      attribute: 4073681495
-      script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+      path: 793331212
+      attribute: 3305885265
+      script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
       typeID: 114
-      customType: 0
+      customType: 24
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 481691114
-      attribute: 2688332975
-      script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
-      typeID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 481691114
-      attribute: 3835181155
-      script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
-      typeID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 481691114
-      attribute: 777565076
-      script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
-      typeID: 114
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 481691114
-      attribute: 3868503403
-      script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+      path: 793331212
+      attribute: 2777959080
+      script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
@@ -10158,7 +10088,7 @@ AnimationClip:
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 1.3333334
+        time: 1.1
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -10166,44 +10096,16 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: controlChromaticAberration
+    attribute: m_Enabled
     path: CameraParentObject/ViewmodelCamera
     classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+    script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 0.7
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 1.3333334
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: enableChromaticAberration
-    path: CameraParentObject/ViewmodelCamera
-    classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
+        value: 0.5
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -10214,13 +10116,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.75
-        value: 1
+        time: 0.8333333
+        value: 0.3
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 1.3333334
+        time: 1.0833334
         value: 0
         inSlope: 0
         outSlope: 0
@@ -10228,134 +10130,106 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: chromaticAberration.intensity
+    attribute: aperture
     path: CameraParentObject/ViewmodelCamera
     classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+    script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 0.7
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 0.9166667
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: controlDepthOfField
-    path: CameraParentObject/ViewmodelCamera
-    classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 0.7
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      - serializedVersion: 2
-        time: 0.9166667
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: enableDepthOfField
-    path: CameraParentObject/ViewmodelCamera
-    classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
+        value: 2
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.7
-        value: 0.05
-        inSlope: 0.13333334
-        outSlope: 0.13333334
+        value: 4.9
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.75
+        time: 0.8333333
+        value: 4.03
+        inSlope: -9.0782585
+        outSlope: -9.0782585
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 1.0833334
         value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
-      - serializedVersion: 2
-        time: 0.9166667
-        value: 0.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: depthOfField.aperture
+    attribute: maxBlurSize
     path: CameraParentObject/ViewmodelCamera
     classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+    script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
         time: 0
         value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      - serializedVersion: 2
+        time: 0.7
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      - serializedVersion: 2
+        time: 0.9166667
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Enabled
+    path: CameraParentObject/Main Camera
+    classID: 114
+    script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.2
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.7
-        value: 1
-        inSlope: 5.333333
-        outSlope: 5.333333
+        value: 0
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.75
-        value: 31
+        value: 20
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.9166667
-        value: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: depthOfField.focalLength
-    path: CameraParentObject/ViewmodelCamera
+    attribute: chromaticAberration
+    path: CameraParentObject/Main Camera
     classID: 114
-    script: {fileID: 11500000, guid: d5fe6bce1ce6ff243ae0d827b94a4683, type: 3}
+    script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2

@@ -111,18 +111,25 @@ public class RoomActivities : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.01f);
         int spawnChance = 0;
+        float time = 0.1f;
+
         for (int i = 0; i < spawnLoc.Count; i++)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(time);
+            time += 0.1f;
             spawnChance = Random.Range(0, 100);
             if (bossRoom)
             {
                 SpawnRate = 100;
+                yield return new WaitForSeconds(0.01f);
                 spawnChance = 0;
+                yield return new WaitForSeconds(0.01f);
                 print("isBossRoom");
                 UIManager.instance.interfaceGame.EnterBossRoom();
+                yield return new WaitForSeconds(0.01f);
+                //break;
             }
-            print(enemysAlive.Count + "    "  + cleared + "    " + spawnChance+ "/" + SpawnRate);
+            yield return new WaitForSeconds(0.01f);
             if (spawnChance < SpawnRate && !cleared && roomForTesting && enemysAlive.Count < maxSkellies)
             {
                 GameObject newEnemy = Instantiate(enemys[Random.Range(0, enemys.Count)], spawnLoc[i].position, Quaternion.identity);
@@ -132,10 +139,14 @@ public class RoomActivities : MonoBehaviour {
             }
             else if (spawnChance < SpawnRate && !cleared && enemysAlive.Count < maxSkellies)
             {
+                yield return new WaitForSeconds(0.01f);
                 print("Spawning");
                 GameObject newEnemy = Instantiate(TierManager.instance.RandomSkelleton(bossRoom), spawnLoc[i].position, Quaternion.identity);
+                yield return new WaitForSeconds(0.01f);
                 newEnemy.GetComponent<CombatAi>().myRoom = this;
+                yield return new WaitForSeconds(0.01f);
                 newEnemy.GetComponent<Pathfinding>().IsAwake = true;
+                yield return new WaitForSeconds(0.01f);
                 enemysAlive.Add(newEnemy.GetComponent<CombatAi>());
             }
         }

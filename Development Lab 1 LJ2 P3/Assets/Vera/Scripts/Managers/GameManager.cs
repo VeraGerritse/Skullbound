@@ -15,11 +15,8 @@ public class GameManager : MonoBehaviour {
             instance = this;
             //DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
         paused = true;
+        print("awake");
         StartCoroutine(StartShiz());
     }
     
@@ -44,7 +41,8 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator StartShiz()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
+        print("startNow");
         OrderOfThings();
     }
     void OrderOfThings()

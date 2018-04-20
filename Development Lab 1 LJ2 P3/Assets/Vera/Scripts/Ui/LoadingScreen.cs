@@ -9,6 +9,8 @@ public class LoadingScreen : MonoBehaviour {
     public Text text;
     public static LoadingScreen instance;
     public Canvas canvas;
+    public List<Sprite> screens = new List<Sprite>();
+    public Image screen;
     float max;
     float current;
 
@@ -18,6 +20,7 @@ public class LoadingScreen : MonoBehaviour {
         {
             instance = this;
         }
+        screen.sprite = screens[Random.Range(0, screens.Count)];
         max = loadText.Count;
     }
 
