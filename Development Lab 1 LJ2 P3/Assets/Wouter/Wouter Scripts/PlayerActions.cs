@@ -75,9 +75,7 @@ public class PlayerActions : MonoBehaviour {
             if(Input.GetButtonDown("Interact"))
             {
                 wait = false;
-
-                Destroy(GameObject.FindWithTag("Destroy"));
-
+                GameObject.FindWithTag("Destroy").SetActive(false);
             }
         }
         else
@@ -481,5 +479,15 @@ public class PlayerActions : MonoBehaviour {
     public void WaitForPickup()
     {
         wait = true;
+    }
+
+    public void DropBlade()
+    {
+        print("test");
+        GameObject blade = GameObject.FindWithTag("Drop");
+        //print(blade);
+        //print(blade.GetComponent<Rigidbody>());
+        blade.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        
     }
 }
