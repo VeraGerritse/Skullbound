@@ -38,7 +38,7 @@ public class CombatAi : MonoBehaviour {
 
     private int oldSpeed;
 
-
+    public GameObject chest;
 
     void Start()
     {
@@ -231,9 +231,13 @@ public class CombatAi : MonoBehaviour {
 
     void RagdollBones()
     {
-        if(LootManager.instance != null)
+        if(LootManager.instance != null && !isBoss)
         {
             LootManager.instance.Loot(gameObject.transform,false);
+        }
+        else if (chest != null)
+        {
+            Instantiate(chest, transform.position, transform.rotation);
         }
         
         GameObject g = Instantiate(bonepieces, this.gameObject.transform.position, this.gameObject.transform.rotation);

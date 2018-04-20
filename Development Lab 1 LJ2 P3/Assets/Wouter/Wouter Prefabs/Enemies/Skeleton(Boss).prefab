@@ -8364,6 +8364,7 @@ MonoBehaviour:
   canChoose: 0
   isAttacking: 0
   choicetimer: 0
+  chest: {fileID: 1448011732792940, guid: bddd0639670afb641a3b627fa435433d, type: 2}
 --- !u!114 &114077243761154196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8523,6 +8524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAwake: 0
   keepsWorking: 1
+  used: 0
   myFloat: 0
   target: {fileID: 0}
   aI: {fileID: 0}

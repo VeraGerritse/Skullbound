@@ -17,10 +17,8 @@ public class InteractManager : MonoBehaviour {
     }
     private void Update()
     {
-        print(actions);
         if (actions != null)
         {
-            print(actions.anim);
             if (actions.anim != null)
             {
                 if (actions.anim.GetCurrentAnimatorStateInfo(2).IsTag("lol"))
