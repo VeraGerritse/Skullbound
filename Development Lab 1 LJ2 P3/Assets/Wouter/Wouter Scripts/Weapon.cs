@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour {
                         if(knockback)
                         {
                             other.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                            other.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * 700 + Vector3.back * 500);
+                            other.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * 300 + Vector3.back * 500);
                         }
                     }
                     else
@@ -74,7 +74,7 @@ public class Weapon : MonoBehaviour {
                             myCombatAi.actionCooldown = 2;
                             if (other.GetComponent<PlayerStats>().shield != null)
                             {
-                                other.GetComponent<PlayerStats>().ChangeStamina(-attack * (1 - other.GetComponent<PlayerStats>().shield.GetComponent<Shield>().stability / 100));
+                                other.GetComponent<PlayerStats>().ChangeStamina(-attack / 2 * (1 - other.GetComponent<PlayerStats>().shield.GetComponent<Shield>().stability / 100));
                             }
                             else
                             {

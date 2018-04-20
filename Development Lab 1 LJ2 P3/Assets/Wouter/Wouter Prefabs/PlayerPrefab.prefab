@@ -7700,15 +7700,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMaxHealth: 100
   playerHealth: 100
-  playerStamina: 100
-  playerMaxStamina: 100
+  playerStamina: 200
+  playerMaxStamina: 200
   potionCount: 0
   boostCount: 0
   staminaRegenerationDelay: 0
   animator: {fileID: 95663407831460774}
-  weapon: {fileID: 0}
+  weapon: {fileID: 1705255856896038, guid: 270e8fc3017d8864bb6fcb139bec6330, type: 2}
   previousWeapon: {fileID: 0}
-  shield: {fileID: 0}
+  shield: {fileID: 1073489288093066, guid: 6de47f913f70c7d44a23785cd2c50e82, type: 2}
   previousShield: {fileID: 0}
   doStaminaBoost: 0
   boostDuration: 0
