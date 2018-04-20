@@ -13,6 +13,7 @@ public class LootManager : MonoBehaviour
     public int procentalHigher;
     public int procentalLower;
 
+    public GameObject parent;
 
     private void Awake()
     {
@@ -22,12 +23,12 @@ public class LootManager : MonoBehaviour
         }
     }
 
-    public void Loot(Transform spawn)
+    public void Loot(Transform spawn, bool chest)
     {
         int tier = TierManager.tier;
         print(tier);
         int r = Random.Range(0, 100);
-        if (r < procentalHigher && !TierManager.instance.highestTier)
+        if (r < procentalHigher && !TierManager.instance.highestTier || !TierManager.instance.highestTier && chest)
         {
             tier++;
         }
@@ -38,21 +39,35 @@ public class LootManager : MonoBehaviour
         print(tier + "ugh");
         if(tier == 1)
         {
-            Looting(tier1,spawn);
+            Looting(tier1,spawn, chest);
         }
         if (tier == 2)
         {
-            Looting(tier2,spawn);
+            Looting(tier2,spawn, chest);
         }
         if (tier == 3)
         {
-            Looting(tier3,spawn);
+            Looting(tier3,spawn,chest);
         }
     }
 
-    public void Looting(List<GameObject> myTier, Transform spawn)
+    public void Looting(List<GameObject> myTier, Transform spawn,bool chest)
     {
         int newItem = Random.Range(0, myTier.Count);
-        GameObject item = Instantiate(myTier[newItem], spawn.position, Quaternion.identity);
+        
+
+        if (chest)
+        {
+
+            Vector3 pos = new Vector3(spawn.position.x, spawn.position.y + 1.5f, spawn.position.z);
+            Vector3 rot = new Vector3(spawn.rotation.x, spawn.rotation.y, spawn.rotation.z);
+            GameObject itemChest = Instantiate(myTier[newItem], pos, spawn.rotation);
+            itemChest.transform.Rotate(0, 90, 0);
+            itemChest.GetComponent<Rigidbody>().isKinematic = true;
+        }
+        else
+        {
+            GameObject item = Instantiate(myTier[newItem], spawn.position, Quaternion.identity);
+        }
     }
 }

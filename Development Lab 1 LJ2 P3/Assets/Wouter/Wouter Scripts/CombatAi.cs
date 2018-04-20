@@ -233,7 +233,7 @@ public class CombatAi : MonoBehaviour {
     {
         if(LootManager.instance != null)
         {
-            LootManager.instance.Loot(gameObject.transform);
+            LootManager.instance.Loot(gameObject.transform,false);
         }
         
         GameObject g = Instantiate(bonepieces, this.gameObject.transform.position, this.gameObject.transform.rotation);

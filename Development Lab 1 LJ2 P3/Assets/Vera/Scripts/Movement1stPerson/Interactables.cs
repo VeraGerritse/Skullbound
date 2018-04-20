@@ -7,6 +7,7 @@ public class Interactables : MonoBehaviour {
     [Header("awake and if it stays awake or just once")]
     public bool IsAwake;
     public bool keepsWorking;
+    public bool used;
     bool workedOnce;
     bool onOrOff;
 
@@ -40,7 +41,10 @@ public class Interactables : MonoBehaviour {
 
         }
     }
+    public virtual void OpenChest()
+    {
 
+    }
     public virtual void Interact()
     {
 
