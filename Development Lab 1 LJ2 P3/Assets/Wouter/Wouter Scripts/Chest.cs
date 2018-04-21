@@ -7,6 +7,7 @@ public class Chest : Interactables {
     public Animator anim;
     public ParticleSystem PS;
     public GameObject myLoot;
+    public bool bossChest;
 
     public override void Interact()
     {
@@ -22,6 +23,7 @@ public class Chest : Interactables {
 
     public override void OpenChest()
     {
+        print("whut?");
         if (!used)
         {
             used = true;
@@ -35,7 +37,7 @@ public class Chest : Interactables {
     {
         yield return new WaitForSeconds(1f);
         print(myLoot);
-        myLoot = LootManager.instance.Loot(transform, true);
+        myLoot = LootManager.instance.Loot(transform, true, bossChest);
         print(myLoot);
     }
 

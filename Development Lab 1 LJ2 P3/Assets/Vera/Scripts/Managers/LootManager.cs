@@ -23,18 +23,22 @@ public class LootManager : MonoBehaviour
         }
     }
 
-    public GameObject Loot(Transform spawn, bool chest)
+    public GameObject Loot(Transform spawn, bool chest, bool boss)
     {
         int tier = TierManager.tier;
         print(tier);
         int r = Random.Range(0, 100);
-        if (r < procentalHigher && !TierManager.instance.highestTier || !TierManager.instance.highestTier && chest)
+        if (r < procentalHigher && !TierManager.instance.highestTier || !TierManager.instance.highestTier && chest && !boss)
         {
             tier++;
         }
         else
         {
             tier = Random.Range(1, tier + 1);
+        }
+        if (boss)
+        {
+            tier = TierManager.tier;
         }
         print(tier + "ugh");
         if(tier == 1)

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TierManager : MonoBehaviour {
 
@@ -40,7 +39,7 @@ public class TierManager : MonoBehaviour {
                 highestTier = true;
             }
         }
-        StartCoroutine(EndFloor());
+        ClearManager.instance.CompleteFloor();
     }
 
     public GameObject RandomSkelleton(bool isBoss)
@@ -96,12 +95,5 @@ public class TierManager : MonoBehaviour {
             return bossTiers[2];
         }
         return bossTiers[0];
-    }
-    IEnumerator EndFloor()
-    {
-        yield return new WaitForSeconds(2);
-        DungeonGeneratorManager.instance.Player();
-        PlayerStats.instance.SaveWeapons();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

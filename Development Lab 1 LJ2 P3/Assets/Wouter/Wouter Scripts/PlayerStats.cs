@@ -38,6 +38,12 @@ public class PlayerStats : MonoBehaviour {
         }
         playerHealth = playerMaxHealth;
         UIManager.instance.interfaceGame.UpdateHealth(playerHealth, playerMaxHealth);
+        GameObject firstWeapon = Instantiate(weapon, new Vector3(100, -100, 100), Quaternion.identity);
+        firstWeapon.SetActive(false);
+        weapon = firstWeapon;
+        GameObject firstShield = Instantiate(shield, new Vector3(100, -100, 100), Quaternion.identity);
+        firstShield.SetActive(false);
+        shield = firstShield;
     }
 
 
@@ -50,7 +56,10 @@ public class PlayerStats : MonoBehaviour {
         {
             SoundManager.soundInstance.audiosources[Random.Range(0, 4)].Play();
         }
-        
+        if(playerHealth < 0)
+        {
+            Die();
+        }
     }
 
     public void ChangeStamina(float amount)
@@ -126,5 +135,11 @@ public class PlayerStats : MonoBehaviour {
             Destroy(shield);
             shield = tempShield;
         }
+    }
+
+    public void Die()
+    {
+        UIManager.instance.interfaceGame.anim.SetBool("Death", true);
+        StartCoroutine(GameManager.instance.Die());
     }
 }

@@ -233,11 +233,12 @@ public class CombatAi : MonoBehaviour {
     {
         if(LootManager.instance != null && !isBoss)
         {
-            LootManager.instance.Loot(gameObject.transform,false);
+            LootManager.instance.Loot(gameObject.transform,false,false);
         }
         else if (chest != null)
         {
-            Instantiate(chest, transform.position, transform.rotation);
+           GameObject newChest =  Instantiate(chest, transform.position, transform.rotation);
+           newChest.GetComponent<Chest>().bossChest = true;
         }
         
         GameObject g = Instantiate(bonepieces, this.gameObject.transform.position, this.gameObject.transform.rotation);

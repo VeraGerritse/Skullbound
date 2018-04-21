@@ -25,8 +25,12 @@ public class GameInterface : MonoBehaviour {
 
     public Animator anim;
 
-  
+    public Text endFloor;
 
+    private void Start()
+    {
+        endFloor.enabled = false;
+    }
     public void Interact()
     {
         

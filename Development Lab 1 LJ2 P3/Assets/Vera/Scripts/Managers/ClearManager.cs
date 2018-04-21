@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ClearManager : MonoBehaviour {
 
     public static ClearManager instance;
     public List<Door> doors = new List<Door>();
     public bool allCleared;
+    public bool floorComplete;
 
     private void Awake()
     {
@@ -16,6 +18,8 @@ public class ClearManager : MonoBehaviour {
             instance = this;
         }
         allCleared = true;
+
+        floorComplete = false;
     }
 
     public void EnterRoom()
@@ -26,6 +30,16 @@ public class ClearManager : MonoBehaviour {
             doors[i].CloseDoors();
         }
     }
+    private void Update()
+    {
+        if (floorComplete)
+        {
+            if (Input.GetButtonDown("Submit"))
+            {
+                CompleteFloor();
+            }
+        }
+    }
 
     public void ExitRoom()
     {
@@ -34,5 +48,18 @@ public class ClearManager : MonoBehaviour {
         {
             doors[i].OpenDoor();
         }
+    }
+
+    public void CompleteFloor()
+    {
+        floorComplete = true;
+        UIManager.instance.interfaceGame.endFloor.enabled = true;
+    }
+
+    public void NextFloor()
+    {
+        DungeonGeneratorManager.instance.Player();
+        PlayerStats.instance.SaveWeapons();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
