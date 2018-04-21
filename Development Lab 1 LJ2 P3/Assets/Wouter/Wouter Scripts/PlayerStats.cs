@@ -56,7 +56,7 @@ public class PlayerStats : MonoBehaviour {
         {
             SoundManager.soundInstance.audiosources[Random.Range(0, 4)].Play();
         }
-        if(playerHealth < 0)
+        if(playerHealth <= 0)
         {
             Die();
         }
@@ -140,6 +140,10 @@ public class PlayerStats : MonoBehaviour {
     public void Die()
     {
         UIManager.instance.interfaceGame.anim.SetBool("Death", true);
+        animator.SetTrigger("Die");
+        animator.SetBool("Died", true);
         StartCoroutine(GameManager.instance.Die());
+        
+
     }
 }

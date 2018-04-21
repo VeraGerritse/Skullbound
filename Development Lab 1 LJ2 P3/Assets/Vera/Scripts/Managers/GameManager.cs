@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour {
 
     public IEnumerator Die()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(4);
         Destroy(DungeonGeneratorManager.instance.player);
         SceneManager.LoadScene("Main_Menu_Entry");
     }

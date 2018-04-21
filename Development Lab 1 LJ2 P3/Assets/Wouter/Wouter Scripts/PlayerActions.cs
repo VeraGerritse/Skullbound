@@ -497,4 +497,9 @@ public class PlayerActions : MonoBehaviour {
         blade.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         
     }
+
+    public void StopIdle()
+    {
+        anim.SetTrigger("TestTrigger");
+    }
 }
