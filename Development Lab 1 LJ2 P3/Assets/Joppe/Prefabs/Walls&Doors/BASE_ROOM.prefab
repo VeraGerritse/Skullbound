@@ -860,6 +860,7 @@ GameObject:
   - component: {fileID: 33141096353072748}
   - component: {fileID: 23463099995785116}
   - component: {fileID: 95377326406910540}
+  - component: {fileID: 65851069287798438}
   m_Layer: 0
   m_Name: Ceiling_001
   m_TagString: Untagged
@@ -913,7 +914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1984340999002526
 GameObject:
   m_ObjectHideFlags: 1
@@ -2437,6 +2438,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 0.1, z: 20}
   m_Center: {x: -2.0000029, y: -0.000049591075, z: 0.0000009536743}
+--- !u!65 &65851069287798438
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893413920620802}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20.000013, y: 20.000008, z: 0.6000049}
+  m_Center: {x: -2.0090046e-14, y: 0.0000000715253, z: 0.29999888}
 --- !u!65 &65869391083113992
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2952,6 +2965,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAwake: 1
   keepsWorking: 0
+  used: 0
   myFloat: 0
   anim: {fileID: 95084949791441520}
 --- !u!114 &114211575239742426
@@ -2980,6 +2994,8 @@ MonoBehaviour:
   bossRoom: 0
   myRoom: {fileID: 0}
   SpawnRate: 50
+  roomForTesting: 0
+  maxSkellies: 0
 --- !u!198 &198197808661943202
 ParticleSystem:
   m_ObjectHideFlags: 1
