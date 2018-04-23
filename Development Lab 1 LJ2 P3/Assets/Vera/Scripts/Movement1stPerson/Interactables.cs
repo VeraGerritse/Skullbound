@@ -10,6 +10,7 @@ public class Interactables : MonoBehaviour {
     public bool used;
     bool workedOnce;
     bool onOrOff;
+    public bool chest;
 
     public float myFloat;
 
@@ -31,6 +32,10 @@ public class Interactables : MonoBehaviour {
             onOrOff = false;
             StopInteract();
         }
+        if (chest)
+        {
+            Interact();
+        }
 
         myFloat -= Time.deltaTime;
 
@@ -43,7 +48,7 @@ public class Interactables : MonoBehaviour {
     }
     public virtual void OpenChest()
     {
-
+        workedOnce = false;
     }
     public virtual void Interact()
     {

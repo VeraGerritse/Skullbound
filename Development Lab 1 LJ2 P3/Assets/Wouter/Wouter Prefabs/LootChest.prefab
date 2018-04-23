@@ -119,8 +119,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1448011732792940}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 8.067495, y: -0.00005032574, z: 3.7323506}
+  m_LocalRotation: {x: -0, y: -0.3662547, z: -0, w: -0.93051463}
+  m_LocalPosition: {x: -7.783144, y: 0.05725509, z: -5.8767633}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4036213597878718}
@@ -359,6 +359,7 @@ MonoBehaviour:
   IsAwake: 1
   keepsWorking: 0
   used: 0
+  chest: 1
   myFloat: 0
   anim: {fileID: 95883480371548546}
   PS: {fileID: 198696655359793064}

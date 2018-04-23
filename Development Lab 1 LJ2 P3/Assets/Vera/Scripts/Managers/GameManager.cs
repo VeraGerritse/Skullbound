@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(4);
         Destroy(DungeonGeneratorManager.instance.player);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SceneManager.LoadScene("Main_Menu_Entry");
     }
 }
