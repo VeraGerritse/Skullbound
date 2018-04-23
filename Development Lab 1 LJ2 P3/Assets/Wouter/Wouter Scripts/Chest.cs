@@ -56,6 +56,7 @@ public class Chest : Interactables {
     {
         if(collision.gameObject.tag == "Player" && myLoot != null)
         {
+            myLoot.GetComponent<Collider>().enabled = true;
             myLoot.GetComponent<Rigidbody>().isKinematic = false;
         }
     }

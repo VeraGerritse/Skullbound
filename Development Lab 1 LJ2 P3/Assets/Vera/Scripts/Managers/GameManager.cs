@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour {
     public IEnumerator Die()
     {
         yield return new WaitForSeconds(4);
+        TierManager.tier = 1;
         Destroy(DungeonGeneratorManager.instance.player);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
