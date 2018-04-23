@@ -522,7 +522,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1996724819899376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 9.84}
+  m_LocalPosition: {x: 22.273874, y: 0.0572551, z: 0.8980112}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4423660684067502}
@@ -1028,13 +1028,13 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.77961457, b: 0.6102941, a: 1}
+  m_Color: {r: 1, g: 0.85862064, b: 0.75, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 14
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.75
@@ -1064,13 +1064,13 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.77961457, b: 0.6102941, a: 1}
+  m_Color: {r: 1, g: 0.85862064, b: 0.75, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 14
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.75
@@ -1100,13 +1100,13 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.77961457, b: 0.6102941, a: 1}
+  m_Color: {r: 1, g: 0.85862064, b: 0.75, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 14
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.75
@@ -1136,13 +1136,13 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.77961457, b: 0.6102941, a: 1}
+  m_Color: {r: 1, g: 0.85862064, b: 0.75, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 14
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.75
@@ -1177,6 +1177,7 @@ MonoBehaviour:
   IsAwake: 1
   keepsWorking: 0
   used: 0
+  chest: 0
   myFloat: 0
   anim: {fileID: 95781389811678226}
 --- !u!198 &198182001756781068
