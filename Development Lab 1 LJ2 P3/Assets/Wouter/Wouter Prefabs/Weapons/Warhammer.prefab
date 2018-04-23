@@ -86,7 +86,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1106454263603290}
-  m_Mesh: {fileID: 4300000, guid: fabfff415b86ec94c8a907c2fcac38c1, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c462bd2e4e8f90e48ad9794b891ee148, type: 3}
 --- !u!54 &54893862090861722
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -139,6 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAwake: 1
   keepsWorking: 0
+  used: 0
+  chest: 0
   myFloat: 0
   canBePickedUp: 1
   rend: {fileID: 0}
@@ -161,5 +163,5 @@ MonoBehaviour:
   isVisible: 0
   weaponName: Warhammer
   itemId: 3
-  attack: 30
+  attack: 45
   staminacost: 30

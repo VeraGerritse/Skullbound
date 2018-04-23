@@ -394,10 +394,17 @@ public class PlayerActions : MonoBehaviour {
                     }
                     
                 }
+
                 else
                 {
                     hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 400 + transform.up * 200);
                 }
+            }
+            if (hit.transform.GetComponent<Spider>() != null)
+            {
+                print("spider");
+                hit.transform.GetComponent<Spider>().Die();
+                hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 400 + transform.up * 200);
             }
 
         }
@@ -500,6 +507,6 @@ public class PlayerActions : MonoBehaviour {
 
     public void StopIdle()
     {
-        anim.SetTrigger("TestTrigger");
+        anim.SetTrigger("Out");
     }
 }

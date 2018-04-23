@@ -3448,6 +3448,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAwake: 0
   keepsWorking: 1
+  used: 0
+  chest: 0
   myFloat: 0
   target: {fileID: 0}
   aI: {fileID: 0}
@@ -3522,6 +3524,7 @@ MonoBehaviour:
   canChoose: 0
   isAttacking: 0
   choicetimer: 0
+  chest: {fileID: 0}
 --- !u!114 &114885510533175456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3565,7 +3568,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}

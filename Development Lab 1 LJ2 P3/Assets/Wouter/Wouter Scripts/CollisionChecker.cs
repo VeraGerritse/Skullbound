@@ -3,21 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionChecker : MonoBehaviour {
-    public bool collide;
-    public GameObject hitObject;
+
+    public GameObject owner;
+
+    public bool top;
 
     public void OnTriggerStay(Collider other)
     {
-        collide = true;
-        hitObject = other.gameObject;
+        if(other.tag == "Player")
+        {
+            if (top)
+            {
+                owner.GetComponent<Animator>().SetTrigger("Sting");
+            }
+            else
+            {
+                owner.GetComponent<Animator>().SetTrigger("StingBack");
+            }
+        }       
     }
 
-    public void OnTriggerExit(Collider other)
-    {
-        collide = false;
-        hitObject = null;
-        
-    }
+
 
 
 }
