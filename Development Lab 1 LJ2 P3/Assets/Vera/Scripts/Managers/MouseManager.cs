@@ -9,7 +9,10 @@ public class MouseManager : MonoBehaviour {
 
     private void Update()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (!GameManager.instance.paused)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }

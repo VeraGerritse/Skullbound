@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
     public static GameObject player;
+    public GameObject PlayerInTEstScenes;
     public Grid grid;
     public bool paused;
 

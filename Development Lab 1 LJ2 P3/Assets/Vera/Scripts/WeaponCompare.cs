@@ -140,6 +140,9 @@ public class WeaponCompare : MonoBehaviour {
 
     public void CloseCanvas()
     {
-        canvasDiff.enabled = false;
+        if(canvasDiff != null)
+        {
+            canvasDiff.enabled = false;
+        }
     }
 }

@@ -40,6 +40,7 @@ public class Chest : Interactables {
         yield return new WaitForSeconds(1f);
         print(myLoot);
         myLoot = LootManager.instance.Loot(transform, true, bossChest);
+        myLoot.GetComponent<Collider>().enabled = false;
         print(myLoot);
     }
 
@@ -47,6 +48,7 @@ public class Chest : Interactables {
     {
         yield return new WaitForSeconds(1f);
         rising = true;
+        myLoot.GetComponent<Collider>().enabled = true;
         yield return new WaitForSeconds(3f);
         PS.Stop();
     }
