@@ -34,9 +34,10 @@ public class ClearManager : MonoBehaviour {
     {
         if (floorComplete)
         {
-            if (Input.GetButtonDown("Submit"))
+            print("done");
+            if (Input.GetButtonDown("Enter"))
             {
-                CompleteFloor();
+                NextFloor();
             }
         }
     }
