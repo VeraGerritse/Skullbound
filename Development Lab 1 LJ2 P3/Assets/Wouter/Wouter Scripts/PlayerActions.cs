@@ -430,8 +430,8 @@ public class PlayerActions : MonoBehaviour {
 
                 if (hit.transform.tag == "Enemy")
                 {
-                    hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack * 2);
-                    hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 300 + transform.up * 300);
+                    hit.transform.GetComponent<CombatAi>().ChangeHealth(-playerStats.weapon.GetComponent<Weapon>().attack * 1.2f);
+                    hit.transform.GetComponent<Rigidbody>().AddForce(transform.forward * 700 + transform.up * 300);
                     
                 }
                 else

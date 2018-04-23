@@ -4761,7 +4761,7 @@ MonoBehaviour:
   Health: 300
   actionCooldown: 0
   dualwielder: 0
-  shielded: 1
+  shielded: 0
   block: 0
   isBoss: 1
   nextattack: 0
@@ -4830,6 +4830,7 @@ MonoBehaviour:
   IsAwake: 0
   keepsWorking: 1
   used: 0
+  chest: 0
   myFloat: 0
   target: {fileID: 0}
   aI: {fileID: 0}
