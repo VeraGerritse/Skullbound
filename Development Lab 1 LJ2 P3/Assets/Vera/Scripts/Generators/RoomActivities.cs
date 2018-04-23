@@ -140,7 +140,6 @@ public class RoomActivities : MonoBehaviour {
             else if (spawnChance < SpawnRate && !cleared && enemysAlive.Count < maxSkellies)
             {
                 yield return new WaitForSeconds(0.01f);
-                print("Spawning");
                 GameObject newEnemy = Instantiate(TierManager.instance.RandomSkelleton(bossRoom), spawnLoc[i].position, Quaternion.identity);
                 yield return new WaitForSeconds(0.01f);
                 newEnemy.GetComponent<CombatAi>().myRoom = this;

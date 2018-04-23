@@ -33,7 +33,6 @@ public class PotionUI : MonoBehaviour {
 
     public void UpdateSyringe(int amount)
     {
-        print(amount);
         for (int i = 0; i < syringe.Count; i++)
         {
             if (i < amount)

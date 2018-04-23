@@ -258,10 +258,8 @@ public class PlayerActions : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 3, out hit, 3, layer))
         {
-            print("heya");
             if (hit.collider.GetComponentInParent<Chest>() != null)
             {
-                print("hoi");
                 hit.collider.GetComponentInParent<Chest>().OpenChest();
             }
             if (hit.collider.gameObject.GetComponent<Door>() != null)
@@ -497,12 +495,8 @@ public class PlayerActions : MonoBehaviour {
 
     public void DropBlade()
     {
-        print("test");
         GameObject blade = GameObject.FindWithTag("Drop");
-        //print(blade);
-        //print(blade.GetComponent<Rigidbody>());
-        blade.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        
+        blade.gameObject.GetComponent<Rigidbody>().isKinematic = false;       
     }
 
     public void StopIdle()

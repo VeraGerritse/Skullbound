@@ -12,7 +12,6 @@ public class Chest : Interactables {
 
     public override void Interact()
     {
-        print(myLoot);
         if(myLoot != null && !rising)
         {
             print("werkt dit?");

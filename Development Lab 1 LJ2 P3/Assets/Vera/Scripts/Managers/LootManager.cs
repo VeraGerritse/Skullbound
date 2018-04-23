@@ -26,7 +26,6 @@ public class LootManager : MonoBehaviour
     public GameObject Loot(Transform spawn, bool chest, bool boss)
     {
         int tier = TierManager.tier;
-        print(tier);
         int r = Random.Range(0, 100);
         if (r < procentalHigher && !TierManager.instance.highestTier || !TierManager.instance.highestTier && chest && !boss)
         {
@@ -40,7 +39,6 @@ public class LootManager : MonoBehaviour
         {
             tier = TierManager.tier;
         }
-        print(tier + "ugh");
         if(tier == 1)
         {
             return Looting(tier1,spawn, chest);

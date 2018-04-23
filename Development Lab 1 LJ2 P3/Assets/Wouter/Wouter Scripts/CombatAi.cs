@@ -43,7 +43,6 @@ public class CombatAi : MonoBehaviour {
     void Start()
     {
         maxHealth = Health;
-        print(maxHealth);
         oldSpeed = myPathFinding.speed;
         textHP.text = Health.ToString();
         myPathFinding = GetComponent<Pathfinding>();
