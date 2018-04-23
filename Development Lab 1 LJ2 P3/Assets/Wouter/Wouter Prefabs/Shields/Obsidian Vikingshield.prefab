@@ -126,6 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAwake: 1
   keepsWorking: 0
+  used: 0
+  chest: 0
   myFloat: 0
   canBePickedUp: 0
   rend: {fileID: 0}
@@ -140,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd32ec3aedfa7b4aaad8a258f2a3457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldName: Blue Vikingshield
+  shieldName: Obsidian Vikingshield
   itemId: 0
   stability: 40
   bashcost: 10

@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 4013554874582148}
   - component: {fileID: 137201278691285114}
   m_Layer: 0
-  m_Name: Spider
+  m_Name: Spider_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1669,8 +1669,8 @@ GameObject:
   - component: {fileID: 4247056704806612}
   - component: {fileID: 95545522196536450}
   - component: {fileID: 54588757416536054}
-  - component: {fileID: 135950193511487190}
   - component: {fileID: 114228412439020332}
+  - component: {fileID: 65932088760581590}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -2788,7 +2788,7 @@ GameObject:
   - component: {fileID: 4669869465507428}
   - component: {fileID: 137215054307094320}
   m_Layer: 0
-  m_Name: Spider
+  m_Name: Spider_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3026,8 +3026,8 @@ GameObject:
   - component: {fileID: 4376108211986914}
   - component: {fileID: 95022045770207942}
   - component: {fileID: 54051338102674884}
-  - component: {fileID: 135233936470310794}
   - component: {fileID: 114801768495788086}
+  - component: {fileID: 65392814977943444}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -16601,6 +16601,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.52000016, y: 0.58116823, z: 0.1}
   m_Center: {x: -0.22500005, y: 0.22558406, z: -0.05}
+--- !u!65 &65392814977943444
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620976798324088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.44341317, y: 0.27777153, z: 1.0188363}
+  m_Center: {x: -0.0090892315, y: 0.12902223, z: -0.24829075}
 --- !u!65 &65392905021050752
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -18077,6 +18089,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.081637055, y: 0.24411872, z: 0.4678043}
   m_Center: {x: -0.09245588, y: 0.030366123, z: -0.68822247}
+--- !u!65 &65932088760581590
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1316812658154458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.44341317, y: 0.27777153, z: 1.0188363}
+  m_Center: {x: -0.0090892315, y: 0.12902223, z: -0.24829075}
 --- !u!65 &65934691437500188
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -20899,9 +20923,9 @@ MonoBehaviour:
   - {fileID: 1249287462421776, guid: 6e214f6be5ae6194fb4c4b021104488c, type: 2}
   - {fileID: 1024969786019716, guid: 4764fc8c1f5d64f44acea5ee9fb22df2, type: 2}
   spawnLoc:
-  - {fileID: 4484387683523936}
-  - {fileID: 4185725434315878}
-  - {fileID: 4890106873016946}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   enemysAlive: []
   bossRoom: 0
   myRoom: {fileID: 0}
@@ -20933,30 +20957,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 1620976798324088}
   top: 0
---- !u!135 &135233936470310794
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1620976798324088}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135950193511487190
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1316812658154458}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137201278691285114
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

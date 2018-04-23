@@ -941,8 +941,8 @@ GameObject:
   - component: {fileID: 4480040740800364}
   - component: {fileID: 95546968590081780}
   - component: {fileID: 54797104736781484}
-  - component: {fileID: 135491246916765524}
   - component: {fileID: 114009195414563964}
+  - component: {fileID: 65354512792481956}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 4510123859079030}
   - component: {fileID: 137285935409046224}
   m_Layer: 0
-  m_Name: Spider
+  m_Name: Spider_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10274,6 +10274,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.52000016, y: 0.58116823, z: 0.1}
   m_Center: {x: -0.22500005, y: 0.22558406, z: -0.05}
+--- !u!65 &65354512792481956
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1294308801799586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.44341317, y: 0.27777153, z: 1.0188363}
+  m_Center: {x: -0.0090892315, y: 0.12902223, z: -0.24829075}
 --- !u!65 &65355494488862374
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -12453,18 +12465,6 @@ MonoBehaviour:
   SpawnRate: 50
   roomForTesting: 0
   maxSkellies: 3
---- !u!135 &135491246916765524
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1294308801799586}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137260257893555246
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

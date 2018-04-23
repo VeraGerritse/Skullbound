@@ -37,6 +37,7 @@ public class ClearManager : MonoBehaviour {
             print("done");
             if (Input.GetButtonDown("Enter"))
             {
+                print("pressed Enter");
                 NextFloor();
             }
         }
@@ -59,8 +60,9 @@ public class ClearManager : MonoBehaviour {
 
     public void NextFloor()
     {
+        print("hoi");
         DungeonGeneratorManager.instance.Player();
         PlayerStats.instance.SaveWeapons();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("GameScene");
     }
 }
