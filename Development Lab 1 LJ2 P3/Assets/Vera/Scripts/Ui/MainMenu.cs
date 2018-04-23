@@ -49,9 +49,13 @@ public class MainMenu : MonoBehaviour
         {
             Destroy(DungeonGeneratorManager.instance.player);
         }
-        else if (GameManager.instance.PlayerInTEstScenes != null)
+
+        else if (GameManager.instance != null)
         {
-            Destroy(GameManager.instance.PlayerInTEstScenes);
+            if(GameManager.instance.PlayerInTEstScenes != null)
+            {
+                Destroy(GameManager.instance.PlayerInTEstScenes);
+            }
         }
             SceneManager.LoadScene(nameScene);
     }
