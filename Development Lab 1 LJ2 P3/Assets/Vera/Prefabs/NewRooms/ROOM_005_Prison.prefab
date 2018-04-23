@@ -28639,6 +28639,7 @@ MonoBehaviour:
   IsAwake: 1
   keepsWorking: 0
   used: 0
+  chest: 0
   myFloat: 0
   canBePickedUp: 1
   rend: {fileID: 0}
@@ -28938,7 +28939,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1303369391
+  randomSeed: -1273311319
   InitialModule:
     serializedVersion: 3
     enabled: 1

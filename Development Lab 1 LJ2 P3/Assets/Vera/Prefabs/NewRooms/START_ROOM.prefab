@@ -1561,7 +1561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1528429030326190
 GameObject:
   m_ObjectHideFlags: 1
@@ -5009,7 +5009,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1398547341105614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 16.542046, y: 0.0572551, z: -17.339634}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4390940471481494}
@@ -14423,6 +14423,7 @@ MonoBehaviour:
   IsAwake: 1
   keepsWorking: 0
   used: 0
+  chest: 0
   myFloat: 0
   canBePickedUp: 1
   rend: {fileID: 0}
@@ -14460,6 +14461,7 @@ MonoBehaviour:
   IsAwake: 1
   keepsWorking: 0
   used: 0
+  chest: 0
   myFloat: 0
   canBePickedUp: 0
   rend: {fileID: 0}
@@ -14493,6 +14495,7 @@ MonoBehaviour:
   IsAwake: 1
   keepsWorking: 0
   used: 0
+  chest: 0
   myFloat: 0
   canBePickedUp: 1
   rend: {fileID: 0}
@@ -14510,6 +14513,7 @@ MonoBehaviour:
   IsAwake: 1
   keepsWorking: 0
   used: 0
+  chest: 0
   myFloat: 0
   canBePickedUp: 0
   rend: {fileID: 0}

@@ -48,11 +48,11 @@ public class InteractManager : MonoBehaviour {
                                     UIManager.instance.interfaceGame.inter = false;
                                 }
                                  
-                                if (hit.collider.gameObject.GetComponent<Weapon>())
+                                if (hit.collider.gameObject.GetComponent<Weapon>() && WeaponCompare.instance!=null)
                                 {
                                     WeaponCompare.instance.CalDiffWeapon(hit.collider.gameObject.GetComponent<Weapon>());
                                 }
-                                else if (hit.collider.gameObject.GetComponent<Shield>())
+                                else if (hit.collider.gameObject.GetComponent<Shield>() && WeaponCompare.instance != null)
                                 {
                                     WeaponCompare.instance.CalDiffShield(hit.collider.gameObject.GetComponent<Shield>());
                                 }
