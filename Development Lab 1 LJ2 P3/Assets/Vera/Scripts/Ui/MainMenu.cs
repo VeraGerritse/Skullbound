@@ -48,8 +48,8 @@ public class MainMenu : MonoBehaviour
         if (DungeonGeneratorManager.instance != null)
         {
             Destroy(DungeonGeneratorManager.instance.player);
+            TierManager.tier = 1;
         }
-
         else if (GameManager.instance != null)
         {
             if(GameManager.instance.PlayerInTEstScenes != null)
@@ -57,7 +57,7 @@ public class MainMenu : MonoBehaviour
                 Destroy(GameManager.instance.PlayerInTEstScenes);
             }
         }
-            SceneManager.LoadScene(nameScene);
+        SceneManager.LoadScene(nameScene);
     }
 
     public void QuitGame()

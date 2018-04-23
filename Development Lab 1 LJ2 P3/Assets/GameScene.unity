@@ -1090,6 +1090,11 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114382034090404450, guid: 775cdeab428ad164ab0c1bc19b8fa374,
+        type: 2}
+      propertyPath: m_Text
+      value: Press BackSpace to continue
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 775cdeab428ad164ab0c1bc19b8fa374, type: 2}
   m_IsPrefabParent: 0
@@ -1340,7 +1345,7 @@ Prefab:
     - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
         type: 2}
       propertyPath: gridSize
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114775448404233056, guid: 66f5ebc05afbab34fa9c1185b975d3de,
         type: 2}
