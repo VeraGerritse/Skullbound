@@ -7,6 +7,7 @@ public class WeaponCompare : MonoBehaviour {
     public static WeaponCompare instance;
     public List<Text> statText = new List<Text>();
     public List<Text> statNumbers = new List<Text>();
+    public Text nameText;
     public Canvas canvasDiff;
 
     public List<string> weaponStats = new List<string>();
@@ -20,7 +21,50 @@ public class WeaponCompare : MonoBehaviour {
 
     public void CalDiffShield(Shield toCompare)
     {
-        //if()
+        List<string> diff = new List<string>();
+        List<float> numberDiff = new List<float>();
+        List<bool> lowerOrHigher = new List<bool>();
+
+        Shield inHand = PlayerStats.instance.shield.GetComponent<Shield>();
+        if (toCompare.stability < inHand.stability)
+        {
+            diff.Add(shieldStats[0]);
+            numberDiff.Add(toCompare.stability - inHand.stability);
+            lowerOrHigher.Add(false);
+        }
+        else if (toCompare.stability > inHand.stability)
+        {
+            diff.Add(shieldStats[0]);
+            numberDiff.Add(toCompare.stability - inHand.stability);
+            lowerOrHigher.Add(true);
+        }
+
+        if (toCompare.bashcost < inHand.bashcost)
+        {
+            diff.Add(shieldStats[1]);
+            numberDiff.Add(toCompare.bashcost - inHand.bashcost);
+            lowerOrHigher.Add(true);
+        }
+        else if (toCompare.bashcost > inHand.bashcost)
+        {
+            diff.Add(shieldStats[1]);
+            numberDiff.Add(toCompare.bashcost - inHand.bashcost);
+            lowerOrHigher.Add(false);
+        }
+
+        if (toCompare.bashDamage < inHand.bashDamage)
+        {
+            diff.Add(shieldStats[2]);
+            numberDiff.Add(toCompare.bashDamage - inHand.bashDamage);
+            lowerOrHigher.Add(false);
+        }
+        else if (toCompare.bashDamage > inHand.bashDamage)
+        {
+            diff.Add(shieldStats[2]);
+            numberDiff.Add(toCompare.bashDamage - inHand.bashDamage);
+            lowerOrHigher.Add(true);
+        }
+        DisplayDifference(diff, numberDiff, lowerOrHigher,toCompare.shieldName);
     }
     public void CalDiffWeapon(Weapon toCompare)
     {
@@ -45,29 +89,22 @@ public class WeaponCompare : MonoBehaviour {
         if(toCompare.staminacost < inHand.staminacost)
         {
             diff.Add(weaponStats[1]);
-            numberDiff.Add(inHand.staminacost - toCompare.staminacost);
-            lowerOrHigher.Add(false);
+            numberDiff.Add(toCompare.staminacost - inHand.staminacost);
+            lowerOrHigher.Add(true);
         }
         if (toCompare.staminacost > inHand.staminacost)
         {
             diff.Add(weaponStats[1]);
-            numberDiff.Add(inHand.staminacost - toCompare.staminacost);
-            lowerOrHigher.Add(true);
+            numberDiff.Add(toCompare.staminacost - inHand.staminacost);
+            lowerOrHigher.Add(false);
         }
-        DisplayDifference(diff, numberDiff, lowerOrHigher);
+        DisplayDifference(diff, numberDiff, lowerOrHigher, toCompare.weaponName);
     }
 
-    void DisplayDifference(List<string> what, List<float> howMuch, List<bool> lowerOrHigher)
+    void DisplayDifference(List<string> what, List<float> howMuch, List<bool> lowerOrHigher, string name)
     {
-        if(what.Count == 0)
-        {
-            canvasDiff.enabled = false;
-            return;
-        }
-        else
-        {
+            nameText.text = name;
             canvasDiff.enabled = true;
-        }
         for (int i = 0; i < statText.Count; i++)
         {
             if(i < what.Count)
@@ -75,7 +112,14 @@ public class WeaponCompare : MonoBehaviour {
                 statText[i].enabled = true;
                 statNumbers[i].enabled = true;
                 statText[i].text = what[i];
-                statNumbers[i].text = howMuch[i].ToString();
+                if(howMuch[i] > 0)
+                {
+                    statNumbers[i].text = "+" + howMuch[i].ToString();
+                }
+                else
+                {
+                    statNumbers[i].text = howMuch[i].ToString();
+                }
                 if (lowerOrHigher[i])
                 {
                     statNumbers[i].color = Color.green;
@@ -92,5 +136,10 @@ public class WeaponCompare : MonoBehaviour {
             }
 
         }
+    }
+
+    public void CloseCanvas()
+    {
+        canvasDiff.enabled = false;
     }
 }

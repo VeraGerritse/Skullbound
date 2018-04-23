@@ -14,6 +14,7 @@ public class InteractManager : MonoBehaviour {
         {
             instance = this;
         }
+        //WeaponCompare.instance.CloseCanvas();
     }
     private void Update()
     {
@@ -56,6 +57,10 @@ public class InteractManager : MonoBehaviour {
                                 {
                                     WeaponCompare.instance.CalDiffShield(hit.collider.gameObject.GetComponent<Shield>());
                                 }
+                                else
+                                {
+                                    WeaponCompare.instance.CloseCanvas();
+                                }
                             }
                             else if(hit.collider.gameObject.GetComponent<Interactables>() != null)
                             {
@@ -78,23 +83,27 @@ public class InteractManager : MonoBehaviour {
                                     {
                                         WeaponCompare.instance.CalDiffShield(hit.collider.gameObject.GetComponent<Shield>());
                                     }
+                                    else
+                                    {
+                                        WeaponCompare.instance.CloseCanvas();
+                                    }
                                 }
                             }
                             else
                             {
-
+                                WeaponCompare.instance.CloseCanvas();
                                 UIManager.instance.interfaceGame.inter = false;
                             }
                         }
                         else
                         {
-                            
+                            WeaponCompare.instance.CloseCanvas();
                             UIManager.instance.interfaceGame.inter = false;
                         }
                     }
                     else
                     {
-
+                        WeaponCompare.instance.CloseCanvas();
                         UIManager.instance.interfaceGame.inter = false;
                     }
                 }
