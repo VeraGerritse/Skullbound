@@ -834,7 +834,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1808935578167402, guid: 90e2dd7ba3e31434fb6577f221ca4e36, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224230544979969060, guid: 90e2dd7ba3e31434fb6577f221ca4e36,
         type: 2}
@@ -988,7 +988,7 @@ Prefab:
     - target: {fileID: 224187098645145194, guid: 775cdeab428ad164ab0c1bc19b8fa374,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0.099975586
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 114812105671940634, guid: 775cdeab428ad164ab0c1bc19b8fa374,
         type: 2}
@@ -1029,6 +1029,11 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: Press BackSpace to continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 224187098645145194, guid: 775cdeab428ad164ab0c1bc19b8fa374,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 848.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 775cdeab428ad164ab0c1bc19b8fa374, type: 2}
