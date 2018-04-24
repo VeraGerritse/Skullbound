@@ -1584,7 +1584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &613484709
 Transform:
   m_ObjectHideFlags: 0
@@ -2908,10 +2908,6 @@ Prefab:
     - target: {fileID: 4243389618330810, guid: 4764fc8c1f5d64f44acea5ee9fb22df2, type: 2}
       propertyPath: m_RootOrder
       value: 58
-      objectReference: {fileID: 0}
-    - target: {fileID: 1024969786019716, guid: 4764fc8c1f5d64f44acea5ee9fb22df2, type: 2}
-      propertyPath: m_Name
-      value: Skeleton(DualWielder)(Sword)(Tier1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4764fc8c1f5d64f44acea5ee9fb22df2, type: 2}
