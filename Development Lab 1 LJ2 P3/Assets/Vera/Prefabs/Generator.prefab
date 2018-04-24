@@ -89,11 +89,14 @@ MonoBehaviour:
   - {fileID: 1733031271398054, guid: c04e3d8608b3ee743a923281e2a55771, type: 2}
   - {fileID: 1257310301951970, guid: 73fc3f3f536c65f4d84d1bf658393ec3, type: 2}
   - {fileID: 1722045439447848, guid: 546c09010dad10742bce9fdc783b2d58, type: 2}
+  - {fileID: 1098518441603042, guid: 579fd40bc3c9ec0469a93cace7e34283, type: 2}
+  - {fileID: 1362618640982318, guid: 6bc6fe3d29f84cd489ec5ffeedaa7704, type: 2}
+  - {fileID: 1701585521351762, guid: d555f0c641637834b8fc474230f8d313, type: 2}
   bossRooms:
   - {fileID: 1442504897218592, guid: b728a47d896d59b4289262089632a7b7, type: 2}
   chance: 50
-  roomsNeeded: 1
-  maxRooms: 50
+  roomsNeeded: 5
+  maxRooms: 15
   chanceOnDoor: 0
   verticalWall:
   - {fileID: 1429150343758864, guid: 10b778136964e11448db9e195a01a1ec, type: 2}
@@ -118,6 +121,7 @@ MonoBehaviour:
   bossRoomLocTestForPathFinder: {fileID: 0}
   startingRooms:
   - {fileID: 1398547341105614, guid: 575101f885e374b4cb3697ff2f32a711, type: 2}
+  - {fileID: 1822051124910166, guid: fe66c7747c7e6f34a8a03de5a8cd88ce, type: 2}
   mapFloor: {fileID: 1819904177379716, guid: 4e4a30dc1a21b8b419b2aa988b3f3f1a, type: 2}
   mapWalls:
   - {fileID: 1334484163607076, guid: 423a2703c219ca349b71b85a3e12b170, type: 2}

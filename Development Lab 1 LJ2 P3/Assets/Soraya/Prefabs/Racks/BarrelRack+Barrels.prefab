@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4511738273773506}
   - component: {fileID: 33409381740202510}
   - component: {fileID: 23260321740420052}
-  m_Layer: 0
+  - component: {fileID: 65644109061875144}
+  m_Layer: 12
   m_Name: BarrelRack
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961008165739376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6023767, y: 0, z: -1.8424637}
+  m_LocalPosition: {x: 1.3829836, y: -0.031660732, z: -1.7870061}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4052435262566448}
@@ -328,6 +329,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1757418284612618}
   m_Mesh: {fileID: 4300004, guid: bf1f0d613b0e0e2478bc3fd763a6fe56, type: 3}
+--- !u!65 &65644109061875144
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1275241350602704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7375168, y: 1.6, z: 1.1157347}
+  m_Center: {x: 0, y: 0.000000059604645, z: 0}
 --- !u!95 &95589580631365284
 Animator:
   serializedVersion: 3

@@ -942,7 +942,7 @@ GameObject:
   - component: {fileID: 95546968590081780}
   - component: {fileID: 54797104736781484}
   - component: {fileID: 114009195414563964}
-  - component: {fileID: 65354512792481956}
+  - component: {fileID: 135676964923142960}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -3833,7 +3833,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1543608062430584}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.581, y: 1.5, z: -6.455}
+  m_LocalPosition: {x: 5.755, y: 1.5, z: -6.455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4144077101153670}
@@ -4331,7 +4331,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166284634023398}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.592, y: 1.5, z: -3.86}
+  m_LocalPosition: {x: 2.999, y: 1.5, z: -0.742}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4144077101153670}
@@ -4598,7 +4598,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1609360866562932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.642, y: 1.5, z: -6.709}
+  m_LocalPosition: {x: -7.712, y: 1.5, z: -6.709}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4144077101153670}
@@ -4650,7 +4650,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964247280273392}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.336, y: 1.5, z: 6.478}
+  m_LocalPosition: {x: 4.69, y: 1.5, z: 4.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4144077101153670}
@@ -5292,7 +5292,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1126851965269230}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.301, y: 1.5, z: -2.899}
+  m_LocalPosition: {x: -3.437, y: 1.5, z: -2.443}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4144077101153670}
@@ -10274,18 +10274,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.52000016, y: 0.58116823, z: 0.1}
   m_Center: {x: -0.22500005, y: 0.22558406, z: -0.05}
---- !u!65 &65354512792481956
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1294308801799586}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.44341317, y: 0.27777153, z: 1.0188363}
-  m_Center: {x: -0.0090892315, y: 0.12902223, z: -0.24829075}
 --- !u!65 &65355494488862374
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -12207,7 +12195,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.77961457, b: 0.6102941, a: 1}
+  m_Color: {r: 1, g: 0.8225828, b: 0.6862745, a: 1}
   m_Intensity: 1.5
   m_Range: 1.5
   m_SpotAngle: 30
@@ -12243,7 +12231,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.77961457, b: 0.6102941, a: 1}
+  m_Color: {r: 1, g: 0.8225828, b: 0.6862745, a: 1}
   m_Intensity: 1
   m_Range: 1.5
   m_SpotAngle: 30
@@ -12279,7 +12267,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.77961457, b: 0.6102941, a: 1}
+  m_Color: {r: 1, g: 0.8225828, b: 0.6862745, a: 1}
   m_Intensity: 1.5
   m_Range: 1.5
   m_SpotAngle: 30
@@ -12315,7 +12303,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.77961457, b: 0.6102941, a: 1}
+  m_Color: {r: 1, g: 0.8225828, b: 0.6862745, a: 1}
   m_Intensity: 1
   m_Range: 1.5
   m_SpotAngle: 30
@@ -12351,7 +12339,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0.77961457, b: 0.6102941, a: 1}
+  m_Color: {r: 1, g: 0.8225828, b: 0.6862745, a: 1}
   m_Intensity: 1
   m_Range: 1.5
   m_SpotAngle: 30
@@ -12465,6 +12453,18 @@ MonoBehaviour:
   SpawnRate: 50
   roomForTesting: 0
   maxSkellies: 3
+--- !u!135 &135676964923142960
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1294308801799586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0.1, z: -0.25}
 --- !u!137 &137260257893555246
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
