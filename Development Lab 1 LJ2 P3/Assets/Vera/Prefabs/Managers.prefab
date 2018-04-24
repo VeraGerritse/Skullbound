@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1122689342972866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.238661, y: 0.31171918, z: -5.007108}
+  m_LocalPosition: {x: -47.4033, y: -34.17112, z: -14.707268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,12 +59,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tier1:
   - {fileID: 1705255856896038, guid: 270e8fc3017d8864bb6fcb139bec6330, type: 2}
-  tier2:
-  - {fileID: 1223439729673282, guid: 81d3c0a6e8c0e9749b3bdcfa03fe8a56, type: 2}
-  tier3:
   - {fileID: 1606328511911722, guid: 5c17dfb4865025743b9d7d3d9d366fa8, type: 2}
+  - {fileID: 1223439729673282, guid: 81d3c0a6e8c0e9749b3bdcfa03fe8a56, type: 2}
+  - {fileID: 1850796445231620, guid: 133ef5752e81a9b44a6136a58a786162, type: 2}
+  - {fileID: 1073489288093066, guid: 6de47f913f70c7d44a23785cd2c50e82, type: 2}
+  - {fileID: 1333994247977740, guid: f2d88a940d1d5224babeb2956540a583, type: 2}
+  - {fileID: 1093487558625088, guid: 829756eed5bd5a444add328bc2e5c740, type: 2}
+  - {fileID: 1748290652609722, guid: 2501007bf3de1c743bba0885e6c31ce5, type: 2}
+  tier2:
+  - {fileID: 1850065829624910, guid: 1f99b6cf6e192eb469dcca240724e5f8, type: 2}
+  - {fileID: 1214828671393420, guid: 981b52a752a57004e9869819194d9bc6, type: 2}
+  - {fileID: 1326105215616906, guid: 1e2493205d5b5d74b8060af0717b6430, type: 2}
+  - {fileID: 1748290652609722, guid: 2501007bf3de1c743bba0885e6c31ce5, type: 2}
+  - {fileID: 1850796445231620, guid: 133ef5752e81a9b44a6136a58a786162, type: 2}
+  - {fileID: 1196916317496126, guid: 9c1ef4a21c48f9d499d0060481d82c14, type: 2}
+  tier3:
+  - {fileID: 1940845936397328, guid: ede9b2f7e7f214b4a8fc73c7e7fdb79d, type: 2}
+  - {fileID: 1576108059530732, guid: 96c38315d0d76de49ba8059832c7c816, type: 2}
+  - {fileID: 1106454263603290, guid: 6705b2584f09ce74d8440462afa2f153, type: 2}
+  - {fileID: 1456803536029428, guid: 792e546efdd8dad47995a9f768b0d182, type: 2}
+  - {fileID: 1836671276680756, guid: b8d1b97e169f5dd4988332af981cc213, type: 2}
+  - {fileID: 1748290652609722, guid: 2501007bf3de1c743bba0885e6c31ce5, type: 2}
+  - {fileID: 1850796445231620, guid: 133ef5752e81a9b44a6136a58a786162, type: 2}
+  - {fileID: 1448011732792940, guid: bddd0639670afb641a3b627fa435433d, type: 2}
+  - {fileID: 1109075631502752, guid: ff30d6c87c95069478c23ab41fe60b3c, type: 2}
   procentalHigher: 0
   procentalLower: 0
+  parent: {fileID: 0}
 --- !u!114 &114153423962677774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,12 +108,12 @@ MonoBehaviour:
   - {fileID: 1024969786019716, guid: 4764fc8c1f5d64f44acea5ee9fb22df2, type: 2}
   - {fileID: 1108392835216376, guid: 3da13dbb7045d5941af008b79940720d, type: 2}
   - {fileID: 1249287462421776, guid: 6e214f6be5ae6194fb4c4b021104488c, type: 2}
+  - {fileID: 1280001780484530, guid: 9e155f9e9405c684abaf19a55b54de91, type: 2}
   skellyTier2:
   - {fileID: 1018346408345108, guid: 38ef386fd576042449525adcca127cc4, type: 2}
   - {fileID: 1852420388714978, guid: 3fd8010012e39464c846b15d3fe3a72b, type: 2}
   - {fileID: 1870023307587708, guid: 1623266e29268284380bbb5c9a0d5fc5, type: 2}
   - {fileID: 1361442900229906, guid: eff11a86f46761e49a45f00c9e728b87, type: 2}
-  - {fileID: 1280001780484530, guid: 9e155f9e9405c684abaf19a55b54de91, type: 2}
   skellyTier3:
   - {fileID: 1117555302656290, guid: fe1c642453f6624469b1924ba9467f3f, type: 2}
   - {fileID: 1316583414109404, guid: 34b98073b517fec4e9716bc1bd139ac8, type: 2}
@@ -140,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1a7dfc2a1fbe04094b6975274fe850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerInTEstScenes: {fileID: 0}
   grid: {fileID: 0}
   paused: 0
 --- !u!114 &114697424964991442
@@ -155,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doors: []
   allCleared: 0
+  floorComplete: 0
 --- !u!114 &114797835064739448
 MonoBehaviour:
   m_ObjectHideFlags: 1
