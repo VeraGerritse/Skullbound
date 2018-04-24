@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldName: Orcish Kiteshield
-  itemId: 4
+  itemId: 5
   stability: 40
   bashcost: 25
   bashDamage: 10
@@ -142,6 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAwake: 1
   keepsWorking: 0
+  used: 0
+  chest: 0
   myFloat: 0
   canBePickedUp: 1
   rend: {fileID: 0}
