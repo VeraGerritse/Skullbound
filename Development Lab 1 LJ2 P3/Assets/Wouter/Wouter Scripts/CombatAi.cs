@@ -42,6 +42,11 @@ public class CombatAi : MonoBehaviour {
 
     void Start()
     {
+        if(!isBoss)
+        {
+            Health = Health * 2;
+        }
+        
         maxHealth = Health;
         oldSpeed = myPathFinding.speed;
         

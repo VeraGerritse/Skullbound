@@ -1392,6 +1392,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1822561662913492
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4829383035724864}
+  - component: {fileID: 33542283463521114}
+  - component: {fileID: 23833411922268712}
+  - component: {fileID: 95618877087005988}
+  m_Layer: 0
+  m_Name: Reindeer_Skull
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1840179587653228
 GameObject:
   m_ObjectHideFlags: 1
@@ -2539,6 +2557,19 @@ Transform:
   m_Father: {fileID: 4438391661564716}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4829383035724864
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822561662913492}
+  m_LocalRotation: {x: -0.6404588, y: 0.64091265, z: 0.29940668, w: 0.29899693}
+  m_LocalPosition: {x: 0.002, y: 0.096, z: -0.002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4985610765726658}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -50.065002, y: 180.02199, z: -89.97}
 --- !u!4 &4834420136550330
 Transform:
   m_ObjectHideFlags: 1
@@ -2812,7 +2843,8 @@ Transform:
   m_LocalRotation: {x: -4.1174657e-20, y: -3.3881318e-21, z: -1.39505e-40, w: 1}
   m_LocalPosition: {x: -0.20533979, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
-  m_Children: []
+  m_Children:
+  - {fileID: 4829383035724864}
   m_Father: {fileID: 4709594375674532}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3005,6 +3037,40 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23833411922268712
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822561662913492}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 625059e1dc4bf114baf11db1439a6e45, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!23 &23898616896915220
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -3060,6 +3126,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020159666528382}
   m_Mesh: {fileID: 4300000, guid: 297521f49d642cb4dbbe1ddea5b33863, type: 3}
+--- !u!33 &33542283463521114
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822561662913492}
+  m_Mesh: {fileID: 4300000, guid: 755d6080fc4b24148bbc5ea4b3724d44, type: 3}
 --- !u!33 &33652877226653960
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -3210,6 +3283,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95618877087005988
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822561662913492}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 755d6080fc4b24148bbc5ea4b3724d44, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!108 &108177166124694996
 Light:
   m_ObjectHideFlags: 1
@@ -3330,7 +3420,7 @@ MonoBehaviour:
   bonepieces: {fileID: 1318743273596038, guid: 1a1a54cf49aea534d80c057efb347bde, type: 2}
   myRoom: {fileID: 0}
   hurtSound: {fileID: 82301020398029644}
-  Health: 30
+  Health: 40
   actionCooldown: 0
   dualwielder: 1
   shielded: 0
