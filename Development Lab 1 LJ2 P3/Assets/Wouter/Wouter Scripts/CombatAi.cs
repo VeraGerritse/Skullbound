@@ -64,6 +64,12 @@ public class CombatAi : MonoBehaviour {
         myAnimator.SetFloat("SpeedBonus", speedbonus);
 
         canChoose = true;
+
+        if(isBoss)
+        {
+            MusicManager.instance.tracks[0].Stop();
+            MusicManager.instance.tracks[1].Play();
+        }
         
 
     }
@@ -265,7 +271,12 @@ public class CombatAi : MonoBehaviour {
             rl[i].AddForce(transform.up * 400);
 
         }
-        
+
+        if(isBoss)
+        {
+            MusicManager.instance.tracks[1].Stop();
+            MusicManager.instance.tracks[0].Play();
+        }
 
         Destroy(this.gameObject, 0.01f);
     }
