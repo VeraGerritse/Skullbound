@@ -203,15 +203,22 @@ public class CombatAi : MonoBehaviour {
 
     public void ChangeHealth(float amount)
     {
+
+
         hurtSound.Play();
         Health += amount;
 
-        float procentage = Health / maxHealth;
-        redFill.fillAmount = procentage;
+
+
 
         if (isBoss)
         {
             UIManager.instance.interfaceGame.UpdateBossHealth(Health,maxHealth);
+        }
+        else
+        {
+            float procentage = Health / maxHealth;
+            redFill.fillAmount = procentage;
         }
         if(amount < 0)
         {
