@@ -16,7 +16,7 @@ public class CombatAi : MonoBehaviour {
 
     public Pathfinding myPathFinding;
     public Animator myAnimator;
-    public Text textHP;
+    public Image redFill;
     public List<GameObject> bones = new List<GameObject>();
     public GameObject bonepieces;
     public RoomActivities myRoom;
@@ -44,7 +44,7 @@ public class CombatAi : MonoBehaviour {
     {
         maxHealth = Health;
         oldSpeed = myPathFinding.speed;
-        textHP.text = Health.ToString();
+        
         myPathFinding = GetComponent<Pathfinding>();
         myAnimator = transform.GetChild(0).GetComponent<Animator>();
         if(shielded)
@@ -205,10 +205,10 @@ public class CombatAi : MonoBehaviour {
     {
         hurtSound.Play();
         Health += amount;
-        if(textHP != null)
-        {
-            textHP.text = Health.ToString();
-        }
+
+        float procentage = Health / maxHealth;
+        redFill.fillAmount = procentage;
+
         if (isBoss)
         {
             UIManager.instance.interfaceGame.UpdateBossHealth(Health,maxHealth);

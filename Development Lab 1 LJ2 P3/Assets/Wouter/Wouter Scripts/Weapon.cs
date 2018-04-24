@@ -61,7 +61,7 @@ public class Weapon : MonoBehaviour {
                     else
                     {
 
-                        if (owner != null)
+                        if (true)
                         {
                             if(!hyper)
                             {

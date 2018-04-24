@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 3ff5d73cea0005d4e9cc558c8a354e93
-timeCreated: 1524152548
+guid: ff006ca77fe9c24489073f32d2301d93
+timeCreated: 1524569943
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -45,7 +45,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 737, y: 209, z: 736, w: 268}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -76,53 +76,10 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline:
-    - - {x: -657, y: -39}
-      - {x: -656, y: -42}
-      - {x: -651, y: -42}
-      - {x: -649, y: -40}
-      - {x: -650, y: -37}
-      - {x: -655, y: -37}
-    - - {x: -371, y: -35}
-      - {x: -373, y: -38}
-      - {x: -373, y: -42}
-      - {x: -357, y: -42}
-      - {x: -357, y: -38}
-      - {x: -360, y: -35}
-    - - {x: -269, y: -14}
-      - {x: -269, y: -42}
-      - {x: 274, y: -42}
-      - {x: 274, y: -22}
-      - {x: 263, y: -14}
-    - - {x: 273, y: -35}
-      - {x: 274, y: -40}
-      - {x: 280, y: -40}
-      - {x: 282, y: -39}
-      - {x: 282, y: -36}
-      - {x: 278, y: -30}
-      - {x: 275, y: -30}
-      - {x: 273, y: -31}
-    - - {x: 418, y: -27}
-      - {x: 416, y: -30}
-      - {x: 416, y: -31}
-      - {x: 418, y: -33}
-      - {x: 435, y: -33}
-      - {x: 436, y: -31}
-      - {x: 436, y: -28}
-      - {x: 435, y: -27}
+    outline: []
     physicsShape: []
   spritePackingTag: 
   userData: 
